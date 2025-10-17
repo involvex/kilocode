@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import { ReleaseNotesModal } from "./ReleaseNotesModal"
 import { useReleaseNotes } from "../../hooks/useReleaseNotes"
 
-const SHOULD_AUTO_OPEN = false // Feature flag for auto-opening
+const SHOULD_AUTO_OPEN = false // Disable auto-opening for the first version
 const AUTO_OPEN_DELAY_MS = 2000 // 2 second delay before showing modal
 
 export const AutoReleaseNotesChecker: React.FC = () => {
@@ -16,10 +16,9 @@ export const AutoReleaseNotesChecker: React.FC = () => {
 		let mounted = true
 		const checkAndAutoOpen = async () => {
 			try {
+				await loadReleases()
 				const hasUnviewed = await hasUnviewedReleases()
 				if (!mounted || !hasUnviewed) return
-
-				await loadReleases()
 
 				setTimeout(() => {
 					if (mounted) {

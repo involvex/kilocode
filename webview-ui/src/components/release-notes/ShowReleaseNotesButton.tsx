@@ -5,18 +5,14 @@ import { Button } from "../ui"
 import { ReleaseNotesModal } from "./ReleaseNotesModal"
 import { useAppTranslation } from "@/i18n/TranslationContext"
 
-interface ManualReleaseNotesButtonProps {
+interface ShowReleaseNotesButtonProps {
 	buttonText?: string
 	className?: string
 }
 
-export const ManualReleaseNotesButton: React.FC<ManualReleaseNotesButtonProps> = ({
-	buttonText,
-	className = "w-40",
-}) => {
+export const ShowReleaseNotesButton: React.FC<ShowReleaseNotesButtonProps> = ({ buttonText, className = "w-40" }) => {
 	const { t } = useAppTranslation()
 	const [showModal, setShowModal] = useState(false)
-
 	const displayText = buttonText || t("kilocode:releaseNotes.viewReleaseNotes")
 
 	return (

@@ -4,8 +4,10 @@ import { useExtensionState } from "../context/ExtensionStateContext"
 import { vscode } from "../utils/vscode"
 import { ReleaseNote } from "../types/release-notes"
 
-// Global cache to avoid re-importing
+// Global cache
 let releasesCache: ReleaseData | null = null
+
+const NULL_VERSION = "0.0.0"
 
 interface ReleaseData {
 	currentVersion: string
@@ -28,8 +30,7 @@ export const useReleaseNotes = () => {
 			return releasesCache
 		} catch (error) {
 			console.error("Failed to load release notes:", error)
-			// Fallback to empty data
-			releasesCache = { currentVersion: "0.0.0", releases: [] }
+			releasesCache = { currentVersion: NULL_VERSION, releases: [] }
 			return releasesCache
 		} finally {
 			setLoading(false)
@@ -37,9 +38,9 @@ export const useReleaseNotes = () => {
 	}
 
 	const hasUnviewedReleases = async (): Promise<boolean> => {
-		const data = await loadReleases()
-		const lastViewed = lastViewedReleaseVersion || "0.0.0"
-		return lastViewed === "0.0.0" || data.currentVersion !== lastViewed
+		const releases = await loadReleases()
+		const lastViewed = lastViewedReleaseVersion || NULL_VERSION
+		return lastViewed === NULL_VERSION || releases.currentVersion !== lastViewed
 	}
 
 	const markAsViewed = async (version: string): Promise<void> => {
@@ -57,7 +58,7 @@ export const useReleaseNotes = () => {
 
 	return {
 		releases: releasesCache?.releases || [],
-		currentVersion: releasesCache?.currentVersion || "0.0.0",
+		currentVersion: releasesCache?.currentVersion || NULL_VERSION,
 		loading,
 		loadReleases,
 		hasUnviewedReleases,

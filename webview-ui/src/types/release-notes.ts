@@ -18,12 +18,3 @@ export interface ReleaseNote {
 	breakingChanges: ReleaseItem[]
 	rawChanges: ReleaseItem[]
 }
-
-export interface ReleaseNotesModalProps {
-	isOpen: boolean
-	onClose: () => void
-	currentVersion: string
-	releaseNotes: ReleaseNote[]
-	lastViewedVersion?: string
-	onVersionViewed: (version: string) => void
-}
