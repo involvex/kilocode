@@ -71,7 +71,8 @@ class Mistral extends OpenAI {
 	}
 
 	override supportsFim(): boolean {
-		return true
+		// Only codestral models support FIM
+		return this.model.startsWith("codestral-")
 	}
 }
 
