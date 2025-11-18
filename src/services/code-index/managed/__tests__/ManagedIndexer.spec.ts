@@ -119,8 +119,9 @@ describe("ManagedIndexer", () => {
 			expect(indexer).toBeInstanceOf(ManagedIndexer)
 		})
 
-		it("should subscribe to configuration changes", () => {
-			expect(mockContextProxy.onManagedIndexerConfigChange).toHaveBeenCalled()
+		it("should not subscribe to configuration changes until start is called", () => {
+			// Configuration listener is set up in start(), not constructor
+			expect(mockContextProxy.onManagedIndexerConfigChange).not.toHaveBeenCalled()
 		})
 
 		it("should initialize with empty workspaceFolderState", () => {
@@ -578,6 +579,167 @@ describe("ManagedIndexer", () => {
 				await indexer.onEvent(event)
 
 				expect(logger.info).toHaveBeenCalledWith("[ManagedIndexer] File deleted: deleted.ts on branch main")
+			})
+		})
+
+		describe("branch-changed event", () => {
+			it("should fetch new manifest for the new branch", async () => {
+				const newManifest = {
+					files: [{ filePath: "new-branch-file.ts", fileHash: "new123" }],
+				}
+				vi.mocked(apiClient.getServerManifest).mockResolvedValue(newManifest as any)
+
+				const event: GitWatcherEvent = {
+					type: "branch-changed",
+					previousBranch: "main",
+					newBranch: "feature/test",
+					branch: "feature/test",
+					isBaseBranch: false,
+					watcher: mockWatcher,
+				}
+
+				await indexer.onEvent(event)
+
+				expect(apiClient.getServerManifest).toHaveBeenCalledWith(
+					"test-org-id",
+					"test-project-id",
+					"feature/test",
+					"test-token",
+				)
+				expect(state.manifest).toEqual(newManifest)
+				expect(state.gitBranch).toBe("feature/test")
+			})
+
+			it("should clear manifest errors on successful fetch", async () => {
+				state.error = {
+					type: "manifest",
+					message: "Previous error",
+					timestamp: new Date().toISOString(),
+				}
+
+				const event: GitWatcherEvent = {
+					type: "branch-changed",
+					previousBranch: "main",
+					newBranch: "feature/test",
+					branch: "feature/test",
+					isBaseBranch: false,
+					watcher: mockWatcher,
+				}
+
+				await indexer.onEvent(event)
+
+				expect(state.error).toBeUndefined()
+			})
+
+			it("should handle manifest fetch errors", async () => {
+				vi.mocked(apiClient.getServerManifest).mockRejectedValue(new Error("API error"))
+
+				const event: GitWatcherEvent = {
+					type: "branch-changed",
+					previousBranch: "main",
+					newBranch: "feature/test",
+					branch: "feature/test",
+					isBaseBranch: false,
+					watcher: mockWatcher,
+				}
+
+				await indexer.onEvent(event)
+
+				expect(state.error).toBeDefined()
+				expect(state.error?.type).toBe("manifest")
+				expect(state.error?.message).toContain("Failed to fetch manifest")
+				expect(state.error?.context?.branch).toBe("feature/test")
+			})
+
+			it("should reuse in-flight manifest fetch", async () => {
+				// Clear any previous calls from setup
+				vi.mocked(apiClient.getServerManifest).mockClear()
+
+				// Make manifest fetch take some time
+				let resolveManifest: any
+				const manifestPromise = new Promise((resolve) => {
+					resolveManifest = resolve
+				})
+				vi.mocked(apiClient.getServerManifest).mockReturnValue(manifestPromise as any)
+
+				const branchEvent: GitWatcherEvent = {
+					type: "branch-changed",
+					previousBranch: "main",
+					newBranch: "feature/test",
+					branch: "feature/test",
+					isBaseBranch: false,
+					watcher: mockWatcher,
+				}
+
+				// Start branch change (will initiate fetch)
+				const branchChangePromise = indexer.onEvent(branchEvent)
+
+				// Wait a bit to ensure the promise is cached
+				await new Promise((resolve) => setTimeout(resolve, 5))
+
+				// Try to process a file-changed event while manifest is being fetched
+				// This should reuse the same promise
+				const fileEvent: GitWatcherEvent = {
+					type: "file-changed",
+					filePath: "test.ts",
+					fileHash: "abc123",
+					branch: "feature/test",
+					isBaseBranch: false,
+					watcher: mockWatcher,
+				}
+
+				const fileEventPromise = indexer.onEvent(fileEvent)
+
+				// Complete the manifest fetch
+				resolveManifest({ files: [] })
+				await Promise.all([branchChangePromise, fileEventPromise])
+
+				// Should only have called getServerManifest once (reused the promise)
+				expect(apiClient.getServerManifest).toHaveBeenCalledTimes(1)
+				expect(apiClient.getServerManifest).toHaveBeenCalledWith(
+					"test-org-id",
+					"test-project-id",
+					"feature/test",
+					"test-token",
+				)
+			})
+
+			it("should handle manifest fetch errors gracefully", async () => {
+				vi.mocked(apiClient.getServerManifest).mockRejectedValue(new Error("API error"))
+
+				const event: GitWatcherEvent = {
+					type: "branch-changed",
+					previousBranch: "main",
+					newBranch: "feature/test",
+					branch: "feature/test",
+					isBaseBranch: false,
+					watcher: mockWatcher,
+				}
+
+				// Should not throw
+				await indexer.onEvent(event)
+
+				expect(state.error).toBeDefined()
+				expect(state.error?.type).toBe("manifest")
+				expect(logger.warn).toHaveBeenCalledWith("[ManagedIndexer] Continuing despite manifest fetch error")
+			})
+
+			it("should log branch change information", async () => {
+				const event: GitWatcherEvent = {
+					type: "branch-changed",
+					previousBranch: "main",
+					newBranch: "feature/test",
+					branch: "feature/test",
+					isBaseBranch: false,
+					watcher: mockWatcher,
+				}
+
+				await indexer.onEvent(event)
+
+				expect(logger.info).toHaveBeenCalledWith("[ManagedIndexer] Branch changed from main to feature/test")
+				expect(logger.info).toHaveBeenCalledWith(
+					expect.stringContaining("Successfully fetched manifest for branch feature/test"),
+				)
 			})
 		})
 
