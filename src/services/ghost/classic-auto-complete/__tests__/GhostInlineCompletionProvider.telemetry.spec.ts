@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest"
+import { describe, it, expect, vi, beforeEach, afterEach, type Mock } from "vitest"
 import * as vscode from "vscode"
 import { GhostInlineCompletionProvider } from "../GhostInlineCompletionProvider"
 import { GhostModel } from "../../GhostModel"
@@ -78,9 +78,9 @@ describe("GhostInlineCompletionProvider Telemetry", () => {
 	let provider: GhostInlineCompletionProvider
 	let mockModel: GhostModel
 	let mockContextProvider: GhostContextProvider
-	let mockCostTrackingCallback: vi.Mock
-	let mockGetSettings: vi.Mock
-	let mockRegisteredCommand: vi.Mock
+	let mockCostTrackingCallback: Mock
+	let mockGetSettings: Mock
+	let mockRegisteredCommand: Mock
 
 	beforeEach(() => {
 		vi.clearAllMocks()
@@ -114,7 +114,7 @@ describe("GhostInlineCompletionProvider Telemetry", () => {
 		// Capture the registered command
 		mockRegisteredCommand = vi.fn()
 		const registerCommand = vi.mocked(vscode.commands.registerCommand)
-		registerCommand.mockImplementation((command: string, callback: any) => {
+		registerCommand.mockImplementation((command: string, callback: (...args: any[]) => any) => {
 			if (command === "kilocode.ghost.inlineAssist.accepted") {
 				mockRegisteredCommand.mockImplementation(callback)
 			}
