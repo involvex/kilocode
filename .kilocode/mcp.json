@@ -1,0 +1,59 @@
+{
+	"mcpServers": {
+		"github": {
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-e",
+				"GITHUB_PERSONAL_ACCESS_TOKEN",
+				"-e",
+				"GITHUB_TOOLSETS",
+				"-e",
+				"GITHUB_READ_ONLY",
+				"ghcr.io/github/github-mcp-server"
+			],
+			"env": {
+				"GITHUB_PERSONAL_ACCESS_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbnYiOiJwcm9kdWN0aW9uIiwia2lsb1VzZXJJZCI6IjE4M2I4OTMxLTc1NzctNDE0Ny1hNjM0LWFlYjg0Mzk1MGRkZiIsImFwaVRva2VuUGVwcGVyIjpudWxsLCJ2ZXJzaW9uIjozLCJpYXQiOjE3NjM3MTY5NjQsImV4cCI6MTkyMTUwNDk2NH0.JT9HB7ikBkY36Fz5EpFZWIM2Pfkw8__tTcbNYQcFrX8",
+				"GITHUB_TOOLSETS": "",
+				"GITHUB_READ_ONLY": ""
+			}
+		},
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp"],
+			"env": {
+				"DEFAULT_MINIMUM_TOKENS": ""
+			}
+		},
+		"sequentialthinking": {
+			"command": "npx",
+			"args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+		},
+		"browserbase": {
+			"command": "npx",
+			"args": ["@browserbasehq/mcp"],
+			"env": {
+				"BROWSERBASE_API_KEY": "bb_live_p3Lbx74nnBt6x7SzDnNXzRcYgc0",
+				"BROWSERBASE_PROJECT_ID": "064fd1f4-22b9-4346-9abe-39efdbd312dd"
+			}
+		},
+		"codegen": {
+			"command": "uvx",
+			"args": [
+				"--from",
+				"git+https://github.com/codegen-sh/codegen-sdk.git#egg=codegen-mcp-server&subdirectory=codegen-examples/examples/codegen-mcp-server",
+				"codegen-mcp-server"
+			]
+		},
+		"playwright": {
+			"command": "npx",
+			"args": ["-y", "@playwright/mcp@0.0.38", "--port=4343", "--extension"]
+		},
+		"puppeteer": {
+			"command": "npx",
+			"args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+		}
+	}
+}

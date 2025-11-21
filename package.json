@@ -77,6 +77,39 @@
 			"form-data": ">=4.0.4",
 			"bluebird": ">=3.7.2",
 			"type-fest": "2.19.0"
-		}
+		},
+		"onlyBuiltDependencies": [
+			"@parcel/watcher",
+			"@playwright/browser-chromium",
+			"@swc/core",
+			"@tailwindcss/oxide",
+			"@vscode/deviceid",
+			"@vscode/policy-watcher",
+			"@vscode/ripgrep",
+			"@vscode/spdlog",
+			"@vscode/sqlite3",
+			"@vscode/vsce-sign",
+			"@vscode/windows-ca-certs",
+			"@vscode/windows-mutex",
+			"@vscode/windows-process-tree",
+			"@vscode/windows-registry",
+			"better-sqlite3",
+			"core-js",
+			"core-js-pure",
+			"electron",
+			"es5-ext",
+			"esbuild",
+			"husky",
+			"kerberos",
+			"keytar",
+			"native-is-elevated",
+			"native-keymap",
+			"native-watchdog",
+			"node-pty",
+			"puppeteer-chromium-resolver",
+			"sharp",
+			"sqlite3",
+			"windows-foreground-love"
+		]
 	}
 }
