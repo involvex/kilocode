@@ -44,6 +44,18 @@
 		"cli:bundle": {
 			"dependsOn": ["@involvex/kilocode-cli#build"]
 		},
+		"bundle": {
+			"dependsOn": ["kilo-code#bundle"]
+		},
+		"bundle:nightly": {
+			"dependsOn": ["kilo-code#bundle"]
+		},
+		"vsix": {
+			"dependsOn": ["kilo-code#vsix"]
+		},
+		"vsix:nightly": {
+			"dependsOn": ["kilo-code#vsix"]
+		},
 		"chromatic": {
 			"dependsOn": ["storybook:build"],
 			"cache": false
