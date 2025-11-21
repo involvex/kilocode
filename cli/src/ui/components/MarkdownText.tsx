@@ -240,7 +240,8 @@ export const MarkdownText: React.FC<MarkdownTextProps> = ({ children, ...options
 	try {
 		// Configure marked to use the terminal renderer
 		setOptions({
-			renderer: new TerminalRenderer(options),
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			renderer: new TerminalRenderer(options) as any,
 		})
 
 		// Parse markdown on the displayed text (efficient - only once per update)
