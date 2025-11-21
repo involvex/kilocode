@@ -103,7 +103,6 @@
     Your conversation is now back to before the refactoring happened
 
     ### Why use checkpoints?
-
     1. Undo mistakes - Go back if something went wrong
     2. Try different approaches - Restore and try a different solution
     3. Keep working states - Return to a point where everything was working
@@ -149,7 +148,6 @@
 ### Minor Changes
 
 - [#3452](https://github.com/Kilo-Org/kilocode/pull/3452) [`127a255`](https://github.com/Kilo-Org/kilocode/commit/127a2551cfd67d57484e59615b13435e7610acce) Thanks [@Sureshkumars](https://github.com/Sureshkumars)! - This PR improves the display of MCP tool requests and responses in the CLI, addressing issues with truncated payloads, poor formatting, and lack of metadata.
-
     - MCP request arguments were difficult to read (no formatting, no preview mode)
     - MCP response payloads were displayed as raw text dumps, overwhelming the terminal
     - No JSON detection or pretty-printing
@@ -251,7 +249,6 @@
     | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
     | MCP operations auto-rejected in CI mode with error "Auto-rejected in CI mode"                                                                | MCP operations auto-approved when autoApproval.mcp.enabled: true                                                                            |
     | <img width="1444" height="499" alt="before-the-fix" src="https://github.com/user-attachments/assets/57e5820d-196c-4138-8b3d-1f185fc1db56" /> | <img width="1506" height="717" alt="after-the-fix" src="https://github.com/user-attachments/assets/a165aa9c-0018-47e4-a274-fed056716407" /> |
-
     1. Just `kilocode --auto "Review the PR #2 in X/X repo, use github mcp servers if needed"`
     2. Configure MCP settings with GitHub MCP server
     3. Set `autoApproval.mcp.enabled: true` in config

@@ -34,7 +34,7 @@ function removeUnneededFiles() {
 	} catch (err) {
 		console.warn("Warning: Could not remove webview-ui directory:", err.message)
 	}
-	
+
 	try {
 		// Remove assets directory with force option
 		rimrafSync("dist/kilocode/assets", { force: true, maxRetries: 3 })

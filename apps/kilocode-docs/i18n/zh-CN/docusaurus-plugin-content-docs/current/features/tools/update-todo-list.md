@@ -54,19 +54,16 @@
 当调用 `update_todo_list` 工具时，它遵循以下过程：
 
 1.  **状态验证**：
-
     - 解析 markdown 清单格式
     - 验证状态指示器格式是否正确
     - 确保任务描述清晰且可操作
 
 2.  **列表替换**：
-
     - 完全替换现有 TODO 列表
     - Preserves task order as specified in the update
     - Maintains task descriptions and status states
 
 3.  **提醒集成**：
-
     - 将更新的列表与提醒系统集成
     - Displays current tasks in subsequent message headers
     - Provides persistent visibility of task progress

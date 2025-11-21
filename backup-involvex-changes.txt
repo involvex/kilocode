@@ -1,0 +1,17 @@
+This directory contains backup of Involvex changes before updating to latest main branch.
+
+Key changes that were made:
+1. Package name changed to "@involvex/kilo-code" in root package.json
+2. Publisher changed to "Involvex" in src/package.json
+3. Author changed to "Involvex" in src/package.json
+4. Display names and descriptions updated to include @involvex branding
+5. JetBrains plugin package name changed to "@involvex/kilo-code-jetbrains-plugin"
+
+Files to preserve during merge:
+- package.json (root)
+- src/package.json
+- src/package.nls.json
+- src/package.nls.*.json (all language files)
+- jetbrains/plugin/package.json
+- turbo.json
+- Any other files containing "involvex" references

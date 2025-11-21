@@ -32,8 +32,8 @@
 			"cache": false,
 			"dependsOn": [
 				"clean:resource-host",
-				"@kilo-code/jetbrains-host#bundle",
-				"@kilo-code/jetbrains-host#prop:deps"
+				"@involvex/kilo-code-jetbrains-host#bundle",
+				"@involvex/kilo-code-jetbrains-host#prop:deps"
 			]
 		},
 		"copy:resource-logs": {

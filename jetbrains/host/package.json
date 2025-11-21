@@ -1,5 +1,5 @@
 {
-	"name": "@kilo-code/jetbrains-host",
+	"name": "@involvex/kilo-code-jetbrains-host",
 	"license": "Apache-2.0",
 	"type": "module",
 	"scripts": {

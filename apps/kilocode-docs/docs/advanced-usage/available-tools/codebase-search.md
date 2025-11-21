@@ -60,33 +60,28 @@ This tool is only available when the experimental Codebase Indexing feature is p
 When the `codebase_search` tool is invoked, it follows this process:
 
 1. **Availability Validation**:
-
     - Verifies that the CodeIndexManager is available and initialized
     - Confirms codebase indexing is enabled in settings
     - Checks that indexing is properly configured (API keys, Qdrant URL)
     - Validates the current index state allows searching
 
 2. **Query Processing**:
-
     - Takes your natural language query and generates an embedding vector
     - Uses the same embedding provider configured for indexing (OpenAI or Ollama)
     - Converts the semantic meaning of your query into a mathematical representation
 
 3. **Vector Search Execution**:
-
     - Searches the Qdrant vector database for similar code embeddings
     - Uses cosine similarity to find the most relevant code blocks
     - Applies the minimum similarity threshold (0.4) to filter results
     - Limits results to 50 matches for optimal performance
 
 4. **Path Filtering** (if specified):
-
     - Filters results to only include files within the specified directory path
     - Uses normalized path comparison for accurate filtering
     - Maintains relevance ranking within the filtered scope
 
 5. **Result Processing and Formatting**:
-
     - Converts absolute file paths to workspace-relative paths
     - Structures results with file paths, line ranges, similarity scores, and code content
     - Formats for both AI consumption and UI display with syntax highlighting
