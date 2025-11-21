@@ -28,18 +28,20 @@ function copyPostBuildFiles() {
 
 function removeUnneededFiles() {
 	try {
-		rimrafSync("dist/kilocode/webview-ui")
+		// Remove webview-ui directory/symlink with force option
+		rimrafSync("dist/kilocode/webview-ui", { force: true, maxRetries: 3 })
+		console.log("✓ Removed webview-ui directory")
 	} catch (err) {
 		console.warn("Warning: Could not remove webview-ui directory:", err.message)
 	}
 	
 	try {
-		rimrafSync("dist/kilocode/assets")
+		// Remove assets directory with force option
+		rimrafSync("dist/kilocode/assets", { force: true, maxRetries: 3 })
+		console.log("✓ Removed assets directory")
 	} catch (err) {
 		console.warn("Warning: Could not remove assets directory:", err.message)
 	}
-	
-	console.log("✓ Unneeded files removal attempted")
 }
 
 const afterBuildPlugin = {
@@ -172,15 +174,17 @@ const __dirname = __dirname__(__filename);
 		"vscode-uri",
 		"web-tree-sitter",
 		"workerpool",
-		"xlsx",
 		"yaml",
 		"zod",
 	],
 	sourcemap: false,
-	minify: false,
+	minify: true,
 	treeShaking: true,
 	logLevel: "info",
 	plugins: [afterBuildPlugin],
+	// Optimize for production
+	drop: ["debugger"],
+	legalComments: "none",
 }
 
 if (process.argv.includes("--watch")) {
