@@ -27,9 +27,19 @@ function copyPostBuildFiles() {
 }
 
 function removeUnneededFiles() {
-	rimrafSync("dist/kilocode/webview-ui")
-	rimrafSync("dist/kilocode/assets")
-	console.log("✓ Unneeded files removed")
+	try {
+		rimrafSync("dist/kilocode/webview-ui")
+	} catch (err) {
+		console.warn("Warning: Could not remove webview-ui directory:", err.message)
+	}
+	
+	try {
+		rimrafSync("dist/kilocode/assets")
+	} catch (err) {
+		console.warn("Warning: Could not remove assets directory:", err.message)
+	}
+	
+	console.log("✓ Unneeded files removal attempted")
 }
 
 const afterBuildPlugin = {

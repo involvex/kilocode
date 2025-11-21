@@ -8,12 +8,12 @@
 		},
 		"clean:kilocode": {
 			"outputs": ["dist/kilocode/**"],
-			"inputs": ["../bin-unpacked/extension/**"],
+			"inputs": ["../bin-unpacked/**"],
 			"dependsOn": ["clean"]
 		},
 		"copy:kilocode": {
 			"outputs": ["dist/kilocode/**"],
-			"inputs": ["../bin-unpacked/extension/**"],
+			"inputs": ["../bin-unpacked/**"],
 			"dependsOn": ["clean:kilocode", "kilo-code#vsix:unpacked"]
 		},
 		"build": {
