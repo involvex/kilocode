@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const cliDir = join(__dirname, "..")
 
-const source = join(cliDir, "..", "bin-unpacked", "extension")
+const source = join(cliDir, "..", "bin-unpacked")
 const dest = join(cliDir, "dist", "kilocode")
 
 console.log(`Copying from: ${source}`)
