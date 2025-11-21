@@ -131,8 +131,13 @@ function checkJava() {
 			console.log("  CI Environment detected - continuing with available Java version")
 			console.log(`  Note: Some features may not work correctly with Java ${majorVersion}`)
 			return true // Allow CI to continue with warning
+		} else if (parseInt(majorVersion) >= 17) {
+			printWarning(`Java version is ${majorVersion}, but Java 21 is recommended for JetBrains plugin development`)
+			console.log(`  Current Java: ${javaVersion.split("\n")[0]}`)
+			console.log("  Java 17+ detected - build may work but Java 21 is recommended")
+			return true // Allow build to continue with Java 17+
 		} else {
-			printError(`Java version is ${majorVersion}, but Java 21 is required`)
+			printError(`Java version is ${majorVersion}, but Java 17+ is required`)
 			console.log(`  Current Java: ${javaVersion.split("\n")[0]}`)
 			console.log("  Recommended fix:")
 			console.log("  - Windows: Download Java 21 from https://openjdk.org/projects/jdk/21/")

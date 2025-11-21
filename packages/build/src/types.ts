@@ -31,7 +31,10 @@ const commandsSchema = z.array(
 		command: z.string(),
 		title: z.string(),
 		category: z.string().optional(),
-		icon: z.string().optional(),
+		icon: z.union([z.string(), z.object({
+			light: z.string().optional(),
+			dark: z.string().optional()
+		})]).optional(),
 	}),
 )
 
