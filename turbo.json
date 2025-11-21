@@ -26,14 +26,14 @@
 		},
 		"jetbrains:bundle": {
 			"cache": false,
-			"dependsOn": ["@kilo-code/jetbrains-plugin#bundle"]
+			"dependsOn": ["@involvex/kilo-code-jetbrains-plugin#bundle"]
 		},
 		"jetbrains:run-bundle": {
 			"cache": false,
-			"dependsOn": ["@kilo-code/jetbrains-plugin#run:bundle"]
+			"dependsOn": ["@involvex/kilo-code-jetbrains-plugin#run:bundle"]
 		},
 		"jetbrains:build": {
-			"dependsOn": ["@kilo-code/jetbrains-plugin#build"]
+			"dependsOn": ["@involvex/kilo-code-jetbrains-plugin#build"]
 		},
 		"jetbrains:run": {
 			"dependsOn": ["@kilo-code/jetbrains-plugin#run"]

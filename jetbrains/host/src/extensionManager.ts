@@ -10,9 +10,13 @@ import {
 } from "../deps/vscode/vs/platform/extensions/common/extensions.js"
 import { URI } from "../deps/vscode/vs/base/common/uri.js"
 import { ExtHostContext } from "../deps/vscode/vs/workbench/api/common/extHost.protocol.js"
-import { IRPCProtocol } from "../deps/vscode/vs/workbench/services/extensions/common/proxyIdentifier.js"
 import * as fs from "fs"
 import * as path from "path"
+
+// Local type definition for IRPCProtocol
+interface IRPCProtocol {
+	getProxy(identifier: any): any
+}
 
 export class ExtensionManager {
 	private extensionDescriptions: Map<string, IExtensionDescription> = new Map()

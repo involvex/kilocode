@@ -2,7 +2,7 @@
 	"name": "kilo-code",
 	"displayName": "%extension.displayName%",
 	"description": "%extension.description%",
-	"publisher": "kilocode",
+	"publisher": "Involvex",
 	"version": "4.121.1",
 	"icon": "assets/icons/logo-outline-black.png",
 	"galleryBanner": {
@@ -17,7 +17,7 @@
 		"workspace"
 	],
 	"author": {
-		"name": "Kilo Code"
+		"name": "Involvex"
 	},
 	"repository": {
 		"type": "git",
