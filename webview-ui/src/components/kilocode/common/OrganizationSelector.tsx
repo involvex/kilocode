@@ -94,6 +94,10 @@ export const OrganizationSelector = ({ className, showLabel = false }: { classNa
 
 	if (!organizations.length) return null
 
+	// Explicit ARIA string values to satisfy linter
+	const dropdownAriaExpanded = isOpen
+	const personalOrgAriaSelected = !selectedOrg || selectedOrg.id === "personal" ? "true" : "false"
+
 	return (
 		<div className={className}>
 			{showLabel && (
@@ -106,7 +110,7 @@ export const OrganizationSelector = ({ className, showLabel = false }: { classNa
 					type="button"
 					onClick={() => setIsOpen((o) => !o)}
 					aria-haspopup="listbox"
-					aria-expanded={isOpen}
+					aria-expanded={dropdownAriaExpanded}
 					title={
 						selectedOrg
 							? `${selectedOrg.name} – ${selectedOrg.role.toUpperCase()}`
@@ -142,7 +146,7 @@ export const OrganizationSelector = ({ className, showLabel = false }: { classNa
 							<button
 								type="button"
 								role="option"
-								aria-selected={!selectedOrg || selectedOrg.id === "personal"}
+								aria-selected={personalOrgAriaSelected}
 								onClick={() => {
 									setSelectedOrganization(null)
 									setIsOpen(false)
@@ -156,7 +160,7 @@ export const OrganizationSelector = ({ className, showLabel = false }: { classNa
 									key={org.id}
 									type="button"
 									role="option"
-									aria-selected={selectedOrg?.id === org.id}
+									aria-selected={selectedOrg?.id === org.id ? "true" : "false"}
 									onClick={() => {
 										setSelectedOrganization(org)
 										setIsOpen(false)

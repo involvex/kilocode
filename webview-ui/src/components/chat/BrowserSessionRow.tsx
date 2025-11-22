@@ -11,8 +11,9 @@ import { BrowserAction, BrowserActionResult, ClineSayBrowserAction } from "@roo/
 import { vscode } from "@src/utils/vscode"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 
-import CodeBlock, { CODE_BLOCK_BG_COLOR } from "../kilocode/common/CodeBlock" // kilocode_change
+import CodeBlock from "../kilocode/common/CodeBlock" // kilocode_change
 import { ChatRowContent } from "./ChatRow"
+import styles from "./BrowserSessionRow.module.css"
 import { ProgressIndicator } from "./ProgressIndicator"
 import { Globe, Pointer, SquareTerminal } from "lucide-react"
 
@@ -32,6 +33,8 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 	const prevHeightRef = useRef(0)
 	const [maxActionHeight, setMaxActionHeight] = useState(0)
 	const [consoleLogsExpanded, setConsoleLogsExpanded] = useState(false)
+	const screenshotContainerRef = useRef<HTMLDivElement>(null)
+	const browserCursorRef = useRef<HTMLImageElement>(null)
 
 	const { browserViewportSize = "900x600" } = useExtensionState()
 	const [viewportWidth, viewportHeight] = browserViewportSize.split("x").map(Number)
@@ -236,71 +239,36 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 		: displayState.mousePosition || defaultMousePosition
 
 	const [browserSessionRow, { height: rowHeight }] = useSize(
-		<div style={{ padding: "10px 6px 10px 15px", marginBottom: -10 }}>
-			<div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
-				{isBrowsing ? <ProgressIndicator /> : <Pointer className="w-4" aria-label="Browser action indicator" />}
-				<span style={{ fontWeight: "bold" }}>
+		<div className={styles["browser-session-row"]}>
+			<div className={styles["browser-session-header"]}>
+				{isBrowsing ? (
+					<ProgressIndicator />
+				) : (
+					<Pointer className={styles["pointer-icon"]} aria-label="Browser action indicator" />
+				)}
+				<span className={styles["browser-session-title"]}>
 					<>{t("chat:browser.rooWantsToUse")}</>
 				</span>
 			</div>
-			<div
-				className="ml-6 mb-4 border-border"
-				style={{
-					borderRadius: 6,
-					overflow: "hidden",
-					backgroundColor: CODE_BLOCK_BG_COLOR,
-				}}>
+			<div className={styles["browser-session-container"]}>
 				{/* URL Bar */}
-				<div
-					style={{
-						margin: "0px auto",
-						width: "calc(100%)",
-						boxSizing: "border-box", // includes padding in width calculation
-						borderRadius: "4px 4px 0 0",
-						padding: "5px",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						color: "var(--vscode-descriptionForeground)",
-						fontSize: "12px",
-					}}>
-					<div
-						style={{
-							cursor: "default",
-							textOverflow: "ellipsis",
-							overflow: "hidden",
-							whiteSpace: "nowrap",
-							width: "100%",
-							textAlign: "center",
-						}}>
-						<Globe className="w-3 inline -mt-0.5 mr-2 opacity-50" />
+				<div className={styles["url-bar"]}>
+					<div className={styles["url-bar-content"]}>
+						<Globe className={styles["globe-icon"]} />
 						{displayState.url || "http"}
 					</div>
 				</div>
 
 				{/* Screenshot Area */}
 				<div
+					ref={screenshotContainerRef}
 					data-testid="screenshot-container"
-					className="hover:opacity-90 transition-all"
-					style={{
-						width: "100%",
-						paddingBottom: `${aspectRatio}%`, // height/width ratio
-						position: "relative",
-						backgroundColor: "var(--vscode-input-background)",
-					}}>
+					className={styles["screenshot-container"]}>
 					{displayState.screenshot ? (
 						<img
 							src={displayState.screenshot}
 							alt={t("chat:browser.screenshot")}
-							style={{
-								position: "absolute",
-								top: 0,
-								left: 0,
-								width: "100%",
-								height: "100%",
-								objectFit: "contain",
-								cursor: "pointer",
-							}}
+							className={styles["screenshot-image"]}
 							onClick={() =>
 								vscode.postMessage({
 									type: "openImage",
@@ -309,28 +277,12 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 							}
 						/>
 					) : (
-						<div
-							style={{
-								position: "absolute",
-								top: "50%",
-								left: "50%",
-								transform: "translate(-50%, -50%)",
-							}}>
-							<span
-								className="codicon codicon-globe"
-								style={{ fontSize: "80px", color: "var(--vscode-descriptionForeground)" }}
-							/>
+						<div className={styles["screenshot-placeholder"]}>
+							<span className={`codicon codicon-globe ${styles["screenshot-placeholder-icon"]}`} />
 						</div>
 					)}
 					{displayState.mousePosition && (
-						<BrowserCursor
-							style={{
-								position: "absolute",
-								top: `${(parseInt(mousePosition.split(",")[1]) / viewportHeight) * 100}%`,
-								left: `${(parseInt(mousePosition.split(",")[0]) / viewportWidth) * 100}%`,
-								transition: "top 0.3s ease-out, left 0.3s ease-out",
-							}}
-						/>
+						<BrowserCursor ref={browserCursorRef} className={styles["browser-cursor"]} />
 					)}
 				</div>
 
@@ -339,14 +291,9 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					onClick={() => {
 						setConsoleLogsExpanded(!consoleLogsExpanded)
 					}}
-					className="flex items-center justify-between gap-2 text-vscode-editor-foreground/50 hover:text-vscode-editor-foreground transition-colors"
-					style={{
-						width: "100%",
-						cursor: "pointer",
-						padding: `9px 10px ${consoleLogsExpanded ? 0 : 8}px 10px`,
-					}}>
-					<SquareTerminal className="w-3" />
-					<span className="grow text-xs">{t("chat:browser.consoleLogs")}</span>
+					className={`${styles["console-logs-header"]} ${consoleLogsExpanded ? styles["expanded"] : ""}`}>
+					<SquareTerminal className={styles["terminal-icon"]} />
+					<span className={styles["console-logs-title"]}>{t("chat:browser.consoleLogs")}</span>
 					<span className={`codicon codicon-chevron-${consoleLogsExpanded ? "down" : "right"}`}></span>
 				</div>
 				{consoleLogsExpanded && (
@@ -355,23 +302,15 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 			</div>
 
 			{/* Action content with min height */}
-			<div style={{ minHeight: maxActionHeight }}>{actionContent}</div>
+			<div className={styles["action-content"]}>{actionContent}</div>
 
 			{/* Pagination moved to bottom */}
 			{pages.length > 1 && (
-				<div
-					style={{
-						display: "flex",
-						justifyContent: "space-between",
-						alignItems: "center",
-						padding: "8px 0px",
-						marginTop: "15px",
-						borderTop: "1px solid var(--vscode-editorGroup-border)",
-					}}>
+				<div className={styles["pagination"]}>
 					<div>
 						{t("chat:browser.navigation.step", { current: currentPageIndex + 1, total: pages.length })}
 					</div>
-					<div style={{ display: "flex", gap: "4px" }}>
+					<div className={styles["pagination-buttons"]}>
 						<VSCodeButton
 							disabled={currentPageIndex === 0 || isBrowsing}
 							onClick={() => setCurrentPageIndex((i) => i - 1)}>
@@ -387,6 +326,22 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 			)}
 		</div>,
 	)
+
+	// Set CSS custom properties programmatically to avoid inline styles
+	useEffect(() => {
+		if (screenshotContainerRef.current) {
+			screenshotContainerRef.current.style.setProperty("--aspect-ratio", `${aspectRatio}%`)
+		}
+	}, [aspectRatio])
+
+	useEffect(() => {
+		if (browserCursorRef.current && displayState.mousePosition) {
+			const topPercent = (parseInt(mousePosition.split(",")[1]) / viewportHeight) * 100
+			const leftPercent = (parseInt(mousePosition.split(",")[0]) / viewportWidth) * 100
+			browserCursorRef.current.style.setProperty("--cursor-top", `${topPercent}%`)
+			browserCursorRef.current.style.setProperty("--cursor-left", `${leftPercent}%`)
+		}
+	}, [mousePosition, viewportHeight, viewportWidth, displayState.mousePosition])
 
 	// Height change effect
 	useEffect(() => {
@@ -418,13 +373,6 @@ const BrowserSessionRowContent = ({
 	isStreaming,
 }: BrowserSessionRowContentProps) => {
 	const { t } = useTranslation()
-	const headerStyle: React.CSSProperties = {
-		display: "flex",
-		alignItems: "center",
-		gap: "10px",
-		marginBottom: "10px",
-		wordBreak: "break-word",
-	}
 
 	switch (message.type) {
 		case "say":
@@ -432,7 +380,7 @@ const BrowserSessionRowContent = ({
 				case "api_req_started":
 				case "text":
 					return (
-						<div style={{ padding: "10px 0 10px 0" }}>
+						<div className={styles["content-padding"]}>
 							<ChatRowContent
 								message={message}
 								isExpanded={isExpanded(message.ts)}
@@ -468,16 +416,12 @@ const BrowserSessionRowContent = ({
 				case "browser_action_launch":
 					return (
 						<>
-							<div style={headerStyle}>
-								<span style={{ fontWeight: "bold" }}>{t("chat:browser.sessionStarted")}</span>
+							<div className={styles["content-header"]}>
+								<span className={styles["content-header-bold"]}>
+									{t("chat:browser.sessionStarted")}
+								</span>
 							</div>
-							<div
-								style={{
-									borderRadius: 3,
-									border: "1px solid var(--vscode-editorGroup-border)",
-									overflow: "hidden",
-									backgroundColor: CODE_BLOCK_BG_COLOR,
-								}}>
+							<div className={styles["launch-container"]}>
 								<CodeBlock source={message.text} language="shell" />
 							</div>
 						</>
@@ -522,26 +466,11 @@ const BrowserActionBox = ({
 		}
 	}
 	return (
-		<div style={{ padding: "10px 0 0 0" }}>
-			<div
-				style={{
-					borderRadius: 3,
-					backgroundColor: CODE_BLOCK_BG_COLOR,
-					overflow: "hidden",
-					border: "1px solid var(--vscode-editorGroup-border)",
-				}}>
-				<div
-					style={{
-						display: "flex",
-						alignItems: "center",
-						padding: "9px 10px",
-					}}>
-					<span
-						style={{
-							whiteSpace: "normal",
-							wordBreak: "break-word",
-						}}>
-						<span style={{ fontWeight: 500 }}>{t("chat:browser.actions.title")}</span>
+		<div className={styles["action-box"]}>
+			<div className={styles["action-box-container"]}>
+				<div className={styles["action-box-content"]}>
+					<span className={styles["action-box-text"]}>
+						<span className={styles["action-box-title"]}>{t("chat:browser.actions.title")}</span>
 						{getBrowserActionText(action, coordinate, text)}
 					</span>
 				</div>
@@ -550,7 +479,11 @@ const BrowserActionBox = ({
 	)
 }
 
-const BrowserCursor: React.FC<{ style?: React.CSSProperties }> = ({ style }) => {
+interface BrowserCursorProps {
+	className?: string
+}
+
+const BrowserCursor = React.forwardRef<HTMLImageElement, BrowserCursorProps>(({ className }, ref) => {
 	const { t } = useTranslation()
 	// (can't use svgs in vsc extensions)
 	const cursorBase64 =
@@ -558,16 +491,13 @@ const BrowserCursor: React.FC<{ style?: React.CSSProperties }> = ({ style }) => 
 
 	return (
 		<img
+			ref={ref}
 			src={cursorBase64}
-			style={{
-				width: "17px",
-				height: "22px",
-				...style,
-			}}
+			className={`${styles["cursor-image"]} ${className || ""}`}
 			alt={t("chat:browser.cursor")}
 			aria-label={t("chat:browser.cursor")}
 		/>
 	)
-}
+})
 
 export default BrowserSessionRow

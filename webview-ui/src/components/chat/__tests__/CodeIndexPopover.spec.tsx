@@ -86,18 +86,14 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 	}) => <input value={value || ""} onChange={onInput} {...props} />,
 	VSCodeDropdown: ({ children, ...props }: { children: React.ReactNode; [key: string]: any }) => {
 		// Ensure accessibility by preserving aria-label or title, or adding a fallback
-		const accessibilityProps: Record<string, any> = {}
+		const title = props.title || props["aria-label"] || "Dropdown select"
+		const accessibilityProps: Record<string, any> = { title }
 		if (props["aria-label"]) {
 			accessibilityProps["aria-label"] = props["aria-label"]
-		} else if (props.title) {
-			accessibilityProps.title = props.title
-		} else {
-			// Add a fallback title for accessibility when no label is provided
-			accessibilityProps.title = "Dropdown select"
 		}
 
 		return (
-			<select {...props} {...accessibilityProps}>
+			<select title={title} {...accessibilityProps} {...props}>
 				{children}
 			</select>
 		)
@@ -136,18 +132,14 @@ vi.mock("@src/components/ui", () => ({
 	PopoverContent: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 	Select: ({ children, id, ...props }: { children: React.ReactNode; id?: string; [key: string]: any }) => {
 		// Ensure accessibility by preserving aria-label or title, or adding a fallback
-		const accessibilityProps: Record<string, any> = {}
+		const title = props.title || props["aria-label"] || "Select dropdown"
+		const accessibilityProps: Record<string, any> = { title }
 		if (props["aria-label"]) {
 			accessibilityProps["aria-label"] = props["aria-label"]
-		} else if (props.title) {
-			accessibilityProps.title = props.title
-		} else {
-			// Add a fallback title for accessibility when no label is provided
-			accessibilityProps.title = "Select dropdown"
 		}
 
 		return (
-			<select id={id} {...accessibilityProps} {...props}>
+			<select id={id} title={title} {...accessibilityProps} {...props}>
 				{children}
 			</select>
 		)
@@ -160,7 +152,7 @@ vi.mock("@src/components/ui", () => ({
 	),
 	SelectTrigger: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 	SelectValue: ({ placeholder }: { placeholder?: string }) => (
-		<option value="" title="">
+		<option value="" title={placeholder || "Select option"}>
 			{placeholder}
 		</option>
 	),
