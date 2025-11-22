@@ -66,11 +66,12 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 	),
 	VSCodeLink: ({ children, href }: any) => <a href={href || "#"}>{children}</a>,
 	VSCodeRadio: ({ value, checked, onChange }: any) => (
-		<input type="radio" value={value} checked={checked} onChange={onChange} />
+		<input title="Radio" type="radio" value={value} checked={checked} onChange={onChange} />
 	),
 	VSCodeRadioGroup: ({ children, onChange }: any) => <div onChange={onChange}>{children}</div>,
 	VSCodeTextArea: ({ value, onChange, rows, className, "data-testid": dataTestId }: any) => (
 		<textarea
+			title="TextArea"
 			value={value}
 			onChange={onChange}
 			rows={rows}
@@ -81,12 +82,12 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 	),
 	// kilocode_change start
 	VSCodeDropdown: ({ children, value, onChange, className, "data-testid": dataTestId }: any) => (
-		<select value={value} onChange={onChange} className={className} data-testid={dataTestId}>
+		<select title="Dropdown" value={value} onChange={onChange} className={className} data-testid={dataTestId}>
 			{children}
 		</select>
 	),
 	VSCodeOption: ({ children, value, className }: any) => (
-		<option value={value} className={className}>
+		<option value={value} className={className} title="Option">
 			{children}
 		</option>
 	),
@@ -140,7 +141,12 @@ vi.mock("@/components/ui", () => ({
 	PopoverContent: ({ children }: any) => <div data-testid="popover-content">{children}</div>,
 	Command: ({ children }: any) => <div data-testid="command">{children}</div>,
 	CommandInput: ({ value, onValueChange }: any) => (
-		<input data-testid="command-input" value={value} onChange={(e) => onValueChange(e.target.value)} />
+		<input
+			title="Command"
+			data-testid="command-input"
+			value={value}
+			onChange={(e) => onValueChange(e.target.value)}
+		/>
 	),
 	CommandGroup: ({ children }: any) => <div data-testid="command-group">{children}</div>,
 	CommandItem: ({ children, onSelect }: any) => (
@@ -152,6 +158,7 @@ vi.mock("@/components/ui", () => ({
 	CommandEmpty: ({ children }: any) => <div data-testid="command-empty">{children}</div>,
 	Slider: ({ value, onValueChange, "data-testid": dataTestId }: any) => (
 		<input
+			title="Slider"
 			type="range"
 			value={value[0]}
 			onChange={(e) => onValueChange([parseFloat(e.target.value)])}
@@ -178,7 +185,7 @@ vi.mock("@/components/ui", () => ({
 		<input type="text" value={value} onChange={onChange} placeholder={placeholder} data-testid={dataTestId} />
 	),
 	Select: ({ children, value, onValueChange }: any) => (
-		<div data-testid="select" data-value={value}>
+		<div data-testid="select" data-value={value} title="Select">
 			<button onClick={() => onValueChange && onValueChange("test-change")}>{value}</button>
 			{children}
 		</div>
@@ -194,10 +201,18 @@ vi.mock("@/components/ui", () => ({
 	SelectValue: ({ placeholder }: any) => <div data-testid="select-value">{placeholder}</div>,
 	SelectSeparator: () => <div data-testid="select-separator" />, // kilocode_change
 	SearchableSelect: ({ value, onValueChange, options, placeholder }: any) => (
-		<select value={value} onChange={(e) => onValueChange(e.target.value)} data-testid="searchable-select">
-			{placeholder && <option value="">{placeholder}</option>}
+		<select
+			title="Select"
+			value={value}
+			onChange={(e) => onValueChange(e.target.value)}
+			data-testid="searchable-select">
+			{placeholder && (
+				<option value="" title="">
+					{placeholder}
+				</option>
+			)}
 			{options?.map((opt: any) => (
-				<option key={opt.value} value={opt.value}>
+				<option key={opt.value} value={opt.value} title="Option">
 					{opt.label}
 				</option>
 			))}

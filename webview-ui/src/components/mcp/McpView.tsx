@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Trans } from "react-i18next"
+import styles from "./McpView.module.css"
 import {
 	VSCodeButton,
 	VSCodeCheckbox,
@@ -14,6 +15,7 @@ import { McpServer } from "@roo/mcp"
 import { vscode } from "@src/utils/vscode"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 import { useAppTranslation } from "@src/i18n/TranslationContext"
+import { cn } from "@/lib/utils"
 import {
 	Button,
 	Dialog,
@@ -23,7 +25,6 @@ import {
 	DialogDescription,
 	DialogFooter,
 	ToggleSwitch,
-	// StandardTooltip, // kilocode_change: not used
 } from "@src/components/ui"
 import { buildDocLink } from "@src/utils/docLinks"
 
@@ -31,12 +32,11 @@ import { Tab, TabContent, TabHeader } from "../common/Tab"
 
 import McpToolRow from "./McpToolRow"
 import McpResourceRow from "./McpResourceRow"
-// import McpEnabledToggle from "./McpEnabledToggle" // kilocode_change not used
 import { McpErrorRow } from "./McpErrorRow"
 
 type McpViewProps = {
 	onDone: () => void
-	hideHeader?: boolean // kilocode_change
+	hideHeader?: boolean
 }
 
 const McpView = ({ onDone, hideHeader = false }: McpViewProps) => {
@@ -51,22 +51,16 @@ const McpView = ({ onDone, hideHeader = false }: McpViewProps) => {
 	const { t } = useAppTranslation()
 
 	return (
-		// kilocode_change: add relative className
-		<Tab className="relative">
-			{/*  kilocode_change: display header conditionally */}
-			<TabHeader style={{ display: hideHeader ? "none" : "flex" }} className="flex justify-between items-center">
-				<h3 className="text-vscode-foreground m-0">{t("mcp:title")}</h3>
+		<Tab className={styles.relative}>
+			<TabHeader
+				className={cn(styles.flex, styles.justifyBetween, styles.itemsCenter)}
+				style={{ display: hideHeader ? "none" : "flex" }}>
+				<h3 className={styles.textVscodeForeground}>{t("mcp:title")}</h3>
 				<Button onClick={onDone}>{t("mcp:done")}</Button>
 			</TabHeader>
 
 			<TabContent>
-				<div
-					style={{
-						color: "var(--vscode-foreground)",
-						fontSize: "13px",
-						marginBottom: "10px",
-						marginTop: "5px",
-					}}>
+				<div className={styles.descriptionContainer}>
 					<Trans i18nKey="mcp:description">
 						<VSCodeLink
 							href={buildDocLink("features/mcp/using-mcp-in-kilo-code", "mcp_settings")}
@@ -76,26 +70,20 @@ const McpView = ({ onDone, hideHeader = false }: McpViewProps) => {
 					</Trans>
 				</div>
 
-				{/* <McpEnabledToggle /> kilocode_change: we always enable MCP */}
-
 				{mcpEnabled && (
 					<>
-						{/* kilocode_change: display: none; we always allow mcp server creation */}
-						<div style={{ display: "none", marginBottom: 15 }}>
+						<div className={styles.serverCreationContainer}>
 							<VSCodeCheckbox
 								checked={enableMcpServerCreation}
 								onChange={(e: any) => {
 									setEnableMcpServerCreation(e.target.checked)
 									vscode.postMessage({ type: "enableMcpServerCreation", bool: e.target.checked })
 								}}>
-								<span style={{ fontWeight: "500" }}>{t("mcp:enableServerCreation.title")}</span>
+								<span className={styles.serverCreationTitle}>
+									{t("mcp:enableServerCreation.title")}
+								</span>
 							</VSCodeCheckbox>
-							<div
-								style={{
-									fontSize: "12px",
-									marginTop: "5px",
-									color: "var(--vscode-descriptionForeground)",
-								}}>
+							<div className={styles.serverCreationDescription}>
 								<Trans i18nKey="mcp:enableServerCreation.description">
 									<VSCodeLink
 										href={buildDocLink(
@@ -107,13 +95,12 @@ const McpView = ({ onDone, hideHeader = false }: McpViewProps) => {
 									</VSCodeLink>
 									<strong>new</strong>
 								</Trans>
-								<p style={{ marginTop: "8px" }}>{t("mcp:enableServerCreation.hint")}</p>
+								<p className={styles.serverCreationHint}>{t("mcp:enableServerCreation.hint")}</p>
 							</div>
 						</div>
 
-						{/* Server List */}
 						{servers.length > 0 && (
-							<div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+							<div className={styles.serverListContainer}>
 								{servers.map((server) => (
 									<ServerRow
 										key={`${server.name}-${server.source || "global"}`}
@@ -124,18 +111,10 @@ const McpView = ({ onDone, hideHeader = false }: McpViewProps) => {
 							</div>
 						)}
 
-						{/* Edit Settings Buttons */}
-						<div
-							style={{
-								marginTop: "10px",
-								width: "100%",
-								display: "grid",
-								gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-								gap: "10px",
-							}}>
+						<div className={styles.editSettingsButtonsContainer}>
 							<Button
 								variant="secondary"
-								style={{ width: "100%" }}
+								className={styles.editSettingsButton}
 								onClick={() => {
 									vscode.postMessage({ type: "openMcpSettings" })
 								}}>
@@ -144,7 +123,7 @@ const McpView = ({ onDone, hideHeader = false }: McpViewProps) => {
 							</Button>
 							<Button
 								variant="secondary"
-								style={{ width: "100%" }}
+								className={styles.editSettingsButton}
 								onClick={() => {
 									vscode.postMessage({ type: "openProjectMcpSettings" })
 								}}>
@@ -153,45 +132,20 @@ const McpView = ({ onDone, hideHeader = false }: McpViewProps) => {
 							</Button>
 							<Button
 								variant="secondary"
-								style={{ width: "100%" }}
+								className={styles.editSettingsButton}
 								onClick={() => {
 									vscode.postMessage({ type: "refreshAllMcpServers" })
 								}}>
 								<span className="codicon codicon-refresh" style={{ marginRight: "6px" }}></span>
 								{t("mcp:refreshMCP")}
 							</Button>
-							{/* kilocode_change
-							<StandardTooltip content={t("mcp:marketplace")}>
-								<Button
-									variant="secondary"
-									style={{ width: "100%" }}
-									onClick={() => {
-										window.postMessage(
-											{
-												type: "action",
-												action: "marketplaceButtonClicked",
-												values: { marketplaceTab: "mcp" },
-											},
-											"*",
-										)
-									}}>
-									<span className="codicon codicon-extensions" style={{ marginRight: "6px" }}></span>
-									{t("mcp:marketplace")}
-								</Button>
-							</StandardTooltip>
-							*/}
 						</div>
-						{/* kilocode_change start */}
-						<div className="mt-5">
-							You can find the MCP Marketplace under Settings &gt; MCP Servers &gt; Marketplace
+
+						<div className={styles.marketplaceInfoContainer}>
+							You can find the MCP Marketplace under Settings MCP Servers Marketplace
 						</div>
-						{/* kilocode_change end */}
-						<div
-							style={{
-								marginTop: "15px",
-								fontSize: "12px",
-								color: "var(--vscode-descriptionForeground)",
-							}}>
+
+						<div className={styles.learnMoreContainer}>
 							<VSCodeLink
 								href={buildDocLink(
 									"features/mcp/using-mcp-in-kilo-code#editing-mcp-settings-files",
@@ -217,7 +171,6 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 		return configTimeout ?? 60 // Default 1 minute (60 seconds)
 	})
 
-	// Computed property to check if server is expandable
 	const isExpandable = server.status === "connected" && !server.disabled
 
 	const timeoutOptions = [
@@ -232,7 +185,6 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 	]
 
 	const getStatusColor = () => {
-		// Disabled servers should always show grey regardless of connection status
 		if (server.disabled) {
 			return "var(--vscode-descriptionForeground)"
 		}
@@ -248,7 +200,6 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 	}
 
 	const handleRowClick = () => {
-		// Only allow expansion for connected and enabled servers
 		if (isExpandable) {
 			setIsExpanded(!isExpanded)
 		}
@@ -283,43 +234,30 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 	}
 
 	return (
-		<div style={{ marginBottom: "10px" }}>
-			<div
-				style={{
-					display: "flex",
-					alignItems: "center",
-					padding: "8px",
-					background: "var(--vscode-textCodeBlock-background)",
-					cursor: isExpandable ? "pointer" : "default",
-					borderRadius: isExpanded || isExpandable ? "4px" : "4px 4px 0 0",
-					opacity: server.disabled ? 0.6 : 1,
-				}}
-				onClick={handleRowClick}>
+		<div className={styles.serverRowContainer}>
+			<div className={cn(styles.serverRow, styles.flex, styles.itemsCenter)} onClick={handleRowClick}>
 				{isExpandable && (
 					<span
 						className={`codicon codicon-chevron-${isExpanded ? "down" : "right"}`}
 						style={{ marginRight: "8px" }}
 					/>
 				)}
-				<span style={{ flex: 1 }}>
-					{server.name}
-					{server.source && (
-						<span
-							style={{
-								marginLeft: "8px",
-								padding: "1px 6px",
-								fontSize: "11px",
-								borderRadius: "4px",
-								background: "var(--vscode-badge-background)",
-								color: "var(--vscode-badge-foreground)",
-							}}>
-							{server.source}
-						</span>
-					)}
-				</span>
-				<div
-					style={{ display: "flex", alignItems: "center", marginRight: "8px" }}
-					onClick={(e) => e.stopPropagation()}>
+				<span className={styles.serverName}>{server.name}</span>
+				{server.source && (
+					<span
+						className={styles.serverSource}
+						style={{
+							marginLeft: "8px",
+							padding: "1px 6px",
+							fontSize: "11px",
+							borderRadius: "4px",
+							background: "var(--vscode-badge-background)",
+							color: "var(--vscode-badge-foreground)",
+						}}>
+						{server.source}
+					</span>
+				)}
+				<div className={styles.serverActions} onClick={(e) => e.stopPropagation()}>
 					<Button
 						variant="ghost"
 						size="icon"
@@ -337,6 +275,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 					</Button>
 				</div>
 				<div
+					className={styles.serverStatus}
 					style={{
 						width: "8px",
 						height: "8px",
@@ -345,7 +284,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 						marginLeft: "8px",
 					}}
 				/>
-				<div style={{ marginLeft: "8px" }}>
+				<div className={styles.serverToggle}>
 					<ToggleSwitch
 						checked={!server.disabled}
 						onChange={() => {
@@ -364,14 +303,8 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 
 			{isExpandable
 				? isExpanded && (
-						<div
-							style={{
-								background: "var(--vscode-textCodeBlock-background)",
-								padding: "0 10px 10px 10px",
-								fontSize: "13px",
-								borderRadius: "0 0 4px 4px",
-							}}>
-							<VSCodePanels style={{ marginBottom: "10px" }}>
+						<div className={styles.serverExpandedContainer}>
+							<VSCodePanels>
 								<VSCodePanelTab id="tools">
 									{t("mcp:tabs.tools")} ({server.tools?.length || 0})
 								</VSCodePanelTab>
@@ -388,13 +321,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 
 								<VSCodePanelView id="tools-view">
 									{server.tools && server.tools.length > 0 ? (
-										<div
-											style={{
-												display: "flex",
-												flexDirection: "column",
-												gap: "8px",
-												width: "100%",
-											}}>
+										<div className={styles.toolsContainer}>
 											{server.tools.map((tool) => (
 												<McpToolRow
 													key={`${tool.name}-${server.name}-${server.source || "global"}`}
@@ -406,23 +333,14 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 											))}
 										</div>
 									) : (
-										<div
-											style={{ padding: "10px 0", color: "var(--vscode-descriptionForeground)" }}>
-											{t("mcp:emptyState.noTools")}
-										</div>
+										<div className={styles.emptyState}>{t("mcp:emptyState.noTools")}</div>
 									)}
 								</VSCodePanelView>
 
 								<VSCodePanelView id="resources-view">
 									{(server.resources && server.resources.length > 0) ||
 									(server.resourceTemplates && server.resourceTemplates.length > 0) ? (
-										<div
-											style={{
-												display: "flex",
-												flexDirection: "column",
-												gap: "8px",
-												width: "100%",
-											}}>
+										<div className={styles.resourcesContainer}>
 											{[...(server.resourceTemplates || []), ...(server.resources || [])].map(
 												(item) => (
 													<McpResourceRow
@@ -433,16 +351,13 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 											)}
 										</div>
 									) : (
-										<div
-											style={{ padding: "10px 0", color: "var(--vscode-descriptionForeground)" }}>
-											{t("mcp:emptyState.noResources")}
-										</div>
+										<div className={styles.emptyState}>{t("mcp:emptyState.noResources")}</div>
 									)}
 								</VSCodePanelView>
 
 								{server.instructions && (
 									<VSCodePanelView id="instructions-view">
-										<div style={{ padding: "10px 0", fontSize: "12px" }}>
+										<div className={styles.instructionsContainer}>
 											<div className="opacity-80 whitespace-pre-wrap break-words">
 												{server.instructions}
 											</div>
@@ -452,66 +367,42 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 
 								<VSCodePanelView id="logs-view">
 									{server.errorHistory && server.errorHistory.length > 0 ? (
-										<div
-											style={{
-												display: "flex",
-												flexDirection: "column",
-												gap: "8px",
-												width: "100%",
-											}}>
-											{[...server.errorHistory]
-												.sort((a, b) => b.timestamp - a.timestamp)
-												.map((error, index) => (
-													<McpErrorRow key={`${error.timestamp}-${index}`} error={error} />
-												))}
+										<div className={styles.logsContainer}>
+											{server.errorHistory.map((error, index) => (
+												<McpErrorRow key={index} error={error} />
+											))}
 										</div>
 									) : (
-										<div
-											style={{ padding: "10px 0", color: "var(--vscode-descriptionForeground)" }}>
-											{t("mcp:emptyState.noLogs")}
-										</div>
+										<div className={styles.emptyState}>{t("mcp:emptyState.noLogs")}</div>
 									)}
 								</VSCodePanelView>
 							</VSCodePanels>
 
 							{/* Network Timeout */}
 							<div style={{ padding: "10px 7px" }}>
-								<div
-									style={{
-										display: "flex",
-										alignItems: "center",
-										gap: "10px",
-										marginBottom: "8px",
-									}}>
-									<span>{t("mcp:networkTimeout.label")}</span>
+								<div className={styles.timeoutContainer}>
+									<label htmlFor="network-timeout">{t("mcp:networkTimeout.label")}</label>
 									<select
+										id="network-timeout"
 										value={timeoutValue}
 										onChange={handleTimeoutChange}
-										style={{
-											flex: 1,
-											padding: "4px",
-											background: "var(--vscode-dropdown-background)",
-											color: "var(--vscode-dropdown-foreground)",
-											border: "1px solid var(--vscode-dropdown-border)",
-											borderRadius: "2px",
-											outline: "none",
-											cursor: "pointer",
-										}}>
+										className={styles.timeoutSelect}
+										aria-label={t("mcp:networkTimeout.ariaLabel")}>
 										{timeoutOptions.map((option) => (
-											<option key={option.value} value={option.value}>
+											<option key={option.value} value={option.value} title="Option">
 												{option.label}
 											</option>
 										))}
 									</select>
+									<span
+										style={{
+											fontSize: "12px",
+											color: "var(--vscode-descriptionForeground)",
+											display: "block",
+										}}>
+										{t("mcp:networkTimeout.description")}
+									</span>
 								</div>
-								<span
-									style={{
-										fontSize: "12px",
-										color: "var(--vscode-descriptionForeground)",
-										display: "block",
-									}}>
-									{t("mcp:networkTimeout.description")}
-								</span>
 							</div>
 						</div>
 					)

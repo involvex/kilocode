@@ -22,6 +22,7 @@ vi.mock("@/components/ui", () => ({
 	Slider: ({ value, onValueChange, "data-testid": dataTestId, disabled }: any) => (
 		<input
 			type="range"
+			title="Slider"
 			value={value?.[0] ?? 0}
 			onChange={(e) => onValueChange([parseFloat(e.target.value)])}
 			onKeyDown={(e) => {
@@ -46,7 +47,7 @@ vi.mock("@/components/ui", () => ({
 		</button>
 	),
 	Select: ({ children, ...props }: any) => (
-		<div role="combobox" {...props}>
+		<div role="combobox" aria-expanded="false" aria-controls="combobox-menu" {...props}>
 			{children}
 		</div>
 	),
@@ -69,10 +70,11 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 	VSCodeCheckbox: ({ checked, onChange, children, "data-testid": dataTestId, ...props }: any) => (
 		<label data-testid={dataTestId} {...props}>
 			<input
+				title="Checkbox"
 				type="checkbox"
 				role="checkbox"
 				checked={checked || false}
-				aria-checked={checked || false}
+				aria-checked={checked ? ("true" as const) : ("false" as const)}
 				onChange={(e: any) => onChange?.({ target: { checked: e.target.checked } })}
 			/>
 			{children}

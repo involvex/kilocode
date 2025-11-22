@@ -62,12 +62,16 @@ vi.mock("@src/i18n/TranslationContext", () => ({
 // Mock the UI components
 vi.mock("@src/components/ui", () => ({
 	Select: ({ children, value, onValueChange }: any) => (
-		<select value={value} onChange={(e) => onValueChange && onValueChange(e.target.value)}>
+		<select title="Select" value={value} onChange={(e) => onValueChange && onValueChange(e.target.value)}>
 			{children}
 		</select>
 	),
 	SelectContent: ({ children }: any) => <>{children}</>,
-	SelectItem: ({ children, value }: any) => <option value={value}>{children}</option>,
+	SelectItem: ({ children, value }: any) => (
+		<option value={value} title="Option">
+			{children}
+		</option>
+	),
 	SelectTrigger: ({ children }: any) => <>{children}</>,
 	SelectValue: () => null,
 	StandardTooltip: ({ children }: any) => <div>{children}</div>,

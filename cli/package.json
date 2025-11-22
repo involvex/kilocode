@@ -1,7 +1,7 @@
 {
 	"name": "@involvex/kilocode-cli",
-	"version": "0.6.1",
-	"description": "Terminal User Interface for Kilo Code",
+	"version": "0.6.4",
+	"description": "Terminal User Interface for Involvex Kilo Code",
 	"type": "module",
 	"main": "dist/index.js",
 	"bin": {

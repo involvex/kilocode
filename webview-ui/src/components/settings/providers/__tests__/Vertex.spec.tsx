@@ -8,7 +8,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 	VSCodeTextField: ({ children, value, onInput, type }: any) => (
 		<div>
 			{children}
-			<input type={type} value={value} onChange={(e) => onInput(e)} />
+			<input title="Input" type={type} value={value} onChange={(e) => onInput(e)} />
 		</div>
 	),
 	VSCodeLink: ({ children, href }: any) => <a href={href}>{children}</a>,

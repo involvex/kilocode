@@ -17,6 +17,7 @@ import {
 	isCommittingParallelModeAtom,
 	refreshTerminalAtom,
 } from "../atoms/ui.js"
+import { workspacePathAtom } from "../atoms/shell.js"
 import {
 	setModeAtom,
 	setThemeAtom,
@@ -89,6 +90,7 @@ export function useCommandContext(): UseCommandContextReturn {
 	const setMessageCutoffTimestamp = useSetAtom(setMessageCutoffTimestampAtom)
 	const setCommittingParallelMode = useSetAtom(isCommittingParallelModeAtom)
 	const refreshTerminal = useSetAtom(refreshTerminalAtom)
+	const setWorkspacePath = useSetAtom(workspacePathAtom)
 	const { sendMessage, clearTask } = useWebviewMessage()
 
 	// Get read-only state
@@ -169,6 +171,9 @@ export function useCommandContext(): UseCommandContextReturn {
 				},
 				setCommittingParallelMode: (isCommitting: boolean) => {
 					setCommittingParallelMode(isCommitting)
+				},
+				setWorkspacePath: (path: string) => {
+					setWorkspacePath(path)
 				},
 				isParallelMode,
 				// Model-related context

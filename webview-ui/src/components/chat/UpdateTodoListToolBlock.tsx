@@ -314,6 +314,7 @@ const UpdateTodoListToolBlock: React.FC<UpdateTodoListToolBlockProps> = ({
 											<select
 												value={todo.status || ""}
 												onChange={(e) => handleStatusChange(todo.id!, e.target.value)}
+												title="Select status"
 												style={{
 													marginRight: 6,
 													borderRadius: 4,
@@ -324,7 +325,7 @@ const UpdateTodoListToolBlock: React.FC<UpdateTodoListToolBlockProps> = ({
 													padding: "1px 4px",
 												}}>
 												{STATUS_OPTIONS.map((opt) => (
-													<option key={opt.value} value={opt.value}>
+													<option key={opt.value} value={opt.value} title="Option">
 														{opt.label}
 													</option>
 												))}

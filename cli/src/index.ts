@@ -26,7 +26,7 @@ const validModes = DEFAULT_MODES.map((mode) => mode.slug)
 
 program
 	.name("kilocode")
-	.description("Kilo Code Terminal User Interface - AI-powered coding assistant")
+	.description("Involvex Terminal User Interface - AI-powered coding assistant")
 	.version(Package.version)
 	.option("-m, --mode <mode>", `Set the mode of operation (${validModes.join(", ")})`)
 	.option("-w, --workspace <path>", "Path to the workspace directory", process.cwd())

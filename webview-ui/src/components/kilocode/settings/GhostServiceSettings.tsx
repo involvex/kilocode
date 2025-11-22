@@ -112,8 +112,14 @@ export const GhostServiceSettingsView = ({
 									DocsLink: (
 										<a
 											href="#"
-											onClick={() => openGlobalKeybindings("kilo-code.addToContextAndFocus")}
-											className="text-[var(--vscode-list-highlightForeground)] hover:underline cursor-pointer"></a>
+											onClick={(e) => {
+												e.preventDefault()
+												openGlobalKeybindings("kilo-code.addToContextAndFocus")
+											}}
+											className="text-[var(--vscode-list-highlightForeground)] hover:underline cursor-pointer"
+											aria-label={t("kilocode:ghost.settings.openKeybindings")}>
+											{t("kilocode:ghost.settings.keyboardShortcuts")}
+										</a>
 									),
 								}}
 							/>

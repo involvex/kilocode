@@ -1,5 +1,3 @@
-// npx vitest src/components/settings/__tests__/ApiConfigManager.spec.tsx
-
 import { render, screen, fireEvent, within } from "@/utils/test-utils"
 
 import ApiConfigManager from "../ApiConfigManager"
@@ -72,6 +70,7 @@ vitest.mock("@/components/ui", () => ({
 	// Keep old components for backward compatibility
 	Select: ({ value, onValueChange }: any) => (
 		<select
+			title="Select"
 			value={value}
 			onChange={(e) => {
 				if (onValueChange) onValueChange(e.target.value)
@@ -85,20 +84,23 @@ vitest.mock("@/components/ui", () => ({
 	SelectValue: ({ children }: any) => <div className="select-value-mock">{children}</div>,
 	SelectContent: ({ children }: any) => <div className="select-content-mock">{children}</div>,
 	SelectItem: ({ children, value }: any) => (
-		<option value={value} className="select-item-mock">
+		<option value={value} className="select-item-mock" title="Option">
 			{children}
 		</option>
 	),
 	SearchableSelect: ({ value, onValueChange, options, placeholder, "data-testid": dataTestId }: any) => (
 		<select
+			title="Select"
 			value={value}
 			onChange={(e) => {
 				if (onValueChange) onValueChange(e.target.value)
 			}}
 			data-testid={dataTestId || "select-component"}>
-			<option value="">{placeholder || "settings:common.select"}</option>
+			<option value="" title="">
+				{placeholder || "settings:common.select"}
+			</option>
 			{options?.map((option: any) => (
-				<option key={option.value} value={option.value}>
+				<option key={option.value} value={option.value} title="Option">
 					{option.label}
 				</option>
 			))}

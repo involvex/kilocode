@@ -1,0 +1,87 @@
+/* Toggle Switch Container */
+.container {
+	position: relative;
+	transition: background-color 0.2s;
+}
+
+/* Small size */
+.containerSmall {
+	width: 16px;
+	height: 8px;
+	border-radius: 4px;
+}
+
+.containerSmallChecked {
+	background-color: var(--vscode-button-background);
+	opacity: 0.8;
+}
+
+.containerSmallUnchecked {
+	background-color: var(--vscode-titleBar-inactiveForeground);
+	opacity: 0.6;
+}
+
+.containerSmallDisabled {
+	opacity: 0.4;
+}
+
+/* Medium size */
+.containerMedium {
+	width: 20px;
+	height: 10px;
+	border-radius: 5px;
+}
+
+.containerMediumChecked {
+	background-color: var(--vscode-button-background);
+	opacity: 0.8;
+}
+
+.containerMediumUnchecked {
+	background-color: var(--vscode-titleBar-inactiveForeground);
+	opacity: 0.6;
+}
+
+.containerMediumDisabled {
+	opacity: 0.4;
+}
+
+/* Toggle Dot */
+.dot {
+	background-color: var(--vscode-titleBar-activeForeground);
+	border-radius: 50%;
+	position: absolute;
+	transition: left 0.2s;
+}
+
+/* Small dot */
+.dotSmall {
+	width: 4px;
+	height: 4px;
+	top: 2px;
+}
+
+/* Medium dot */
+.dotMedium {
+	width: 6px;
+	height: 6px;
+	top: 2px;
+}
+
+/* Dot positions for small size */
+.dotSmallUnchecked {
+	left: 2px;
+}
+
+.dotSmallChecked {
+	left: 10px;
+}
+
+/* Dot positions for medium size */
+.dotMediumUnchecked {
+	left: 2px;
+}
+
+.dotMediumChecked {
+	left: 12px;
+}

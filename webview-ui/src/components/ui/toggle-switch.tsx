@@ -1,4 +1,5 @@
 import React from "react"
+import styles from "./toggle-switch.module.css"
 
 export interface ToggleSwitchProps {
 	checked: boolean
@@ -17,8 +18,6 @@ export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
 	"aria-label": ariaLabel,
 	"data-testid": dataTestId,
 }) => {
-	const dimensions = size === "small" ? { width: 16, height: 8, dotSize: 4 } : { width: 20, height: 10, dotSize: 6 }
-
 	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (e.key === "Enter" || e.key === " ") {
 			e.preventDefault()
@@ -28,41 +27,37 @@ export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
 		}
 	}
 
+	const containerClasses = [
+		styles.container,
+		styles[`container${size.charAt(0).toUpperCase() + size.slice(1)}${checked ? "Checked" : "Unchecked"}`],
+		disabled && styles[`container${size.charAt(0).toUpperCase() + size.slice(1)}Disabled`],
+		disabled ? "cursor-not-allowed" : "cursor-pointer",
+	]
+		.filter(Boolean)
+		.join(" ")
+
+	const dotClasses = [
+		styles.dot,
+		styles[`dot${size.charAt(0).toUpperCase() + size.slice(1)}`],
+		styles[`dot${size.charAt(0).toUpperCase() + size.slice(1)}${checked ? "Checked" : "Unchecked"}`],
+	].join(" ")
+
+	const ariaProps = {
+		role: "switch" as const,
+		"aria-checked": checked ? ("true" as const) : ("false" as const),
+		"aria-label": ariaLabel,
+		"aria-disabled": disabled ? ("true" as const) : undefined,
+		tabIndex: disabled ? -1 : 0,
+		"data-testid": dataTestId,
+	}
+
 	return (
 		<div
-			role="switch"
-			aria-checked={checked}
-			aria-label={ariaLabel}
-			tabIndex={disabled ? -1 : 0}
-			data-testid={dataTestId}
-			style={{
-				width: `${dimensions.width}px`,
-				height: `${dimensions.height}px`,
-				backgroundColor: checked
-					? "var(--vscode-button-background)"
-					: "var(--vscode-titleBar-inactiveForeground)",
-				borderRadius: `${dimensions.height / 2}px`,
-				position: "relative",
-				cursor: disabled ? "not-allowed" : "pointer",
-				transition: "background-color 0.2s",
-				opacity: disabled ? 0.4 : checked ? 0.8 : 0.6,
-			}}
+			{...ariaProps}
+			className={containerClasses}
 			onClick={disabled ? undefined : onChange}
 			onKeyDown={handleKeyDown}>
-			<div
-				style={{
-					width: `${dimensions.dotSize}px`,
-					height: `${dimensions.dotSize}px`,
-					backgroundColor: "var(--vscode-titleBar-activeForeground)",
-					borderRadius: "50%",
-					position: "absolute",
-					top: `${(dimensions.height - dimensions.dotSize) / 2}px`,
-					left: checked
-						? `${dimensions.width - dimensions.dotSize - (dimensions.height - dimensions.dotSize) / 2}px`
-						: `${(dimensions.height - dimensions.dotSize) / 2}px`,
-					transition: "left 0.2s",
-				}}
-			/>
+			<div className={dotClasses} />
 		</div>
 	)
 }
