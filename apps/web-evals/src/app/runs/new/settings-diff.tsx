@@ -16,7 +16,7 @@ export function SettingsDiff({
 	defaultSettings: { experiments: defaultExperiments, ...defaultSettings },
 	className,
 	...props
-}: SettingsDiffProps) {
+}: SettingsDiffProps): React.ReactElement {
 	const defaults = { ...defaultSettings, ...defaultExperiments }
 	const custom = { ...customSettings, ...customExperiments }
 
@@ -49,7 +49,7 @@ type SettingDiffProps = HTMLAttributes<HTMLDivElement> & {
 	customValue?: string
 }
 
-export function SettingDiff({ name, defaultValue, customValue, ...props }: SettingDiffProps) {
+export function SettingDiff({ name, defaultValue, customValue, ...props }: SettingDiffProps): React.ReactElement {
 	return (
 		<Fragment {...props}>
 			<div className="font-mono" title={name}>

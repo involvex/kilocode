@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 	keywords: [...SEO.keywords, "benchmarks", "LLM evals", "coding evaluations", "model comparison"],
 }
 
-export default async function Page() {
+export default async function Page(): Promise<React.ReactNode> {
 	const runs = await getEvalRuns()
 
 	return <Evals runs={runs} />

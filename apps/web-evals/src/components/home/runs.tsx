@@ -10,7 +10,7 @@ import { Run as Row } from "@/components/home/run"
 
 type RunWithTaskMetrics = Run & { taskMetrics: TaskMetrics | null }
 
-export function Runs({ runs }: { runs: RunWithTaskMetrics[] }) {
+export function Runs({ runs }: { runs: RunWithTaskMetrics[] }): React.ReactElement {
 	const router = useRouter()
 
 	return (

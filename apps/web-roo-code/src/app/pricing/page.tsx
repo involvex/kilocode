@@ -132,7 +132,7 @@ const pricingTiers: PricingTier[] = [
 	},
 ]
 
-export default function PricingPage() {
+export default function PricingPage(): React.ReactNode {
 	return (
 		<>
 			<AnimatedBackground />

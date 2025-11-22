@@ -115,7 +115,7 @@ export const testimonials: Testimonial[] = [
 	},
 ]
 
-export function Testimonials() {
+export function Testimonials(): React.ReactNode {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const [emblaRef, emblaApi] = useEmblaCarousel(
 		{

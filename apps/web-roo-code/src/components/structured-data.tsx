@@ -12,7 +12,7 @@ import { getStructuredData } from "@/lib/structured-data"
  *
  * @see https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
  */
-export function StructuredData() {
+export function StructuredData(): React.ReactNode {
 	const structuredData = getStructuredData()
 
 	return (

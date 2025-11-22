@@ -18,7 +18,7 @@ export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
-}>) {
+}>): React.ReactElement {
 	return (
 		<html lang="en">
 			<body className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased pb-12`}>

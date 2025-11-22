@@ -6,7 +6,7 @@ import { RxSun, RxMoon } from "react-icons/rx"
 
 import { Button } from "@/components/ui"
 
-export default function ThemeToggle() {
+export default function ThemeToggle(): React.ReactNode {
 	const { theme, setTheme } = useTheme()
 	const [mounted, setMounted] = useState(false)
 

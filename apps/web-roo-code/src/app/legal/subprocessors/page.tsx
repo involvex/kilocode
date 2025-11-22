@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 	keywords: [...SEO.keywords, "subprocessors", "data processing", "GDPR", "privacy", "third-party services"],
 }
 
-export default function SubProcessors() {
+export default function SubProcessors(): React.ReactNode {
 	return (
 		<>
 			<div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">

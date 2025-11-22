@@ -9,7 +9,7 @@ interface ScrollButtonProps {
 	onClick?: () => void
 }
 
-export function ScrollButton({ targetId, children, className = "", onClick }: ScrollButtonProps) {
+export function ScrollButton({ targetId, children, className = "", onClick }: ScrollButtonProps): React.ReactNode {
 	const router = useRouter()
 	const pathname = usePathname()
 

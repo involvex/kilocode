@@ -40,7 +40,7 @@ function Feature({ icon: Icon, color, title, description }: FeatureProps) {
 
 const version = "v3.8.0"
 
-export function WhatsNewButton() {
+export function WhatsNewButton(): React.ReactNode {
 	const [isOpen, setIsOpen] = useState(false)
 	const buttonRef = useRef<HTMLDivElement>(null)
 	const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -192,6 +192,7 @@ export function WhatsNewButton() {
 											What&apos;s New in Roo Code {version}
 										</h2>
 										<button
+											title="Close"
 											onClick={() => setIsOpen(false)}
 											className="flex-shrink-0 rounded-full p-1.5 text-gray-400 hover:bg-gray-800 hover:text-white">
 											<X className="h-5 w-5" />

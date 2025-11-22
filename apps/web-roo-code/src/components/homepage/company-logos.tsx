@@ -5,7 +5,7 @@ import Image from "next/image"
 
 const logos = ["Apple", "Netflix", "Microsoft", "Amazon", "ByteDance", "Rakuten", "Carvana"]
 
-export function CompanyLogos() {
+export function CompanyLogos(): React.ReactNode {
 	return (
 		<div className="mt-14">
 			<motion.p

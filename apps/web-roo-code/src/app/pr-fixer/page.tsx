@@ -55,6 +55,6 @@ export const metadata: Metadata = {
 	],
 }
 
-export default function AgentPrFixerPage() {
+export default function AgentPrFixerPage(): React.ReactNode {
 	return <PrFixerContent />
 }

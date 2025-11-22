@@ -30,7 +30,7 @@ type RunProps = {
 	taskMetrics: EvalsTaskMetrics | null
 }
 
-export function Run({ run, taskMetrics }: RunProps) {
+export function Run({ run, taskMetrics }: RunProps): React.ReactElement {
 	const [deleteRunId, setDeleteRunId] = useState<number>()
 	const continueRef = useRef<HTMLButtonElement>(null)
 	const { isPending, copyRun, copied } = useCopyRun(run.id)

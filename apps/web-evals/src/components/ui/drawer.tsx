@@ -5,36 +5,54 @@ import { Drawer as DrawerPrimitive } from "vaul"
 
 import { cn } from "@/lib/utils"
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 function Drawer({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
 	return <DrawerPrimitive.Root data-slot="drawer" {...props} />
 }
 
-function DrawerTrigger({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Trigger>) {
-	return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />
+function DrawerTrigger({
+	children,
+	...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & { children?: React.ReactNode }) {
+	return (
+		<DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props}>
+			{children}
+		</DrawerPrimitive.Trigger>
+	)
 }
 
 function DrawerPortal({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Portal>) {
 	return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />
 }
 
-function DrawerClose({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Close>) {
-	return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />
-}
-
-function DrawerOverlay({ className, ...props }: React.ComponentProps<typeof DrawerPrimitive.Overlay>) {
+function DrawerClose({
+	children,
+	...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & { children?: React.ReactNode }) {
 	return (
-		<DrawerPrimitive.Overlay
-			data-slot="drawer-overlay"
-			className={cn(
-				"data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
-				className,
-			)}
-			{...props}
-		/>
+		<DrawerPrimitive.Close data-slot="drawer-close" {...props}>
+			{children}
+		</DrawerPrimitive.Close>
 	)
 }
 
-function DrawerContent({ className, children, ...props }: React.ComponentProps<typeof DrawerPrimitive.Content>) {
+function DrawerOverlay({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+	return React.createElement(DrawerPrimitive.Overlay as any, {
+		"data-slot": "drawer-overlay",
+		className: cn(
+			"data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+			className,
+		),
+		...props,
+	})
+}
+
+function DrawerContent({
+	className,
+	children,
+	...props
+}: React.HTMLAttributes<HTMLDivElement> & { children?: React.ReactNode }) {
 	return (
 		<DrawerPortal data-slot="drawer-portal">
 			<DrawerOverlay />
@@ -64,23 +82,33 @@ function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
 	return <div data-slot="drawer-footer" className={cn("mt-auto flex flex-col gap-2 py-4", className)} {...props} />
 }
 
-function DrawerTitle({ className, ...props }: React.ComponentProps<typeof DrawerPrimitive.Title>) {
+function DrawerTitle({
+	className,
+	children,
+	...props
+}: React.HTMLAttributes<HTMLHeadingElement> & { children?: React.ReactNode }) {
 	return (
 		<DrawerPrimitive.Title
 			data-slot="drawer-title"
 			className={cn("text-foreground font-semibold", className)}
-			{...props}
-		/>
+			{...props}>
+			{children}
+		</DrawerPrimitive.Title>
 	)
 }
 
-function DrawerDescription({ className, ...props }: React.ComponentProps<typeof DrawerPrimitive.Description>) {
+function DrawerDescription({
+	className,
+	children,
+	...props
+}: React.HTMLAttributes<HTMLParagraphElement> & { children?: React.ReactNode }) {
 	return (
 		<DrawerPrimitive.Description
 			data-slot="drawer-description"
 			className={cn("text-muted-foreground text-sm", className)}
-			{...props}
-		/>
+			{...props}>
+			{children}
+		</DrawerPrimitive.Description>
 	)
 }
 

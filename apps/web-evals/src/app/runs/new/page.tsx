@@ -1,6 +1,6 @@
 import { NewRun } from "./new-run"
 
-export default function Page() {
+export default function Page(): React.ReactElement {
 	return (
 		<div className="max-w-3xl mx-auto px-12 p-12">
 			<NewRun />

@@ -10,7 +10,7 @@ import { EXTERNAL_LINKS, INTERNAL_LINKS } from "@/lib/constants"
 import { useLogoSrc } from "@/lib/hooks/use-logo-src"
 import { ScrollButton } from "@/components/ui"
 
-export function Footer() {
+export function Footer(): React.ReactNode {
 	const [privacyDropdownOpen, setPrivacyDropdownOpen] = useState(false)
 	const [cloudDropdownOpen, setCloudDropdownOpen] = useState(false)
 	const dropdownRef = useRef<HTMLDivElement>(null)
@@ -52,6 +52,7 @@ export function Footer() {
 							href="https://roocode.com"
 							target="_blank"
 							rel="noopener noreferrer"
+							title="Made with Roo Code"
 							className="inline-flex items-center space-x-2 group">
 							<Image
 								src={resolvedTheme === "light" ? "/RooCode-Badge-blk.svg" : "/RooCode-Badge-white.svg"}

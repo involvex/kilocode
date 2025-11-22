@@ -14,7 +14,7 @@ type PlotProps = {
 
 type LabelPosition = "top" | "bottom" | "left" | "right"
 
-export const Plot = ({ tableData }: PlotProps) => {
+export const Plot = ({ tableData }: PlotProps): React.ReactNode => {
 	const chartData = useMemo(() => tableData.filter(({ cost }) => cost < 50), [tableData])
 
 	const chartConfig = useMemo(

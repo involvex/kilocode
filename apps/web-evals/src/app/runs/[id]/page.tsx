@@ -2,7 +2,7 @@ import { findRun } from "@roo-code/evals"
 
 import { Run } from "./run"
 
-export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+export default async function Page({ params }: { params: Promise<{ id: string }> }): Promise<React.ReactElement> {
 	const { id } = await params
 	const run = await findRun(Number(id))
 

@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-target-blank */
-
 import { getVSCodeDownloads } from "@/lib/stats"
 
 import { Button } from "@/components/ui"
@@ -19,7 +17,7 @@ import { StructuredData } from "@/components/structured-data"
 // Invalidate cache when a request comes in, at most once every hour.
 export const revalidate = 3600
 
-export default async function Home() {
+export default async function Home(): Promise<React.ReactNode> {
 	const downloads = await getVSCodeDownloads()
 
 	return (
@@ -46,6 +44,7 @@ export default async function Home() {
 									<a
 										href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"
 										target="_blank"
+										rel="noopener noreferrer"
 										className="flex w-full items-center justify-center">
 										Install VS Code Extension
 										<ArrowRight className="ml-2" />
@@ -58,6 +57,7 @@ export default async function Home() {
 									<a
 										href={EXTERNAL_LINKS.CLOUD_APP_SIGNUP}
 										target="_blank"
+										rel="noopener noreferrer"
 										className="flex w-full items-center justify-center">
 										Try Cloud
 										<ArrowRight className="ml-2" />

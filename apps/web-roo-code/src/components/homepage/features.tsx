@@ -50,7 +50,7 @@ export const features: Feature[] = [
 	},
 ]
 
-export function Features() {
+export function Features(): React.ReactNode {
 	const containerVariants = {
 		hidden: { opacity: 0 },
 		visible: {

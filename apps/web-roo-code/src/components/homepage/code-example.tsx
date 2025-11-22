@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
-export function CodeExample() {
+export function CodeExample(): React.ReactNode {
 	const [currentMode, setCurrentMode] = useState<"code" | "architect" | "debug">("code")
 	const [isTyping, setIsTyping] = useState(false)
 	const [currentText, setCurrentText] = useState("")

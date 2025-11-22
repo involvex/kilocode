@@ -8,7 +8,7 @@ import { GoogleAnalyticsProvider } from "./google-analytics-provider"
 
 const queryClient = new QueryClient()
 
-export const Providers = ({ children }: { children: React.ReactNode }) => {
+export const Providers = ({ children }: { children: React.ReactNode }): React.ReactNode => {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<GoogleAnalyticsProvider>

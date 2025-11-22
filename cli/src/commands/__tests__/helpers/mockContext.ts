@@ -42,6 +42,7 @@ export function createMockContext(overrides: Partial<CommandContext> = {}): Comm
 		setTheme: vi.fn().mockResolvedValue(undefined),
 		exit: vi.fn(),
 		setCommittingParallelMode: vi.fn(),
+		setWorkspacePath: vi.fn(),
 		isParallelMode: false,
 		routerModels: null,
 		currentProvider: null,
