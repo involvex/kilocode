@@ -49,7 +49,7 @@ function getTermsContent() {
 	return fs.readFileSync(filePath, "utf8")
 }
 
-export default function Terms() {
+export default function Terms(): React.ReactNode {
 	const content = getTermsContent()
 
 	return (

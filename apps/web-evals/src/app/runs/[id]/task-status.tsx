@@ -7,7 +7,7 @@ type TaskStatusProps = {
 	running: boolean
 }
 
-export const TaskStatus = ({ task, running }: TaskStatusProps) => {
+export const TaskStatus = ({ task, running }: TaskStatusProps): React.ReactElement => {
 	return task.passed === false ? (
 		<CircleSlash className="size-4 text-destructive" />
 	) : task.passed === true ? (

@@ -101,10 +101,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					<link itemProp="url" href={SEO.url} />
 					<meta itemProp="name" content={SEO.name} />
 				</div>
-				<Providers>
-					<Shell>{children}</Shell>
-					<CookieConsentWrapper />
-				</Providers>
+				<Shell>
+					<Providers>
+						{children}
+						<CookieConsentWrapper />
+					</Providers>
+				</Shell>
 			</body>
 		</html>
 	)

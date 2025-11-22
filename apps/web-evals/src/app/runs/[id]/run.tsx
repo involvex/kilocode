@@ -14,7 +14,7 @@ import { RunStatus } from "./run-status"
 
 type TaskMetrics = Pick<_TaskMetrics, "tokensIn" | "tokensOut" | "tokensContext" | "duration" | "cost">
 
-export function Run({ run }: { run: Run }) {
+export function Run({ run }: { run: Run }): React.ReactElement {
 	const runStatus = useRunStatus(run)
 	const { tasks, tokenUsage, usageUpdatedAt } = runStatus
 

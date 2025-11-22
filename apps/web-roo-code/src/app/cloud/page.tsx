@@ -119,7 +119,7 @@ const cloudFeatures: Feature[] = [
 // Workaround for next/image choking on these for some reason
 // import screenshotDark from "/public/heroes/cloud-screen.png"
 
-export default function CloudPage() {
+export default function CloudPage(): React.ReactNode {
 	return (
 		<>
 			<section className="relative flex md:h-[calc(80vh-theme(spacing.12))] items-center overflow-hidden">

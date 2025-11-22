@@ -1,11 +1,30 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { RxGithubLogo } from "react-icons/rx"
 import { VscVscode } from "react-icons/vsc"
-import { getGitHubStars, getVSCodeDownloads } from "@/lib/stats"
 
-export default async function StatsDisplay() {
-	const stars = await getGitHubStars()
-	const downloads = await getVSCodeDownloads()
+export default function StatsDisplay(): React.ReactNode {
+	const [stars, setStars] = useState<string | null>(null)
+	const [downloads, setDownloads] = useState<string | null>(null)
+
+	useEffect(() => {
+		async function fetchData() {
+			try {
+				const [starsData, downloadsData] = await Promise.all([
+					import("@/lib/stats").then((m) => m.getGitHubStars()),
+					import("@/lib/stats").then((m) => m.getVSCodeDownloads()),
+				])
+				setStars(starsData)
+				setDownloads(downloadsData)
+			} catch (error) {
+				console.error("Error fetching stats:", error)
+			}
+		}
+
+		fetchData()
+	}, [])
 
 	return (
 		<>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
-export function AnimatedBackground() {
+export function AnimatedBackground(): React.ReactNode {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
 
 	useEffect(() => {

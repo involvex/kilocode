@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 	keywords: [...SEO.keywords, "privacy", "data protection", "GDPR", "security"],
 }
 
-export default function Privacy() {
+export default function Privacy(): React.ReactNode {
 	return (
 		<>
 			<div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">

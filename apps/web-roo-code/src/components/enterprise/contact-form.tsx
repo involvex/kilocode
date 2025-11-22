@@ -31,7 +31,7 @@ interface ContactFormProps {
 	buttonClassName?: string
 }
 
-export function ContactForm({ formType, buttonText, buttonClassName }: ContactFormProps) {
+export function ContactForm({ formType, buttonText, buttonClassName }: ContactFormProps): React.ReactNode {
 	const [isOpen, setIsOpen] = useState(false)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [formErrors, setFormErrors] = useState<Record<string, string>>({})
@@ -181,7 +181,7 @@ export function ContactForm({ formType, buttonText, buttonClassName }: ContactFo
 				) : (
 					<form ref={formRef} onSubmit={handleSubmit} className="space-y-4" data-basin-form>
 						{/* Basin honeypot field for spam protection - should remain empty and hidden */}
-						<input type="text" name="_honeypot" className="hidden" style={{ display: "none" }} />
+						<input title="Honeypot" type="text" name="_honeypot" className="hidden" />
 						<div className="space-y-2">
 							<label htmlFor="name" className="text-sm font-medium">
 								Name <span className="text-red-500">*</span>

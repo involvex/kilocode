@@ -22,7 +22,7 @@ const aiAgents: AIAgent[] = [
 	{ icon: Languages, name: "String Translator" },
 ]
 
-export function AgentCarousel() {
+export function AgentCarousel(): React.ReactNode {
 	const [emblaRef, emblaApi] = useEmblaCarousel(
 		{
 			loop: true,

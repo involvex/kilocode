@@ -56,6 +56,6 @@ export const metadata: Metadata = {
 	],
 }
 
-export default function AgentReviewerPage() {
+export default function AgentReviewerPage(): React.ReactNode {
 	return <ReviewerContent />
 }

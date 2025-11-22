@@ -234,7 +234,7 @@ const faqs: FAQItem[] = [
 	},
 ]
 
-export function FAQSection() {
+export function FAQSection(): React.ReactNode {
 	const [openIndex, setOpenIndex] = useState<number | null>(null)
 
 	const toggleFAQ = (index: number) => {

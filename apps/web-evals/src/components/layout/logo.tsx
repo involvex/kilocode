@@ -6,9 +6,9 @@ import { useHover } from "react-use"
 
 import { cn } from "@/lib/utils"
 
-type LogoProps = Omit<SVGProps<SVGSVGElement>, "xmlns" | "viewBox" | "onClick">
+type LogoProps = Omit<SVGProps<SVGSVGElement>, "xmlns" | "viewBox" | "onClick" | "dominantBaseline" | "textAnchor">
 
-export const Logo = ({ width = 50, height = 32, fill = "#fff", className, ...props }: LogoProps) => {
+export const Logo = ({ width = 50, height = 32, fill = "#fff", className, ...props }: LogoProps): JSX.Element => {
 	const router = useRouter()
 
 	return (
@@ -29,7 +29,7 @@ export const Logo = ({ width = 50, height = 32, fill = "#fff", className, ...pro
 	)
 }
 
-export const HoppingLogo = (props: LogoProps) => {
+export const HoppingLogo = (props: LogoProps): JSX.Element => {
 	const ref = useRef<SVGSVGElement>(null)
 	const logo = <Logo ref={ref} {...props} />
 	const [hoverable, hovered] = useHover(logo)

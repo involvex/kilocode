@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 	],
 }
 
-export default async function Enterprise() {
+export default async function Enterprise(): Promise<React.ReactNode> {
 	return (
 		<>
 			{/* Hero Section */}

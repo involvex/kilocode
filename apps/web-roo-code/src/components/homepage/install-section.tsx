@@ -8,7 +8,7 @@ interface InstallSectionProps {
 	downloads: string | null
 }
 
-export function InstallSection({ downloads }: InstallSectionProps) {
+export function InstallSection({ downloads }: InstallSectionProps): React.ReactNode {
 	const backgroundVariants = {
 		hidden: {
 			opacity: 0,

@@ -3,7 +3,11 @@
 import type { RunStatus as _RunStatus } from "@/hooks/use-run-status"
 import { cn } from "@/lib/utils"
 
-export const RunStatus = ({ runStatus: { sseStatus, heartbeat, runners = [] } }: { runStatus: _RunStatus }) => (
+export const RunStatus = ({
+	runStatus: { sseStatus, heartbeat, runners = [] },
+}: {
+	runStatus: _RunStatus
+}): React.ReactElement => (
 	<div>
 		<div className="flex items-center gap-2">
 			<div className="flex items-center gap-2">

@@ -27,7 +27,7 @@ function PageViewTracker() {
 	return null
 }
 
-export function PostHogProvider({ children }: { children: React.ReactNode }) {
+export function PostHogProvider({ children }: { children: React.ReactNode }): React.ReactNode {
 	useEffect(() => {
 		// Initialize PostHog immediately on the client side
 		if (typeof window !== "undefined" && !posthog.__loaded) {

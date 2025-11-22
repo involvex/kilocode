@@ -20,7 +20,7 @@ interface NavBarProps {
 	downloads: string | null
 }
 
-export function NavBar({ stars, downloads }: NavBarProps) {
+export function NavBar({ stars, downloads }: NavBarProps): React.ReactNode {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const logoSrc = useLogoSrc()
 

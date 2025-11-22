@@ -1,12 +1,29 @@
-import { getGitHubStars, getVSCodeDownloads } from "@/lib/stats"
+"use client"
+
+import { useState, useEffect } from "react"
 
 import { NavBar, Footer } from "@/components/chromes"
 
-// Invalidate cache when a request comes in, at most once every hour.
-export const revalidate = 3600
+export default function Shell({ children }: { children: React.ReactNode }): React.ReactNode {
+	const [stars, setStars] = useState<string | null>(null)
+	const [downloads, setDownloads] = useState<string | null>(null)
 
-export default async function Shell({ children }: { children: React.ReactNode }) {
-	const [stars, downloads] = await Promise.all([getGitHubStars(), getVSCodeDownloads()])
+	useEffect(() => {
+		async function fetchData() {
+			try {
+				const [starsData, downloadsData] = await Promise.all([
+					import("@/lib/stats").then((m) => m.getGitHubStars()),
+					import("@/lib/stats").then((m) => m.getVSCodeDownloads()),
+				])
+				setStars(starsData)
+				setDownloads(downloadsData)
+			} catch (error) {
+				console.error("Error fetching stats:", error)
+			}
+		}
+
+		fetchData()
+	}, [])
 
 	return (
 		<div className="flex min-h-screen flex-col bg-background text-foreground">

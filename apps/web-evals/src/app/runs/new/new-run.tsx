@@ -55,7 +55,7 @@ import {
 
 import { SettingsDiff } from "./settings-diff"
 
-export function NewRun() {
+export function NewRun(): React.ReactElement {
 	const router = useRouter()
 
 	const [mode, setMode] = useState<"openrouter" | "settings">("openrouter")
@@ -249,6 +249,8 @@ export function NewRun() {
 								accept="application/json"
 								className="hidden"
 								onChange={onImportSettings}
+								aria-label="Import settings from JSON file"
+								title="Import settings from JSON file"
 							/>
 							{settings && (
 								<ScrollArea className="max-h-64 border rounded-sm">

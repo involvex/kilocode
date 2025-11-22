@@ -64,7 +64,7 @@ const howItWorks: Feature[] = [
 	},
 ]
 
-export function PrFixerContent() {
+export function PrFixerContent(): React.ReactNode {
 	return (
 		<>
 			<section className="relative flex md:h-[calc(70vh-theme(spacing.12))] items-center overflow-hidden">

@@ -9,7 +9,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import type { EvalRun } from "./types"
 import { Plot } from "./plot"
 
-export function Evals({ runs }: { runs: EvalRun[] }) {
+export function Evals({ runs }: { runs: EvalRun[] }): React.ReactNode {
 	const { data: openRouterModels } = useOpenRouterModels()
 
 	const tableData: (EvalRun & { label: string; cost: number })[] = useMemo(

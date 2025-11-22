@@ -11,7 +11,7 @@ const GTM_ID = "AW-17391954825"
  * Google Analytics Provider with Consent Mode v2
  * Implements cookieless pings and advanced consent management
  */
-export function GoogleAnalyticsProvider({ children }: { children: React.ReactNode }) {
+export function GoogleAnalyticsProvider({ children }: { children: React.ReactNode }): React.ReactNode {
 	const [shouldLoad, setShouldLoad] = useState(false)
 
 	useEffect(() => {
