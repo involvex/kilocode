@@ -1,6 +1,6 @@
 {
 	"name": "@involvex/kilo-code",
-	"packageManager": "pnpm@10.8.1",
+	"packageManager": "pnpm@10.23.0",
 	"engines": {
 		"node": "20.19.2"
 	},
@@ -8,7 +8,7 @@
 		"preinstall": "node scripts/bootstrap.mjs",
 		"prepare": "husky",
 		"install": "node scripts/bootstrap.mjs",
-		"install:all": "node scripts/bootstrap.mjs",
+		"install:all": "pnpm install",
 		"lint": "turbo lint --log-order grouped --output-logs new-only",
 		"check-types": "turbo check-types --log-order grouped --output-logs new-only",
 		"test": "turbo test --log-order grouped --output-logs new-only",
@@ -22,7 +22,7 @@
 		"vsix:nightly": "turbo vsix:nightly --log-order grouped --output-logs new-only",
 		"clean": "turbo clean --log-order grouped --output-logs new-only && rimraf dist out bin .vite-port .turbo",
 		"install:vsix": "pnpm install --frozen-lockfile && pnpm clean && pnpm vsix && node scripts/install-vsix.js",
-		"changeset:version": "cp CHANGELOG.md src/CHANGELOG.md && changeset version && cp -vf src/CHANGELOG.md . && pnpm --filter @kilocode/cli changeset:version",
+		"changeset:version": "cp CHANGELOG.md src/CHANGELOG.md && changeset version && cp -vf src/CHANGELOG.md . && pnpm --filter @involvex/kilocode-cli changeset:version",
 		"knip": "knip --include files",
 		"update-contributors": "node scripts/update-contributors.js",
 		"evals": "dotenvx run -f packages/evals/.env.development packages/evals/.env.local -- docker compose -f packages/evals/docker-compose.yml --profile server --profile runner up --build --scale runner=0",
@@ -36,34 +36,33 @@
 		"jetbrains:run": "turbo jetbrains:run",
 		"cli:build": "turbo run cli:build",
 		"cli:bundle": "turbo run cli:bundle --force",
-		"cli:deps": "pnpm --filter @kilocode/cli run deps:install",
-		"cli:dev": "pnpm --filter @kilocode/cli run dev",
-		"cli:run": "pnpm --filter @kilocode/cli run start",
+		"cli:deps": "pnpm --filter @involvex/kilocode-cli run deps:install",
+		"cli:dev": "pnpm --filter @involvex/kilocode-cli run dev",
+		"cli:run": "pnpm --filter @involvex/kilocode-cli run start",
 		"docs:start": "pnpm --filter kilocode-docs start",
 		"docs:build": "pnpm --filter kilocode-docs build"
 	},
 	"devDependencies": {
 		"@changesets/changelog-github": "^0.5.1",
-		"@changesets/cli": "^2.27.10",
-		"@dotenvx/dotenvx": "^1.34.0",
+		"@changesets/cli": "^2.29.7",
+		"@dotenvx/dotenvx": "^1.51.1",
 		"@roo-code/config-typescript": "workspace:^",
-		"@types/glob": "^9.0.0",
-		"@types/node": "20.x",
-		"@vscode/vsce": "3.3.2",
-		"esbuild": "^0.25.0",
-		"eslint": "^9.27.0",
-		"glob": "^11.0.3",
+		"@types/node": "~24.10.1",
+		"@vscode/vsce": "3.7.0",
+		"esbuild": "^0.27.0",
+		"eslint": "^9.39.1",
+		"glob": "^13.0.0",
 		"husky": "^9.1.7",
-		"knip": "^5.44.4",
-		"lint-staged": "^16.0.0",
+		"knip": "^5.70.1",
+		"lint-staged": "^16.2.7",
 		"mkdirp": "^3.0.1",
 		"only-allow": "^1.2.1",
-		"ovsx": "0.10.4",
-		"prettier": "^3.4.2",
-		"rimraf": "^6.0.1",
-		"tsx": "^4.19.3",
-		"turbo": "^2.6.0",
-		"typescript": "^5.4.5"
+		"ovsx": "0.10.7",
+		"prettier": "^3.6.2",
+		"rimraf": "^6.1.2",
+		"tsx": "^4.20.6",
+		"turbo": "^2.6.1",
+		"typescript": "^5.9.3"
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx,json,css,md}": [
@@ -78,6 +77,16 @@
 			"form-data": ">=4.0.4",
 			"bluebird": ">=3.7.2",
 			"type-fest": "2.19.0"
-		}
+		},
+		"onlyBuiltDependencies": [
+			"@tailwindcss/oxide",
+			"@vscode/sqlite3",
+			"@vscode/vsce-sign",
+			"core-js",
+			"core-js-pure",
+			"esbuild",
+			"keytar",
+			"puppeteer-chromium-resolver"
+		]
 	}
 }

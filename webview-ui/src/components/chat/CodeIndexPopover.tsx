@@ -1408,7 +1408,8 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 								type="button"
 								onClick={() => setIsAdvancedSettingsOpen(!isAdvancedSettingsOpen)}
 								className="flex items-center text-xs text-vscode-foreground hover:text-vscode-textLink-foreground focus:outline-none"
-								aria-expanded={isAdvancedSettingsOpen}>
+								aria-expanded={isAdvancedSettingsOpen}
+								aria-controls="advanced-settings">
 								<span
 									className={`codicon codicon-${isAdvancedSettingsOpen ? "chevron-down" : "chevron-right"} mr-1`}></span>
 								<span className="text-base font-semibold">
