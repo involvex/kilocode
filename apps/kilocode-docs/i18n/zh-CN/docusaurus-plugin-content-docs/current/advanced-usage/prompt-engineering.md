@@ -5,12 +5,10 @@ Prompt engineering 是为 AI 模型（如 Kilo Code）编写有效指令的艺�
 ## 通用原则
 
 - **清晰且具体：** 清楚地说明你希望 Kilo Code 做什么。避免歧义。
-
     - **不好：** 修复代码。
     - **好：** 修复 `calculateTotal` 函数中导致返回错误结果的 bug。
 
 - **提供上下文：** 使用 [上下文提及](/basic-usage/context-mentions) 来引用特定文件、文件夹或问题。
-
     - **好：** `@/src/utils.ts` 重构 `calculateTotal` 函数以使用 async/await。
 
 - **分解任务：** 将复杂的任务分解为更小、定义明确的步骤。

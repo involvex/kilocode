@@ -47,7 +47,6 @@ This tool creates a conversational interface between Kilo Code and the user, all
 When the `ask_followup_question` tool is invoked, it follows this process:
 
 1. **Parameter Validation**: Validates the required `question` parameter and checks for optional suggestions
-
     - Ensures question text is provided
     - Parses any suggested answers from the `follow_up` parameter using the `fast-xml-parser` library
     - Normalizes suggestions into an array format even if there's only one suggestion
@@ -65,13 +64,11 @@ When the `ask_followup_question` tool is invoked, it follows this process:
     ```
 
 3. **UI Integration**:
-
     - Passes the JSON structure to the UI layer via the `ask("followup", ...)` method
     - Displays selectable suggestion buttons to the user in the interface
     - Creates an interactive experience for selecting or typing a response
 
 4. **Response Collection and Processing**:
-
     - Captures user text input and any images included in the response
     - Wraps user responses in `<answer>` tags when returning to the assistant
     - Preserves any images included in the user's response

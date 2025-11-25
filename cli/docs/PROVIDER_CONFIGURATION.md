@@ -1320,19 +1320,16 @@ ZAI AI platform.
 The `zaiApiLine` parameter determines which API endpoint and region to use:
 
 - `international_coding` (default): International Coding Plan
-
     - Base URL: `https://api.z.ai/api/coding/paas/v4`
     - Region: International
     - Optimized for coding tasks
 
 - `international`: International Standard
-
     - Base URL: `https://api.z.ai/api/paas/v4`
     - Region: International
     - General-purpose API
 
 - `china_coding`: China Coding Plan
-
     - Base URL: `https://open.bigmodel.cn/api/coding/paas/v4`
     - Region: China
     - Optimized for coding tasks

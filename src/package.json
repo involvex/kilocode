@@ -4,6 +4,8 @@
 	"description": "%extension.description%",
 	"publisher": "kilocode",
 	"version": "4.122.1",
+	"publisher": "Involvex",
+	"version": "4.121.2",
 	"icon": "assets/icons/logo-outline-black.png",
 	"galleryBanner": {
 		"color": "#FFFFFF",
@@ -17,7 +19,7 @@
 		"workspace"
 	],
 	"author": {
-		"name": "Kilo Code"
+		"name": "Involvex"
 	},
 	"repository": {
 		"type": "git",
@@ -624,7 +626,7 @@
 		"vsix:clean": "rimraf ../bin",
 		"vsix": "mkdirp ../bin && vsce package --no-dependencies --out ../bin",
 		"vsix:nightly": "mkdirp ../bin && vsce package --no-dependencies --out ../bin --pre-release",
-		"vsix:unpacked": "node ../scripts/extract-vsix.mjs",
+		"vsix:unpacked": "mkdirp ../bin-unpacked && unzip -q -o ../bin/kilo-code-*.vsix -d ../bin-unpacked",
 		"publish:marketplace": "vsce publish --no-dependencies && ovsx publish --no-dependencies",
 		"watch:bundle": "pnpm bundle --watch",
 		"watch:tsc": "cd .. && tsc --noEmit --watch --project src/tsconfig.json",

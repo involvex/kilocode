@@ -82,13 +82,11 @@ These tools help manage the conversation and task flow:
 Tools are invoked under specific conditions:
 
 1. **Direct Task Requirements**
-
     - When specific actions are needed to complete a task as decided by the LLM
     - In response to user requests
     - During automated workflows
 
 2. **Mode-Based Availability**
-
     - Different modes enable different tool sets
     - Mode switches can trigger tool availability changes
     - Some tools are restricted to specific modes
@@ -115,7 +113,6 @@ The system uses a multi-step process to determine tool availability:
     ```
 
 2. **Requirement Checking**
-
     - System capability verification
     - Resource availability
     - Permission validation
@@ -130,7 +127,6 @@ The system uses a multi-step process to determine tool availability:
 ### Tool Call Processing
 
 1. **Initialization**
-
     - Tool name and parameters are validated
     - Mode compatibility is checked
     - Requirements are verified
@@ -154,7 +150,6 @@ The system uses a multi-step process to determine tool availability:
 ### Security and Permissions
 
 1. **Access Control**
-
     - File system restrictions
     - Command execution limitations
     - Network access controls
@@ -178,7 +173,6 @@ Tools are made available based on the current mode:
 ### Mode Switching
 
 1. **Process**
-
     - Current mode state preservation
     - Tool availability updates
     - Context switching
@@ -193,13 +187,11 @@ Tools are made available based on the current mode:
 ### Tool Usage Guidelines
 
 1. **Efficiency**
-
     - Use the most specific tool for the task
     - Avoid redundant tool calls
     - Batch operations when possible
 
 2. **Security**
-
     - Validate inputs before tool calls
     - Use minimum required permissions
     - Follow security best practices
@@ -239,13 +231,11 @@ Tools are made available based on the current mode:
 ### Error Types
 
 1. **Tool-Specific Errors**
-
     - Parameter validation failures
     - Execution errors
     - Resource access issues
 
 2. **System Errors**
-
     - Permission denied
     - Resource unavailable
     - Network failures
@@ -258,7 +248,6 @@ Tools are made available based on the current mode:
 ### Recovery Strategies
 
 1. **Automatic Recovery**
-
     - Retry mechanisms
     - Fallback options
     - State restoration

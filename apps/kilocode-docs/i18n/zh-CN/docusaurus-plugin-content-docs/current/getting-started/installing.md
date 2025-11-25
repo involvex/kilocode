@@ -72,7 +72,6 @@ Kilo Code是一款VS Code扩展，可将AI编程助手直接集成到编辑器�
 若需手动下载安装：
 
 1. **下载VSIX文件：**
-
     - 在[Kilo Code GitHub Releases页面](https://github.com/Kilo-Org/kilocode/releases)查找正式版本
     - 从[最新版本](https://github.com/Kilo-Org/kilocode/releases/latest)下载`.vsix`文件
 

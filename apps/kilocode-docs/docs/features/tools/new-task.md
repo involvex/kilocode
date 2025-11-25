@@ -45,24 +45,20 @@ This tool creates a new task instance with a specified starting mode and initial
 When the `new_task` tool is invoked, it follows this process:
 
 1. **Parameter Validation**:
-
     - Validates the required `mode` and `message` parameters
     - Verifies that the requested mode exists in the system
 
 2. **Task Stack Management**:
-
     - Maintains a task stack that tracks all active and paused tasks
     - Preserves the current mode for later resumption
     - Sets the parent task to paused state
 
 3. **Task Context Management**:
-
     - Creates a new task context with the provided message
     - Assigns unique taskId and instanceId identifiers for state management
     - Captures telemetry data on tool usage and task lifecycles
 
 4. **Mode Switching and Integration**:
-
     - Switches to the specified mode with appropriate role and capabilities
     - Initializes the new task with the provided message
     - Integrates with VS Code's command palette and code actions

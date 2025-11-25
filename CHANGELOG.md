@@ -113,7 +113,6 @@
 ## [v4.119.0]
 
 - [#3498](https://github.com/Kilo-Org/kilocode/pull/3498) [`10fe57d`](https://github.com/Kilo-Org/kilocode/commit/10fe57dab94217c80ed03835ed71162d8a64c91e) Thanks [@chrarnoldus](https://github.com/chrarnoldus)! - Include changes from Roo Code v3.29.0-v3.30.0
-
     - Add token-budget based file reading with intelligent preview to avoid context overruns (thanks @daniel-lxs!)
     - Fix: Respect nested .gitignore files in search_files (#7921 by @hannesrudolph, PR by @daniel-lxs)
     - Fix: Preserve trailing newlines in stripLineNumbers for apply_diff (#8020 by @liyi3c, PR by @app/roomote)
@@ -344,7 +343,6 @@
 ### Patch Changes
 
 - [#3159](https://github.com/Kilo-Org/kilocode/pull/3159) [`935bbae`](https://github.com/Kilo-Org/kilocode/commit/935bbae3a080c8475671b97440eacf2ead939198) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.28.18
-
     - Fix: Remove request content from UI messages to improve performance and reduce clutter (#5601 by @MuriloFP, #8594 by @multivac2x, #8690 by @hannesrudolph, PR by @mrubens)
     - Fix: Add userAgent to Bedrock client for version tracking (#8660 by @ajjuaire, PR by @app/roomote)
     - Feat: Z AI now uses only two coding endpoints for better performance (#8687 by @hannesrudolph)
@@ -381,7 +379,6 @@
 - [#3105](https://github.com/Kilo-Org/kilocode/pull/3105) [`b0c7475`](https://github.com/Kilo-Org/kilocode/commit/b0c7475a5f086171dbff162cbfa4761937617f27) Thanks [@metju90](https://github.com/metju90)! - Fix button styling on Let's Go CTA
 
 - [#3107](https://github.com/Kilo-Org/kilocode/pull/3107) [`c58c4ac`](https://github.com/Kilo-Org/kilocode/commit/c58c4ac9bed8af1a9c18250e759ee4b93873f86b) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.28.16-v3.28.17
-
     - Fix: Update zh-TW run command title translation (thanks @PeterDaveHello!)
     - feat: Add Claude Sonnet 4.5 1M context window support for Claude Code (thanks @ColbySerpa!)
 
@@ -391,7 +388,6 @@
 
     This feature is currently experimental and mostly intended for users interested in contributing to its development.
     It is so far only supported when using OpenRouter or Kilo Code providers. There are possible issues including, but not limited to:
-
     - Missing tools (e.g. apply_diff tool)
     - Tools calls not updating the UI until they are complete
     - Tools being used even though they are disabled (e.g. browser tool)
@@ -424,7 +420,6 @@
 - [#3046](https://github.com/Kilo-Org/kilocode/pull/3046) [`1bd934f`](https://github.com/Kilo-Org/kilocode/commit/1bd934f784034ec29d10ae7b42d67f768e0883b1) Thanks [@chrarnoldus](https://github.com/chrarnoldus)! - A warning is now shown when the webview memory usage crosses 90% of the limit (gray screen territory)
 
 - [#2885](https://github.com/Kilo-Org/kilocode/pull/2885) [`a34dab0`](https://github.com/Kilo-Org/kilocode/commit/a34dab09d2cbcc9732698f21e824b6773b30fa2b) Thanks [@shameez-struggles-to-commit](https://github.com/shameez-struggles-to-commit)! - Update VS Code Language Model API provider metadata to reflect current model limits:
-
     - Align context windows, prompt/input limits, and max output tokens with the latest provider data for matching models: gpt-3.5-turbo, gpt-4o-mini, gpt-4, gpt-4-0125-preview, gpt-4o, o3-mini, claude-3.5-sonnet, claude-sonnet-4, gemini-2.0-flash-001, gemini-2.5-pro, o4-mini-2025-04-16, gpt-4.1, gpt-5-mini, gpt-5.
     - Fixes an issue where a default 128k context was assumed for all models.
     - Notable: GPT-5 family now uses 264k context; o3-mini/o4-mini, Gemini, Claude, and 4o families have updated output and image support flags. GPT-5-mini max output explicitly set to 127,805.
@@ -459,7 +454,6 @@
 ## [v4.102.0]
 
 - [#2854](https://github.com/Kilo-Org/kilocode/pull/2854) [`bd5d7fc`](https://github.com/Kilo-Org/kilocode/commit/bd5d7fc5f0c67ac2b040dbdefbd90d0396e0b60e) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.28.14-v3.28.15
-
     - Fix: properly reset cost limit tracking when user clicks "Reset and Continue" (#6889 by @alecoot, PR by app/roomote)
     - Fix: improve save button activation in prompts settings (#5780 by @beccare, PR by app/roomote)
     - Fix: overeager 'there are unsaved changes' dialog in settings (thanks @brunobergher!)
@@ -523,7 +517,6 @@
 - [#2719](https://github.com/Kilo-Org/kilocode/pull/2719) [`345947f`](https://github.com/Kilo-Org/kilocode/commit/345947f29978045209a82687843c28059b339dc0) Thanks [@mcowger](https://github.com/mcowger)! - Prevent race conditions from stopping agent progress during indexing.
 
 - [#2716](https://github.com/Kilo-Org/kilocode/pull/2716) [`41a6dbf`](https://github.com/Kilo-Org/kilocode/commit/41a6dbf1a54a699e358a24ecd167f692f3a2aef5) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.28.8-v3.28.13
-
     - Fix: Remove topP parameter from Bedrock inference config (#8377 by @ronyblum, PR by @daniel-lxs)
     - Fix: Correct Vertex AI Sonnet 4.5 model configuration (#8387 by @nickcatal, PR by @mrubens!)
     - Fix: Correct Anthropic Sonnet 4.5 model ID and add Bedrock 1M context checkbox (thanks @daniel-lxs!)
@@ -562,7 +555,6 @@
 ## [v4.98.0]
 
 - [#2623](https://github.com/Kilo-Org/kilocode/pull/2623) [`da834dd`](https://github.com/Kilo-Org/kilocode/commit/da834ddcd24ee334ec97c1a5ca398b87d624adc0) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.28.2-v3.28.7
-
     - UX: Collapse thinking blocks by default with UI settings to always show them (thanks @brunobergher!)
     - Fix: Resolve checkpoint restore popover positioning issue (#8219 by @NaccOll, PR by @app/roomote)
     - Add support for zai-org/GLM-4.5-turbo model in Chutes provider (#8155 by @mugnimaestra, PR by @app/roomote)
@@ -640,7 +632,6 @@
 ## [v4.96.0]
 
 - [#2504](https://github.com/Kilo-Org/kilocode/pull/2504) [`4927414`](https://github.com/Kilo-Org/kilocode/commit/4927414d0737312796a0c5ae9b0e5a9d7629fbbc) Thanks [@chrarnoldus](https://github.com/chrarnoldus)! - Include changes from Roo Code v3.28.0-v3.28.2:
-
     - Improve auto-approve UI with smaller and more subtle design (thanks @brunobergher!)
     - Fix: Message queue re-queue loop in Task.ask() causing performance issues (#7861 by @hannesrudolph, PR by @daniel-lxs)
     - Fix: Restrict @-mention parsing to line-start or whitespace boundaries to prevent false triggers (#7875 by @hannesrudolph, PR by @app/roomote)
@@ -713,7 +704,6 @@
 - [#2353](https://github.com/Kilo-Org/kilocode/pull/2353) [`75f8f7b`](https://github.com/Kilo-Org/kilocode/commit/75f8f7b21671ddfba4bdfb441fe3e8fd215530d1) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.27.0
 
     Added from Roo Code v3.26.5-v3.27.0:
-
     - Add: Kimi K2-0905 model support in Chutes provider (#7700 by @pwilkin, PR by @app/roomote)
     - Fix: Prevent stack overflow in codebase indexing for large projects (#7588 by @StarTrai1, PR by @daniel-lxs)
     - Fix: Resolve race condition in Gemini Grounding Sources by improving code design (#6372 by @daniel-lxs, PR by @HahaBill)
@@ -799,7 +789,6 @@
 ## [v4.89.0]
 
 - [#2242](https://github.com/Kilo-Org/kilocode/pull/2242) [`f474c89`](https://github.com/Kilo-Org/kilocode/commit/f474c89e3881955d2f41b8912b728e91eddb87f8) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.26.4
-
     - Optimize memory usage for image handling in webview (thanks @daniel-lxs!)
     - Fix: Special tokens should not break task processing (#7539 by @pwilkin, PR by @pwilkin)
     - Add Ollama API key support for Turbo mode (#7147 by @LivioGama, PR by @app/roomote)
@@ -881,7 +870,6 @@
 ## [v4.85.0]
 
 - [#2119](https://github.com/Kilo-Org/kilocode/pull/2119) [`19dc45d`](https://github.com/Kilo-Org/kilocode/commit/19dc45d1b1578a41c41ecb787e7945513f6554d9) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.25.23
-
     - feat: add custom base URL support for Requesty provider (thanks @requesty-JohnCosta27!)
     - feat: add DeepSeek V3.1 model to Chutes AI provider (#7294 by @dmarkey, PR by @app/roomote)
     - Add prompt caching support for Kimi K2 on Groq (thanks @daniel-lxs and @benank!)
@@ -917,7 +905,6 @@
 ## [v4.84.0]
 
 - [#1961](https://github.com/Kilo-Org/kilocode/pull/1961) [`d4a7cb6`](https://github.com/Kilo-Org/kilocode/commit/d4a7cb6300d8e00d5889e1079057e43de19ff95e) Thanks [@chrarnoldus](https://github.com/chrarnoldus)! - Updates to the experimental Morph FastApply support
-
     - A visual indication is now included in the task view whenever Morph is used.
     - The traditional file editing tools are now disabled to ensure Morph is used to edit files.
     - Morph is now automatically disabled when the API provider does not support it and no Morph API key is configured.
@@ -950,7 +937,6 @@
 - [#2063](https://github.com/Kilo-Org/kilocode/pull/2063) [`e844c5f`](https://github.com/Kilo-Org/kilocode/commit/e844c5f3a43c0808a037156e44f621b36a529abd) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Add marketplace for modes
 
 - [#2050](https://github.com/Kilo-Org/kilocode/pull/2050) [`0ffe951`](https://github.com/Kilo-Org/kilocode/commit/0ffe951af4d356984608df623c410327cee7f130) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.25.20
-
     - Fix: respect enableReasoningEffort setting when determining reasoning usage (#7048 by @ikbencasdoei, PR by @app/roomote)
     - Fix: prevent duplicate LM Studio models with case-insensitive deduplication (#6954 by @fbuechler, PR by @daniel-lxs)
     - Feat: simplify ask_followup_question prompt documentation (thanks @daniel-lxs!)
@@ -995,7 +981,6 @@
 ## [v4.82.0]
 
 - [#1974](https://github.com/Kilo-Org/kilocode/pull/1974) [`ec18e51`](https://github.com/Kilo-Org/kilocode/commit/ec18e51d7f38c2f5ee21a02cf2290be21223119b) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code 3.25.14
-
     - Fix: Only include verbosity parameter for models that support it (#7054 by @eastonmeth, PR by @app/roomote)
     - Fix: AWS Bedrock 1M context - Move anthropic_beta to additionalModelRequestFields (thanks @daniel-lxs!)
     - Fix: Make cancelling requests more responsive by reverting recent changes
@@ -1064,7 +1049,6 @@
 ## [v4.79.1]
 
 - [#1871](https://github.com/Kilo-Org/kilocode/pull/1871) [`fe0b1ce`](https://github.com/Kilo-Org/kilocode/commit/fe0b1ce7141e6fb07f4c4816fd1895a663ce13e7) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.25.10
-
     - Improved support for GPT-5 (thanks Cline and @app/roomote!)
     - Fix: Use CDATA sections in XML examples to prevent parser errors (#4852 by @hannesrudolph, PR by @hannesrudolph)
     - Fix: Add missing MCP error translation keys (thanks @app/roomote!)
@@ -1075,7 +1059,6 @@
 ## [v4.79.0]
 
 - [#1862](https://github.com/Kilo-Org/kilocode/pull/1862) [`43c7179`](https://github.com/Kilo-Org/kilocode/commit/43c71796a58e25805217c520a9d612d56b2f11d5) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.25.8
-
     - Fix: Prevent disabled MCP servers from starting processes and show correct status (#6036 by @hannesrudolph, PR by @app/roomote)
     - Fix: Handle current directory path "." correctly in codebase_search tool (#6514 by @hannesrudolph, PR by @app/roomote)
     - Fix: Trim whitespace from OpenAI base URL to fix model detection (#6559 by @vauhochzett, PR by @app/roomote)
@@ -1201,7 +1184,6 @@
 ## [v4.73.0]
 
 - [#1654](https://github.com/Kilo-Org/kilocode/pull/1654) [`c4ed29a`](https://github.com/Kilo-Org/kilocode/commit/c4ed29acdabfd131dae82c5ccd06ebe1ecbce058) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.25.4
-
     - feat: add SambaNova provider integration (#6077 by @snova-jorgep, PR by @snova-jorgep)
     - feat: add Doubao provider integration (thanks @AntiMoron!)
     - feat: set horizon-alpha model max tokens to 32k for OpenRouter (thanks @app/roomote!)
@@ -1277,13 +1259,11 @@
     New AI-powered terminal command generator- helps users create terminal commands using natural language
 
     ## New Features
-
     - **Terminal Command Generator**: Press `Ctrl+Shift+G` (or `Cmd+Shift+G` on Mac) to generate terminal commands from natural language descriptions
     - **Terminal Welcome Messages**: New terminals now show helpful tips about the command generator feature
     - **API Configuration Selection**: Choose which AI provider configuration to use for terminal command generation in settings
 
     ## How to Use
-
     1. Open any terminal in VSCode
     2. Press `Ctrl+Shift+G` (Windows/Linux) or `Cmd+Shift+G` (Mac)
     3. Describe the command you want in plain English (e.g., "list all files in current directory", "find large files", "install npm package")
@@ -1292,7 +1272,6 @@
     ## Settings
 
     Navigate to Kilo Code settings → Terminal to configure:
-
     - **API Configuration**: Select which AI provider to use for command generation (defaults to your current configuration)
 
 - [#1628](https://github.com/Kilo-Org/kilocode/pull/1628) [`4913a39`](https://github.com/Kilo-Org/kilocode/commit/4913a39e6cc6342c896352ed8eaa56831812810c) Thanks [@chrarnoldus](https://github.com/chrarnoldus)! - Thanks @bhaktatejas922! Add experimental support for Morph Fast Apply
@@ -1336,7 +1315,6 @@
 ## [v4.68.0]
 
 - [#1579](https://github.com/Kilo-Org/kilocode/pull/1579) [`4e5d90a`](https://github.com/Kilo-Org/kilocode/commit/4e5d90a78b99ed5dca750446733aef36d3381680) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.24.0
-
     - Add Hugging Face provider with support for open source models (thanks @TGlide!)
     - Add terminal command permissions UI to chat interface
     - Add support for Agent Rules standard via AGENTS.md (thanks @sgryphon!)
@@ -1370,7 +1348,6 @@
 - [#1539](https://github.com/Kilo-Org/kilocode/pull/1539) [`fd3679b`](https://github.com/Kilo-Org/kilocode/commit/fd3679b56b1b72ca41d70b30d805c94d377f3626) Thanks [@chrarnoldus](https://github.com/chrarnoldus)! - Ollama models now use and report the correct context window size.
 
 - [#1510](https://github.com/Kilo-Org/kilocode/pull/1510) [`ee48df4`](https://github.com/Kilo-Org/kilocode/commit/ee48df43fb460a1fbaa9e4f5a11ce45172bf63e3) Thanks [@chrarnoldus](https://github.com/chrarnoldus)! - Include changes from Roo Code v3.23.19
-
     - Fix configurable delay for diagnostics to prevent premature error reporting
     - Add command timeout allowlist
     - Add description and whenToUse fields to custom modes in .roomodes (thanks @RandalSchwartz!)
@@ -1479,7 +1456,6 @@
 ## [v4.62.0]
 
 - [#1386](https://github.com/Kilo-Org/kilocode/pull/1386) [`48fb539`](https://github.com/Kilo-Org/kilocode/commit/48fb5392a962279463d8db225559db42f32d4ad8) Thanks [@chrarnoldus](https://github.com/chrarnoldus)! - Include changes from Roo Code v3.23.14
-
     - Fix Mermaid syntax warning (thanks @MuriloFP!)
     - Expand Vertex AI region config to include all available regions in GCP Vertex AI (thanks @shubhamgupta731!)
     - Handle Qdrant vector dimension mismatch when switching embedding models (thanks @daniel-lxs!)
@@ -1603,7 +1579,6 @@
 ## [v4.58.0]
 
 - [#1272](https://github.com/Kilo-Org/kilocode/pull/1272) [`8026793`](https://github.com/Kilo-Org/kilocode/commit/80267936053b1fbaf4eaf00ef0cbf770cc619fcf) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.23.6
-
     - Move codebase indexing out of experimental (thanks @daniel-lxs and @MuriloFP!)
     - Add todo list tool (thanks @qdaxb!)
     - Fix code index secret persistence and improve settings UX (thanks @daniel-lxs!)
@@ -1753,7 +1728,6 @@
 - [#841](https://github.com/Kilo-Org/kilocode/pull/841) [`1615ec7`](https://github.com/Kilo-Org/kilocode/commit/1615ec74cec2198d49cf1cd6942d883c0b717f4f) Thanks [@catrielmuller](https://github.com/catrielmuller)! - Quick model selector on the chatbox
 
 - [#1149](https://github.com/Kilo-Org/kilocode/pull/1149) [`62786a8`](https://github.com/Kilo-Org/kilocode/commit/62786a8d09e42f51ac61c15216a168c172e87785) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.22.6
-
     - Add timer-based auto approve for follow up questions (thanks @liwilliam2021!)
     - Add import/export modes functionality
     - Add persistent version indicator on chat screen
@@ -1832,7 +1806,6 @@
 - [#926](https://github.com/Kilo-Org/kilocode/pull/926) [`75b6c80`](https://github.com/Kilo-Org/kilocode/commit/75b6c80878f61f9f5d2b0c7499bee56eb8f09d06) Thanks [@chrarnoldus](https://github.com/chrarnoldus)! - Arabic translation added (support for right-to-left languages is experimental)
 
 - [#930](https://github.com/Kilo-Org/kilocode/pull/930) [`047b30e`](https://github.com/Kilo-Org/kilocode/commit/047b30ec1ca8b30c86ad7708dea16bf404ed94f8) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.22.4
-
     - Fix: resolve E2BIG error by passing large prompts via stdin to Claude CLI (thanks @Fovty!)
     - Add optional mode suggestions to follow-up questions
     - Restore JSON backwards compatibility for .roomodes files (thanks @daniel-lxs!)
@@ -1925,7 +1898,6 @@
 ## [v4.42.0]
 
 - [#844](https://github.com/Kilo-Org/kilocode/pull/844) [`8f33721`](https://github.com/Kilo-Org/kilocode/commit/8f3372102d8a06cfbe0dd2889287befea6a347a4) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.21.5
-
     - Fix Qdrant URL prefix handling for QdrantClient initialization (thanks @CW-B-W!)
     - Improve LM Studio model detection to show all downloaded models (thanks @daniel-lxs!)
     - Resolve Claude Code provider JSON parsing and reasoning block display
@@ -1960,7 +1932,6 @@
 ## [v4.41.0]
 
 - [#794](https://github.com/Kilo-Org/kilocode/pull/794) [`7113260`](https://github.com/Kilo-Org/kilocode/commit/711326037cbb38db49f6a2d12671c7974a981787) Thanks [@markijbema](https://github.com/markijbema)! - Include changes from Roo Code v3.21.1
-
     - Fix tree-sitter issues that were preventing codebase indexing from working correctly
     - Improve error handling for codebase search embeddings
     - Resolve MCP server execution on Windows with node version managers
@@ -2020,7 +1991,6 @@
 - [#777](https://github.com/Kilo-Org/kilocode/pull/777) [`b04ad66`](https://github.com/Kilo-Org/kilocode/commit/b04ad661e195ca42430bd7d1c6f5a247cf3ff49b) Thanks [@markijbema](https://github.com/markijbema)! - Added Cerebras API provider (from Cline)
 
 - [#768](https://github.com/Kilo-Org/kilocode/pull/768) [`fc7a357`](https://github.com/Kilo-Org/kilocode/commit/fc7a357fa6460d54eec58800af60d335fbc71a96) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.20.3
-
     - Resolve diff editor race condition in multi-monitor setups (thanks @daniel-lxs!)
     - Add logic to prevent auto-approving edits of configuration files
     - Adjust searching and listing files outside of the workspace to respect the auto-approve settings
@@ -2079,12 +2049,10 @@
     Add ability to customize git commit generation prompt and provider
 
     ### Customized Commit Message Generation Prompts & Providers
-
     - **Custom API Configuration**: Added support for selecting a specific API configuration for commit message generation in Settings > Prompts
     - **Enhanced Commit Message Support**: Introduced a new `COMMIT_MESSAGE` support prompt type with comprehensive conventional commit format guidance
 
     ### Bug Fixes
-
     - The support prompts can now be saved/discarded like other settings
 
 ### Patch Changes
@@ -2100,7 +2068,6 @@
 ## [v4.36.0]
 
 - [#690](https://github.com/Kilo-Org/kilocode/pull/690) [`9b1451a`](https://github.com/Kilo-Org/kilocode/commit/9b1451a47bd2bc567646a4a0c2a12b42826ab9d1) Thanks [@kevinvandijk](https://github.com/kevinvandijk)! - Include changes from Roo Code v3.19.7:
-
     - Fix McpHub sidebar focus behavior to prevent unwanted focus grabbing
     - Disable checkpoint functionality when nested git repositories are detected to prevent conflicts
     - Remove unused Storybook components and dependencies to reduce bundle size
@@ -2152,7 +2119,6 @@
     Automatically generate meaningful Git commit messages using AI
 
     ## How It Works
-
     1. Stage your changes in Git as usual
     2. Click the [KILO] square icon in the Source Control panel
     3. The AI analyzes your staged changes and generates an appropriate commit message

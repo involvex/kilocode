@@ -77,20 +77,17 @@ The tool operates in two distinct modes:
 When the `browser_action` tool is invoked, it follows this process:
 
 1. **Action Validation and Browser Management**:
-
     - Validates the required parameters for the requested action
     - For `launch`: Initializes a browser session (either local Puppeteer instance or remote Chrome)
     - For interaction actions: Uses the existing browser session
     - For `close`: Terminates or disconnects from the browser appropriately
 
 2. **Page Interaction and Stability**:
-
     - Ensures pages are fully loaded using DOM stability detection via `waitTillHTMLStable` algorithm
     - Executes requested actions (navigation, clicking, typing, scrolling) with proper timing
     - Monitors network activity after clicks and waits for navigation when necessary
 
 3. **Visual Feedback**:
-
     - Captures optimized screenshots using WebP format (with PNG fallback)
     - Records browser console logs for debugging purposes
     - Tracks mouse position and maintains paginated history of actions

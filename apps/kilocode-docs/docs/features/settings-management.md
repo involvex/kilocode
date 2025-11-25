@@ -44,13 +44,11 @@ Clicking the **Reset** button completely clears all Kilo Code configuration data
 - **Warning:** This action is **irreversible**. It permanently deletes all API configurations (including keys stored in secret storage), custom modes, global settings, and task history.
 
 - **Process:**
-
     1.  Click the red **Reset** button.
     2.  A confirmation dialog appears, warning that the action cannot be undone.
     3.  Click "Yes" to confirm.
 
 - **What is Reset:**
-
     - **API Provider Profiles:** All configurations are deleted from settings and secret storage.
     - **Global Settings:** All preferences (UI, modes, approvals, browser, etc.) are reset to defaults.
     - **Custom Modes:** All user-defined modes are deleted.

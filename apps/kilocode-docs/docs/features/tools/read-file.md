@@ -57,13 +57,11 @@ When the `read_file` tool is invoked, it follows this process:
 The tool uses a clear decision hierarchy to determine how to read a file:
 
 1. **First Priority: Explicit Line Range**
-
     - If either `start_line` or `end_line` is provided, the tool always performs a range read
     - The implementation efficiently streams only the requested lines, making it suitable for processing large files
     - This takes precedence over all other options
 
 2. **Second Priority: Auto-Truncation for Large Files**
-
     - This only applies when ALL of these conditions are met:
         - Neither `start_line` nor `end_line` is specified
         - The `auto_truncate` parameter is set to `true`

@@ -12,7 +12,6 @@ Kilo Code 支持使用 LM Studio 在本地运行模型。LM Studio 提供了一�
 
 1.  **下载并安装 LM Studio：** 从 [LM Studio 网站](https://lmstudio.ai/)下载 LM Studio。
 2.  **下载模型：** 使用 LM Studio 界面搜索并下载模型。一些推荐的模型包括：
-
     - CodeLlama 模型（例如，`codellama:7b-code`、`codellama:13b-code`、`codellama:34b-code`）
     - Mistral 模型（例如，`mistralai/Mistral-7B-Instruct-v0.1`）
     - DeepSeek Coder 模型（例如，`deepseek-coder:6.7b-base`）
