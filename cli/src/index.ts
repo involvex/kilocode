@@ -40,7 +40,7 @@ program
 		"-p, --parallel",
 		"Run in parallel mode - the agent will create a separate git branch, unless you provide the --existing-branch option",
 	)
-	.option("-eb, --existing-branch <branch>", "(Parallel mode only) Instructs the agent to work on an existing branch")
+	.option("--existing-branch <branch>", "(Parallel mode only) Instructs the agent to work on an existing branch")
 	.option("-pv, --provider <id>", "Select provider by ID (e.g., 'kilocode-1')")
 	.option("-mo, --model <model>", "Override model for the selected provider")
 	.option("--nosplash", "Disable the welcome message and update notifications", false)
