@@ -130,7 +130,7 @@ export const CommandInput: React.FC<CommandInputProps> = ({
 			: isApprovalPending
 				? theme.actions.pending
 				: theme.ui.border.active
-	const promptSymbol = isCommittingParallelMode ? "⏳ " : isShellMode ? "$ " : isApprovalPending ? "[!] " : "> "
+	const promptSymbol = isCommittingParallelMode ? "⏳ " : isShellMode ? "$ " : isApprovalPending ? "[!] " : " "
 	const inputPlaceholder = isCommittingParallelMode
 		? `Committing your changes... (${countdownSeconds}s)`
 		: isShellMode

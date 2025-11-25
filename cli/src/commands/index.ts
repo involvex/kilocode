@@ -20,6 +20,8 @@ import { configCommand } from "./config.js"
 import { tasksCommand } from "./tasks.js"
 import { themeCommand } from "./theme.js"
 import { checkpointCommand } from "./checkpoint.js"
+import { cdCommand } from "./cd.js"
+import { mcpCommand } from "./mcp.js"
 
 /**
  * Initialize all commands
@@ -39,4 +41,6 @@ export function initializeCommands(): void {
 	commandRegistry.register(tasksCommand)
 	commandRegistry.register(themeCommand)
 	commandRegistry.register(checkpointCommand)
+	commandRegistry.register(cdCommand)
+	commandRegistry.register(mcpCommand)
 }

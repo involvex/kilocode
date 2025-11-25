@@ -68,6 +68,7 @@ vi.mock("@src/components/ui", () => ({
 	Slider: ({ value, onValueChange, disabled }: any) => (
 		<input
 			type="range"
+			title="Slider"
 			value={value?.[0] || 0}
 			onChange={(e) => onValueChange?.([parseInt(e.target.value)])}
 			disabled={disabled}

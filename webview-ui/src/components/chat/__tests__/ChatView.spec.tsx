@@ -188,6 +188,7 @@ vi.mock("../ChatTextArea", () => {
 				<input
 					ref={mockInputRef}
 					type="text"
+					title="Chat"
 					value={props.inputValue || ""}
 					onChange={(e) => {
 						// Use parent's setInputValue if available

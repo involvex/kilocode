@@ -14,11 +14,11 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 	VSCodeTextField: ({ children, value, onBlur }: any) => (
 		<div>
 			{children}
-			<input type="text" value={value} onChange={onBlur} />
+			<input title="TextField" type="text" value={value} onChange={onBlur} />
 		</div>
 	),
 	VSCodeLink: ({ children, href }: any) => <a href={href}>{children}</a>,
-	VSCodeRadio: ({ value, checked }: any) => <input type="radio" value={value} checked={checked} />,
+	VSCodeRadio: ({ value, checked }: any) => <input title="Radio" type="radio" value={value} checked={checked} />,
 	VSCodeRadioGroup: ({ children }: any) => <div>{children}</div>,
 	VSCodeButton: ({ children }: any) => <div>{children}</div>,
 	VSCodeCheckbox: ({ children, checked, onChange }: any) => (
@@ -33,11 +33,15 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 	),
 	// kilocode_change start
 	VSCodeDropdown: ({ children, value, onChange, className }: any) => (
-		<select value={value} onChange={onChange} className={className}>
+		<select title="Dropdown" value={value} onChange={onChange} className={className}>
 			{children}
 		</select>
 	),
-	VSCodeOption: ({ children, value }: any) => <option value={value}>{children}</option>,
+	VSCodeOption: ({ children, value }: any) => (
+		<option value={value} title="Option">
+			{children}
+		</option>
+	),
 	// kilocode_change start
 }))
 
@@ -60,7 +64,11 @@ vi.mock("vscrui", () => ({
 vi.mock("@/components/ui", () => ({
 	Select: ({ children, value, onValueChange }: any) => (
 		<div className="select-mock">
-			<select value={value} onChange={(e) => onValueChange && onValueChange(e.target.value)}>
+			<select
+				aria-label="Select"
+				title="Select"
+				value={value}
+				onChange={(e) => onValueChange && onValueChange(e.target.value)}>
 				{children}
 			</select>
 		</div>
@@ -69,13 +77,13 @@ vi.mock("@/components/ui", () => ({
 	SelectValue: ({ children }: any) => <div className="select-value-mock">{children}</div>,
 	SelectContent: ({ children }: any) => <div className="select-content-mock">{children}</div>,
 	SelectItem: ({ children, value }: any) => (
-		<option value={value} className="select-item-mock">
+		<option value={value} className="select-item-mock" title="Option">
 			{children}
 		</option>
 	),
 	SelectSeparator: ({ children }: any) => <div className="select-separator-mock">{children}</div>,
-	Button: ({ children, onClick, _variant, role, className }: any) => (
-		<button onClick={onClick} className={`button-mock ${className || ""}`} role={role}>
+	Button: ({ children, onClick, _variant, className }: any) => (
+		<button onClick={onClick} className={`button-mock ${className || ""}`}>
 			{children}
 		</button>
 	),
@@ -103,15 +111,26 @@ vi.mock("@/components/ui", () => ({
 	PopoverTrigger: ({ children, _asChild }: any) => <div className="popover-trigger-mock">{children}</div>,
 	Slider: ({ value, onChange }: any) => (
 		<div data-testid="slider">
-			<input type="range" value={value || 0} onChange={(e) => onChange(parseFloat(e.target.value))} />
+			<input
+				title="Slider"
+				type="range"
+				value={value || 0}
+				onChange={(e) => onChange(parseFloat(e.target.value))}
+			/>
 		</div>
 	),
 	SearchableSelect: ({ value, onValueChange, options, placeholder, "data-testid": dataTestId }: any) => (
 		<div className="searchable-select-mock" data-testid={dataTestId || "provider-popover-trigger"}>
-			<select value={value} onChange={(e) => onValueChange && onValueChange(e.target.value)}>
-				<option value="">{placeholder || "Select..."}</option>
+			<select
+				aria-label="SearchableSelect"
+				title="SearchableSelect"
+				value={value}
+				onChange={(e) => onValueChange && onValueChange(e.target.value)}>
+				<option value="" title="">
+					{placeholder || "Select..."}
+				</option>
 				{options?.map((option: any) => (
-					<option key={option.value} value={option.value}>
+					<option key={option.value} value={option.value} title="Option">
 						{option.label}
 					</option>
 				))}
@@ -139,6 +158,7 @@ vi.mock("../TemperatureControl", () => ({
 		<div data-testid="temperature-control">
 			<input
 				type="range"
+				title="TemperatureControl"
 				value={value || 0}
 				onChange={(e) => onChange(parseFloat(e.target.value))}
 				min={0}
@@ -154,6 +174,7 @@ vi.mock("../RateLimitSecondsControl", () => ({
 		<div data-testid="rate-limit-seconds-control">
 			<input
 				type="range"
+				title="RateLimitSecondsControl"
 				value={value || 0}
 				onChange={(e) => onChange(parseFloat(e.target.value))}
 				min={0}
@@ -180,6 +201,7 @@ vi.mock("../DiffSettingsControl", () => ({
 				Fuzzy match threshold
 				<input
 					type="range"
+					title="DiffSettingsControl"
 					value={fuzzyMatchThreshold || 1.0}
 					onChange={(e) => onChange("fuzzyMatchThreshold", parseFloat(e.target.value))}
 					min={0.8}
@@ -209,13 +231,31 @@ vi.mock("../TodoListSettingsControl", () => ({
 
 // Mock ThinkingBudget component
 vi.mock("../ThinkingBudget", () => ({
-	ThinkingBudget: ({ modelInfo }: any) => {
+	ThinkingBudget: ({ modelInfo, apiConfiguration }: any) => {
+		if (modelInfo?.supportsReasoningEffort && apiConfiguration?.enableReasoningEffort) {
+			return (
+				<div data-testid="reasoning-effort">
+					<label>Reasoning Effort</label>
+					<select aria-label="ReasoningEffort" title="ReasoningEffort">
+						<option value="low" title="Low">
+							Low
+						</option>
+						<option value="medium" title="Medium">
+							Medium
+						</option>
+						<option value="high" title="High">
+							High
+						</option>
+					</select>
+				</div>
+			)
+		}
 		// Only render if model supports reasoning budget (thinking models)
 		if (modelInfo?.supportsReasoningBudget || modelInfo?.requiredReasoningBudget) {
 			return (
 				<div data-testid="reasoning-budget">
 					<div>Max Thinking Tokens</div>
-					<input type="range" min={1024} max={100000} step={1024} />
+					<input title="ThinkingBudget" type="range" min={1024} max={100000} step={1024} />
 				</div>
 			)
 		}

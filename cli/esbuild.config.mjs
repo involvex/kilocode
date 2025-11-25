@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import esbuild from "esbuild"
-import { chmodSync, mkdirSync, copyFileSync } from "fs"
+import { chmodSync, mkdirSync, copyFileSync, existsSync, lstatSync, unlinkSync } from "fs"
 import { rimrafSync } from "rimraf"
 
 // Function to copy post-build files
@@ -28,9 +28,27 @@ function copyPostBuildFiles() {
 
 function removeUnneededFiles() {
 	try {
-		// Remove webview-ui directory/symlink with force option
-		rimrafSync("dist/kilocode/webview-ui", { force: true, maxRetries: 3 })
-		console.log("✓ Removed webview-ui directory")
+		// Remove webview-ui directory/symlink with force option and better error handling
+		const webviewUiPath = "dist/kilocode/webview-ui"
+		try {
+			// First try to check if it exists and what type it is
+			if (existsSync(webviewUiPath)) {
+				const stats = lstatSync(webviewUiPath)
+				if (stats.isSymbolicLink()) {
+					// It's a symlink, remove it first
+					unlinkSync(webviewUiPath)
+					console.log("✓ Removed webview-ui symlink")
+				} else {
+					// It's a directory, remove it recursively
+					rimrafSync(webviewUiPath, { force: true, maxRetries: 3 })
+					console.log("✓ Removed webview-ui directory")
+				}
+			}
+		} catch (_err) {
+			// Fallback to force removal
+			rimrafSync(webviewUiPath, { force: true, maxRetries: 3 })
+			console.log("✓ Force removed webview-ui directory")
+		}
 	} catch (err) {
 		console.warn("Warning: Could not remove webview-ui directory:", err.message)
 	}

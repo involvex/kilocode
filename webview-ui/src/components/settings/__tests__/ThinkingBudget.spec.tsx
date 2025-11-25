@@ -10,6 +10,7 @@ vi.mock("@/components/ui", () => ({
 	Slider: ({ value, onValueChange, min, max, step }: any) => (
 		<input
 			type="range"
+			title="Slider"
 			data-testid="slider"
 			min={min}
 			max={max}

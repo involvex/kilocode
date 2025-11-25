@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@/utils/test-utils"
+import { describe, it, expect, vi } from "vitest"
 import React from "react"
 import type { IndexingStatus } from "@roo/ExtensionMessage"
 import { CodeIndexPopover } from "../CodeIndexPopover"
@@ -83,11 +84,26 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 		value?: string
 		[key: string]: any
 	}) => <input value={value || ""} onChange={onInput} {...props} />,
-	VSCodeDropdown: ({ children, ...props }: { children: React.ReactNode; [key: string]: any }) => (
-		<select {...props}>{children}</select>
-	),
+	VSCodeDropdown: ({ children, ...props }: { children: React.ReactNode; [key: string]: any }) => {
+		// Ensure accessibility by preserving aria-label or title, or adding a fallback
+		const accessibilityProps: Record<string, any> = {}
+		if (props["aria-label"]) {
+			accessibilityProps["aria-label"] = props["aria-label"]
+		} else if (props.title) {
+			accessibilityProps.title = props.title
+		} else {
+			// Add a fallback title for accessibility when no label is provided
+			accessibilityProps.title = "Dropdown select"
+		}
+
+		return (
+			<select {...props} {...accessibilityProps}>
+				{children}
+			</select>
+		)
+	},
 	VSCodeOption: ({ children, value, ...props }: { children: React.ReactNode; value: string; [key: string]: any }) => (
-		<option value={value} {...props}>
+		<option value={value} title="Option" {...props}>
 			{children}
 		</option>
 	),
@@ -118,11 +134,39 @@ vi.mock("@src/components/ui", () => ({
 	Popover: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 	PopoverTrigger: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 	PopoverContent: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-	Select: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-	SelectContent: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-	SelectItem: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+	Select: ({ children, id, ...props }: { children: React.ReactNode; id?: string; [key: string]: any }) => {
+		// Ensure accessibility by preserving aria-label or title, or adding a fallback
+		const accessibilityProps: Record<string, any> = {}
+		if (props["aria-label"]) {
+			accessibilityProps["aria-label"] = props["aria-label"]
+		} else if (props.title) {
+			accessibilityProps.title = props.title
+		} else {
+			// Add a fallback title for accessibility when no label is provided
+			accessibilityProps.title = "Select dropdown"
+		}
+
+		return (
+			<select id={id} {...accessibilityProps} {...props}>
+				{children}
+			</select>
+		)
+	},
+	SelectContent: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+	SelectItem: ({ children, value }: { children: React.ReactNode; value: string }) => (
+		<option value={value} title="Option">
+			{children}
+		</option>
+	),
 	SelectTrigger: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-	SelectValue: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+	SelectValue: ({ placeholder }: { placeholder?: string }) => (
+		<option value="" title="">
+			{placeholder}
+		</option>
+	),
+	SelectLabel: ({ children, htmlFor }: { children: React.ReactNode; htmlFor?: string }) => (
+		<label htmlFor={htmlFor}>{children}</label>
+	),
 	AlertDialog: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 	AlertDialogTrigger: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 	AlertDialogContent: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,

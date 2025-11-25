@@ -3,7 +3,7 @@
 	"version": "0.7.0",
 	"name": "@involvex/kilocode-cli",
 	"version": "0.6.0",
-	"description": "Terminal User Interface for Kilo Code",
+	"description": "Terminal User Interface for Involvex Kilo Code",
 	"type": "module",
 	"main": "index.js",
 	"bin": {

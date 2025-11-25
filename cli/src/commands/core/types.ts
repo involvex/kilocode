@@ -45,6 +45,7 @@ export interface CommandContext {
 	setTheme: (theme: string) => Promise<void>
 	exit: () => void
 	setCommittingParallelMode: (isCommitting: boolean) => void
+	setWorkspacePath: (path: string) => void
 	isParallelMode: boolean
 	// Model-related context
 	routerModels: RouterModels | null

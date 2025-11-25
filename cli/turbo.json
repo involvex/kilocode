@@ -20,7 +20,8 @@
 			"cache": false,
 			"outputs": ["dist/**"],
 			"inputs": ["src/**"],
-			"dependsOn": ["copy:kilocode"]
+			"dependsOn": ["copy:kilocode"],
+			"passThroughEnv": ["FORCE_COLOR", "NODE_ENV"]
 		},
 		"start": {
 			"cache": false,

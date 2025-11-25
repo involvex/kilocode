@@ -36,6 +36,7 @@ const RuleRow: React.FC<{
 					<div
 						role="switch"
 						aria-checked={enabled}
+						aria-label={`Toggle rule ${getBasename(rulePath)}`}
 						tabIndex={0}
 						className={`w-[20px] h-[10px] rounded-[5px] relative cursor-pointer transition-colors duration-200 flex items-center ${
 							enabled
@@ -60,16 +61,16 @@ const RuleRow: React.FC<{
 						aria-label="Edit rule file"
 						title="Edit rule file"
 						onClick={handleEditClick}
-						style={{ height: "20px" }}>
-						<span className="codicon codicon-edit" style={{ fontSize: "14px" }} />
+						className="h-5">
+						<span className="codicon codicon-edit text-xs" />
 					</VSCodeButton>
 					<VSCodeButton
 						appearance="icon"
 						aria-label="Delete rule file"
 						title="Delete rule file"
 						onClick={handleDeleteClick}
-						style={{ height: "20px" }}>
-						<span className="codicon codicon-trash" style={{ fontSize: "14px" }} />
+						className="h-5">
+						<span className="codicon codicon-trash text-xs" />
 					</VSCodeButton>
 				</div>
 			</div>

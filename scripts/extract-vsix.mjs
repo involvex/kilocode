@@ -24,7 +24,7 @@ function copyDirectory(src, dest) {
 	}
 }
 
-// Get the bin directory path - script is in scripts/
+// Get the bin directory path - script is in scripts/ but run from src/
 const binDir = path.join(process.cwd(), "..", "bin")
 const unpackedDir = path.join(process.cwd(), "..", "bin-unpacked")
 
@@ -48,32 +48,34 @@ const vsixFile = path.join(binDir, vsixFiles[0])
 console.log(`Extracting ${vsixFile} to ${unpackedDir}`)
 
 try {
-	// VSIX files are ZIP archives, use native Node.js zip extraction
-	// For simplicity, we'll use the system unzip/tar command if available,
-	// otherwise provide clear instructions
-
+	// Try different extraction methods based on platform
 	const platform = process.platform
 
 	if (platform === "win32") {
-		// On Windows, try to use tar if available (comes with Git for Windows)
+		// On Windows, try tar first (comes with Git for Windows and Windows 10+)
 		try {
-			const { execSync } = await import("child_process")
 			execSync(`tar -tf "${vsixFile}"`, { stdio: "pipe" })
 			execSync(`tar -xf "${vsixFile}" -C "${unpackedDir}"`, { stdio: "pipe" })
-			console.log("Extracted using tar")
+			console.log("✅ Extracted using tar")
 		} catch (tarError) {
-			// If tar is not available, suggest manual extraction
-			console.log("Tar not available. Please extract manually:")
-			console.log(`1. Rename ${vsixFile} to ${vsixFile.replace(".vsix", ".zip")}`)
-			console.log(`2. Extract the ZIP file to ${unpackedDir}`)
-			console.log(`3. Move contents from 'extension' subfolder to ${unpackedDir} root`)
-			process.exit(0)
+			// If tar fails, try PowerShell Expand-Archive
+			try {
+				const psCommand = `Expand-Archive -Path "${vsixFile}" -DestinationPath "${unpackedDir}" -Force`
+				execSync(`powershell -Command "${psCommand}"`, { stdio: "pipe" })
+				console.log("✅ Extracted using PowerShell Expand-Archive")
+			} catch (psError) {
+				console.log("⚠️  Neither tar nor PowerShell Expand-Archive available")
+				console.log("📦 Please extract manually:")
+				console.log(`   1. Rename ${vsixFile} to ${vsixFile.replace(".vsix", ".zip")}`)
+				console.log(`   2. Extract the ZIP file to ${unpackedDir}`)
+				console.log(`   3. Move contents from 'extension' subfolder to ${unpackedDir} root`)
+				process.exit(0)
+			}
 		}
 	} else {
 		// On Unix-like systems, use unzip
-		const { execSync } = await import("child_process")
 		execSync(`unzip -q -o "${vsixFile}" -d "${unpackedDir}"`, { stdio: "pipe" })
-		console.log("Extracted using unzip")
+		console.log("✅ Extracted using unzip")
 	}
 
 	// Move contents from extension subdirectory to root if it exists
@@ -113,11 +115,11 @@ try {
 		} catch (rmError) {
 			console.log("Warning: Could not remove extension directory")
 		}
-		console.log("Moved extension contents to root")
+		console.log("📁 Moved extension contents to root")
 	}
 
-	console.log("VSIX extraction completed successfully")
+	console.log("🎉 VSIX extraction completed successfully")
 } catch (error) {
-	console.error("Error extracting VSIX:", error.message)
+	console.error("❌ Error extracting VSIX:", error.message)
 	process.exit(1)
 }

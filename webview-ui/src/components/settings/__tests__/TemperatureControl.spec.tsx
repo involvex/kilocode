@@ -8,6 +8,7 @@ vi.mock("@/components/ui", () => ({
 	...vi.importActual("@/components/ui"),
 	Slider: ({ value, onValueChange, "data-testid": dataTestId }: any) => (
 		<input
+			title="Slider"
 			type="range"
 			value={value[0]}
 			onChange={(e) => onValueChange([parseFloat(e.target.value)])}
@@ -18,13 +19,13 @@ vi.mock("@/components/ui", () => ({
 }))
 
 vi.mock("@vscode/webview-ui-toolkit/react", () => ({
-	VSCodeCheckbox: ({ children, onChange, checked, ...props }: any) => (
-		<label>
+	VSCodeCheckbox: ({ children, onChange, checked = false, ...props }: any) => (
+		<label title="Checkbox">
 			<input
 				type="checkbox"
 				role="checkbox"
-				checked={checked || false}
-				aria-checked={checked || false}
+				checked={checked}
+				aria-checked={checked}
 				onChange={(e: any) => onChange?.({ target: { checked: e.target.checked } })}
 				{...props}
 			/>

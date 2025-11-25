@@ -150,7 +150,10 @@ export const StyledPre = styled.div<{
 	}
 `
 
-const LanguageSelect = styled.select`
+const LanguageSelect = styled.select.attrs({
+	title: "Language selector",
+	"aria-label": "Language selector",
+})`
 	font-size: 12px;
 	color: var(--vscode-foreground);
 	opacity: 0.4;
@@ -634,6 +637,7 @@ const CodeBlock = memo(
 							}}>
 							<option
 								value={normalizeLanguage(language)}
+								title={normalizeLanguage(language)}
 								style={{ fontWeight: "bold", textAlign: "left", fontSize: "1.2em" }}>
 								{normalizeLanguage(language)}
 							</option>
@@ -647,6 +651,7 @@ const CodeBlock = memo(
 											<option
 												key={normalizedLang}
 												value={normalizedLang}
+												title={normalizedLang}
 												style={{
 													fontWeight: normalizedLang === currentLanguage ? "bold" : "normal",
 													textAlign: "left",
