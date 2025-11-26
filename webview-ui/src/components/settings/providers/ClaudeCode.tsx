@@ -12,7 +12,7 @@ interface ClaudeCodeProps {
 export const ClaudeCode: React.FC<ClaudeCodeProps> = ({ apiConfiguration, setApiConfigurationField }) => {
 	const { t } = useAppTranslation()
 
-	const handleInputChange = (e: Event | React.FormEvent<HTMLElement>) => {
+	const _handleInputChange = (e: Event | React.FormEvent<HTMLElement>) => {
 		const element = e.target as HTMLInputElement
 		setApiConfigurationField("claudeCodePath", element.value)
 	}
@@ -24,9 +24,7 @@ export const ClaudeCode: React.FC<ClaudeCodeProps> = ({ apiConfiguration, setApi
 			<div>
 				<VSCodeTextField
 					value={apiConfiguration?.claudeCodePath || ""}
-					style={{ width: "100%", marginTop: 3 }}
-					type="text"
-					onInput={handleInputChange}
+					onInput={(e) => setApiConfigurationField("claudeCodePath", e.target.value)}
 					placeholder={t("settings:providers.claudeCode.placeholder")}>
 					{t("settings:providers.claudeCode.pathLabel")}
 				</VSCodeTextField>

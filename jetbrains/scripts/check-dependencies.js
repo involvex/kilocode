@@ -271,19 +271,14 @@ function checkProjectDependencies() {
 
 	process.chdir(projectRoot)
 
-	if (!fs.existsSync("node_modules") || !fs.existsSync("pnpm-lock.yaml")) {
-		printWarning("Project dependencies not installed")
-		console.log("  Installing dependencies with pnpm...")
-
-		const result = runCommand("pnpm install")
-		if (result !== null) {
-			printFix("Project dependencies installed successfully")
-		} else {
-			printError("Failed to install project dependencies")
-			return false
-		}
+	if (!fs.existsSync("node_modules")) {
+		printError("Project dependencies not installed")
+		console.log("  Run 'pnpm install' at the root level first")
+		console.log("  This monorepo uses a custom bootstrap process that cannot run during dependency checks")
+		return false
 	} else {
-		printSuccess("Project dependencies are installed")
+		printSuccess("Project dependencies are available")
+		console.log("  Note: This check confirms node_modules exists, but full validation requires successful builds")
 	}
 
 	return true

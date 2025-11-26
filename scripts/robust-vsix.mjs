@@ -28,13 +28,31 @@ try {
 
 	console.log("📁 Current directory:", process.cwd())
 
+	// Handle extension name issue - VSCE doesn't like @ in extension names
+	const packageJsonPath = path.join(process.cwd(), "package.json")
+	const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"))
+	const originalName = packageJson.name
+	const isScopedPackage = originalName.startsWith("@")
+	
+	let tempPackageJson = null
+	
+	if (isScopedPackage) {
+		console.log("⚠️  Scoped package detected, temporarily fixing extension name for VSCE...")
+		// Convert @involvex/kilo-code to involvex-kilo-code for packaging
+		const extensionName = originalName.substring(1).replace("/", "-") // Remove @ and replace / with -
+		tempPackageJson = { ...packageJson, name: extensionName }
+		fs.writeFileSync(packageJsonPath, JSON.stringify(tempPackageJson, null, 2))
+		console.log(`📝 Temporary extension name: ${extensionName}`)
+	}
+
 	// Try packaging with different approaches (we're already in src directory)
 	const approaches = [
 		{ name: "Standard vsce", cmd: "npx vsce package --no-dependencies --out ../bin" },
 		{ name: "vsce with yarn", cmd: "npx vsce package --no-dependencies --out ../bin --yarn" },
-		{ name: "vsce with npm", cmd: "npx vsce package --no-dependencies --out ../bin --npm" },
 	]
 
+	let packagingSuccess = false
+	
 	for (const approach of approaches) {
 		console.log(`\n📦 Trying: ${approach.name}`)
 		try {
@@ -45,19 +63,36 @@ try {
 			})
 			console.log("✅ Success!")
 			console.log(output)
+			packagingSuccess = true
 			break
 		} catch (error) {
 			console.log(`❌ Failed: ${error.message}`)
 			if (approach.name === approaches[approaches.length - 1].name) {
 				// Last approach failed, throw the error
-				throw error
+				break
 			}
 		}
+	}
+	
+	// Restore original package.json if we modified it
+	if (tempPackageJson) {
+		console.log("🔄 Restoring original package.json...")
+		fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2))
+	}
+
+	if (!packagingSuccess) {
+		throw new Error("All packaging approaches failed")
 	}
 
 	// Check if VSIX was created
 	const vsixFiles = fs.readdirSync(binDir).filter((f) => f.endsWith(".vsix"))
-	console.log(`\n📦 Created VSIX files: ${vsixFiles}`)
+	console.log(`\n📦 Created VSIX files: ${vsixFiles.join(", ")}`)
+	
+	if (vsixFiles.length === 0) {
+		throw new Error("No VSIX files were created")
+	}
+	
+	console.log("🎉 VSIX packaging completed successfully!")
 } catch (error) {
 	console.error("❌ VSIX packaging failed:", error.message)
 	console.error("Stderr:", error.stderr || "")

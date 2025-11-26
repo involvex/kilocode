@@ -39,12 +39,6 @@ export const Markdown = memo(({ markdown, partial }: { markdown?: string; partia
 						<VSCodeButton
 							className="copy-button"
 							appearance="icon"
-							style={{
-								height: "24px",
-								border: "none",
-								background: "var(--vscode-editor-background)",
-								transition: "background 0.2s ease-in-out",
-							}}
 							onClick={async () => {
 								const success = await copyWithFeedback(markdown)
 								if (success) {

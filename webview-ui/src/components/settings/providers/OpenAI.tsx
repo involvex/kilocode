@@ -54,7 +54,6 @@ export const OpenAI = ({ apiConfiguration, setApiConfigurationField, selectedMod
 						type="url"
 						onInput={handleInputChange("openAiNativeBaseUrl")}
 						placeholder="https://api.openai.com/v1"
-						className="w-full mt-1"
 					/>
 				</>
 			)}
@@ -62,8 +61,7 @@ export const OpenAI = ({ apiConfiguration, setApiConfigurationField, selectedMod
 				value={apiConfiguration?.openAiNativeApiKey || ""}
 				type="password"
 				onInput={handleInputChange("openAiNativeApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
+				placeholder={t("settings:placeholders.apiKey")}>
 				<label className="block font-medium mb-1">{t("settings:providers.openAiApiKey")}</label>
 			</VSCodeTextField>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">

@@ -52,16 +52,14 @@ export const Inception = ({
 				value={apiConfiguration?.inceptionLabsApiKey || ""}
 				type="password"
 				onInput={handleInputChange("inceptionLabsApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
+				placeholder={t("settings:placeholders.apiKey")}>
 				<label className="block font-medium mb-1">{t("settings:providers.apiKey")}</label>
 			</VSCodeTextField>
 
 			<VSCodeTextField
 				value={apiConfiguration?.inceptionLabsBaseUrl || ""}
 				onInput={handleInputChange("inceptionLabsBaseUrl")}
-				placeholder="https://api.inceptionlabs.ai/"
-				className="w-full">
+				placeholder="https://api.inceptionlabs.ai/">
 				<label className="block font-medium mb-1">Base URL (optional)</label>
 			</VSCodeTextField>
 

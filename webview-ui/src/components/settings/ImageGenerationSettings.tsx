@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { VSCodeCheckbox, VSCodeTextField, VSCodeDropdown, VSCodeOption } from "@vscode/webview-ui-toolkit/react"
+import { VSCodeCheckbox, VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
 import { useAppTranslation } from "@/i18n/TranslationContext"
 import { getAppUrl } from "@roo-code/types"
 
@@ -112,20 +112,20 @@ export const ImageGenerationSettings = ({
 							<label className="block font-medium mb-1">
 								{t("settings:experimental.IMAGE_GENERATION.apiProvider")}
 							</label>
-							<VSCodeDropdown
+							<select
 								value={isUsingOpenRouter ? "openrouter" : "kilocode"}
 								onChange={(e: any) => {
 									console.log("onChange", Boolean(e.target.value))
 									setIsUsingOpenRouter(e.target.value === "openrouter")
 								}}
 								className="w-full">
-								<VSCodeOption className="py-2 px-3" value="kilocode">
+								<option className="py-2 px-3" value="kilocode">
 									Kilo Code
-								</VSCodeOption>
-								<VSCodeOption className="py-2 px-3" value="openrouter">
+								</option>
+								<option className="py-2 px-3" value="openrouter">
 									OpenRouter
-								</VSCodeOption>
-							</VSCodeDropdown>
+								</option>
+							</select>
 						</div>
 						// kilocode_change end
 					}
@@ -136,13 +136,14 @@ export const ImageGenerationSettings = ({
 							<label className="block font-medium mb-1">
 								{t("settings:experimental.IMAGE_GENERATION.kiloCodeApiKeyLabel")}
 							</label>
-							<VSCodeTextField
-								value={kiloCodeImageApiKey}
-								onInput={(e: any) => handleKiloApiKeyChange(e.target.value)}
-								placeholder={t("settings:experimental.IMAGE_GENERATION.kiloCodeApiKeyPlaceholder")}
-								className="w-full"
-								type="password"
-							/>
+							<div className="w-full">
+								<VSCodeTextField
+									value={kiloCodeImageApiKey}
+									onInput={(e: any) => handleKiloApiKeyChange(e.target.value)}
+									placeholder={t("settings:experimental.IMAGE_GENERATION.kiloCodeApiKeyPlaceholder")}
+									type="password"
+								/>
+							</div>
 							<p className="text-vscode-descriptionForeground text-xs mt-1">
 								{currentProfileKilocodeToken ? (
 									<a
@@ -172,13 +173,14 @@ export const ImageGenerationSettings = ({
 						<label className="block font-medium mb-1">
 							{t("settings:experimental.IMAGE_GENERATION.openRouterApiKeyLabel")}
 						</label>
-						<VSCodeTextField
-							value={openRouterImageApiKey /*kilocode_change*/}
-							onInput={(e: any) => handleApiKeyChange(e.target.value)}
-							placeholder={t("settings:experimental.IMAGE_GENERATION.openRouterApiKeyPlaceholder")}
-							className="w-full"
-							type="password"
-						/>
+						<div className="w-full">
+							<VSCodeTextField
+								value={openRouterImageApiKey /*kilocode_change*/}
+								onInput={(e: any) => handleApiKeyChange(e.target.value)}
+								placeholder={t("settings:experimental.IMAGE_GENERATION.openRouterApiKeyPlaceholder")}
+								type="password"
+							/>
+						</div>
 						<p className="text-vscode-descriptionForeground text-xs mt-1">
 							{t("settings:experimental.IMAGE_GENERATION.getApiKeyText")}{" "}
 							<a
@@ -196,16 +198,16 @@ export const ImageGenerationSettings = ({
 						<label className="block font-medium mb-1">
 							{t("settings:experimental.IMAGE_GENERATION.modelSelectionLabel")}
 						</label>
-						<VSCodeDropdown
+						<select
 							value={openRouterImageGenerationSelectedModel /*kilocode_change*/}
 							onChange={(e: any) => handleModelChange(e.target.value)}
 							className="w-full">
 							{IMAGE_GENERATION_MODELS.map((model) => (
-								<VSCodeOption key={model.value} value={model.value} className="py-2 px-3">
+								<option key={model.value} value={model.value} className="py-2 px-3">
 									{model.label}
-								</VSCodeOption>
+								</option>
 							))}
-						</VSCodeDropdown>
+						</select>
 						<p className="text-vscode-descriptionForeground text-xs mt-1">
 							{t("settings:experimental.IMAGE_GENERATION.modelSelectionDescription")}
 						</p>

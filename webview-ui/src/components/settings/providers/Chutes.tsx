@@ -47,9 +47,7 @@ export const Chutes = ({
 				type="password"
 				onInput={handleInputChange("chutesApiKey")}
 				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.chutesApiKey")}</label>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>

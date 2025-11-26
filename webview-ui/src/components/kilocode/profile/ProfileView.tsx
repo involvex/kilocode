@@ -7,7 +7,7 @@ import {
 	WebviewMessage,
 } from "@roo/WebviewMessage"
 import { VSCodeButtonLink } from "@/components/common/VSCodeButtonLink"
-import { VSCodeButton, VSCodeDivider } from "@vscode/webview-ui-toolkit/react"
+import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
 import CountUp from "react-countup"
 import { useExtensionState } from "@/context/ExtensionStateContext"
 import { useAppTranslation } from "@/i18n/TranslationContext"
@@ -204,7 +204,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ onDone }) => {
 									)}
 								</div>
 
-								<VSCodeDivider className="w-full my-6" />
+								<hr className="w-full my-6 border-vscode-panel-border" />
 
 								<div className="w-full flex flex-col items-center">
 									<div className="text-sm text-[var(--vscode-descriptionForeground)] mb-3">

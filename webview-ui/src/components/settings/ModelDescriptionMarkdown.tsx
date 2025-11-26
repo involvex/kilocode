@@ -20,7 +20,7 @@ export const ModelDescriptionMarkdown = memo(
 		isExpanded: boolean
 		setIsExpanded: (isExpanded: boolean) => void
 	}) => {
-		const [isExpandable, setIsExpandable] = useState(false)
+		const [_isExpandable, setIsExpandable] = useState(false)
 		const textContainerRef = useRef<HTMLDivElement>(null)
 		const textRef = useRef<HTMLDivElement>(null)
 
@@ -39,8 +39,8 @@ export const ModelDescriptionMarkdown = memo(
 						</StyledMarkdown>
 					</div>
 				</div>
-				<CollapsibleTrigger asChild className={cn({ hidden: !isExpandable })}>
-					<VSCodeLink className="text-sm">{isExpanded ? "Less" : "More"}</VSCodeLink>
+				<CollapsibleTrigger asChild>
+					<VSCodeLink>{isExpanded ? "Less" : "More"}</VSCodeLink>
 				</CollapsibleTrigger>
 			</Collapsible>
 		)

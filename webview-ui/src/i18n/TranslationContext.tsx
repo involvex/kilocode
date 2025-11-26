@@ -35,7 +35,8 @@ export const TranslationProvider: React.FC<{ children: ReactNode }> = ({ childre
 	// Memoize the translation function to prevent unnecessary re-renders
 	const translate = useCallback(
 		(key: string, options?: Record<string, any>) => {
-			return i18n.t(key, options)
+			const value = i18n.t(key, options)
+			return typeof value === "string" ? value : JSON.stringify(value)
 		},
 		[i18n],
 	)

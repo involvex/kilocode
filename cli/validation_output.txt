@@ -1,0 +1,8 @@
+Legend: production dependency, optional only, dev only
+
+@involvex/kilocode-cli@0.7.1 D:\repos\kilocode\cli
+
+dependencies:
+ink-select-input 6.2.0
+ink-text-input 6.0.0
+marked-terminal 7.3.0

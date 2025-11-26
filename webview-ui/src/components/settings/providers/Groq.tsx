@@ -16,7 +16,7 @@ type GroqProps = {
 export const Groq = ({ apiConfiguration, setApiConfigurationField }: GroqProps) => {
 	const { t } = useAppTranslation()
 
-	const handleInputChange = useCallback(
+	const _handleInputChange = useCallback(
 		<K extends keyof ProviderSettings, E>(
 			field: K,
 			transform: (event: E) => ProviderSettings[K] = inputEventTransform,
@@ -31,12 +31,9 @@ export const Groq = ({ apiConfiguration, setApiConfigurationField }: GroqProps) 
 		<>
 			<VSCodeTextField
 				value={apiConfiguration?.groqApiKey || ""}
-				type="password"
-				onInput={handleInputChange("groqApiKey")}
+				onInput={(e) => setApiConfigurationField("groqApiKey", e.target.value)}
 				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.groqApiKey")}</label>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>

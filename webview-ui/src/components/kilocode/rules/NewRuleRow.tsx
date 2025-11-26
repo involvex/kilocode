@@ -102,13 +102,8 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType }) => {
 						/>
 
 						<div className="flex items-center ml-2 space-x-2">
-							<VSCodeButton
-								appearance="icon"
-								type="submit"
-								aria-label="Create rule file"
-								title="Create rule file"
-								style={{ padding: "0px" }}>
-								<span className="codicon codicon-add text-[14px]" />
+							<VSCodeButton appearance="primary" type="submit">
+								{t("rules:add")}
 							</VSCodeButton>
 						</div>
 					</form>
@@ -123,12 +118,10 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType }) => {
 							<VSCodeButton
 								appearance="icon"
 								aria-label="New rule file"
-								title="New rule file"
-								onClick={(e) => {
-									e.stopPropagation()
+								onClick={() => {
 									setIsExpanded(true)
 								}}
-								style={{ padding: "0px" }}>
+								className="p-0">
 								<span className="codicon codicon-add text-[14px]" />
 							</VSCodeButton>
 						</div>

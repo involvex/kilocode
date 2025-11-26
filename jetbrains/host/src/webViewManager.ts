@@ -7,15 +7,15 @@ import {
 	ExtHostContext,
 	ExtHostWebviewViewsShape,
 	MainThreadWebviewViewsShape,
-	WebviewExtensionDescription as ExtHostWebviewExtensionDescription,
 	MainThreadWebviewsShape,
+	WebviewExtensionDescription as ExtHostWebviewExtensionDescription,
 	IWebviewContentOptions,
-} from "../deps/vscode/vs/workbench/api/common/extHost.protocol.js"
-import { IRPCProtocol } from "../deps/vscode/vs/workbench/services/extensions/common/proxyIdentifier.js"
-import { WebviewContentOptions } from "../deps/vscode/vs/workbench/contrib/webview/browser/webview.js"
-import { URI } from "../deps/vscode/vs/base/common/uri.js"
-import { CancellationToken } from "../deps/vscode/vs/base/common/cancellation.js"
-import { VSBuffer } from "../deps/vscode/vs/base/common/buffer.js"
+} from "../deps/vscode/vs/workbench/api/common/extHost.protocol.ts"
+import { IRPCProtocol } from "../deps/vscode/vs/workbench/services/extensions/common/proxyIdentifier.ts"
+import { WebviewContentOptions } from "../deps/vscode/vs/workbench/contrib/webview/browser/webview.ts"
+import { URI } from "../deps/vscode/vs/base/common/uri.ts"
+import { CancellationToken } from "../deps/vscode/vs/base/common/cancellation.ts"
+import { VSBuffer } from "../deps/vscode/vs/base/common/buffer.ts"
 
 /**
  * A simplified webview implementation that only includes methods used by WebViewManager
@@ -132,7 +132,7 @@ export class WebViewManager implements MainThreadWebviewViewsShape, MainThreadWe
 			const contentOptions: WebviewContentOptions = {
 				allowScripts: options.enableScripts,
 				allowForms: options.enableForms,
-				localResourceRoots: options.localResourceRoots?.map((uri) => URI.revive(uri)),
+				localResourceRoots: options.localResourceRoots?.map((uri: any) => URI.revive(uri)),
 				portMapping: options.portMapping,
 			}
 			webview.contentOptions = contentOptions

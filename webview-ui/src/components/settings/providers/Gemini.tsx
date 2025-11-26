@@ -64,8 +64,7 @@ export const Gemini = ({
 				value={apiConfiguration?.geminiApiKey || ""}
 				type="password"
 				onInput={handleInputChange("geminiApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
+				placeholder={t("settings:placeholders.apiKey")}>
 				<label className="block font-medium mb-1">{t("settings:providers.geminiApiKey")}</label>
 			</VSCodeTextField>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
@@ -95,7 +94,6 @@ export const Gemini = ({
 						type="url"
 						onInput={handleInputChange("googleGeminiBaseUrl")}
 						placeholder={t("settings:defaults.geminiUrl")}
-						className="w-full mt-1"
 					/>
 				)}
 

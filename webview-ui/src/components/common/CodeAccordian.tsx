@@ -1,5 +1,4 @@
 import { memo, useMemo } from "react"
-import { VSCodeProgressRing } from "@vscode/webview-ui-toolkit/react"
 import { type ToolProgressStatus } from "@roo-code/types"
 import { getLanguageFromPath } from "@src/utils/getLanguageFromPath"
 import { removeLeadingNonAlphanumeric } from "@src/utils/removeLeadingNonAlphanumeric"
@@ -40,7 +39,14 @@ const CodeAccordian = ({
 		<ToolUseBlock>
 			{hasHeader && (
 				<ToolUseBlockHeader onClick={onToggleExpand} className="group">
-					{isLoading && <VSCodeProgressRing className="size-3 mr-2" />}
+					{isLoading && (
+						<div
+							className="size-3 mr-2 border-2 border-vscode-progressBar-background border-t-vscode-button-foreground rounded-full animate-spin"
+							style={{
+								animation: "spin 1s linear infinite",
+							}}
+						/>
+					)}
 					{header ? (
 						<div className="flex items-center">
 							<span className="codicon codicon-server mr-1.5"></span>

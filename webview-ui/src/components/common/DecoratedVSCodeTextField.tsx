@@ -16,7 +16,7 @@ function VSCodeTextFieldWithNodesInner(
 	props: VSCodeTextFieldWithNodesProps,
 	forwardedRef: React.Ref<HTMLInputElement>,
 ) {
-	const { className, style, "data-testid": dataTestId, leftNodes, rightNodes, ...restProps } = props
+	const { "data-testid": dataTestId, leftNodes, rightNodes, ...restProps } = props
 
 	const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -59,25 +59,13 @@ function VSCodeTextFieldWithNodesInner(
 				`relative flex items-center cursor-text`,
 				`bg-[var(--input-background)] text-[var(--input-foreground)]`,
 				`rounded-[calc(var(--corner-radius-round)*1px)]`,
-				className,
 			)}
-			style={style}
 			onMouseDown={focusInput}>
 			{hasLeftNodes && (
 				<div className="absolute left-2 z-10 flex items-center gap-1 pointer-events-none">{leftNodes}</div>
 			)}
 
-			<VSCodeTextField
-				data-testid={dataTestId}
-				ref={handleVSCodeFieldRef}
-				style={{
-					flex: 1,
-					paddingLeft: hasLeftNodes ? "24px" : undefined,
-					paddingRight: hasRightNodes ? "24px" : undefined,
-				}}
-				className="[--border-width:0]"
-				{...restProps}
-			/>
+			<VSCodeTextField data-testid={dataTestId} {...(restProps as any)} ref={handleVSCodeFieldRef} />
 
 			{hasRightNodes && (
 				<div className="absolute right-2 z-10 flex items-center gap-1 pointer-events-none">{rightNodes}</div>

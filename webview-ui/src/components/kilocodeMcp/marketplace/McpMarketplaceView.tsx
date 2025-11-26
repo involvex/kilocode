@@ -1,13 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
-import {
-	VSCodeButton,
-	VSCodeProgressRing,
-	VSCodeRadioGroup,
-	VSCodeRadio,
-	VSCodeDropdown,
-	VSCodeOption,
-	VSCodeTextField,
-} from "@vscode/webview-ui-toolkit/react"
+import { VSCodeButton, VSCodeRadioGroup, VSCodeRadio, VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
 import { McpMarketplaceItem } from "../../../../../src/shared/kilocode/mcp"
 import { useExtensionState } from "../../../context/ExtensionStateContext"
 import { vscode } from "../../../utils/vscode"
@@ -104,7 +96,17 @@ const McpMarketplaceView = () => {
 					height: "100%",
 					padding: "20px",
 				}}>
-				<VSCodeProgressRing />
+				<div
+					className="size-8 border-2 border-vscode-progressBar-background border-t-vscode-button-foreground rounded-full animate-spin"
+					style={{
+						animation: "spin 1s linear infinite",
+					}}
+				/>
+				<style>{`
+					@keyframes spin {
+						to { transform: rotate(360deg); }
+					}
+				`}</style>
 			</div>
 		)
 	}
@@ -140,34 +142,10 @@ const McpMarketplaceView = () => {
 			<div style={{ padding: "20px 20px 5px", display: "flex", flexDirection: "column", gap: "16px" }}>
 				{/* Search row */}
 				<VSCodeTextField
-					style={{ width: "100%" }}
-					placeholder="Search MCPs..."
 					value={searchQuery}
-					onInput={(e) => setSearchQuery((e.target as HTMLInputElement).value)}>
-					<div
-						slot="start"
-						className="codicon codicon-search"
-						style={{
-							fontSize: 13,
-							opacity: 0.8,
-						}}
-					/>
-					{searchQuery && (
-						<div
-							className="codicon codicon-close"
-							aria-label="Clear search"
-							onClick={() => setSearchQuery("")}
-							slot="end"
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-								height: "100%",
-								cursor: "pointer",
-							}}
-						/>
-					)}
-				</VSCodeTextField>
+					onInput={(e) => setSearchQuery(e.target.value)}
+					placeholder="Search..."
+				/>
 
 				{/* Filter row */}
 				<div
@@ -192,19 +170,16 @@ const McpMarketplaceView = () => {
 							zIndex: 2,
 							flex: 1,
 						}}>
-						<VSCodeDropdown
-							style={{
-								width: "100%",
-							}}
+						<select
 							value={selectedCategory || ""}
-							onChange={(e) => setSelectedCategory((e.target as HTMLSelectElement).value || null)}>
-							<VSCodeOption value="">All Categories</VSCodeOption>
+							onChange={(e) => setSelectedCategory(e.target.value || null)}>
+							<option value="">All Categories</option>
 							{categories.map((category) => (
-								<VSCodeOption key={category} value={category}>
+								<option key={category} value={category}>
 									{category}
-								</VSCodeOption>
+								</option>
 							))}
-						</VSCodeDropdown>
+						</select>
 					</div>
 				</div>
 
@@ -224,19 +199,19 @@ const McpMarketplaceView = () => {
 						}}>
 						Sort:
 					</span>
-					<VSCodeRadioGroup
+					<div
 						style={{
 							display: "flex",
 							flexWrap: "wrap",
 							marginTop: "-2.5px",
-						}}
-						value={sortBy}
-						onChange={(e) => setSortBy((e.target as HTMLInputElement).value as typeof sortBy)}>
-						{/* <VSCodeRadio value="downloadCount">Most Installs</VSCodeRadio> */}
-						<VSCodeRadio value="newest">Newest</VSCodeRadio>
-						<VSCodeRadio value="stars">GitHub Stars</VSCodeRadio>
-						<VSCodeRadio value="name">Name</VSCodeRadio>
-					</VSCodeRadioGroup>
+						}}>
+						<VSCodeRadioGroup value={sortBy} onChange={(value) => setSortBy(value as typeof sortBy)}>
+							{/* <VSCodeRadio value="downloadCount">Most Installs</VSCodeRadio> */}
+							<VSCodeRadio value="newest">Newest</VSCodeRadio>
+							<VSCodeRadio value="stars">GitHub Stars</VSCodeRadio>
+							<VSCodeRadio value="name">Name</VSCodeRadio>
+						</VSCodeRadioGroup>
+					</div>
 				</div>
 			</div>
 

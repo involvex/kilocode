@@ -29,7 +29,7 @@ export const Synthetic = ({
 }: SyntheticProps) => {
 	const { t } = useAppTranslation()
 
-	const handleInputChange = useCallback(
+	const _handleInputChange = useCallback(
 		<K extends keyof ProviderSettings, E>(
 			field: K,
 			transform: (event: E) => ProviderSettings[K] = inputEventTransform,
@@ -40,16 +40,21 @@ export const Synthetic = ({
 		[setApiConfigurationField],
 	)
 
+	const onInputSyntheticApiKey = useCallback(
+		(e: { target: { value: string } }) => {
+			setApiConfigurationField("syntheticApiKey", e.target.value)
+		},
+		[setApiConfigurationField],
+	)
+
 	return (
 		<>
 			<VSCodeTextField
 				value={apiConfiguration?.syntheticApiKey || ""}
 				type="password"
-				onInput={handleInputChange("syntheticApiKey")}
+				onInput={onInputSyntheticApiKey}
 				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.syntheticApiKey")}</label>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>

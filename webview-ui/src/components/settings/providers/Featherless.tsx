@@ -16,7 +16,7 @@ type FeatherlessProps = {
 export const Featherless = ({ apiConfiguration, setApiConfigurationField }: FeatherlessProps) => {
 	const { t } = useAppTranslation()
 
-	const handleInputChange = useCallback(
+	const _handleInputChange = useCallback(
 		<K extends keyof ProviderSettings, E>(
 			field: K,
 			transform: (event: E) => ProviderSettings[K] = inputEventTransform,
@@ -31,12 +31,9 @@ export const Featherless = ({ apiConfiguration, setApiConfigurationField }: Feat
 		<>
 			<VSCodeTextField
 				value={apiConfiguration?.featherlessApiKey || ""}
-				type="password"
-				onInput={handleInputChange("featherlessApiKey")}
+				onInput={(e) => setApiConfigurationField("featherlessApiKey", e.target.value)}
 				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.featherlessApiKey")}</label>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>

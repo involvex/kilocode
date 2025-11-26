@@ -1,5 +1,5 @@
 import { useCallback } from "react"
-import { VSCodeTextField, VSCodeDropdown, VSCodeOption } from "@vscode/webview-ui-toolkit/react"
+import { VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
 
 import { zaiApiLineConfigs, zaiApiLineSchema, type ProviderSettings } from "@roo-code/types"
 
@@ -7,7 +7,7 @@ import { useAppTranslation } from "@src/i18n/TranslationContext"
 import { VSCodeButtonLink } from "@src/components/common/VSCodeButtonLink"
 
 import { inputEventTransform } from "../transforms"
-import { cn } from "@/lib/utils"
+import { cn as _cn } from "@/lib/utils"
 
 type ZAiProps = {
 	apiConfiguration: ProviderSettings
@@ -32,19 +32,22 @@ export const ZAi = ({ apiConfiguration, setApiConfigurationField }: ZAiProps) =>
 		<>
 			<div>
 				<label className="block font-medium mb-1">{t("settings:providers.zaiEntrypoint")}</label>
-				<VSCodeDropdown
-					value={apiConfiguration.zaiApiLine || zaiApiLineSchema.enum.international_coding}
-					onChange={handleInputChange("zaiApiLine")}
-					className={cn("w-full")}>
-					{zaiApiLineSchema.options.map((zaiApiLine) => {
-						const config = zaiApiLineConfigs[zaiApiLine]
-						return (
-							<VSCodeOption key={zaiApiLine} value={zaiApiLine} className="p-2">
-								{config.name} ({config.baseUrl})
-							</VSCodeOption>
-						)
-					})}
-				</VSCodeDropdown>
+				<div className="w-full">
+					<select
+						value={apiConfiguration.zaiApiLine || zaiApiLineSchema.enum.international_coding}
+						onChange={(e) =>
+							setApiConfigurationField("zaiApiLine", e.target.value as ProviderSettings["zaiApiLine"])
+						}>
+						{zaiApiLineSchema.options.map((zaiApiLine) => {
+							const config = zaiApiLineConfigs[zaiApiLine]
+							return (
+								<option key={zaiApiLine} value={zaiApiLine}>
+									{config.name} ({config.baseUrl})
+								</option>
+							)
+						})}
+					</select>
+				</div>
 				<div className="text-xs text-vscode-descriptionForeground mt-1">
 					{t("settings:providers.zaiEntrypointDescription")}
 				</div>
@@ -54,8 +57,7 @@ export const ZAi = ({ apiConfiguration, setApiConfigurationField }: ZAiProps) =>
 					value={apiConfiguration?.zaiApiKey || ""}
 					type="password"
 					onInput={handleInputChange("zaiApiKey")}
-					placeholder={t("settings:placeholders.apiKey")}
-					className="w-full">
+					placeholder={t("settings:placeholders.apiKey")}>
 					<label className="block font-medium mb-1">{t("settings:providers.zaiApiKey")}</label>
 				</VSCodeTextField>
 				<div className="text-sm text-vscode-descriptionForeground">

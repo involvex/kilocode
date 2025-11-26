@@ -56,7 +56,7 @@ function FormattedTextFieldInner<T>(
 		[formatter, onValueChange],
 	)
 
-	const handleBlur = useCallback(() => {
+	const _handleBlur = useCallback(() => {
 		setIsTyping(false)
 		// On blur, format the value properly
 		setRawInput(formatter.format(value))
@@ -68,8 +68,7 @@ function FormattedTextFieldInner<T>(
 		<DecoratedVSCodeTextField
 			{...restProps}
 			value={displayValue}
-			onInput={handleInput}
-			onBlur={handleBlur}
+			onInput={(e) => handleInput(e as unknown as React.FormEvent<HTMLInputElement>)}
 			ref={forwardedRef}
 		/>
 	)

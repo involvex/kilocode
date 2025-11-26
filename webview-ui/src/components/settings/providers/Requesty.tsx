@@ -65,22 +65,21 @@ export const Requesty = ({
 
 	return (
 		<>
+			<div className="flex justify-between items-center mb-1">
+				<label className="block font-medium">{t("settings:providers.requestyApiKey")}</label>
+				{apiConfiguration?.requestyApiKey && (
+					<RequestyBalanceDisplay
+						baseUrl={apiConfiguration.requestyBaseUrl}
+						apiKey={apiConfiguration.requestyApiKey}
+					/>
+				)}
+			</div>
 			<VSCodeTextField
 				value={apiConfiguration?.requestyApiKey || ""}
 				type="password"
 				onInput={handleInputChange("requestyApiKey")}
-				placeholder={t("settings:providers.getRequestyApiKey")}
-				className="w-full">
-				<div className="flex justify-between items-center mb-1">
-					<label className="block font-medium">{t("settings:providers.requestyApiKey")}</label>
-					{apiConfiguration?.requestyApiKey && (
-						<RequestyBalanceDisplay
-							baseUrl={apiConfiguration.requestyBaseUrl}
-							apiKey={apiConfiguration.requestyApiKey}
-						/>
-					)}
-				</div>
-			</VSCodeTextField>
+				placeholder={t("settings:placeholders.apiKey")}
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>
@@ -97,30 +96,28 @@ export const Requesty = ({
 				}}>
 				{t("settings:providers.getRequestyApiKey")}
 			</a>
-
 			<VSCodeCheckbox
 				checked={requestyEndpointSelected}
-				onChange={(e: any) => {
-					const isChecked = e.target.checked === true
-					if (!isChecked) {
+				onChange={(checked: boolean) => {
+					if (!checked) {
 						setApiConfigurationField("requestyBaseUrl", undefined)
 					}
-
-					setRequestyEndpointSelected(isChecked)
+					setRequestyEndpointSelected(checked)
 				}}>
 				{t("settings:providers.requestyUseCustomBaseUrl")}
 			</VSCodeCheckbox>
 			{requestyEndpointSelected && (
-				<VSCodeTextField
-					value={apiConfiguration?.requestyBaseUrl || ""}
-					type="text"
-					onInput={handleInputChange("requestyBaseUrl")}
-					placeholder={t("settings:providers.getRequestyBaseUrl")}
-					className="w-full">
+				<>
 					<div className="flex justify-between items-center mb-1">
 						<label className="block font-medium">{t("settings:providers.getRequestyBaseUrl")}</label>
 					</div>
-				</VSCodeTextField>
+					<VSCodeTextField
+						value={apiConfiguration?.requestyBaseUrl || ""}
+						type="text"
+						onInput={handleInputChange("requestyBaseUrl")}
+						placeholder={t("settings:providers.getRequestyBaseUrl")}
+					/>
+				</>
 			)}
 			<Button
 				variant="outline"

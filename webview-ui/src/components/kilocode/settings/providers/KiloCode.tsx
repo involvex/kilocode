@@ -99,16 +99,15 @@ export const KiloCode = ({
 					</VSCodeButtonLink>
 				))}
 
-			<VSCodeTextField
-				value={apiConfiguration?.kilocodeToken || ""}
-				type="password"
-				onInput={handleInputChange("kilocodeToken")}
-				placeholder={t("kilocode:settings.provider.apiKey")}
-				className="w-full">
-				<div className="flex justify-between items-center mb-1">
-					<label className="block font-medium">{t("kilocode:settings.provider.apiKey")}</label>
-				</div>
-			</VSCodeTextField>
+			<div className="your-style-if-needed">
+				<VSCodeTextField
+					value={apiConfiguration?.kilocodeToken || ""}
+					type="password"
+					onInput={handleInputChange("kilocodeToken")}
+					placeholder={t("settings:placeholders.apiKey")}>
+					<label className="block font-medium mb-1">{t("settings:providers.apiKey")}</label>
+				</VSCodeTextField>
+			</div>
 
 			<OrganizationSelector showLabel />
 

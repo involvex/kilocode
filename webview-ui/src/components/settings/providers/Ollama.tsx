@@ -85,8 +85,7 @@ export const Ollama = ({ apiConfiguration, setApiConfigurationField }: OllamaPro
 				value={apiConfiguration?.ollamaBaseUrl || ""}
 				type="url"
 				onInput={handleInputChange("ollamaBaseUrl")}
-				placeholder={t("settings:defaults.ollamaUrl")}
-				className="w-full">
+				placeholder={t("settings:defaults.ollamaUrl")}>
 				<label className="block font-medium mb-1">{t("settings:providers.ollama.baseUrl")}</label>
 			</VSCodeTextField>
 			{apiConfiguration?.ollamaBaseUrl && (
@@ -94,8 +93,7 @@ export const Ollama = ({ apiConfiguration, setApiConfigurationField }: OllamaPro
 					value={apiConfiguration?.ollamaApiKey || ""}
 					type="password"
 					onInput={handleInputChange("ollamaApiKey")}
-					placeholder={t("settings:placeholders.apiKey")}
-					className="w-full">
+					placeholder={t("settings:placeholders.apiKey")}>
 					<label className="block font-medium mb-1">{t("settings:providers.ollama.apiKey")}</label>
 					<div className="text-xs text-vscode-descriptionForeground mt-1">
 						{t("settings:providers.ollama.apiKeyHelp")}
@@ -105,8 +103,7 @@ export const Ollama = ({ apiConfiguration, setApiConfigurationField }: OllamaPro
 			<VSCodeTextField
 				value={apiConfiguration?.ollamaModelId || ""}
 				onInput={handleInputChange("ollamaModelId")}
-				placeholder={t("settings:placeholders.modelId.ollama")}
-				className="w-full">
+				placeholder={t("settings:placeholders.modelId.ollama")}>
 				<label className="block font-medium mb-1">{t("settings:providers.ollama.modelId")}</label>
 			</VSCodeTextField>
 			{modelNotAvailable && (
@@ -145,8 +142,7 @@ export const Ollama = ({ apiConfiguration, setApiConfigurationField }: OllamaPro
 						}
 					}
 				}}
-				placeholder="e.g., 4096"
-				className="w-full">
+				placeholder="e.g., 4096">
 				<label className="block font-medium mb-1">{t("settings:providers.ollama.numCtx")}</label>
 				<div className="text-xs text-vscode-descriptionForeground mt-1">
 					{t("settings:providers.ollama.numCtxHelp")}

@@ -24,8 +24,7 @@ export const BedrockCustomArn = ({ apiConfiguration, setApiConfigurationField }:
 			<VSCodeTextField
 				value={apiConfiguration?.awsCustomArn || ""}
 				onInput={(e) => setApiConfigurationField("awsCustomArn", (e.target as HTMLInputElement).value)}
-				placeholder={t("settings:placeholders.customArn")}
-				className="w-full">
+				placeholder={t("settings:providers.bedrock.arnFieldPlaceholder")}>
 				<label className="block font-medium mb-1">{t("settings:labels.customArn")}</label>
 			</VSCodeTextField>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">

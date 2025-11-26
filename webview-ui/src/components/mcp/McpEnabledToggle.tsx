@@ -8,7 +8,7 @@ const McpEnabledToggle = () => {
 	const { mcpEnabled, setMcpEnabled } = useExtensionState()
 	const { t } = useAppTranslation()
 
-	const handleChange = (e: Event | FormEvent<HTMLElement>) => {
+	const _handleChange = (e: Event | FormEvent<HTMLElement>) => {
 		const target = ("target" in e ? e.target : null) as HTMLInputElement | null
 		if (!target) return
 		setMcpEnabled(target.checked)
@@ -16,18 +16,11 @@ const McpEnabledToggle = () => {
 	}
 
 	return (
-		<div style={{ marginBottom: "20px" }}>
-			<VSCodeCheckbox checked={mcpEnabled} onChange={handleChange}>
-				<span style={{ fontWeight: "500" }}>{t("mcp:enableToggle.title")}</span>
+		<div className="mb-5">
+			<VSCodeCheckbox checked={mcpEnabled} onChange={(checked) => setMcpEnabled(checked)}>
+				<span className="font-medium">{t("mcp:enableToggle.title")}</span>
 			</VSCodeCheckbox>
-			<p
-				style={{
-					fontSize: "12px",
-					marginTop: "5px",
-					color: "var(--vscode-descriptionForeground)",
-				}}>
-				{t("mcp:enableToggle.description")}
-			</p>
+			<p className="text-xs mt-1.5 text-vscode-descriptionForeground">{t("mcp:enableToggle.description")}</p>
 		</div>
 	)
 }

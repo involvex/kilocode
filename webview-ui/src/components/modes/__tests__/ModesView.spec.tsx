@@ -49,7 +49,7 @@ global.ResizeObserver = MockResizeObserver
 
 Element.prototype.scrollIntoView = vitest.fn()
 
-describe("PromptsView", () => {
+describe("ModesView", () => {
 	beforeEach(() => {
 		vitest.clearAllMocks()
 	})

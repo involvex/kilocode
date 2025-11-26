@@ -192,11 +192,10 @@ export const BrowserSettings = ({
 								<div className="flex items-center gap-2">
 									<VSCodeTextField
 										value={remoteBrowserHost ?? ""}
-										onChange={(e: any) =>
+										onInput={(e: { target: { value: string } }) =>
 											setCachedStateField("remoteBrowserHost", e.target.value || undefined)
 										}
 										placeholder={t("settings:browser.remote.urlPlaceholder")}
-										style={{ flexGrow: 1 }}
 									/>
 									<VSCodeButton disabled={testingConnection} onClick={testConnection}>
 										{testingConnection || discovering

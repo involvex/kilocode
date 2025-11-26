@@ -30,7 +30,9 @@ export const IdeaSuggestionsBox = () => {
 					components={{
 						suggestionButton: (
 							<button
+								type="button"
 								onClick={handleClick}
+								aria-label={t("kilocode:ideaSuggestionsBox.send")}
 								className="text-vscode-textLink-foreground hover:text-vscode-textLink-activeForeground cursor-pointer bg-transparent border-none p-0 font-sans"
 							/>
 						),

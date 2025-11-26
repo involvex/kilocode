@@ -58,22 +58,19 @@ export const Vertex = ({ apiConfiguration, setApiConfigurationField, fromWelcome
 			<VSCodeTextField
 				value={apiConfiguration?.vertexJsonCredentials || ""}
 				onInput={handleInputChange("vertexJsonCredentials")}
-				placeholder={t("settings:placeholders.credentialsJson")}
-				className="w-full">
+				placeholder={t("settings:placeholders.credentialsJson")}>
 				<label className="block font-medium mb-1">{t("settings:providers.googleCloudCredentials")}</label>
 			</VSCodeTextField>
 			<VSCodeTextField
 				value={apiConfiguration?.vertexKeyFile || ""}
 				onInput={handleInputChange("vertexKeyFile")}
-				placeholder={t("settings:placeholders.keyFilePath")}
-				className="w-full">
+				placeholder={t("settings:placeholders.keyFilePath")}>
 				<label className="block font-medium mb-1">{t("settings:providers.googleCloudKeyFile")}</label>
 			</VSCodeTextField>
 			<VSCodeTextField
 				value={apiConfiguration?.vertexProjectId || ""}
 				onInput={handleInputChange("vertexProjectId")}
-				placeholder={t("settings:placeholders.projectId")}
-				className="w-full">
+				placeholder={t("settings:placeholders.projectId")}>
 				<label className="block font-medium mb-1">{t("settings:providers.googleCloudProjectId")}</label>
 			</VSCodeTextField>
 			<div>

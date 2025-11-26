@@ -10,31 +10,30 @@ interface QwenCodeProps {
 export const QwenCode: React.FC<QwenCodeProps> = ({ apiConfiguration, setApiConfigurationField }) => {
 	const defaultPath = "~/.qwen/oauth_creds.json"
 
-	const handleInputChange = (e: Event | React.FormEvent<HTMLElement>) => {
-		const element = e.target as HTMLInputElement
-		setApiConfigurationField("qwenCodeOauthPath", element.value)
-	}
-
-	const handleBlur = (e: Event | React.FormEvent<HTMLElement>) => {
-		const element = e.target as HTMLInputElement
-		// If the field is empty on blur, set it to the default value
-		if (!element.value || element.value.trim() === "") {
-			setApiConfigurationField("qwenCodeOauthPath", defaultPath)
-		}
+	const handleInputChange = (e: { target: { value: string } }) => {
+		setApiConfigurationField("qwenCodeOauthPath", e.target.value)
 	}
 
 	return (
 		<div className="flex flex-col gap-4">
 			<div>
-				<VSCodeTextField
-					value={apiConfiguration?.qwenCodeOauthPath || ""}
+				<label className="block font-medium mb-1">OAuth Credentials Path</label>
+				<div
 					className="w-full mt-1"
-					type="text"
-					onInput={handleInputChange}
-					onBlur={handleBlur}
-					placeholder={defaultPath}>
-					OAuth Credentials Path
-				</VSCodeTextField>
+					onBlur={(e) => {
+						// Handle blur: if field is empty, set to default
+						const input = e.currentTarget.querySelector("input")
+						if (input && (!input.value || input.value.trim() === "")) {
+							setApiConfigurationField("qwenCodeOauthPath", defaultPath)
+						}
+					}}>
+					<VSCodeTextField
+						value={apiConfiguration?.qwenCodeOauthPath || ""}
+						type="text"
+						onInput={handleInputChange}
+						placeholder={defaultPath}
+					/>
+				</div>
 
 				<p className="text-xs mt-1 text-vscode-descriptionForeground">
 					Path to your Qwen OAuth credentials file. Defaults to ~/.qwen/oauth_creds.json if left empty.

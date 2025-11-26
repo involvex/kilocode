@@ -121,22 +121,28 @@ export const OpenAICompatible = ({
 
 	return (
 		<>
-			<VSCodeTextField
-				value={apiConfiguration?.openAiBaseUrl || ""}
-				type="url"
-				onInput={handleInputChange("openAiBaseUrl")}
-				placeholder={t("settings:placeholders.baseUrl")}
-				className="w-full">
+			<div>
 				<label className="block font-medium mb-1">{t("settings:providers.openAiBaseUrl")}</label>
-			</VSCodeTextField>
-			<VSCodeTextField
-				value={apiConfiguration?.openAiApiKey || ""}
-				type="password"
-				onInput={handleInputChange("openAiApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
+				<div className="w-full">
+					<VSCodeTextField
+						value={apiConfiguration?.openAiBaseUrl || ""}
+						type="url"
+						onInput={handleInputChange("openAiBaseUrl")}
+						placeholder={t("settings:placeholders.baseUrl")}
+					/>
+				</div>
+			</div>
+			<div>
 				<label className="block font-medium mb-1">{t("settings:providers.apiKey")}</label>
-			</VSCodeTextField>
+				<div className="w-full">
+					<VSCodeTextField
+						value={apiConfiguration?.openAiApiKey || ""}
+						type="password"
+						onInput={handleInputChange("openAiApiKey")}
+						placeholder={t("settings:placeholders.apiKey")}
+					/>
+				</div>
+			</div>
 			<ModelPicker
 				apiConfiguration={apiConfiguration}
 				setApiConfigurationField={setApiConfigurationField}
@@ -195,12 +201,13 @@ export const OpenAICompatible = ({
 					{t("settings:modelInfo.azureApiVersion")}
 				</Checkbox>
 				{azureApiVersionSelected && (
-					<VSCodeTextField
-						value={apiConfiguration?.azureApiVersion || ""}
-						onInput={handleInputChange("azureApiVersion")}
-						placeholder={`Default: ${azureOpenAiDefaultApiVersion}`}
-						className="w-full mt-1"
-					/>
+					<div className="w-full mt-1">
+						<VSCodeTextField
+							value={apiConfiguration?.azureApiVersion || ""}
+							onInput={handleInputChange("azureApiVersion")}
+							placeholder={`Default: ${azureOpenAiDefaultApiVersion}`}
+						/>
+					</div>
 				)}
 			</div>
 
@@ -221,18 +228,20 @@ export const OpenAICompatible = ({
 				) : (
 					customHeaders.map(([key, value], index) => (
 						<div key={index} className="flex items-center mb-2">
-							<VSCodeTextField
-								value={key}
-								className="flex-1 mr-2"
-								placeholder={t("settings:providers.headerName")}
-								onInput={(e: any) => handleUpdateHeaderKey(index, e.target.value)}
-							/>
-							<VSCodeTextField
-								value={value}
-								className="flex-1 mr-2"
-								placeholder={t("settings:providers.headerValue")}
-								onInput={(e: any) => handleUpdateHeaderValue(index, e.target.value)}
-							/>
+							<div className="flex-1 mr-2">
+								<VSCodeTextField
+									value={key}
+									placeholder={t("settings:providers.headerName")}
+									onInput={(e: any) => handleUpdateHeaderKey(index, e.target.value)}
+								/>
+							</div>
+							<div className="flex-1 mr-2">
+								<VSCodeTextField
+									value={value}
+									placeholder={t("settings:providers.headerValue")}
+									onInput={(e: any) => handleUpdateHeaderValue(index, e.target.value)}
+								/>
+							</div>
 							<StandardTooltip content={t("settings:common.remove")}>
 								<VSCodeButton appearance="icon" onClick={() => handleRemoveCustomHeader(index)}>
 									<span className="codicon codicon-trash"></span>
@@ -288,13 +297,11 @@ export const OpenAICompatible = ({
 				</div>
 
 				<div>
-					<VSCodeTextField
-						value={
-							apiConfiguration?.openAiCustomModelInfo?.maxTokens?.toString() ||
-							openAiModelInfoSaneDefaults.maxTokens?.toString() ||
-							""
-						}
-						type="text"
+					<label className="block font-medium mb-1">
+						{t("settings:providers.customModel.maxTokens.label")}
+					</label>
+					<div
+						className="w-full"
 						style={{
 							borderColor: (() => {
 								const value = apiConfiguration?.openAiCustomModelInfo?.maxTokens
@@ -305,34 +312,36 @@ export const OpenAICompatible = ({
 
 								return value > 0 ? "var(--vscode-charts-green)" : "var(--vscode-errorForeground)"
 							})(),
-						}}
-						onInput={handleInputChange("openAiCustomModelInfo", (e) => {
-							const value = parseInt((e.target as HTMLInputElement).value)
-
-							return {
-								...(apiConfiguration?.openAiCustomModelInfo || openAiModelInfoSaneDefaults),
-								maxTokens: isNaN(value) ? undefined : value,
+						}}>
+						<VSCodeTextField
+							value={
+								apiConfiguration?.openAiCustomModelInfo?.maxTokens?.toString() ||
+								openAiModelInfoSaneDefaults.maxTokens?.toString() ||
+								""
 							}
-						})}
-						placeholder={t("settings:placeholders.numbers.maxTokens")}
-						className="w-full">
-						<label className="block font-medium mb-1">
-							{t("settings:providers.customModel.maxTokens.label")}
-						</label>
-					</VSCodeTextField>
+							type="text"
+							onInput={handleInputChange("openAiCustomModelInfo", (e) => {
+								const value = parseInt((e.target as HTMLInputElement).value)
+
+								return {
+									...(apiConfiguration?.openAiCustomModelInfo || openAiModelInfoSaneDefaults),
+									maxTokens: isNaN(value) ? undefined : value,
+								}
+							})}
+							placeholder={t("settings:placeholders.numbers.maxTokens")}
+						/>
+					</div>
 					<div className="text-sm text-vscode-descriptionForeground">
 						{t("settings:providers.customModel.maxTokens.description")}
 					</div>
 				</div>
 
 				<div>
-					<VSCodeTextField
-						value={
-							apiConfiguration?.openAiCustomModelInfo?.contextWindow?.toString() ||
-							openAiModelInfoSaneDefaults.contextWindow?.toString() ||
-							""
-						}
-						type="text"
+					<label className="block font-medium mb-1">
+						{t("settings:providers.customModel.contextWindow.label")}
+					</label>
+					<div
+						className="w-full"
 						style={{
 							borderColor: (() => {
 								const value = apiConfiguration?.openAiCustomModelInfo?.contextWindow
@@ -343,22 +352,26 @@ export const OpenAICompatible = ({
 
 								return value > 0 ? "var(--vscode-charts-green)" : "var(--vscode-errorForeground)"
 							})(),
-						}}
-						onInput={handleInputChange("openAiCustomModelInfo", (e) => {
-							const value = (e.target as HTMLInputElement).value
-							const parsed = parseInt(value)
-
-							return {
-								...(apiConfiguration?.openAiCustomModelInfo || openAiModelInfoSaneDefaults),
-								contextWindow: isNaN(parsed) ? openAiModelInfoSaneDefaults.contextWindow : parsed,
+						}}>
+						<VSCodeTextField
+							value={
+								apiConfiguration?.openAiCustomModelInfo?.contextWindow?.toString() ||
+								openAiModelInfoSaneDefaults.contextWindow?.toString() ||
+								""
 							}
-						})}
-						placeholder={t("settings:placeholders.numbers.contextWindow")}
-						className="w-full">
-						<label className="block font-medium mb-1">
-							{t("settings:providers.customModel.contextWindow.label")}
-						</label>
-					</VSCodeTextField>
+							type="text"
+							onInput={handleInputChange("openAiCustomModelInfo", (e) => {
+								const value = (e.target as HTMLInputElement).value
+								const parsed = parseInt(value)
+
+								return {
+									...(apiConfiguration?.openAiCustomModelInfo || openAiModelInfoSaneDefaults),
+									contextWindow: isNaN(parsed) ? openAiModelInfoSaneDefaults.contextWindow : parsed,
+								}
+							})}
+							placeholder={t("settings:placeholders.numbers.contextWindow")}
+						/>
+					</div>
 					<div className="text-sm text-vscode-descriptionForeground">
 						{t("settings:providers.customModel.contextWindow.description")}
 					</div>
@@ -418,13 +431,19 @@ export const OpenAICompatible = ({
 				</div>
 
 				<div>
-					<VSCodeTextField
-						value={
-							apiConfiguration?.openAiCustomModelInfo?.inputPrice?.toString() ??
-							openAiModelInfoSaneDefaults.inputPrice?.toString() ??
-							""
-						}
-						type="text"
+					<div className="flex items-center gap-1 mb-1">
+						<label className="block font-medium">
+							{t("settings:providers.customModel.pricing.input.label")}
+						</label>
+						<StandardTooltip content={t("settings:providers.customModel.pricing.input.description")}>
+							<i
+								className="codicon codicon-info text-vscode-descriptionForeground"
+								style={{ fontSize: "12px" }}
+							/>
+						</StandardTooltip>
+					</div>
+					<div
+						className="w-full"
 						style={{
 							borderColor: (() => {
 								const value = apiConfiguration?.openAiCustomModelInfo?.inputPrice
@@ -435,40 +454,42 @@ export const OpenAICompatible = ({
 
 								return value >= 0 ? "var(--vscode-charts-green)" : "var(--vscode-errorForeground)"
 							})(),
-						}}
-						onChange={handleInputChange("openAiCustomModelInfo", (e) => {
-							const value = (e.target as HTMLInputElement).value
-							const parsed = parseFloat(value)
-
-							return {
-								...(apiConfiguration?.openAiCustomModelInfo ?? openAiModelInfoSaneDefaults),
-								inputPrice: isNaN(parsed) ? openAiModelInfoSaneDefaults.inputPrice : parsed,
+						}}>
+						<VSCodeTextField
+							value={
+								apiConfiguration?.openAiCustomModelInfo?.inputPrice?.toString() ??
+								openAiModelInfoSaneDefaults.inputPrice?.toString() ??
+								""
 							}
-						})}
-						placeholder={t("settings:placeholders.numbers.inputPrice")}
-						className="w-full">
-						<div className="flex items-center gap-1">
-							<label className="block font-medium mb-1">
-								{t("settings:providers.customModel.pricing.input.label")}
-							</label>
-							<StandardTooltip content={t("settings:providers.customModel.pricing.input.description")}>
-								<i
-									className="codicon codicon-info text-vscode-descriptionForeground"
-									style={{ fontSize: "12px" }}
-								/>
-							</StandardTooltip>
-						</div>
-					</VSCodeTextField>
+							type="text"
+							onChange={handleInputChange("openAiCustomModelInfo", (e) => {
+								const value = (e.target as HTMLInputElement).value
+								const parsed = parseFloat(value)
+
+								return {
+									...(apiConfiguration?.openAiCustomModelInfo ?? openAiModelInfoSaneDefaults),
+									inputPrice: isNaN(parsed) ? openAiModelInfoSaneDefaults.inputPrice : parsed,
+								}
+							})}
+							placeholder={t("settings:placeholders.numbers.inputPrice")}
+						/>
+					</div>
 				</div>
 
 				<div>
-					<VSCodeTextField
-						value={
-							apiConfiguration?.openAiCustomModelInfo?.outputPrice?.toString() ||
-							openAiModelInfoSaneDefaults.outputPrice?.toString() ||
-							""
-						}
-						type="text"
+					<div className="flex items-center gap-1 mb-1">
+						<label className="block font-medium">
+							{t("settings:providers.customModel.pricing.output.label")}
+						</label>
+						<StandardTooltip content={t("settings:providers.customModel.pricing.output.description")}>
+							<i
+								className="codicon codicon-info text-vscode-descriptionForeground"
+								style={{ fontSize: "12px" }}
+							/>
+						</StandardTooltip>
+					</div>
+					<div
+						className="w-full"
 						style={{
 							borderColor: (() => {
 								const value = apiConfiguration?.openAiCustomModelInfo?.outputPrice
@@ -479,38 +500,45 @@ export const OpenAICompatible = ({
 
 								return value >= 0 ? "var(--vscode-charts-green)" : "var(--vscode-errorForeground)"
 							})(),
-						}}
-						onChange={handleInputChange("openAiCustomModelInfo", (e) => {
-							const value = (e.target as HTMLInputElement).value
-							const parsed = parseFloat(value)
-
-							return {
-								...(apiConfiguration?.openAiCustomModelInfo || openAiModelInfoSaneDefaults),
-								outputPrice: isNaN(parsed) ? openAiModelInfoSaneDefaults.outputPrice : parsed,
+						}}>
+						<VSCodeTextField
+							value={
+								apiConfiguration?.openAiCustomModelInfo?.outputPrice?.toString() ||
+								openAiModelInfoSaneDefaults.outputPrice?.toString() ||
+								""
 							}
-						})}
-						placeholder={t("settings:placeholders.numbers.outputPrice")}
-						className="w-full">
-						<div className="flex items-center gap-1">
-							<label className="block font-medium mb-1">
-								{t("settings:providers.customModel.pricing.output.label")}
-							</label>
-							<StandardTooltip content={t("settings:providers.customModel.pricing.output.description")}>
-								<i
-									className="codicon codicon-info text-vscode-descriptionForeground"
-									style={{ fontSize: "12px" }}
-								/>
-							</StandardTooltip>
-						</div>
-					</VSCodeTextField>
+							type="text"
+							onChange={handleInputChange("openAiCustomModelInfo", (e) => {
+								const value = (e.target as HTMLInputElement).value
+								const parsed = parseFloat(value)
+
+								return {
+									...(apiConfiguration?.openAiCustomModelInfo || openAiModelInfoSaneDefaults),
+									outputPrice: isNaN(parsed) ? openAiModelInfoSaneDefaults.outputPrice : parsed,
+								}
+							})}
+							placeholder={t("settings:placeholders.numbers.outputPrice")}
+						/>
+					</div>
 				</div>
 
 				{apiConfiguration?.openAiCustomModelInfo?.supportsPromptCache && (
 					<>
 						<div>
-							<VSCodeTextField
-								value={apiConfiguration?.openAiCustomModelInfo?.cacheReadsPrice?.toString() ?? "0"}
-								type="text"
+							<div className="flex items-center gap-1 mb-1">
+								<span className="font-medium">
+									{t("settings:providers.customModel.pricing.cacheReads.label")}
+								</span>
+								<StandardTooltip
+									content={t("settings:providers.customModel.pricing.cacheReads.description")}>
+									<i
+										className="codicon codicon-info text-vscode-descriptionForeground"
+										style={{ fontSize: "12px" }}
+									/>
+								</StandardTooltip>
+							</div>
+							<div
+								className="w-full"
 								style={{
 									borderColor: (() => {
 										const value = apiConfiguration?.openAiCustomModelInfo?.cacheReadsPrice
@@ -523,36 +551,38 @@ export const OpenAICompatible = ({
 											? "var(--vscode-charts-green)"
 											: "var(--vscode-errorForeground)"
 									})(),
-								}}
-								onChange={handleInputChange("openAiCustomModelInfo", (e) => {
-									const value = (e.target as HTMLInputElement).value
-									const parsed = parseFloat(value)
+								}}>
+								<VSCodeTextField
+									value={apiConfiguration?.openAiCustomModelInfo?.cacheReadsPrice?.toString() ?? "0"}
+									type="text"
+									onChange={handleInputChange("openAiCustomModelInfo", (e) => {
+										const value = (e.target as HTMLInputElement).value
+										const parsed = parseFloat(value)
 
-									return {
-										...(apiConfiguration?.openAiCustomModelInfo ?? openAiModelInfoSaneDefaults),
-										cacheReadsPrice: isNaN(parsed) ? 0 : parsed,
-									}
-								})}
-								placeholder={t("settings:placeholders.numbers.inputPrice")}
-								className="w-full">
-								<div className="flex items-center gap-1">
-									<span className="font-medium">
-										{t("settings:providers.customModel.pricing.cacheReads.label")}
-									</span>
-									<StandardTooltip
-										content={t("settings:providers.customModel.pricing.cacheReads.description")}>
-										<i
-											className="codicon codicon-info text-vscode-descriptionForeground"
-											style={{ fontSize: "12px" }}
-										/>
-									</StandardTooltip>
-								</div>
-							</VSCodeTextField>
+										return {
+											...(apiConfiguration?.openAiCustomModelInfo ?? openAiModelInfoSaneDefaults),
+											cacheReadsPrice: isNaN(parsed) ? 0 : parsed,
+										}
+									})}
+									placeholder={t("settings:placeholders.numbers.inputPrice")}
+								/>
+							</div>
 						</div>
 						<div>
-							<VSCodeTextField
-								value={apiConfiguration?.openAiCustomModelInfo?.cacheWritesPrice?.toString() ?? "0"}
-								type="text"
+							<div className="flex items-center gap-1 mb-1">
+								<label className="block font-medium">
+									{t("settings:providers.customModel.pricing.cacheWrites.label")}
+								</label>
+								<StandardTooltip
+									content={t("settings:providers.customModel.pricing.cacheWrites.description")}>
+									<i
+										className="codicon codicon-info text-vscode-descriptionForeground"
+										style={{ fontSize: "12px" }}
+									/>
+								</StandardTooltip>
+							</div>
+							<div
+								className="w-full"
 								style={{
 									borderColor: (() => {
 										const value = apiConfiguration?.openAiCustomModelInfo?.cacheWritesPrice
@@ -565,31 +595,22 @@ export const OpenAICompatible = ({
 											? "var(--vscode-charts-green)"
 											: "var(--vscode-errorForeground)"
 									})(),
-								}}
-								onChange={handleInputChange("openAiCustomModelInfo", (e) => {
-									const value = (e.target as HTMLInputElement).value
-									const parsed = parseFloat(value)
+								}}>
+								<VSCodeTextField
+									value={apiConfiguration?.openAiCustomModelInfo?.cacheWritesPrice?.toString() ?? "0"}
+									type="text"
+									onChange={handleInputChange("openAiCustomModelInfo", (e) => {
+										const value = (e.target as HTMLInputElement).value
+										const parsed = parseFloat(value)
 
-									return {
-										...(apiConfiguration?.openAiCustomModelInfo ?? openAiModelInfoSaneDefaults),
-										cacheWritesPrice: isNaN(parsed) ? 0 : parsed,
-									}
-								})}
-								placeholder={t("settings:placeholders.numbers.cacheWritePrice")}
-								className="w-full">
-								<div className="flex items-center gap-1">
-									<label className="block font-medium mb-1">
-										{t("settings:providers.customModel.pricing.cacheWrites.label")}
-									</label>
-									<StandardTooltip
-										content={t("settings:providers.customModel.pricing.cacheWrites.description")}>
-										<i
-											className="codicon codicon-info text-vscode-descriptionForeground"
-											style={{ fontSize: "12px" }}
-										/>
-									</StandardTooltip>
-								</div>
-							</VSCodeTextField>
+										return {
+											...(apiConfiguration?.openAiCustomModelInfo ?? openAiModelInfoSaneDefaults),
+											cacheWritesPrice: isNaN(parsed) ? 0 : parsed,
+										}
+									})}
+									placeholder={t("settings:placeholders.numbers.cacheWritePrice")}
+								/>
+							</div>
 						</div>
 					</>
 				)}

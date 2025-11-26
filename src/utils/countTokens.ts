@@ -33,7 +33,7 @@ export async function countTokens(
 		const result = countTokensResultSchema.parse(data)
 
 		if (!result.success) {
-			throw new Error(result.error)
+			throw new Error((result as { success?: false; error?: string }).error || "Unknown error")
 		}
 
 		return result.count

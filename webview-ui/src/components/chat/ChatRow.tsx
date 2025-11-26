@@ -971,9 +971,9 @@ export const ChatRowContent = ({
 										/{slashCommandInfo.command}
 									</span>
 									{slashCommandInfo.source && (
-										<VSCodeBadge style={{ fontSize: "calc(var(--vscode-font-size) - 2px)" }}>
-											{slashCommandInfo.source}
-										</VSCodeBadge>
+										<div style={{ fontSize: "calc(var(--vscode-font-size) - 2px)" }}>
+											<VSCodeBadge>{slashCommandInfo.source}</VSCodeBadge>
+										</div>
 									)}
 								</div>
 								<span
@@ -1462,11 +1462,14 @@ export const ChatRowContent = ({
 													</div>
 												)}
 												{slashCommandInfo.source && (
-													<div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-														<VSCodeBadge
-															style={{ fontSize: "calc(var(--vscode-font-size) - 2px)" }}>
-															{slashCommandInfo.source}
-														</VSCodeBadge>
+													<div
+														style={{
+															display: "flex",
+															alignItems: "center",
+															gap: "4px",
+															fontSize: "calc(var(--vscode-font-size) - 2px)",
+														}}>
+														<VSCodeBadge>{slashCommandInfo.source}</VSCodeBadge>
 													</div>
 												)}
 											</ToolUseBlockHeader>

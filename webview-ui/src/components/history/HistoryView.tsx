@@ -117,18 +117,17 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 				</div>
 				<div className="flex flex-col gap-2">
 					<VSCodeTextField
-						className="w-full"
-						placeholder={t("history:searchPlaceholder")}
 						value={searchQuery}
-						data-testid="history-search-input"
-						onInput={(e) => {
-							const newValue = (e.target as HTMLInputElement)?.value
+						onInput={(e: { target: { value: string } }) => {
+							const newValue = e.target.value
 							setSearchQuery(newValue)
 							if (newValue && !searchQuery && sortOption !== "mostRelevant") {
 								setLastNonRelevantSort(sortOption)
 								setSortOption("mostRelevant")
 							}
-						}}>
+						}}
+						placeholder={t("history:searchPlaceholder")}
+						data-testid="history-search-input">
 						<div slot="start" className="codicon codicon-search mt-0.5 opacity-80 text-sm!" />
 						{searchQuery && (
 							<div

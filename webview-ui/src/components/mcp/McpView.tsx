@@ -319,7 +319,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 									{t("mcp:tabs.logs")} ({server.errorHistory?.length || 0})
 								</VSCodePanelTab>
 
-								<VSCodePanelView id="tools-view">
+								<VSCodePanelView>
 									{server.tools && server.tools.length > 0 ? (
 										<div className={styles.toolsContainer}>
 											{server.tools.map((tool) => (
@@ -337,7 +337,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 									)}
 								</VSCodePanelView>
 
-								<VSCodePanelView id="resources-view">
+								<VSCodePanelView>
 									{(server.resources && server.resources.length > 0) ||
 									(server.resourceTemplates && server.resourceTemplates.length > 0) ? (
 										<div className={styles.resourcesContainer}>
@@ -356,7 +356,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 								</VSCodePanelView>
 
 								{server.instructions && (
-									<VSCodePanelView id="instructions-view">
+									<VSCodePanelView>
 										<div className={styles.instructionsContainer}>
 											<div className="opacity-80 whitespace-pre-wrap break-words">
 												{server.instructions}
@@ -365,7 +365,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 									</VSCodePanelView>
 								)}
 
-								<VSCodePanelView id="logs-view">
+								<VSCodePanelView>
 									{server.errorHistory && server.errorHistory.length > 0 ? (
 										<div className={styles.logsContainer}>
 											{server.errorHistory.map((error, index) => (
@@ -431,15 +431,16 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 										</React.Fragment>
 									))}
 							</div>
-							<VSCodeButton
-								appearance="secondary"
-								onClick={handleRestart}
-								disabled={server.status === "connecting"}
-								style={{ width: "calc(100% - 20px)", margin: "0 10px 10px 10px" }}>
-								{server.status === "connecting"
-									? t("mcp:serverStatus.retrying")
-									: t("mcp:serverStatus.retryConnection")}
-							</VSCodeButton>
+							<div style={{ width: "calc(100% - 20px)", margin: "0 10px 10px 10px" }}>
+								<VSCodeButton
+									appearance="secondary"
+									onClick={handleRestart}
+									disabled={server.status === "connecting"}>
+									{server.status === "connecting"
+										? t("mcp:serverStatus.retrying")
+										: t("mcp:serverStatus.retryConnection")}
+								</VSCodeButton>
+							</div>
 						</div>
 					)}
 

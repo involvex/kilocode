@@ -3,9 +3,9 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import { IExtensionDescription, TargetPlatform } from "../deps/vscode/vs/platform/extensions/common/extensions.ts"
-import { URI } from "../deps/vscode/vs/base/common/uri.ts"
-import { ExtHostContext } from "../deps/vscode/vs/workbench/api/common/extHost.protocol.ts"
+import { IExtensionDescription, TargetPlatform } from "../deps/vscode/src/vs/platform/extensions/common/extensions.ts"
+import { URI } from "../deps/vscode/src/vs/base/common/uri.ts"
+import { ExtHostContext } from "../deps/vscode/src/vs/workbench/api/common/extHost.protocol.ts"
 import * as fs from "fs"
 import * as path from "path"
 
@@ -27,16 +27,17 @@ export class ExtensionManager {
 		const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"))
 
 		return {
-			identifier: { value: packageJson.name },
+			identifier: { value: packageJson.name, _lower: packageJson.name.toLowerCase() },
 			name: packageJson.name,
 			version: packageJson.version,
 			main: "./extension.cjs",
 			activationEvents: packageJson.activationEvents || ["onStartupFinished"],
 			extensionLocation: URI.file(path.resolve(extensionPath)),
-			targetPlatform: TargetPlatform.DARWIN_UNIVERSAL,
+			targetPlatform: TargetPlatform.UNIVERSAL,
 			isBuiltin: false,
 			isUserBuiltin: false,
 			isUnderDevelopment: false,
+			publisher: packageJson.publisher || "unknown",
 			engines: packageJson.engines || { vscode: "^1.0.0" },
 			preRelease: false,
 			capabilities: {},

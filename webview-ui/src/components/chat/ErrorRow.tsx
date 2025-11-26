@@ -99,7 +99,7 @@ export const ErrorRow = memo(
 								<VSCodeButton
 									appearance="icon"
 									className="p-0.75 h-6 mr-1 text-vscode-editor-foreground flex items-center justify-center bg-transparent"
-									onClick={handleCopy}>
+									onClick={() => handleCopy({ stopPropagation: () => {} } as any)}>
 									<span className={`codicon codicon-${showCopySuccess ? "check" : "copy"}`} />
 								</VSCodeButton>
 							)}

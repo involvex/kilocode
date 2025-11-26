@@ -1,6 +1,5 @@
 import { useCallback, useState, useEffect } from "react"
 import knuthShuffle from "knuth-shuffle-seeded"
-import { Trans } from "react-i18next"
 import { VSCodeButton, VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 import posthog from "posthog-js"
 
@@ -65,12 +64,11 @@ const WelcomeView = () => {
 				<h2 className="mt-0 mb-4 text-xl text-center">{t("welcome:greeting")}</h2>
 
 				<div className="text-base text-vscode-foreground py-2 px-2 mb-4">
-					<p className="mb-3 leading-relaxed">
-						<Trans i18nKey="welcome:introduction" />
-					</p>
-					<p className="mb-0 leading-relaxed">
-						<Trans i18nKey="welcome:chooseProvider" />
-					</p>
+					<p
+						className="mb-3 leading-relaxed"
+						dangerouslySetInnerHTML={{ __html: t("welcome:introduction") }}
+					/>
+					<p className="mb-0 leading-relaxed">{t("welcome:chooseProvider")}</p>
 				</div>
 
 				<div className="mb-4">

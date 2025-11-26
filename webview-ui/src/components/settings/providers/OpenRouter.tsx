@@ -53,22 +53,21 @@ export const OpenRouter = ({
 
 	return (
 		<>
+			<div className="flex justify-between items-center mb-1">
+				<label className="block font-medium">{t("settings:providers.openRouterApiKey")}</label>
+				{apiConfiguration?.openRouterApiKey && (
+					<OpenRouterBalanceDisplay
+						apiKey={apiConfiguration.openRouterApiKey}
+						baseUrl={apiConfiguration.openRouterBaseUrl}
+					/>
+				)}
+			</div>
 			<VSCodeTextField
 				value={apiConfiguration?.openRouterApiKey || ""}
 				type="password"
 				onInput={handleInputChange("openRouterApiKey")}
 				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<div className="flex justify-between items-center mb-1">
-					<label className="block font-medium">{t("settings:providers.openRouterApiKey")}</label>
-					{apiConfiguration?.openRouterApiKey && (
-						<OpenRouterBalanceDisplay
-							apiKey={apiConfiguration.openRouterApiKey}
-							baseUrl={apiConfiguration.openRouterBaseUrl}
-						/>
-					)}
-				</div>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>
@@ -97,7 +96,6 @@ export const OpenRouter = ({
 								type="url"
 								onInput={handleInputChange("openRouterBaseUrl")}
 								placeholder="Default: https://openrouter.ai/api/v1"
-								className="w-full mt-1"
 							/>
 						)}
 					</div>

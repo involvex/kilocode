@@ -3,31 +3,35 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import { RPCProtocol } from "../deps/vscode/vs/workbench/services/extensions/common/rpcProtocol.js"
-import { IRPCProtocol } from "../deps/vscode/vs/workbench/services/extensions/common/proxyIdentifier.js"
-import { PersistentProtocol } from "../deps/vscode/vs/base/parts/ipc/common/ipc.net.js"
-import { MainContext, ExtHostContext } from "../deps/vscode/vs/workbench/api/common/extHost.protocol.js"
+import { RPCProtocol } from "../deps/vscode/src/vs/workbench/services/extensions/common/rpcProtocol.js"
+import { IRPCProtocol } from "../deps/vscode/src/vs/workbench/services/extensions/common/proxyIdentifier.js"
+import { PersistentProtocol } from "../deps/vscode/src/vs/base/parts/ipc/common/ipc.net.js"
+import { MainContext, ExtHostContext } from "../deps/vscode/src/vs/workbench/api/common/extHost.protocol.js"
 import {
 	IRPCProtocolLogger,
 	RequestInitiator,
-} from "../deps/vscode/vs/workbench/services/extensions/common/rpcProtocol.js"
-import { UriComponents, UriDto } from "../deps/vscode/vs/base/common/uri.js"
-import { LogLevel } from "../deps/vscode/vs/platform/log/common/log.js"
-import { ILoggerResource } from "../deps/vscode/vs/platform/log/common/log.js"
-import { TerminalLaunchConfig } from "../deps/vscode/vs/workbench/api/common/extHost.protocol.js"
-import { IRawFileMatch2 } from "../deps/vscode/vs/workbench/services/search/common/search.js"
-import { VSBuffer } from "../deps/vscode/vs/base/common/buffer.js"
-import { SerializedError, transformErrorFromSerialization } from "../deps/vscode/vs/base/common/errors.js"
-import { IRemoteConsoleLog } from "../deps/vscode/vs/base/common/console.js"
-import { FileType, FilePermission, FileSystemProviderErrorCode } from "../deps/vscode/vs/platform/files/common/files.js"
+} from "../deps/vscode/src/vs/workbench/services/extensions/common/rpcProtocol.js"
+import { UriComponents, UriDto } from "../deps/vscode/src/vs/base/common/uri.js"
+import { LogLevel } from "../deps/vscode/src/vs/platform/log/common/log.js"
+import { ILoggerResource } from "../deps/vscode/src/vs/platform/log/common/log.js"
+import { TerminalLaunchConfig } from "../deps/vscode/src/vs/workbench/api/common/extHost.protocol.js"
+import { IRawFileMatch2 } from "../deps/vscode/src/vs/workbench/services/search/common/search.js"
+import { VSBuffer } from "../deps/vscode/src/vs/base/common/buffer.js"
+import { SerializedError, transformErrorFromSerialization } from "../deps/vscode/src/vs/base/common/errors.js"
+import { IRemoteConsoleLog } from "../deps/vscode/src/vs/base/common/console.js"
+import {
+	FileType,
+	FilePermission,
+	FileSystemProviderErrorCode,
+} from "../deps/vscode/src/vs/platform/files/common/files.js"
 import * as fs from "fs"
 import { promisify } from "util"
-import { ConfigurationModel } from "../deps/vscode/vs/platform/configuration/common/configurationModels.js"
-import { NullLogService } from "../deps/vscode/vs/platform/log/common/log.js"
-import { ExtensionIdentifier } from "../deps/vscode/vs/platform/extensions/common/extensions.js"
-import { ExtensionActivationReason } from "../deps/vscode/vs/workbench/services/extensions/common/extensions.js"
-import { IExtensionDescription } from "../deps/vscode/vs/platform/extensions/common/extensions.js"
-import { Dto } from "../deps/vscode/vs/workbench/services/extensions/common/proxyIdentifier.js"
+import { ConfigurationModel } from "../deps/vscode/src/vs/platform/configuration/common/configurationModels.js"
+import { NullLogService } from "../deps/vscode/src/vs/platform/log/common/log.js"
+import { ExtensionIdentifier } from "../deps/vscode/src/vs/platform/extensions/common/extensions.js"
+import { ExtensionActivationReason } from "../deps/vscode/src/vs/workbench/services/extensions/common/extensions.js"
+import { IExtensionDescription } from "../deps/vscode/src/vs/platform/extensions/common/extensions.js"
+import { Dto } from "../deps/vscode/src/vs/workbench/services/extensions/common/proxyIdentifier.js"
 import { ExtensionManager } from "./extensionManager.js"
 import { WebViewManager } from "./webViewManager.js"
 

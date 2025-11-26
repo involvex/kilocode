@@ -32,7 +32,7 @@ export const IOIntelligence = ({
 	const { t } = useAppTranslation()
 	const { routerModels } = useExtensionState()
 
-	const handleInputChange = useCallback(
+	const _handleInputChange = useCallback(
 		<K extends keyof ProviderSettings, E>(
 			field: K,
 			transform: (event: E) => ProviderSettings[K] = inputEventTransform,
@@ -47,12 +47,9 @@ export const IOIntelligence = ({
 		<>
 			<VSCodeTextField
 				value={apiConfiguration?.ioIntelligenceApiKey || ""}
-				type="password"
-				onInput={handleInputChange("ioIntelligenceApiKey")}
+				onInput={(e) => setApiConfigurationField("ioIntelligenceApiKey", e.target.value)}
 				placeholder={t("settings:providers.ioIntelligenceApiKeyPlaceholder")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.ioIntelligenceApiKey")}</label>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>

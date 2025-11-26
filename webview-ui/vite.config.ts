@@ -74,6 +74,10 @@ export default defineConfig(({ mode }) => {
 		"process.env.PKG_NAME": JSON.stringify(pkg.name),
 		"process.env.PKG_VERSION": JSON.stringify(pkg.version),
 		"process.env.PKG_OUTPUT_CHANNEL": JSON.stringify("Kilo-Code"),
+		// Browser polyfills for Node.js modules
+		global: "globalThis",
+		"process.env.NODE_DEBUG": "false",
+		"process.browser": "true",
 		...(gitSha ? { "process.env.PKG_SHA": JSON.stringify(gitSha) } : {}),
 	}
 

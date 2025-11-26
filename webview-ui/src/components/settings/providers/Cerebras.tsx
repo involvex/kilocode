@@ -33,9 +33,8 @@ export const Cerebras = ({ apiConfiguration, setApiConfigurationField }: Cerebra
 				value={apiConfiguration?.cerebrasApiKey || ""}
 				type="password"
 				onInput={handleInputChange("cerebrasApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.cerebrasApiKey")}</label>
+				placeholder={t("settings:placeholders.apiKey")}>
+				<label>{t("settings:providers.cerebrasApiKey")}</label>
 			</VSCodeTextField>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}

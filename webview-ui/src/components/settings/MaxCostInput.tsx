@@ -30,7 +30,6 @@ export function MaxCostInput({ allowedMaxCost, onValueChange }: MaxCostInputProp
 				onValueChange={handleValueChange}
 				formatter={unlimitedDecimalFormatter}
 				placeholder={t("settings:autoApprove.apiCostLimit.unlimited")}
-				style={{ maxWidth: "200px" }}
 				data-testid="max-cost-input"
 				leftNodes={[<span key="dollar">$</span>]}
 			/>

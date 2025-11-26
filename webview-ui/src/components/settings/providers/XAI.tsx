@@ -29,14 +29,15 @@ export const XAI = ({ apiConfiguration, setApiConfigurationField }: XAIProps) =>
 
 	return (
 		<>
-			<VSCodeTextField
-				value={apiConfiguration?.xaiApiKey || ""}
-				type="password"
-				onInput={handleInputChange("xaiApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.xaiApiKey")}</label>
-			</VSCodeTextField>
+			<div className="w-full">
+				<VSCodeTextField
+					value={apiConfiguration?.xaiApiKey || ""}
+					type="password"
+					onInput={handleInputChange("xaiApiKey")}
+					placeholder={t("settings:placeholders.apiKey")}>
+					<label className="block font-medium mb-1">{t("settings:providers.xaiApiKey")}</label>
+				</VSCodeTextField>
+			</div>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>

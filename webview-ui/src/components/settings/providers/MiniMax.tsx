@@ -1,5 +1,5 @@
 import { useCallback } from "react"
-import { VSCodeTextField, VSCodeDropdown, VSCodeOption } from "@vscode/webview-ui-toolkit/react"
+import { VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
 
 import type { ProviderSettings } from "@roo-code/types"
 
@@ -32,29 +32,24 @@ export const MiniMax = ({ apiConfiguration, setApiConfigurationField }: MiniMaxP
 		<>
 			<div>
 				<label className="block font-medium mb-1">{t("settings:providers.minimaxBaseUrl")}</label>
-				<VSCodeDropdown
+				<select
 					value={apiConfiguration.minimaxBaseUrl}
 					onChange={handleInputChange("minimaxBaseUrl")}
 					className={cn("w-full")}>
 					{/* kilocode_change start: anthropic api */}
-					<VSCodeOption value="https://api.minimax.io/anthropic" className="p-2">
-						api.minimax.io
-					</VSCodeOption>
-					<VSCodeOption value="https://api.minimaxi.com/anthropic" className="p-2">
-						api.minimaxi.com
-					</VSCodeOption>
+					<option value="https://api.minimax.io/anthropic">api.minimax.io</option>
+					<option value="https://api.minimaxi.com/anthropic">api.minimaxi.com</option>
 					{/* kilocode_change end */}
-				</VSCodeDropdown>
+				</select>
 			</div>
 			<div>
+				<label className="block font-medium mb-1">{t("settings:providers.minimaxApiKey")}</label>
 				<VSCodeTextField
 					value={apiConfiguration?.minimaxApiKey || ""}
 					type="password"
 					onInput={handleInputChange("minimaxApiKey")}
 					placeholder={t("settings:placeholders.apiKey")}
-					className="w-full">
-					<label className="block font-medium mb-1">{t("settings:providers.minimaxApiKey")}</label>
-				</VSCodeTextField>
+				/>
 				<div className="text-sm text-vscode-descriptionForeground">
 					{t("settings:providers.apiKeyStorageNotice")}
 				</div>

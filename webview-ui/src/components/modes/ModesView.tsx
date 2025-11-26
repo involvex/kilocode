@@ -428,28 +428,25 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 
 	// Handler for group checkbox changes
 	const handleGroupChange = useCallback(
-		(group: ToolGroup, isCustomMode: boolean, customMode: ModeConfig | undefined) =>
-			(e: Event | React.FormEvent<HTMLElement>) => {
-				if (!isCustomMode) return // Prevent changes to built-in modes
-				const target = (e as CustomEvent)?.detail?.target || (e.target as HTMLInputElement)
-				const checked = target.checked
-				const oldGroups = customMode?.groups || []
-				let newGroups: GroupEntry[]
-				if (checked) {
-					newGroups = [...oldGroups, group]
-				} else {
-					newGroups = oldGroups.filter((g) => getGroupName(g) !== group)
-				}
-				if (customMode) {
-					const source = customMode.source || "global"
+		(group: ToolGroup, isCustomMode: boolean, customMode: ModeConfig | undefined) => (checked: boolean) => {
+			if (!isCustomMode) return // Prevent changes to built-in modes
+			const oldGroups = customMode?.groups || []
+			let newGroups: GroupEntry[]
+			if (checked) {
+				newGroups = [...oldGroups, group]
+			} else {
+				newGroups = oldGroups.filter((g) => getGroupName(g) !== group)
+			}
+			if (customMode) {
+				const source = customMode.source || "global"
 
-					updateCustomMode(customMode.slug, {
-						...customMode,
-						groups: newGroups,
-						source,
-					})
-				}
-			},
+				updateCustomMode(customMode.slug, {
+					...customMode,
+					groups: newGroups,
+					source,
+				})
+			}
+		},
 		[updateCustomMode],
 	)
 
@@ -861,7 +858,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 								{t("prompts:roleDefinition.description")}
 							</div>
 							<VSCodeTextArea
-								resize="vertical"
 								value={(() => {
 									const customMode = findModeBySlug(visualMode, customModes)
 									const prompt = customModePrompts?.[visualMode] as PromptComponent
@@ -979,7 +975,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 								{t("prompts:whenToUse.description")}
 							</div>
 							<VSCodeTextArea
-								resize="vertical"
 								value={(() => {
 									const customMode = findModeBySlug(visualMode, customModes)
 									const prompt = customModePrompts?.[visualMode] as PromptComponent
@@ -1146,7 +1141,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 								})}
 							</div>
 							<VSCodeTextArea
-								resize="vertical"
 								value={(() => {
 									const customMode = findModeBySlug(visualMode, customModes)
 									const prompt = customModePrompts?.[visualMode] as PromptComponent
@@ -1300,9 +1294,11 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 						{/* Advanced Features Disclosure */}
 						<div className="mt-4">
 							<button
+								type="button"
 								onClick={() => setIsSystemPromptDisclosureOpen(!isSystemPromptDisclosureOpen)}
 								className="flex items-center text-xs text-vscode-foreground hover:text-vscode-textLink-foreground focus:outline-none"
-								aria-expanded={isSystemPromptDisclosureOpen ? "true" : "false"}>
+								{...(isSystemPromptDisclosureOpen && { "aria-expanded": "true" })}
+								{...(!isSystemPromptDisclosureOpen && { "aria-expanded": "false" })}>
 								<span
 									className={`codicon codicon-${isSystemPromptDisclosureOpen ? "chevron-down" : "chevron-right"} mr-1`}></span>
 								<span>{t("prompts:advanced.title")}</span>
@@ -1374,7 +1370,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 							</Trans>
 						</div>
 						<VSCodeTextArea
-							resize="vertical"
 							value={customInstructions || ""}
 							onChange={(e) => {
 								const value =
@@ -1477,10 +1472,8 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 									</div>
 									<VSCodeRadioGroup
 										value={newModeSource}
-										onChange={(e: Event | React.FormEvent<HTMLElement>) => {
-											const target = ((e as CustomEvent)?.detail?.target ||
-												(e.target as HTMLInputElement)) as HTMLInputElement
-											setNewModeSource(target.value as ModeSource)
+										onChange={(value: string) => {
+											setNewModeSource(value as ModeSource)
 										}}>
 										<VSCodeRadio value="global">
 											{t("prompts:createModeDialog.saveLocation.global.label")}
@@ -1505,7 +1498,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 										{t("prompts:createModeDialog.roleDefinition.description")}
 									</div>
 									<VSCodeTextArea
-										resize="vertical"
 										value={newModeRoleDefinition}
 										onChange={(e) => {
 											setNewModeRoleDefinition((e.target as HTMLTextAreaElement).value)
@@ -1529,8 +1521,8 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 									</div>
 									<VSCodeTextField
 										value={newModeDescription}
-										onChange={(e) => {
-											setNewModeDescription((e.target as HTMLInputElement).value)
+										onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+											setNewModeDescription(e.target.value)
 										}}
 										className="w-full"
 									/>
@@ -1549,7 +1541,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 										{t("prompts:createModeDialog.whenToUse.description")}
 									</div>
 									<VSCodeTextArea
-										resize="vertical"
 										value={newModeWhenToUse}
 										onChange={(e) => {
 											setNewModeWhenToUse((e.target as HTMLTextAreaElement).value)
@@ -1568,11 +1559,7 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 											<VSCodeCheckbox
 												key={group}
 												checked={newModeGroups.some((g) => getGroupName(g) === group)}
-												onChange={(e: Event | React.FormEvent<HTMLElement>) => {
-													const target =
-														(e as CustomEvent)?.detail?.target ||
-														(e.target as HTMLInputElement)
-													const checked = target.checked
+												onChange={(checked: boolean) => {
 													if (checked) {
 														setNewModeGroups([...newModeGroups, group])
 													} else {
@@ -1597,7 +1584,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 										{t("prompts:createModeDialog.customInstructions.description")}
 									</div>
 									<VSCodeTextArea
-										resize="vertical"
 										value={newModeCustomInstructions}
 										onChange={(e) => {
 											setNewModeCustomInstructions((e.target as HTMLTextAreaElement).value)

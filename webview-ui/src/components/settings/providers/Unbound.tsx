@@ -143,12 +143,9 @@ export const Unbound = ({
 		<>
 			<VSCodeTextField
 				value={apiConfiguration?.unboundApiKey || ""}
-				type="password"
 				onInput={handleInputChange("unboundApiKey")}
 				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.unboundApiKey")}</label>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>

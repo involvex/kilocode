@@ -1,5 +1,3 @@
-import { VSCodeProgressRing } from "@vscode/webview-ui-toolkit/react"
-
 export const ProgressIndicator = () => (
 	<div
 		style={{
@@ -9,8 +7,20 @@ export const ProgressIndicator = () => (
 			alignItems: "center",
 			justifyContent: "center",
 		}}>
-		<div style={{ transform: "scale(0.55)", transformOrigin: "center" }}>
-			<VSCodeProgressRing />
-		</div>
+		<div
+			style={{
+				width: "12px",
+				height: "12px",
+				border: "2px solid var(--vscode-progressBar-background)",
+				borderTopColor: "var(--vscode-button-foreground)",
+				borderRadius: "50%",
+				animation: "spin 1s linear infinite",
+			}}
+		/>
+		<style>{`
+			@keyframes spin {
+				to { transform: rotate(360deg); }
+			}
+		`}</style>
 	</div>
 )

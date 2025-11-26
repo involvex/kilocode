@@ -33,8 +33,7 @@ export const SambaNova = ({ apiConfiguration, setApiConfigurationField }: SambaN
 				value={apiConfiguration?.sambaNovaApiKey || ""}
 				type="password"
 				onInput={handleInputChange("sambaNovaApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
+				placeholder={t("settings:placeholders.apiKey")}>
 				<label className="block font-medium mb-1">{t("settings:providers.sambaNovaApiKey")}</label>
 			</VSCodeTextField>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">

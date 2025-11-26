@@ -34,9 +34,7 @@ export const DeepSeek = ({ apiConfiguration, setApiConfigurationField }: DeepSee
 				type="password"
 				onInput={handleInputChange("deepSeekApiKey")}
 				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.deepSeekApiKey")}</label>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>

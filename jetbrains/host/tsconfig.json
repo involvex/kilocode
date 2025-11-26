@@ -2,7 +2,6 @@
 	// This is the configuration for plugins/base independent project, compiled separately from the outer project
 	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
-		"module": "NodeNext",
 		"esModuleInterop": true,
 		"removeComments": false,
 		"preserveConstEnums": true,
@@ -15,6 +14,8 @@
 		"isolatedModules": false,
 		"outDir": "./dist",
 		"skipLibCheck": true, // Skip library file checking to avoid type conflicts
+		"skipDefaultLibCheck": true, // Skip default library file checking
+		"noImplicitAny": false, // Allow implicit any types
 		"declaration": true,
 		"declarationMap": true,
 		"types": [
@@ -29,20 +30,20 @@
 	"include": [
 		"src/**/*.ts", // Include all TS files under src
 		"electron.d.ts",
-		"deps/vscode/vs/workbench/api/node/**/*.ts",
-		"deps/vscode/vs/workbench/api/node/**/*.d.ts",
-		"deps/vscode/vs/workbench/services/extensions/common/**/*.ts",
-		"deps/vscode/vs/workbench/services/extensions/common/**/*.d.ts",
-		"deps/vscode/vs/platform/extensions/common/**/*.ts",
-		"deps/vscode/vs/platform/extensions/common/**/*.d.ts",
-		"deps/vscode/vs/base/common/**/*.ts",
-		"deps/vscode/vs/base/common/**/*.d.ts",
-		"deps/vscode/vs/workbench/contrib/debug/common/debugProtocol.d.ts",
-		"deps/vscode/typings",
-		"deps/vscode/vscode-dts/vscode.d.ts",
-		"deps/vscode/vscode-dts/vscode.proposed.*.d.ts",
-		"deps/vscode/vs/base/common/marked",
-		"deps/vscode/vs/base/common/semver"
+		"../../../deps/vscode/src/vs/workbench/api/node/**/*.ts",
+		"../../../deps/vscode/src/vs/workbench/api/node/**/*.d.ts",
+		"../../../deps/vscode/src/vs/workbench/services/extensions/common/**/*.ts",
+		"../../../deps/vscode/src/vs/workbench/services/extensions/common/**/*.d.ts",
+		"../../../deps/vscode/src/vs/platform/extensions/common/**/*.ts",
+		"../../../deps/vscode/src/vs/platform/extensions/common/**/*.d.ts",
+		"../../../deps/vscode/src/vs/base/common/**/*.ts",
+		"../../../deps/vscode/src/vs/base/common/**/*.d.ts",
+		"../../../deps/vscode/src/vs/workbench/contrib/debug/common/debugProtocol.d.ts",
+		"../../../deps/vscode/src/typings",
+		"../../../deps/vscode/src/vscode-dts/vscode.d.ts",
+		"../../../deps/vscode/src/vscode-dts/vscode.proposed.*.d.ts",
+		"../../../deps/vscode/src/vs/base/common/marked",
+		"../../../deps/vscode/src/vs/base/common/semver"
 	],
 	"exclude": [
 		"node_modules",

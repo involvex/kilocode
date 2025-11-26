@@ -36,8 +36,7 @@ export const Mistral = ({ apiConfiguration, setApiConfigurationField }: MistralP
 				value={apiConfiguration?.mistralApiKey || ""}
 				type="password"
 				onInput={handleInputChange("mistralApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
+				placeholder={t("settings:placeholders.apiKey")}>
 				<span className="font-medium">{t("settings:providers.mistralApiKey")}</span>
 			</VSCodeTextField>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
@@ -55,8 +54,7 @@ export const Mistral = ({ apiConfiguration, setApiConfigurationField }: MistralP
 						value={apiConfiguration?.mistralCodestralUrl || ""}
 						type="url"
 						onInput={handleInputChange("mistralCodestralUrl")}
-						placeholder="https://codestral.mistral.ai"
-						className="w-full">
+						placeholder="https://codestral.mistral.ai">
 						<label className="block font-medium mb-1">{t("settings:providers.codestralBaseUrl")}</label>
 					</VSCodeTextField>
 					<div className="text-sm text-vscode-descriptionForeground -mt-2">

@@ -6,8 +6,7 @@ import { buildDocLink } from "../../utils/docLinks"
 export const CommandExecutionError = () => {
 	const { t } = useTranslation()
 
-	const onClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
-		e.preventDefault()
+	const onClick = useCallback(() => {
 		window.postMessage({ type: "action", action: "settingsButtonClicked", values: { section: "terminal" } }, "*")
 	}, [])
 

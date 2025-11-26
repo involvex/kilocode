@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { convertHeadersToObject } from "./utils/headers"
 import { useDebounce } from "react-use"
-import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 // import { ExternalLinkIcon } from "@radix-ui/react-icons" // kilocode_change
 
 import {
@@ -523,9 +522,13 @@ const ApiOptions = ({
 					<label className="block font-medium mb-1">{t("settings:providers.apiProvider")}</label>
 					{docs && (
 						<div className="text-xs text-vscode-descriptionForeground">
-							<VSCodeLink href={docs.url} className="hover:text-vscode-foreground" target="_blank">
+							<a
+								href={docs.url}
+								className="hover:text-vscode-foreground"
+								target="_blank"
+								rel="noopener noreferrer">
 								{t("settings:providers.providerDocumentation", { provider: docs.name })}
-							</VSCodeLink>
+							</a>
 						</div>
 					)}
 				</div>

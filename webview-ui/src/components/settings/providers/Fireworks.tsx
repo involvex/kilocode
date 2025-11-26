@@ -16,7 +16,7 @@ type FireworksProps = {
 export const Fireworks = ({ apiConfiguration, setApiConfigurationField }: FireworksProps) => {
 	const { t } = useAppTranslation()
 
-	const handleInputChange = useCallback(
+	const _handleInputChange = useCallback(
 		<K extends keyof ProviderSettings, E>(
 			field: K,
 			transform: (event: E) => ProviderSettings[K] = inputEventTransform,
@@ -31,12 +31,9 @@ export const Fireworks = ({ apiConfiguration, setApiConfigurationField }: Firewo
 		<>
 			<VSCodeTextField
 				value={apiConfiguration?.fireworksApiKey || ""}
-				type="password"
-				onInput={handleInputChange("fireworksApiKey")}
+				onInput={(e) => setApiConfigurationField("fireworksApiKey", e.target.value)}
 				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.fireworksApiKey")}</label>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>

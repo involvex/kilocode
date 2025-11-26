@@ -45,8 +45,7 @@ export const VercelAiGateway = ({
 				value={apiConfiguration?.vercelAiGatewayApiKey || ""}
 				type="password"
 				onInput={handleInputChange("vercelAiGatewayApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
+				placeholder={t("settings:placeholders.apiKey")}>
 				<label className="block font-medium mb-1">{t("settings:providers.vercelAiGatewayApiKey")}</label>
 			</VSCodeTextField>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">

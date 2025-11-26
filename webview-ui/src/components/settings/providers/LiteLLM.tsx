@@ -94,8 +94,7 @@ export const LiteLLM = ({
 			<VSCodeTextField
 				value={apiConfiguration?.litellmBaseUrl || ""}
 				onInput={handleInputChange("litellmBaseUrl")}
-				placeholder={t("settings:placeholders.baseUrl")}
-				className="w-full">
+				placeholder={t("settings:placeholders.baseUrl")}>
 				<label className="block font-medium mb-1">{t("settings:providers.litellmBaseUrl")}</label>
 			</VSCodeTextField>
 
@@ -103,8 +102,7 @@ export const LiteLLM = ({
 				value={apiConfiguration?.litellmApiKey || ""}
 				type="password"
 				onInput={handleInputChange("litellmApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
+				placeholder={t("settings:placeholders.apiKey")}>
 				<label className="block font-medium mb-1">{t("settings:providers.litellmApiKey")}</label>
 			</VSCodeTextField>
 

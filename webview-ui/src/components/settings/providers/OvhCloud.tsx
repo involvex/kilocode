@@ -45,8 +45,7 @@ export const OvhCloudAiEndpoints = ({
 				value={apiConfiguration?.ovhCloudAiEndpointsApiKey || ""}
 				type="password"
 				onInput={handleInputChange("ovhCloudAiEndpointsApiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
+				placeholder={t("settings:placeholders.apiKey")}>
 				<label className="block font-medium mb-1">{t("settings:providers.ovhCloudAiEndpointsApiKey")}</label>
 			</VSCodeTextField>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
@@ -75,8 +74,7 @@ export const OvhCloudAiEndpoints = ({
 					value={apiConfiguration?.ovhCloudAiEndpointsBaseUrl || ""}
 					type="text"
 					onInput={handleInputChange("ovhCloudAiEndpointsBaseUrl")}
-					placeholder={t("settings:providers.getOvhCloudAiEndpointsBaseUrl")}
-					className="w-full">
+					placeholder={t("settings:providers.getOvhCloudAiEndpointsBaseUrl")}>
 					<div className="flex justify-between items-center mb-1">
 						<label className="block font-medium">
 							{t("settings:providers.ovhCloudAiEndpointsBaseUrl")}

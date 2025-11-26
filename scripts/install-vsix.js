@@ -25,7 +25,7 @@ const askQuestion = (question) => {
 async function main() {
 	try {
 		const packageJson = JSON.parse(fs.readFileSync("./src/package.json", "utf-8"))
-		const name = packageJson.name
+		const name = packageJson.name.replace("@", "").replace("/", "-")
 		const version = packageJson.version
 		const vsixFileName = `./bin/${name}-${version}.vsix`
 		const publisher = packageJson.publisher

@@ -118,6 +118,7 @@ export const KilocodeNotifications: React.FC = () => {
 				<div className="flex items-center justify-between">
 					<h3 className="font-medium text-vscode-foreground m-0">{currentNotification.title}</h3>
 					<button
+						type="button"
 						onClick={() => dismissNotificationId(currentNotification.id)}
 						className="text-vscode-descriptionForeground hover:text-vscode-foreground p-1"
 						title="Dismiss notification">

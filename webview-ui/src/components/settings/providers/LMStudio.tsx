@@ -101,21 +101,27 @@ export const LMStudio = ({ apiConfiguration, setApiConfigurationField }: LMStudi
 
 	return (
 		<>
-			<VSCodeTextField
-				value={apiConfiguration?.lmStudioBaseUrl || ""}
-				type="url"
-				onInput={handleInputChange("lmStudioBaseUrl")}
-				placeholder={t("settings:defaults.lmStudioUrl")}
-				className="w-full">
+			<div>
 				<label className="block font-medium mb-1">{t("settings:providers.lmStudio.baseUrl")}</label>
-			</VSCodeTextField>
-			<VSCodeTextField
-				value={apiConfiguration?.lmStudioModelId || ""}
-				onInput={handleInputChange("lmStudioModelId")}
-				placeholder={t("settings:placeholders.modelId.lmStudio")}
-				className="w-full">
+				<div className="w-full">
+					<VSCodeTextField
+						value={apiConfiguration?.lmStudioBaseUrl || ""}
+						type="url"
+						onInput={handleInputChange("lmStudioBaseUrl")}
+						placeholder={t("settings:defaults.lmStudioUrl")}
+					/>
+				</div>
+			</div>
+			<div>
 				<label className="block font-medium mb-1">{t("settings:providers.lmStudio.modelId")}</label>
-			</VSCodeTextField>
+				<div className="w-full">
+					<VSCodeTextField
+						value={apiConfiguration?.lmStudioModelId || ""}
+						onInput={handleInputChange("lmStudioModelId")}
+						placeholder={t("settings:placeholders.modelId.lmStudio")}
+					/>
+				</div>
+			</div>
 			{modelNotAvailable && (
 				<div className="flex flex-col gap-2 text-vscode-errorForeground text-sm">
 					<div className="flex flex-row items-center gap-1">
@@ -151,15 +157,16 @@ export const LMStudio = ({ apiConfiguration, setApiConfigurationField }: LMStudi
 			{apiConfiguration?.lmStudioSpeculativeDecodingEnabled && (
 				<>
 					<div>
-						<VSCodeTextField
-							value={apiConfiguration?.lmStudioDraftModelId || ""}
-							onInput={handleInputChange("lmStudioDraftModelId")}
-							placeholder={t("settings:placeholders.modelId.lmStudioDraft")}
-							className="w-full">
-							<label className="block font-medium mb-1">
-								{t("settings:providers.lmStudio.draftModelId")}
-							</label>
-						</VSCodeTextField>
+						<label className="block font-medium mb-1">
+							{t("settings:providers.lmStudio.draftModelId")}
+						</label>
+						<div className="w-full">
+							<VSCodeTextField
+								value={apiConfiguration?.lmStudioDraftModelId || ""}
+								onInput={handleInputChange("lmStudioDraftModelId")}
+								placeholder={t("settings:placeholders.modelId.lmStudioDraft")}
+							/>
+						</div>
 						<div className="text-sm text-vscode-descriptionForeground">
 							{t("settings:providers.lmStudio.draftModelDesc")}
 						</div>

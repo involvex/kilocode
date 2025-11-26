@@ -16,7 +16,7 @@ type GeminiCliProps = {
 export const GeminiCli = ({ apiConfiguration, setApiConfigurationField }: GeminiCliProps) => {
 	const { t } = useAppTranslation()
 
-	const handleInputChange = useCallback(
+	const _handleInputChange = useCallback(
 		<K extends keyof ProviderSettings, E>(
 			field: K,
 			transform: (event: E) => ProviderSettings[K] = inputEventTransform,
@@ -31,11 +31,9 @@ export const GeminiCli = ({ apiConfiguration, setApiConfigurationField }: Gemini
 		<>
 			<VSCodeTextField
 				value={apiConfiguration?.geminiCliOAuthPath || ""}
-				onInput={handleInputChange("geminiCliOAuthPath")}
+				onInput={(e) => setApiConfigurationField("geminiCliOAuthPath", e.target.value)}
 				placeholder="~/.gemini/oauth_creds.json"
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.geminiCli.oauthPath")}</label>
-			</VSCodeTextField>
+			/>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.geminiCli.oauthPathDescription")}
 			</div>

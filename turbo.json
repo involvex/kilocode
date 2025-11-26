@@ -36,7 +36,7 @@
 			"dependsOn": ["@involvex/kilo-code-jetbrains-plugin#build"]
 		},
 		"jetbrains:run": {
-			"dependsOn": ["@kilo-code/jetbrains-plugin#run"]
+			"dependsOn": ["@involvex/kilo-code-jetbrains-plugin#run"]
 		},
 		"cli:build": {
 			"cache": false,
@@ -47,16 +47,16 @@
 			"dependsOn": ["@involvex/kilocode-cli#build"]
 		},
 		"bundle": {
-			"dependsOn": ["kilo-code#bundle"]
+			"dependsOn": ["@involvex/kilo-code#bundle"]
 		},
 		"bundle:nightly": {
-			"dependsOn": ["kilo-code#bundle"]
+			"dependsOn": ["@involvex/kilo-code#bundle"]
 		},
 		"vsix": {
-			"dependsOn": ["kilo-code#vsix"]
+			"dependsOn": ["@involvex/kilo-code#vsix"]
 		},
 		"vsix:nightly": {
-			"dependsOn": ["@roo-code/vscode-nightly#vsix:nightly"]
+			"dependsOn": ["@involvex/vscode-nightly#vsix:nightly"]
 		},
 		"chromatic": {
 			"dependsOn": ["storybook:build"],

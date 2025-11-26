@@ -203,24 +203,23 @@ const ApiConfigManager = ({
 			{isRenaming ? (
 				<div data-testid="rename-form">
 					<div className="flex items-center gap-1">
-						<VSCodeTextField
-							ref={inputRef}
-							value={inputValue}
-							onInput={(e: unknown) => {
-								const target = e as { target: { value: string } }
-								setInputValue(target.target.value)
-								setError(null)
-							}}
-							placeholder={t("settings:providers.enterNewName")}
-							onKeyDown={({ key }) => {
-								if (key === "Enter" && inputValue.trim()) {
+						<div
+							onKeyDown={(e) => {
+								if (e.key === "Enter" && inputValue.trim()) {
 									handleSave()
-								} else if (key === "Escape") {
+								} else if (e.key === "Escape") {
 									handleCancel()
 								}
-							}}
-							className="grow"
-						/>
+							}}>
+							<VSCodeTextField
+								value={inputValue}
+								onInput={(e: { target: { value: string } }) => {
+									setInputValue(e.target.value)
+									setError(null)
+								}}
+								placeholder={t("settings:providers.enterNewName")}
+							/>
+						</div>
 						<StandardTooltip content={t("settings:common.save")}>
 							<Button
 								variant="ghost"
@@ -366,7 +365,6 @@ const ApiConfigManager = ({
 								}}
 								placeholder={t("settings:providers.enterProfileName")}
 								data-testid="new-profile-input"
-								style={{ width: "100%" }}
 								onKeyDown={(e: unknown) => {
 									const event = e as { key: string }
 									if (event.key === "Enter" && newProfileName.trim()) {

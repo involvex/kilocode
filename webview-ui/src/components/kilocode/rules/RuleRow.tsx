@@ -59,7 +59,6 @@ const RuleRow: React.FC<{
 					<VSCodeButton
 						appearance="icon"
 						aria-label="Edit rule file"
-						title="Edit rule file"
 						onClick={handleEditClick}
 						className="h-5">
 						<span className="codicon codicon-edit text-xs" />
@@ -67,7 +66,6 @@ const RuleRow: React.FC<{
 					<VSCodeButton
 						appearance="icon"
 						aria-label="Delete rule file"
-						title="Delete rule file"
 						onClick={handleDeleteClick}
 						className="h-5">
 						<span className="codicon codicon-trash text-xs" />

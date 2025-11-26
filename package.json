@@ -8,6 +8,10 @@
 		"preinstall": "node scripts/bootstrap.mjs",
 		"prepare": "husky",
 		"install": "node scripts/bootstrap.mjs",
+		"diagnose-build": "echo '=== BUILD ENVIRONMENT DIAGNOSIS ===' && echo 'Node.js:' && node --version && echo 'npm:' && npm --version && echo 'pnpm:' && pnpm --version && echo 'Python:' && python --version && echo 'MSBuild:' && where msbuild && echo 'VS installations:' && dir \"C:\\Program Files (x86)\\Microsoft Visual Studio\" 2>nul || echo 'No VS installation directory found' && echo '=== END DIAGNOSIS ==='",
+		"fix-build-env": "node scripts/build-env-fix.mjs",
+		"test-build": "node scripts/build-test.mjs",
+		"comprehensive-diagnostic": "node scripts/comprehensive-diagnostic.mjs",
 		"install:all": "pnpm install",
 		"lint": "turbo lint --log-order grouped --output-logs new-only",
 		"check-types": "turbo check-types --log-order grouped --output-logs new-only",
@@ -53,7 +57,7 @@
 		"eslint": "^9.39.1",
 		"glob": "^13.0.0",
 		"husky": "^9.1.7",
-		"knip": "^5.70.1",
+		"knip": "^5.70.2",
 		"lint-staged": "^16.2.7",
 		"mkdirp": "^3.0.1",
 		"only-allow": "^1.2.1",
@@ -62,7 +66,7 @@
 		"rimraf": "^6.1.2",
 		"tsx": "^4.20.6",
 		"turbo": "^2.6.1",
-		"typescript": "^5.9.3"
+		"typescript": "^5.8.3"
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx,json,css,md}": [
@@ -77,17 +81,48 @@
 			"form-data": ">=4.0.4",
 			"bluebird": ">=3.7.2",
 			"type-fest": "2.19.0",
-			"csstype": "3.2.3"
+			"csstype": "3.2.3",
+			"@involvex/kilocode-cli>zod": "^3.23.8",
+			"@involvex/kilocode-cli>ink-link": "^3.0.0",
+			"@involvex/kilocode-cli>ink": "^5.2.1",
+			"@involvex/kilocode-cli>ink-big-text": "^2.0.0",
+			"@involvex/kilocode-cli>ink-gradient": "^3.0.0",
+			"@involvex/kilocode-cli>react-devtools-core": "^4.19.1",
+			"@involvex/kilocode-cli>ink-select-input": "^6.2.0",
+			"@involvex/kilocode-cli>ink-text-input": "^6.0.0",
+			"@involvex/kilocode-cli>marked": "^15.0.0",
+			"@involvex/kilocode-cli>marked-terminal": "^7.3.0",
+			"@involvex/kilocode-cli>react": "^18.0.0"
 		},
 		"onlyBuiltDependencies": [
+			"@parcel/watcher",
+			"@playwright/browser-chromium",
+			"@swc/core",
 			"@tailwindcss/oxide",
+			"@vscode/deviceid",
+			"@vscode/policy-watcher",
+			"@vscode/ripgrep",
+			"@vscode/spdlog",
 			"@vscode/sqlite3",
 			"@vscode/vsce-sign",
+			"@vscode/windows-ca-certs",
+			"@vscode/windows-mutex",
+			"@vscode/windows-process-tree",
+			"@vscode/windows-registry",
 			"core-js",
-			"core-js-pure",
+			"electron",
+			"es5-ext",
 			"esbuild",
+			"husky",
+			"kerberos",
 			"keytar",
-			"puppeteer-chromium-resolver"
+			"native-is-elevated",
+			"native-keymap",
+			"native-watchdog",
+			"node-pty",
+			"puppeteer-chromium-resolver",
+			"sharp",
+			"windows-foreground-love"
 		]
 	}
 }

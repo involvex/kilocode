@@ -82,29 +82,30 @@ export const VirtualQuotaFallbackProviderPresentation = ({
 								</label>
 								<div className="flex items-center gap-1">
 									{/* Move Up Button */}
-									<VSCodeButton
-										appearance="icon"
-										onClick={() => onMoveProfileUp(index)}
-										disabled={index === 0}
-										title={t("kilocode:virtualProvider.moveProfileUp")}>
-										<ChevronUp size={16} />
-									</VSCodeButton>
-									{/* Move Down Button */}
-									<VSCodeButton
-										appearance="icon"
-										onClick={() => onMoveProfileDown(index)}
-										disabled={index === profiles.length - 1}
-										title={t("kilocode:virtualProvider.moveProfileDown")}>
-										<ChevronDown size={16} />
-									</VSCodeButton>
-									{/* Remove Button */}
-									{profiles.length > 1 && (
+									<div title={t("kilocode:virtualProvider.moveProfileUp")}>
 										<VSCodeButton
 											appearance="icon"
-											onClick={() => onRemoveProfile(index)}
-											title={t("kilocode:virtualProvider.removeProfile")}>
-											<TrashIcon />
+											onClick={() => onMoveProfileUp(index)}
+											disabled={index === 0}>
+											<ChevronUp size={16} />
 										</VSCodeButton>
+									</div>
+									{/* Move Down Button */}
+									<div title={t("kilocode:virtualProvider.moveProfileDown")}>
+										<VSCodeButton
+											appearance="icon"
+											onClick={() => onMoveProfileDown(index)}
+											disabled={index === profiles.length - 1}>
+											<ChevronDown size={16} />
+										</VSCodeButton>
+									</div>
+									{/* Remove Button */}
+									{profiles.length > 1 && (
+										<div title={t("kilocode:virtualProvider.removeProfile")}>
+											<VSCodeButton appearance="icon" onClick={() => onRemoveProfile(index)}>
+												<TrashIcon />
+											</VSCodeButton>
+										</div>
 									)}
 								</div>
 							</div>
@@ -253,7 +254,6 @@ export const VirtualLimitInputsPresentation = ({ profile, index, onProfileChange
 						<VSCodeTextField
 							value={profile.profileLimits?.tokensPerMinute?.toString() ?? ""}
 							onInput={handleLimitChange("tokensPerMinute")}
-							className="[--input-min-width:100%]"
 						/>
 						{renderProgressBarForLimit("tokensPerMinute", "tokens", "minute")}
 					</div>
@@ -264,7 +264,6 @@ export const VirtualLimitInputsPresentation = ({ profile, index, onProfileChange
 						<VSCodeTextField
 							value={profile.profileLimits?.tokensPerHour?.toString() ?? ""}
 							onInput={handleLimitChange("tokensPerHour")}
-							className="[--input-min-width:100%]"
 						/>
 						{renderProgressBarForLimit("tokensPerHour", "tokens", "hour")}
 					</div>
@@ -275,7 +274,6 @@ export const VirtualLimitInputsPresentation = ({ profile, index, onProfileChange
 						<VSCodeTextField
 							value={profile.profileLimits?.tokensPerDay?.toString() ?? ""}
 							onInput={handleLimitChange("tokensPerDay")}
-							className="[--input-min-width:100%]"
 						/>
 						{renderProgressBarForLimit("tokensPerDay", "tokens", "day")}
 					</div>
@@ -294,7 +292,6 @@ export const VirtualLimitInputsPresentation = ({ profile, index, onProfileChange
 						<VSCodeTextField
 							value={profile.profileLimits?.requestsPerMinute?.toString() ?? ""}
 							onInput={handleLimitChange("requestsPerMinute")}
-							className="[--input-min-width:100%]"
 						/>
 						{renderProgressBarForLimit("requestsPerMinute", "requests", "minute")}
 					</div>
@@ -305,7 +302,6 @@ export const VirtualLimitInputsPresentation = ({ profile, index, onProfileChange
 						<VSCodeTextField
 							value={profile.profileLimits?.requestsPerHour?.toString() ?? ""}
 							onInput={handleLimitChange("requestsPerHour")}
-							className="[--input-min-width:100%]"
 						/>
 						{renderProgressBarForLimit("requestsPerHour", "requests", "hour")}
 					</div>
@@ -316,7 +312,6 @@ export const VirtualLimitInputsPresentation = ({ profile, index, onProfileChange
 						<VSCodeTextField
 							value={profile.profileLimits?.requestsPerDay?.toString() ?? ""}
 							onInput={handleLimitChange("requestsPerDay")}
-							className="[--input-min-width:100%]"
 						/>
 						{renderProgressBarForLimit("requestsPerDay", "requests", "day")}
 					</div>

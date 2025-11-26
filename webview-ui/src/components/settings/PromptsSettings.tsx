@@ -178,18 +178,18 @@ const PromptsSettings = ({
 						</StandardTooltip>
 					</div>
 
-					<VSCodeTextArea
-						resize="vertical"
-						value={getSupportPromptValue(activeSupportOption)}
-						onInput={(e) => {
-							const value =
-								(e as unknown as CustomEvent)?.detail?.target?.value ??
-								((e as any).target as HTMLTextAreaElement).value
-							updateSupportPrompt(activeSupportOption, value)
-						}}
-						rows={6}
-						className="w-full"
-					/>
+					<div className="w-full">
+						<VSCodeTextArea
+							value={getSupportPromptValue(activeSupportOption)}
+							onInput={(e) => {
+								const value =
+									(e as unknown as CustomEvent)?.detail?.target?.value ??
+									((e as any).target as HTMLTextAreaElement).value
+								updateSupportPrompt(activeSupportOption, value)
+							}}
+							rows={6}
+						/>
+					</div>
 
 					{(activeSupportOption === "ENHANCE" || activeSupportOption === "CONDENSE") && (
 						<div className="mt-4 flex flex-col gap-3 pl-3 border-l-2 border-vscode-button-background">
@@ -279,15 +279,15 @@ const PromptsSettings = ({
 										<label className="block font-medium mb-1">
 											{t("prompts:supportPrompts.enhance.testEnhancement")}
 										</label>
-										<VSCodeTextArea
-											resize="vertical"
-											value={testPrompt}
-											onChange={(e) => setTestPrompt((e.target as HTMLTextAreaElement).value)}
-											placeholder={t("prompts:supportPrompts.enhance.testPromptPlaceholder")}
-											rows={3}
-											className="w-full"
-											data-testid="test-prompt-textarea"
-										/>
+										<div className="w-full">
+											<VSCodeTextArea
+												value={testPrompt}
+												onChange={(e) => setTestPrompt((e.target as HTMLTextAreaElement).value)}
+												placeholder={t("prompts:supportPrompts.enhance.testPromptPlaceholder")}
+												rows={3}
+												data-testid="test-prompt-textarea"
+											/>
+										</div>
 										<div className="mt-2 flex justify-start items-center gap-2">
 											<Button
 												variant="default"

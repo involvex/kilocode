@@ -31,24 +31,24 @@
 		"@roo-code/ipc": "workspace:^",
 		"@roo-code/types": "workspace:^",
 		"cmd-ts": "^0.13.0",
-		"drizzle-orm": "^0.44.1",
+		"drizzle-orm": "^0.44.7",
 		"execa": "^9.6.0",
 		"node-ipc": "^12.0.0",
-		"p-map": "^7.0.3",
-		"p-queue": "^8.1.0",
+		"p-map": "^7.0.4",
+		"p-queue": "^8.1.1",
 		"p-wait-for": "^5.0.2",
 		"postgres": "^3.4.7",
 		"ps-list": "^8.1.1",
-		"redis": "^5.5.5",
-		"zod": "^3.25.61"
+		"redis": "^5.10.0",
+		"zod": "^3.25.76"
 	},
 	"devDependencies": {
 		"@roo-code/config-eslint": "workspace:^",
 		"@roo-code/config-typescript": "workspace:^",
-		"@types/node": "20.x",
+		"@types/node": "~20.19.25",
 		"@types/node-ipc": "^9.2.3",
-		"drizzle-kit": "^0.31.1",
-		"tsx": "^4.19.3",
-		"vitest": "^3.2.3"
+		"drizzle-kit": "^0.31.7",
+		"tsx": "^4.20.6",
+		"vitest": "^3.2.4"
 	}
 }

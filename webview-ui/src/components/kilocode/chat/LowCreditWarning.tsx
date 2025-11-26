@@ -69,14 +69,12 @@ export const LowCreditWarning = ({ message, isOrganization }: LowCreditWarningPr
 				</div>
 				<VSCodeButton
 					className="p-1 w-full rounded"
-					onClick={(e) => {
-						e.preventDefault()
-
+					onClick={() =>
 						vscode.postMessage({
 							type: "openInBrowser",
 							url: data.buyCreditsUrl,
 						})
-					}}>
+					}>
 					{t("kilocode:lowCreditWarning.addCredit")}
 				</VSCodeButton>
 				{!isOrganization && (

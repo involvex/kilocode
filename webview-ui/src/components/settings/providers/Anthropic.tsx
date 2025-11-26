@@ -40,12 +40,8 @@ export const Anthropic = ({ apiConfiguration, setApiConfigurationField }: Anthro
 		<>
 			<VSCodeTextField
 				value={apiConfiguration?.apiKey || ""}
-				type="password"
-				onInput={handleInputChange("apiKey")}
-				placeholder={t("settings:placeholders.apiKey")}
-				className="w-full">
-				<label className="block font-medium mb-1">{t("settings:providers.anthropicApiKey")}</label>
-			</VSCodeTextField>
+				onInput={(e) => setApiConfigurationField("apiKey", e.target.value)}
+				placeholder={t("settings:placeholders.apiKey")}></VSCodeTextField>
 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
 				{t("settings:providers.apiKeyStorageNotice")}
 			</div>
@@ -69,13 +65,13 @@ export const Anthropic = ({ apiConfiguration, setApiConfigurationField }: Anthro
 				</Checkbox>
 				{anthropicBaseUrlSelected && (
 					<>
-						<VSCodeTextField
-							value={apiConfiguration?.anthropicBaseUrl || ""}
-							type="url"
-							onInput={handleInputChange("anthropicBaseUrl")}
-							placeholder="https://api.anthropic.com"
-							className="w-full mt-1"
-						/>
+						<div className="w-full mt-1">
+							<VSCodeTextField
+								value={apiConfiguration?.anthropicBaseUrl || ""}
+								onInput={(e) => setApiConfigurationField("anthropicBaseUrl", e.target.value)}
+								placeholder="https://api.anthropic.com"
+							/>
+						</div>
 						<Checkbox
 							checked={apiConfiguration?.anthropicUseAuthToken ?? false}
 							onChange={handleInputChange("anthropicUseAuthToken", noTransform)}

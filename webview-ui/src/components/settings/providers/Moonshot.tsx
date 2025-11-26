@@ -1,5 +1,5 @@
 import { useCallback } from "react"
-import { VSCodeTextField, VSCodeDropdown, VSCodeOption } from "@vscode/webview-ui-toolkit/react"
+import { VSCodeTextField, VSCodeOption } from "@vscode/webview-ui-toolkit/react"
 
 import type { ProviderSettings } from "@roo-code/types"
 
@@ -7,7 +7,7 @@ import { useAppTranslation } from "@src/i18n/TranslationContext"
 import { VSCodeButtonLink } from "@src/components/common/VSCodeButtonLink"
 
 import { inputEventTransform } from "../transforms"
-import { cn } from "@/lib/utils"
+import { cn as _cn } from "@/lib/utils"
 
 type MoonshotProps = {
 	apiConfiguration: ProviderSettings
@@ -32,17 +32,14 @@ export const Moonshot = ({ apiConfiguration, setApiConfigurationField }: Moonsho
 		<>
 			<div>
 				<label className="block font-medium mb-1">{t("settings:providers.moonshotBaseUrl")}</label>
-				<VSCodeDropdown
+				<VSCodeTextField
 					value={apiConfiguration.moonshotBaseUrl}
-					onChange={handleInputChange("moonshotBaseUrl")}
-					className={cn("w-full")}>
-					<VSCodeOption value="https://api.moonshot.ai/v1" className="p-2">
-						api.moonshot.ai
-					</VSCodeOption>
-					<VSCodeOption value="https://api.moonshot.cn/v1" className="p-2">
-						api.moonshot.cn
-					</VSCodeOption>
-				</VSCodeDropdown>
+					onInput={handleInputChange("moonshotBaseUrl")}
+					// className={cn("w-full")}
+				>
+					<VSCodeOption value="https://api.moonshot.ai/v1">api.moonshot.ai</VSCodeOption>
+					<VSCodeOption value="https://api.moonshot.cn/v1">api.moonshot.cn</VSCodeOption>
+				</VSCodeTextField>
 			</div>
 			<div>
 				<VSCodeTextField
@@ -50,7 +47,8 @@ export const Moonshot = ({ apiConfiguration, setApiConfigurationField }: Moonsho
 					type="password"
 					onInput={handleInputChange("moonshotApiKey")}
 					placeholder={t("settings:placeholders.apiKey")}
-					className="w-full">
+					// className="w-full"
+				>
 					<label className="block font-medium mb-1">{t("settings:providers.moonshotApiKey")}</label>
 				</VSCodeTextField>
 				<div className="text-sm text-vscode-descriptionForeground">

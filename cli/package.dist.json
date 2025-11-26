@@ -1,8 +1,6 @@
 {
-	"name": "@kilocode/cli",
 	"version": "0.7.0",
 	"name": "@involvex/kilocode-cli",
-	"version": "0.6.0",
 	"description": "Terminal User Interface for Involvex Kilo Code",
 	"type": "module",
 	"main": "index.js",
@@ -49,7 +47,7 @@
 		"gray-matter": "^4.0.3",
 		"i18next": "^25.0.0",
 		"ignore": "^7.0.3",
-		"ink": "^6.3.1",
+		"ink": "^4.2.1",
 		"ink-big-text": "^2.0.0",
 		"ink-gradient": "^3.0.0",
 		"ink-select-input": "^6.2.0",
@@ -84,7 +82,7 @@
 		"ps-list": "^8.1.1",
 		"puppeteer-chromium-resolver": "^24.0.2",
 		"puppeteer-core": "^23.4.0",
-		"react": "^19.2.0",
+		"react": "^18.3.1",
 		"react-devtools-core": "^6.1.5",
 		"react-error-boundary": "^6.0.0",
 		"reconnecting-eventsource": "^1.6.4",
@@ -126,7 +124,7 @@
 	},
 	"keywords": ["cli", "tui", "terminal", "ai", "assistant", "kilocode", "kilo", "ink"],
 	"author": {
-		"name": "Kilo Code"
+		"name": "Involvex"
 	},
 	"homepage": "https://kilocode.ai/cli",
 	"bugs": {

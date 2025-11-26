@@ -152,11 +152,13 @@ export function MarketplaceView({ stateManager, onDone, targetTab, hideHeader = 
 								/>
 							</div>
 							<button
+								type="button"
 								className="flex items-center justify-center gap-2 flex-1 text-sm font-medium rounded-sm transition-colors duration-300 relative z-10 text-vscode-foreground"
 								onClick={() => manager.transition({ type: "SET_ACTIVE_TAB", payload: { tab: "mcp" } })}>
 								MCP
 							</button>
 							<button
+								type="button"
 								className="flex items-center justify-center gap-2 flex-1 text-sm font-medium rounded-sm transition-colors duration-300 relative z-10 text-vscode-foreground"
 								onClick={() =>
 									manager.transition({ type: "SET_ACTIVE_TAB", payload: { tab: "mode" } })

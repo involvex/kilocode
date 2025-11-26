@@ -186,12 +186,9 @@ export function isToolAllowedForMode(
 
 	// Check tool requirements if any exist
 	if (toolRequirements && typeof toolRequirements === "object") {
-		if (tool in toolRequirements && !toolRequirements[tool]) {
+		if (Object.prototype.hasOwnProperty.call(toolRequirements, tool) && !toolRequirements[tool]) {
 			return false
 		}
-	} else if (toolRequirements === false) {
-		// If toolRequirements is a boolean false, all tools are disabled
-		return false
 	}
 
 	const mode = getModeBySlug(modeSlug, customModes)
