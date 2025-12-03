@@ -606,6 +606,7 @@ importers:
       '@qdrant/js-client-rest':
         specifier: ^1.14.0
         version: 1.14.0(typescript@5.8.3)
+<<<<<<< HEAD
       '@roo-code/cloud':
         specifier: workspace:^
         version: link:../packages/cloud
@@ -614,6 +615,10 @@ importers:
         version: link:../packages/telemetry
       '@roo-code/types':
         specifier: workspace:^
+=======
+      '@roo-code/types':
+        specifier: workspace:*
+>>>>>>> abe4b86b93 (chore(cli): improve versioning and changeset handling)
         version: link:../packages/types
       '@vscode/codicons':
         specifier: ^0.0.36
