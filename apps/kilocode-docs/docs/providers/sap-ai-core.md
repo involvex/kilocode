@@ -20,7 +20,6 @@ Kilo Code supports accessing models through SAP AI Core, a service in the SAP Bu
 To use SAP AI Core with Kilo Code, you'll need to create a service key for your SAP AI Core service instance:
 
 1. **In SAP BTP Cockpit:**
-
     - Navigate to your subaccount
     - Go to "Services" → "Instances and Subscriptions"
     - Find your SAP AI Core service instance
@@ -115,19 +114,16 @@ When using Foundation Models mode:
 ### Common Issues
 
 1. **Authentication Failures:**
-
     - Verify your Client ID and Client Secret are correct
     - Check that your Auth URL is properly formatted
     - Ensure your service key hasn't expired
 
 2. **No Models Available:**
-
     - Check that you have the necessary permissions in your resource group
     - Verify your Base URL is correct
     - In Foundation Models mode, ensure you have running deployments
 
 3. **Deployment Issues:**
-
     - Check that your deployments are in "RUNNING" status
     - Verify you're using the correct resource group
     - Review your SAP AI Core service configuration

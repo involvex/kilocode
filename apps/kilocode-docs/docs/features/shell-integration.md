@@ -320,19 +320,16 @@ This setup works reliably on Windows systems using Cygwin, Fish, and the Starshi
 **Solutions**:
 
 1. **Set Terminal Command Delay**:
-
     - Set the Terminal Command Delay to 50ms in Kilo Code settings
     - Restart all terminals after changing this setting
     - This matches older default behavior and may resolve the issue, however some users have reported that a value of 0ms works better. This is a workaround for upstream VSCode problems.
 
 2. **Roll Back VSCode Version**:
-
     - Download VSCode v1.98 from [VSCode Updates](https://code.visualstudio.com/updates/v1_98)
     - Replace your current VSCode installation
     - No backup of Kilo settings needed
 
 3. **WSL-Specific Workaround**:
-
     - If using WSL, ensure you launch VSCode from within WSL using `code .`
 
 4. **ZSH Users**:
@@ -385,14 +382,12 @@ When shell integration issues occur, check the debug logs:
 The [VSCode Terminal Integration Test Extension](https://github.com/KJ7LNW/vsce-test-terminal-integration) helps diagnose shell integration issues by testing different settings combinations:
 
 1. **When Commands Stall**:
-
     - If you see "command already running" warnings, click "Reset Stats" to reset the terminal state
     - These warnings indicate shell integration is not working
     - Try different settings combinations until you find one that works
     - If it really gets stuck, restart the extension by closing the window and pressing F5
 
 2. **Testing Settings**:
-
     - Systematically try different combinations of:
         - Terminal Command Delay
         - Shell Integration settings

@@ -102,7 +102,6 @@ The checkpoint system consists of:
 1. **Shadow Git Repository**: A separate Git repository created specifically for checkpoint tracking that functions as the persistent storage mechanism for checkpoint state.
 
 2. **Checkpoint Service**: Handles Git operations and state management through:
-
     - Repository initialization
     - Checkpoint creation and storage
     - Diff computation
@@ -204,12 +203,10 @@ Checkpoints require Git to be installed on your system. The implementation uses 
 ### Windows
 
 1. **Download Git for Windows**:
-
     - Visit https://git-scm.com/download/win
     - The download should start automatically
 
 2. **Run the installer**:
-
     - Accept the license agreement
     - Choose installation location (default is recommended)
     - Select components (default options are typically sufficient)

@@ -52,14 +52,12 @@ Your work is always pushed to GitHub, ensuring nothing is lost.
 - Each user receives an **isolated Linux container** with common dev tools preinstalled (Python, Node.js, git, etc.).
 - All Cloud Agent chats share a **single container instance**, while each session gets its own workspace directory.
 - When a session begins:
-
     1. Your repo is cloned
     2. A unique branch is created
     3. Your startup commands run
     4. Env vars are injected
 
 - After every message, the agent:
-
     - Looks for file changes
     - Commits them
     - Pushes to the session’s branch

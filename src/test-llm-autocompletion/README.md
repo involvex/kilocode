@@ -18,7 +18,6 @@ This test suite uses approval testing instead of regex pattern matching to valid
 ### How It Works
 
 1. **First Run**: When a test runs and produces output that hasn't been seen before, the runner will:
-
     - Display the test input and output
     - Ask you whether the output is acceptable
     - Save your decision to `approvals/{category}/{test-name}/approved.N.txt` or `rejected.N.txt`

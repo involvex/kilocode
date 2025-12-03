@@ -49,31 +49,26 @@ This tool marks the end of a task by presenting a final summary of what was acco
 When the `attempt_completion` tool is invoked, it follows this process:
 
 1. **Safety Consideration** (guideline, not enforced):
-
     - The AI is instructed to confirm previous tool uses were successful
     - This is a best practice rather than a programmatically enforced mechanism
 
 2. **Result Presentation**:
-
     - Displays the completion message to the user in a special "completion_result" UI format
     - Removes XML closing tags from the result text using the `removeClosingTag` function
     - Presents the result differently than regular messages for visual distinction
 
 3. **Command Execution** (if provided):
-
     - Requests user approval before executing the command
     - Only executes if the user approves
     - Executes the command using the system's command execution functionality
     - Shows the result of the command to the user
 
 4. **Feedback Collection**:
-
     - Waits for user feedback on the completion result
     - Processes this feedback and returns it to the AI
     - Enables continued refinement based on user input
 
 5. **Task Completion and Continuation**:
-
     - Signals the task as completed in the system
     - Captures telemetry data for the completed task
     - For subtasks, offers to finish the subtask and resume the parent task

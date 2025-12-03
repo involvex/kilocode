@@ -39,7 +39,6 @@ Before you begin, choose one of the following development environment options:
 #### Native Development Setup
 
 1. **Fork and Clone the Repository**:
-
     - **Fork the Repository**:
         - Visit the [Kilo Code GitHub repository](https://github.com/Kilo-Org/kilocode)
         - Click the "Fork" button in the top-right corner to create your own copy.
@@ -80,7 +79,6 @@ The full list of recommended extensions is [here](https://github.com/Kilo-Org/ki
 #### Devcontainer Setup (Recommended for Windows)
 
 1. **Prerequisites**:
-
     - Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
     - Install [Visual Studio Code](https://code.visualstudio.com/)
     - Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
@@ -88,7 +86,6 @@ The full list of recommended extensions is [here](https://github.com/Kilo-Org/ki
 2. **Fork and Clone the Repository** (same as above)
 
 3. **Open in Devcontainer**:
-
     - Open the project in VSCode
     - When prompted, click "Reopen in Container" or use Command Palette: `Dev Containers: Reopen in Container`
     - Wait for the container to build and setup to complete (this may take a few minutes on first run)
@@ -101,7 +98,6 @@ The full list of recommended extensions is [here](https://github.com/Kilo-Org/ki
 #### Nix Flake Setup (Recommended for NixOS/Nix users)
 
 1. **Prerequisites**:
-
     - Install [Nix](https://nixos.org/download.html) with flakes enabled
     - Install [direnv](https://direnv.net/) for automatic environment loading
     - Install [Visual Studio Code](https://code.visualstudio.com/)
@@ -117,7 +113,6 @@ The full list of recommended extensions is [here](https://github.com/Kilo-Org/ki
     ```
 
     The project includes a [`.envrc`](.envrc) file that automatically loads the Nix flake environment when you enter the directory. This provides:
-
     - Node.js 20 (matching the version in `.nvmrc`)
     - pnpm (via corepack)
     - All other necessary development dependencies

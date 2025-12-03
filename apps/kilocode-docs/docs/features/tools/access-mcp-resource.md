@@ -48,19 +48,16 @@ This tool connects to MCP servers and fetches data from their exposed resources.
 When the `access_mcp_resource` tool is invoked, it follows this process:
 
 1. **Connection Validation**:
-
     - Verifies that an MCP hub is available and initialized
     - Confirms the specified server exists in the connection list
     - Checks if the server is disabled (returns an error if it is)
 
 2. **User Approval**:
-
     - Presents the resource access request to the user for approval
     - Provides server name and resource URI for user verification
     - Proceeds only if the user approves the resource access
 
 3. **Resource Request**:
-
     - Uses the Model Context Protocol SDK to communicate with servers
     - Makes a `resources/read` request to the server through the MCP hub
     - Applies configured timeouts to prevent hanging on unresponsive servers
@@ -76,7 +73,6 @@ When the `access_mcp_resource` tool is invoked, it follows this process:
 MCP servers can provide two main types of resources:
 
 1. **Standard Resources**:
-
     - Fixed resources with specific URIs
     - Defined name, description, and MIME type
     - Direct access without parameters

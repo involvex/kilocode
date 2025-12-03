@@ -59,7 +59,6 @@ MCP servers can be configured globally or at the project level:
 When the `use_mcp_tool` tool is invoked, it follows this process:
 
 1. **Initialization and Validation**:
-
     - The system verifies that the MCP hub is available
     - Confirms the specified server exists and is connected
     - Validates the requested tool exists on the server
@@ -67,7 +66,6 @@ When the `use_mcp_tool` tool is invoked, it follows this process:
     - Timeout settings are extracted from server configuration (default: 60 seconds)
 
 2. **Execution and Communication**:
-
     - The system selects the appropriate transport mechanism:
         - `StdioClientTransport`: For communicating with local processes via standard I/O
         - `SSEClientTransport`: For communicating with HTTP servers via Server-Sent Events
@@ -76,7 +74,6 @@ When the `use_mcp_tool` tool is invoked, it follows this process:
     - Request execution is tracked with timeout handling to prevent hanging operations
 
 3. **Response Processing**:
-
     - Responses can include multiple content types:
         - Text content: Plain text responses
         - Image content: Binary image data with MIME type information

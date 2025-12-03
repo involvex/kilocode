@@ -54,19 +54,16 @@ The tool uses three distinct status indicators:
 When the `update_todo_list` tool is invoked, it follows this process:
 
 1. **Status Validation**:
-
     - Parses the markdown checklist format
     - Validates status indicators are properly formatted
     - Ensures task descriptions are clear and actionable
 
 2. **List Replacement**:
-
     - Completely replaces the existing TODO list
     - Preserves task order as specified in the update
     - Maintains task descriptions and status states
 
 3. **Reminder Integration**:
-
     - Integrates updated list with the reminder system
     - Displays current tasks in subsequent message headers
     - Provides persistent visibility of task progress

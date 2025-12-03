@@ -17,7 +17,6 @@ Before you begin, make sure you have the following installed:
 ### Installation
 
 1. **Fork and Clone the Repository**:
-
     - **Fork the Repository**:
         - Visit the [Kilo Code GitHub repository](https://github.com/Kilo-Org/kilocode)
         - Click the "Fork" button in the top-right corner to create your own copy.

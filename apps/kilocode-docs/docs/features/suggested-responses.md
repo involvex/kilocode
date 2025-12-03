@@ -25,7 +25,6 @@ Suggested Responses appear as clickable buttons directly below Kilo Code's quest
 You have two options for using suggested responses:
 
 1.  **Direct Selection**:
-
     - **Action**: Simply click the button containing the answer you want to provide.
     - **Result**: The selected answer is immediately sent back to Kilo Code as your response. This is the quickest way to reply if one of the suggestions perfectly matches your intent.
 

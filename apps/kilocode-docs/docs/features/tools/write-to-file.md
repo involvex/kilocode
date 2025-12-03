@@ -47,7 +47,6 @@ This tool writes content to a specified file, either creating a new file if it d
 When the `write_to_file` tool is invoked, it follows this process:
 
 1. **Parameter Validation**: Validates the required parameters and permissions
-
     - Checks that `path`, `content`, and `line_count` are provided
     - Validates the file is allowed (not restricted by `.kilocodeignore`)
     - Ensures the path is within the workspace boundaries
@@ -55,21 +54,18 @@ When the `write_to_file` tool is invoked, it follows this process:
     - Shows specific error messages for each validation failure
 
 2. **Content Preprocessing**:
-
     - Removes code block markers that might be added by AI models
     - Handles escaped HTML entities (specifically for non-Claude models)
     - Strips line numbers if accidentally included in content
     - Performs model-specific processing for different AI providers
 
 3. **Diff View Generation**:
-
     - Opens a diff view in the editor showing the proposed changes
     - Adds a 300ms delay to ensure UI responsiveness
     - Scrolls automatically to the first difference
     - Highlights changes for easy review
 
 4. **User Approval Process**:
-
     - Waits for explicit user approval to proceed
     - Allows users to edit the content in the diff view
     - Captures any user edits for the final content
@@ -77,7 +73,6 @@ When the `write_to_file` tool is invoked, it follows this process:
     - Detects and incorporates user modifications into the final result
 
 5. **Safety Validation**:
-
     - Detects potential content truncation by comparing with provided line count
     - Shows warnings if content appears incomplete
     - Validates file path and access permissions

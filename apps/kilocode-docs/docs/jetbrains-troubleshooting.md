@@ -47,20 +47,16 @@ JCEF (Java Chromium Embedded Framework) is required for Kilo Code's web-based in
 JCEF is available in Android Studio but may need to be enabled manually:
 
 1. **Open Settings/Preferences:**
-
     - **Windows/Linux:** File → Settings
     - **macOS:** Help → Find Action...
 
 2. **Navigate to Boot Java Runtime:**
-
     - Choose Boot Java Runtime for the IDE...
 
 3. **Pick a new runtime**
-
     - Pick one that has "with JCEF" in the name
 
 4. **Restart Android Studio:**
-
     - Close and reopen Android Studio for the changes to take effect
 
 5. **Verify:**
@@ -78,12 +74,10 @@ _This animation shows the complete process of enabling JCEF in Android Studio._
 JCEF should be enabled by default in IntelliJ IDEA. If you see JCEF warnings:
 
 1. **Update IntelliJ IDEA:**
-
     - Ensure you're running the latest version
     - Go to Help → Check for Updates
 
 2. **Verify JetBrains Runtime:**
-
     - IntelliJ IDEA should use JetBrains Runtime (JBR) by default
     - JBR includes JCEF support
 
@@ -97,12 +91,10 @@ JCEF should be enabled by default in IntelliJ IDEA. If you see JCEF warnings:
 For WebStorm, PyCharm, PhpStorm, RubyMine, CLion, GoLand, DataGrip, and Rider:
 
 1. **Update to Latest Version:**
-
     - Most JCEF issues are resolved in recent versions
     - Use the built-in updater: Help → Check for Updates
 
 2. **Verify JetBrains Runtime:**
-
     - These IDEs should use JetBrains Runtime by default
     - JBR includes comprehensive JCEF support
 

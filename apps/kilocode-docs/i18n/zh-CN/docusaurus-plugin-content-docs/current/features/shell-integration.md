@@ -320,19 +320,16 @@ functions fish_prompt | grep -i vsc
 **解决方案**：
 
 1. **设置终端命令延迟**：
-
     - 在 Kilo Code 设置中将“终端命令延迟”设置为 50 毫秒。
     - 更改此设置后，重启所有终端。
     - 这与旧版的默认行为匹配，可能解决问题，但有用户报告称设置为 0 毫秒效果更好。这是针对上游 VSCode 问题的解决方法。
 
 2. **回退 VSCode 版本**：
-
     - 从 [VSCode 更新页面](https://code.visualstudio.com/updates/v1_98) 下载 VSCode v1.98。
     - 替换您当前的 VSCode 安装。
     - 无需备份 Kilo 设置。
 
 3. **WSL 特定解决方法**：
-
     - 如果使用 WSL，请确保您是从 WSL 内部通过 `code .` 命令启动 VSCode。
 
 4. **ZSH 用户**：
@@ -385,14 +382,12 @@ functions fish_prompt | grep -i vsc
 [VSCode Terminal Integration Test 扩展](https://github.com/KJ7LNW/vsce-test-terminal-integration) 通过测试不同的设置组合来帮助诊断 shell 集成问题：
 
 1.  **当命令卡住时**：
-
     - 如果您看到“命令已在运行”的警告，请单击“重置统计信息”以重置终端状态。
     - 这些警告表明 shell 集成未正常工作。
     - 尝试不同的设置组合，直到找到一个可行的。
     - 如果问题确实卡住了，通过关闭窗口并按 F5 来重启扩展。
 
 2.  **测试设置**：
-
     - 系统地尝试以下设置的不同组合：
         - 终端命令延迟
         - Shell 集成设置

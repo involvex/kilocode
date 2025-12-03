@@ -121,7 +121,6 @@ To change this setting:
 1. Adjust the slider under "Screenshot quality" within your Browser / Computer Use settings
 2. Set a value between 1-100% (default is 75%)
 3. Higher values provide clearer screenshots but increase token usage:
-
     - 40-50%: Good for basic text-based websites
     - 60-70%: Balanced for most general browsing
     - 80%+: Use when fine visual details are critical

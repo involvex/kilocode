@@ -84,7 +84,6 @@ Custom modes are a powerful way to extend Kilo Code's capabilities. To create an
 Documentation improvements are highly valued contributions:
 
 1. Follow the documentation style guide:
-
     - Use clear, concise language
     - Include examples where appropriate
     - Use absolute paths starting from `/docs/` for internal links

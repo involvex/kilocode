@@ -72,7 +72,6 @@ If your editor isn't automatically configured for Open VSX Registry, you may nee
 If you prefer to download and install the VSIX file directly:
 
 1. **Download the VSIX file:**
-
     - Find official releases on the [Kilo Code GitHub Releases page](https://github.com/Kilo-Org/kilocode/releases)
     - Download the `.vsix` file from the [latest release](https://github.com/Kilo-Org/kilocode/releases/latest)
 

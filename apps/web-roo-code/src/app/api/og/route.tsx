@@ -67,88 +67,86 @@ export async function GET(request: NextRequest) {
 	}
 
 	return new ImageResponse(
-		(
-			<div
-				style={{
-					width: "100%",
-					height: "100%",
-					display: "flex",
-					position: "relative",
-					// Use gradient background as default/fallback
-					background: "linear-gradient(135deg, #1e3a5f 0%, #0f1922 50%, #1a2332 100%)",
-				}}>
-				{/* Optional Background Image - only render if explicitly requested */}
-				{useBackgroundImage && (
-					<div
-						style={{
-							position: "absolute",
-							top: 0,
-							left: 0,
-							width: "100%",
-							height: "100%",
-							display: "flex",
-						}}>
-						{/* eslint-disable-next-line @next/next/no-img-element */}
-						<img
-							src={backgroundUrl}
-							alt=""
-							width={1200}
-							height={630}
-							style={{
-								width: "100%",
-								height: "100%",
-								objectFit: "cover",
-							}}
-						/>
-					</div>
-				)}
-
-				{/* Text Content */}
+		<div
+			style={{
+				width: "100%",
+				height: "100%",
+				display: "flex",
+				position: "relative",
+				// Use gradient background as default/fallback
+				background: "linear-gradient(135deg, #1e3a5f 0%, #0f1922 50%, #1a2332 100%)",
+			}}>
+			{/* Optional Background Image - only render if explicitly requested */}
+			{useBackgroundImage && (
 				<div
 					style={{
 						position: "absolute",
+						top: 0,
+						left: 0,
+						width: "100%",
+						height: "100%",
 						display: "flex",
-						flexDirection: "column",
-						justifyContent: "flex-end",
-						top: "220px",
-						left: "80px",
-						right: "80px",
-						bottom: "80px",
 					}}>
-					{/* Main Title */}
-					<h1
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img
+						src={backgroundUrl}
+						alt=""
+						width={1200}
+						height={630}
+						style={{
+							width: "100%",
+							height: "100%",
+							objectFit: "cover",
+						}}
+					/>
+				</div>
+			)}
+
+			{/* Text Content */}
+			<div
+				style={{
+					position: "absolute",
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "flex-end",
+					top: "220px",
+					left: "80px",
+					right: "80px",
+					bottom: "80px",
+				}}>
+				{/* Main Title */}
+				<h1
+					style={{
+						fontSize: 70,
+						fontWeight: 700,
+						fontFamily: "Inter, Helvetica Neue, Helvetica, sans-serif",
+						color: "white",
+						lineHeight: 1.2,
+						margin: 0,
+						maxHeight: "2.4em",
+						overflow: "hidden",
+					}}>
+					{title}
+				</h1>
+
+				{/* Secondary Description */}
+				{description && (
+					<h2
 						style={{
 							fontSize: 70,
-							fontWeight: 700,
-							fontFamily: "Inter, Helvetica Neue, Helvetica, sans-serif",
-							color: "white",
+							fontWeight: 400,
+							fontFamily: "Inter, Helvetica Neue, Helvetica, Arial, sans-serif",
+							color: "rgba(255, 255, 255, 0.9)",
 							lineHeight: 1.2,
 							margin: 0,
 							maxHeight: "2.4em",
 							overflow: "hidden",
 						}}>
-						{title}
-					</h1>
-
-					{/* Secondary Description */}
-					{description && (
-						<h2
-							style={{
-								fontSize: 70,
-								fontWeight: 400,
-								fontFamily: "Inter, Helvetica Neue, Helvetica, Arial, sans-serif",
-								color: "rgba(255, 255, 255, 0.9)",
-								lineHeight: 1.2,
-								margin: 0,
-								maxHeight: "2.4em",
-								overflow: "hidden",
-							}}>
-							{description}
-						</h2>
-					)}
-				</div>
+						{description}
+					</h2>
+				)}
 			</div>
-		),
+		</div>,
 		{
 			width: 1200,
 			height: 630,

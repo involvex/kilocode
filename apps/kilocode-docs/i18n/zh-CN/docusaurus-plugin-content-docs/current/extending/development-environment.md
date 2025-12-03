@@ -17,7 +17,6 @@
 ### 安装
 
 1. **Fork 并克隆仓库**：
-
     - **Fork 仓库**：
         - 访问 [Kilo Code GitHub 仓库](https://github.com/Kilo-Org/kilocode)
         - 点击右上角的 "Fork" 按钮，创建你自己的副本。

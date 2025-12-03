@@ -15,7 +15,6 @@ output to send it to the rest of the program. User interfaces for working
 with data from terminals should only be as follows:
 
 1. By listening to the events:
-
     - this.on("completed", fullOutput) - provides full output upon completion
     - this.on("line") - provides new lines, probably more than one
 
@@ -43,7 +42,6 @@ input stream
 Additional resources:
 
 - This implementation was rigorously tested using:
-
     - https://github.com/KJ7LNW/vsce-test-terminal-integration
 
 - There was a serious upstream bug that may not be fully solved,
@@ -54,7 +52,6 @@ Additional resources:
   compatibility for VSCE releases that may not have the fix in
   upstream bug #237208, but there still may be some unhandled
   corner cases. See this ticket for more detail:
-
     - https://github.com/microsoft/vscode/issues/237208
 
 - The original Cline PR has quite a bit of information:

@@ -118,9 +118,8 @@ describe("GhostContextProvider", () => {
 		})
 
 		it("should return processed snippets when snippets are available", async () => {
-			const { getAllSnippetsWithoutRace } = await import(
-				"../../../continuedev/core/autocomplete/snippets/getAllSnippets"
-			)
+			const { getAllSnippetsWithoutRace } =
+				await import("../../../continuedev/core/autocomplete/snippets/getAllSnippets")
 
 			;(getAllSnippetsWithoutRace as any).mockResolvedValueOnce({
 				recentlyOpenedFileSnippets: [
@@ -152,9 +151,8 @@ describe("GhostContextProvider", () => {
 		})
 
 		it("should process multiple snippets correctly", async () => {
-			const { getAllSnippetsWithoutRace } = await import(
-				"../../../continuedev/core/autocomplete/snippets/getAllSnippets"
-			)
+			const { getAllSnippetsWithoutRace } =
+				await import("../../../continuedev/core/autocomplete/snippets/getAllSnippets")
 
 			;(getAllSnippetsWithoutRace as any).mockResolvedValueOnce({
 				recentlyOpenedFileSnippets: [
@@ -197,9 +195,8 @@ describe("GhostContextProvider", () => {
 		})
 
 		it("should propagate errors from getAllSnippetsWithoutRace", async () => {
-			const { getAllSnippetsWithoutRace } = await import(
-				"../../../continuedev/core/autocomplete/snippets/getAllSnippets"
-			)
+			const { getAllSnippetsWithoutRace } =
+				await import("../../../continuedev/core/autocomplete/snippets/getAllSnippets")
 
 			;(getAllSnippetsWithoutRace as any).mockRejectedValueOnce(new Error("Test error"))
 
@@ -226,9 +223,8 @@ describe("GhostContextProvider", () => {
 		})
 
 		it("should filter out blocked files", async () => {
-			const { getAllSnippetsWithoutRace } = await import(
-				"../../../continuedev/core/autocomplete/snippets/getAllSnippets"
-			)
+			const { getAllSnippetsWithoutRace } =
+				await import("../../../continuedev/core/autocomplete/snippets/getAllSnippets")
 
 			// Mock validateAccess to block /blocked.ts
 			const controller = await mockIgnoreController!
@@ -272,9 +268,8 @@ describe("GhostContextProvider", () => {
 		})
 
 		it("should keep snippets without file paths", async () => {
-			const { getAllSnippetsWithoutRace } = await import(
-				"../../../continuedev/core/autocomplete/snippets/getAllSnippets"
-			)
+			const { getAllSnippetsWithoutRace } =
+				await import("../../../continuedev/core/autocomplete/snippets/getAllSnippets")
 
 			const controller = await mockIgnoreController!
 			;(controller as any).validateAccess.mockReturnValue(false) // Block all files
@@ -333,9 +328,8 @@ describe("GhostContextProvider", () => {
 			// Create provider without ignore controller
 			contextProvider = new GhostContextProvider(mockContext, mockModel)
 
-			const { getAllSnippetsWithoutRace } = await import(
-				"../../../continuedev/core/autocomplete/snippets/getAllSnippets"
-			)
+			const { getAllSnippetsWithoutRace } =
+				await import("../../../continuedev/core/autocomplete/snippets/getAllSnippets")
 
 			;(getAllSnippetsWithoutRace as any).mockResolvedValueOnce({
 				recentlyOpenedFileSnippets: [
