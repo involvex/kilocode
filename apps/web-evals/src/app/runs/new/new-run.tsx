@@ -306,13 +306,13 @@ export function NewRun() {
 								<FormControl>
 									<div className="flex flex-row items-center gap-2">
 										<Slider
-											defaultValue={[field.value]}
+											defaultValue={[field.value ?? CONCURRENCY_DEFAULT]}
 											min={CONCURRENCY_MIN}
 											max={CONCURRENCY_MAX}
 											step={1}
 											onValueChange={(value) => field.onChange(value[0])}
 										/>
-										<div>{field.value}</div>
+										<div>{field.value ?? CONCURRENCY_DEFAULT}</div>
 									</div>
 								</FormControl>
 								<FormMessage />
@@ -329,7 +329,7 @@ export function NewRun() {
 								<FormControl>
 									<div className="flex flex-row items-center gap-2">
 										<Slider
-											defaultValue={[field.value]}
+											defaultValue={[field.value ?? TIMEOUT_DEFAULT]}
 											min={TIMEOUT_MIN}
 											max={TIMEOUT_MAX}
 											step={1}

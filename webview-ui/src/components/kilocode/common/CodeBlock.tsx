@@ -110,7 +110,11 @@ export const StyledPre = styled.div<{
 	overflow-y: auto;
 	padding: 10px;
 	border-radius: 5px;
-	${({ preStyle }) => preStyle && { ...preStyle }}
+	${({ preStyle }) =>
+		preStyle &&
+		Object.keys(preStyle as Record<string, any>)
+			.map((key) => `${key}: ${(preStyle as Record<string, any>)[key]};`)
+			.join(" ")}
 
 	pre {
 		background-color: ${CODE_BLOCK_BG_COLOR};

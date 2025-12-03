@@ -59,7 +59,6 @@ interface MockVSCodeAPI {
 
 // Extend global type for test mocks
 declare global {
-	// eslint-disable-next-line no-var
 	var __extensionHost:
 		| {
 				registerWebviewProvider: (
@@ -68,7 +67,7 @@ declare global {
 				) => void
 		  }
 		| undefined
-	// eslint-disable-next-line no-var
+
 	var vscode: MockVSCodeAPI | undefined
 }
 
