@@ -11,7 +11,7 @@ import inquirer from "inquirer"
 function createGenericAuthFunction(providerName) {
 	return async () => {
 		const requiredFields = PROVIDER_REQUIRED_FIELDS[providerName] || []
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 		const prompts = []
 		// Build prompts from required fields
 		for (const field of requiredFields) {
@@ -42,7 +42,7 @@ function createGenericAuthFunction(providerName) {
 					message: `${fieldMeta.label}${isOptional ? " (optional)" : ""}:`,
 					default: fieldMeta.type === "boolean" ? false : fieldMeta.defaultValue,
 					mask: fieldMeta.type === "password" ? true : undefined,
-					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 					validate: (input) => {
 						// Boolean fields are always valid
 						if (fieldMeta.type === "boolean") {
@@ -64,7 +64,7 @@ function createGenericAuthFunction(providerName) {
 		// Prompt user for all fields
 		const answers = await inquirer.prompt(prompts)
 		// Build provider config
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 		const providerConfig = {
 			id: "default",
 			provider: providerName,

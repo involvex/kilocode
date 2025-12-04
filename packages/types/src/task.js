@@ -1,5 +1,4 @@
 import { z } from "zod"
-import { RooCodeEventName } from "./events.js"
 export var TaskStatus
 ;(function (TaskStatus) {
 	TaskStatus["Running"] = "running"

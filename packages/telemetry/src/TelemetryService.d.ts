@@ -37,7 +37,7 @@ export declare class TelemetryService {
 	 * @param eventName The event name to capture
 	 * @param properties The event properties
 	 */
-	captureEvent(eventName: TelemetryEventName, properties?: Record<string, any>): void
+	captureEvent(eventName: TelemetryEventName, properties?: Record<string, unknown>): void
 	captureTaskCreated(taskId: string): void
 	captureTaskRestarted(taskId: string): void
 	captureTaskCompleted(taskId: string): void
@@ -101,7 +101,7 @@ export declare class TelemetryService {
 		itemType: string,
 		itemName: string,
 		target: string,
-		properties?: Record<string, any>,
+		properties?: Record<string, unknown>,
 	): void
 	/**
 	 * Captures a marketplace item removal event

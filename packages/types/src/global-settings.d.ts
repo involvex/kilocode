@@ -1303,7 +1303,7 @@ export declare const globalSettingsSchema: z.ZodObject<
 		telemetrySetting?: "unset" | "enabled" | "disabled" | undefined
 		mcpEnabled?: boolean | undefined
 		enableMcpServerCreation?: boolean | undefined
-		mcpMarketplaceCatalog?: any
+		mcpMarketplaceCatalog?: unknown
 		modeApiConfigs?: Record<string, string> | undefined
 		customModePrompts?:
 			| Record<
@@ -1661,7 +1661,7 @@ export declare const globalSettingsSchema: z.ZodObject<
 		telemetrySetting?: "unset" | "enabled" | "disabled" | undefined
 		mcpEnabled?: boolean | undefined
 		enableMcpServerCreation?: boolean | undefined
-		mcpMarketplaceCatalog?: any
+		mcpMarketplaceCatalog?: unknown
 		modeApiConfigs?: Record<string, string> | undefined
 		customModePrompts?:
 			| Record<
@@ -4080,7 +4080,7 @@ export declare const rooCodeSettingsSchema: z.ZodObject<
 		telemetrySetting?: "unset" | "enabled" | "disabled" | undefined
 		mcpEnabled?: boolean | undefined
 		enableMcpServerCreation?: boolean | undefined
-		mcpMarketplaceCatalog?: any
+		mcpMarketplaceCatalog?: unknown
 		modeApiConfigs?: Record<string, string> | undefined
 		customModePrompts?:
 			| Record<
@@ -4755,7 +4755,7 @@ export declare const rooCodeSettingsSchema: z.ZodObject<
 		telemetrySetting?: "unset" | "enabled" | "disabled" | undefined
 		mcpEnabled?: boolean | undefined
 		enableMcpServerCreation?: boolean | undefined
-		mcpMarketplaceCatalog?: any
+		mcpMarketplaceCatalog?: unknown
 		modeApiConfigs?: Record<string, string> | undefined
 		customModePrompts?:
 			| Record<

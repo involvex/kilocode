@@ -193,7 +193,6 @@ export const Plot = ({ tableData }) => {
 		</>
 	)
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderQuadrant = (props) => (
 	<Cross
 		width={props.width}
@@ -206,7 +205,6 @@ const renderQuadrant = (props) => (
 		opacity={0.1}
 	/>
 )
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderCustomLabel = (props, position) => {
 	const { x, y, value } = props
 	const maxWidth = 80 // Maximum width in pixels - adjust as needed.

@@ -9,8 +9,8 @@ export declare class IpcClient extends EventEmitter<IpcClientEvents> {
 	constructor(
 		socketPath: string,
 		log?: {
-			(...data: any[]): void
-			(message?: any, ...optionalParams: any[]): void
+			(...data: unknown[]): void
+			(message?: unknown, ...optionalParams: unknown[]): void
 		},
 	)
 	private onConnect

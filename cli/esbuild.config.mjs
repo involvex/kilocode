@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+ 
 import esbuild from "esbuild"
 import path from "node:path"
 import { fileURLToPath } from "node:url"

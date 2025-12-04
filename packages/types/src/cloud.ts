@@ -380,7 +380,7 @@ export const INSTANCE_TTL_SECONDS = 60
  * ExtensionTask
  */
 
-const extensionTaskSchema = z.object({
+const _extensionTaskSchema = z.object({
 	taskId: z.string(),
 	taskStatus: z.nativeEnum(TaskStatus),
 	taskAsk: clineMessageSchema.optional(),
@@ -391,7 +391,7 @@ const extensionTaskSchema = z.object({
 	...taskMetadataSchema.shape,
 })
 
-export type ExtensionTask = z.infer<typeof extensionTaskSchema>
+export type ExtensionTask = z.infer<typeof _extensionTaskSchema>
 
 /**
  * ExtensionInstance
@@ -404,7 +404,7 @@ export const extensionInstanceSchema = z.object({
 	appProperties: staticAppPropertiesSchema,
 	gitProperties: gitPropertiesSchema.optional(),
 	lastHeartbeat: z.coerce.number(),
-	task: extensionTaskSchema,
+	task: _extensionTaskSchema,
 	taskAsk: clineMessageSchema.optional(),
 	taskHistory: z.array(z.string()),
 	mode: z.string().optional(),

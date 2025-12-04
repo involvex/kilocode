@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // npx vitest run src/__tests__/TelemetryClient.test.ts
 import { TelemetryEventName } from "@roo-code/types"
 import { CloudTelemetryClient as TelemetryClient } from "../TelemetryClient.js"

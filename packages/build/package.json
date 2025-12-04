@@ -19,6 +19,7 @@
 		"@roo-code/config-eslint": "workspace:^",
 		"@roo-code/config-typescript": "workspace:^",
 		"@types/node": "20.x",
+		"globals": "^16.0.0",
 		"vitest": "^3.2.3"
 	}
 }

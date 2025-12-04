@@ -18,6 +18,40 @@ export default [
 		},
 	},
 	{
+		files: ["**/*.test.*", "**/*.spec.*", "**/__tests__/**/*"],
+		languageOptions: {
+			globals: {
+				// Node.js globals
+				console: "readonly",
+				process: "readonly",
+				Buffer: "readonly",
+				global: "readonly",
+				setTimeout: "readonly",
+				clearTimeout: "readonly",
+				setInterval: "readonly",
+				clearInterval: "readonly",
+				setImmediate: "readonly",
+				clearImmediate: "readonly",
+				__dirname: "readonly",
+				__filename: "readonly",
+				require: "readonly",
+				module: "readonly",
+				exports: "readonly",
+				// Vitest globals
+				vi: "readonly",
+				vitest: "readonly",
+				describe: "readonly",
+				it: "readonly",
+				test: "readonly",
+				expect: "readonly",
+				beforeEach: "readonly",
+				afterEach: "readonly",
+				beforeAll: "readonly",
+				afterAll: "readonly",
+			},
+		},
+	},
+	{
 		files: ["core/assistant-message/presentAssistantMessage.ts", "core/webview/webviewMessageHandler.ts"],
 		rules: {
 			"no-case-declarations": "off",
@@ -37,6 +71,12 @@ export default [
 		},
 	},
 	{
-		ignores: ["webview-ui", "out", "services/continuedev/core/llm/llamaTokenizer.js", "**/__fixtures__"],
+		ignores: [
+			"webview-ui",
+			"out",
+			"services/continuedev/core/llm/llamaTokenizer.js",
+			"**/__fixtures__",
+			"**/*.map",
+		],
 	},
 ]

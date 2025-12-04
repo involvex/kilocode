@@ -33,7 +33,7 @@ export async function ensureConfigDir() {
  * - Overwrites with values from source (user config) where they exist
  * - Recursively merges nested objects
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 function deepMerge(target, source) {
 	// Start with a copy of target to get all default keys
 	const result = { ...target }

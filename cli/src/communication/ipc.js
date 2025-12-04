@@ -5,7 +5,6 @@ import { logs } from "../services/logs.js"
  * Replicates the webview message passing pattern used in the VSCode extension
  */
 export class IPCChannel extends EventEmitter {
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 	pendingRequests = new Map()
 	messageId = 0
 	options

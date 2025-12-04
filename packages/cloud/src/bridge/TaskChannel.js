@@ -145,7 +145,6 @@ export class TaskChannel extends BaseChannel {
 				const payload = createPayload(task, ...args)
 				this.publish(TaskSocketEvents.EVENT, payload)
 			}
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			task.on(from, listener)
 			listeners.set(to, listener)
 		})
@@ -160,7 +159,7 @@ export class TaskChannel extends BaseChannel {
 			const listener = listeners.get(to)
 			if (listener) {
 				try {
-					task.off(from, listener) // eslint-disable-line @typescript-eslint/no-explicit-any
+					task.off(from, listener)
 				} catch (error) {
 					console.error(
 						`[TaskChannel] task.off(${from}) failed for task ${task.taskId}: ${error instanceof Error ? error.message : String(error)}`,

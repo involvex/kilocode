@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as RechartsPrimitive from "recharts"
-declare const THEMES: {
+declare const _THEMES: {
 	readonly light: ""
 	readonly dark: ".dark"
 }
@@ -15,7 +15,7 @@ export type ChartConfig = {
 		  }
 		| {
 				color?: never
-				theme: Record<keyof typeof THEMES, string>
+				theme: Record<keyof typeof _THEMES, string>
 		  }
 	)
 }

@@ -55,7 +55,6 @@ export class TelemetryService {
 	 * @param eventName The event name to capture
 	 * @param properties The event properties
 	 */
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	captureEvent(eventName, properties) {
 		if (!this.isReady) {
 			return
@@ -152,14 +151,7 @@ export class TelemetryService {
 	 * @param target The installation target (project or global)
 	 * @param properties Additional properties like hasParameters, installationMethod
 	 */
-	captureMarketplaceItemInstalled(
-		itemId,
-		itemType,
-		itemName,
-		target,
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		properties,
-	) {
+	captureMarketplaceItemInstalled(itemId, itemType, itemName, target, properties) {
 		this.captureEvent(TelemetryEventName.MARKETPLACE_ITEM_INSTALLED, {
 			itemId,
 			itemType,

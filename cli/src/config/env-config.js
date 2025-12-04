@@ -275,7 +275,6 @@ function getProviderOverrideFields(provider) {
 	} else {
 		// For other providers: KILO_XYZ_ABC → xyzAbc
 		for (const [key, value] of Object.entries(process.env)) {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			if (key.startsWith(KILO_PREFIX) && !SPECIFIC_ENV_VARS.has(key) && value) {
 				const remainder = key.substring(KILO_PREFIX.length)
 				if (remainder) {

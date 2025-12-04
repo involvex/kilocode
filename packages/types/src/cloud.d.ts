@@ -2954,7 +2954,7 @@ export declare const INSTANCE_TTL_SECONDS = 60
 /**
  * ExtensionTask
  */
-declare const extensionTaskSchema: z.ZodObject<
+declare const _extensionTaskSchema: z.ZodObject<
 	{
 		task: z.ZodOptional<z.ZodString>
 		images: z.ZodOptional<z.ZodArray<z.ZodString, "many">>
@@ -3632,7 +3632,7 @@ declare const extensionTaskSchema: z.ZodObject<
 			| undefined
 	}
 >
-export type ExtensionTask = z.infer<typeof extensionTaskSchema>
+export type ExtensionTask = z.infer<typeof _extensionTaskSchema>
 /**
  * ExtensionInstance
  */

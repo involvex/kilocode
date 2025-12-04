@@ -23,6 +23,13 @@ export default [
 			"@typescript-eslint/no-empty-object-type": "off",
 		},
 	},
+	// Exclude JavaScript files from the stricter rules since they primarily use Node.js/Browser globals
+	{
+		files: ["**/*.js"],
+		rules: {
+			"no-undef": "off",
+		},
+	},
 	{
 		files: ["__mocks__/**/*.js"],
 		rules: {

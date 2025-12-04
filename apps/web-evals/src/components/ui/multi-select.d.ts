@@ -4,7 +4,8 @@ import { type VariantProps } from "class-variance-authority"
  * Variants for the multi-select component to handle different styles.
  * Uses class-variance-authority (cva) to define different styles based on "variant" prop.
  */
-declare const multiSelectVariants: (
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const _multiSelectVariants: (
 	props?:
 		| ({
 				variant?: "default" | "secondary" | "destructive" | "inverted" | null | undefined
@@ -14,7 +15,7 @@ declare const multiSelectVariants: (
 /**
  * Props for MultiSelect component
  */
-interface MultiSelectProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof multiSelectVariants> {
+interface MultiSelectProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof _multiSelectVariants> {
 	/**
 	 * An array of option objects to be displayed in the multi-select component.
 	 * Each option object has a label and value.

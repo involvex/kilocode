@@ -1,5 +1,4 @@
 import { z } from "zod"
-import { RooCodeEventName } from "./events.js"
 import { TaskStatus, taskMetadataSchema } from "./task.js"
 import { globalSettingsSchema } from "./global-settings.js"
 import { providerSettingsWithIdSchema } from "./provider-settings.js"

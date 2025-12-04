@@ -17,4 +17,22 @@ export default [
 			"@typescript-eslint/no-require-imports": "off",
 		},
 	},
+	{
+		files: ["**/__tests__/**", "**/*.test.*"],
+		languageOptions: {
+			globals: {
+				...globals.vitest,
+			},
+		},
+	},
+	{
+		files: ["**/*.d.ts"],
+		rules: {
+			"@typescript-eslint/no-explicit-any": "off",
+			"@typescript-eslint/no-empty-object-type": "off",
+		},
+	},
+	{
+		ignores: ["**/*.d.ts.map"],
+	},
 ]

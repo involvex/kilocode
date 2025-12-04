@@ -5,6 +5,9 @@ import globals from "globals"
 export default [
 	...config,
 	{
+		ignores: ["**/*.d.ts.map"],
+	},
+	{
 		files: ["**/*.cjs"],
 		languageOptions: {
 			globals: {
@@ -15,6 +18,21 @@ export default [
 		},
 		rules: {
 			"@typescript-eslint/no-require-imports": "off",
+		},
+	},
+	{
+		files: ["**/__tests__/**", "**/*.test.*", "**/__mocks__/**"],
+		languageOptions: {
+			globals: {
+				...globals.vitest,
+			},
+		},
+	},
+	{
+		files: ["**/*.d.ts"],
+		rules: {
+			"@typescript-eslint/no-explicit-any": "off",
+			"@typescript-eslint/no-empty-object-type": "off",
 		},
 	},
 ]

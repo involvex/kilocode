@@ -40,7 +40,6 @@ export async function getVSCodeReviews() {
 			console.error("VSCode API: Missing reviews in response")
 			return []
 		}
-		/* eslint-disable  @typescript-eslint/no-explicit-any */
 		return reviews.map((review) => ({
 			name: review.reviewer?.displayName || "Anonymous",
 			rating: review.rating,
@@ -80,7 +79,6 @@ export async function getVSCodeDownloads() {
 			console.error("VSCode API: Missing statistics in response")
 			return null
 		}
-		/* eslint-disable  @typescript-eslint/no-explicit-any */
 		const installStat = statistics.find((stat) => stat.statisticName === "install")
 		if (!installStat) {
 			console.error("VSCode API: Install count not found")

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-undef */
 // npx vitest run src/__tests__/PostHogTelemetryClient.test.ts
 import * as vscode from "vscode"
 import { PostHog } from "posthog-node"

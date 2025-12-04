@@ -161,7 +161,6 @@ export function setupLocaleWatcher(srcDir, distDir) {
 export function generatePackageJson({ packageJson: { contributes, ...packageJson }, overrideJson, substitution, }) {
     const { viewsContainers, views, commands, menus, submenus, keybindings, configuration } = contributesSchema.parse(contributes);
     const [from, to] = substitution;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const result = {
         ...packageJson,
         ...overrideJson,
@@ -183,7 +182,6 @@ export function generatePackageJson({ packageJson: { contributes, ...packageJson
     }
     return result;
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function transformArrayRecord(obj, from, to, props) {
     return Object.entries(obj).reduce((acc, [key, ary]) => ({
         ...acc,
@@ -198,14 +196,12 @@ function transformArrayRecord(obj, from, to, props) {
         }),
     }), {});
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function transformArray(arr, from, to, idProp) {
     return arr.map(({ [idProp]: id, ...rest }) => ({
         [idProp]: id.replaceAll(from, to),
         ...rest,
     }));
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function transformRecord(obj, from, to) {
     return Object.entries(obj).reduce((acc, [key, value]) => ({
         ...acc,

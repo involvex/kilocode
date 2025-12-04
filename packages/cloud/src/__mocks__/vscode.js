@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export const window = {
 	showInformationMessage: vi.fn(),
 	showErrorMessage: vi.fn(),

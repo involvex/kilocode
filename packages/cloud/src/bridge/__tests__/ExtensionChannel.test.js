@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { RooCodeEventName, ExtensionBridgeEventName, ExtensionSocketEvents } from "@roo-code/types"
 import { ExtensionChannel } from "../ExtensionChannel.js"
 describe("ExtensionChannel", () => {

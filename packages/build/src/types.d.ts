@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { z } from "zod";
 declare const viewsContainerSchema: z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
     id: z.ZodString;
@@ -121,9 +123,9 @@ declare const configurationPropertySchema: z.ZodObject<{
     }, {
         type: string;
     }>>;
-    properties: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-    enum: z.ZodOptional<z.ZodArray<z.ZodAny, "many">>;
-    default: z.ZodOptional<z.ZodAny>;
+    properties: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
+    enum: z.ZodOptional<z.ZodArray<z.ZodUnknown, "many">>;
+    default: z.ZodOptional<z.ZodUnknown>;
     description: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "string" | "number" | "boolean" | "object" | "array";
@@ -156,9 +158,9 @@ declare const configurationSchema: z.ZodObject<{
         }, {
             type: string;
         }>>;
-        properties: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-        enum: z.ZodOptional<z.ZodArray<z.ZodAny, "many">>;
-        default: z.ZodOptional<z.ZodAny>;
+        properties: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
+        enum: z.ZodOptional<z.ZodArray<z.ZodUnknown, "many">>;
+        default: z.ZodOptional<z.ZodUnknown>;
         description: z.ZodString;
     }, "strip", z.ZodTypeAny, {
         type: "string" | "number" | "boolean" | "object" | "array";
@@ -307,9 +309,9 @@ export declare const contributesSchema: z.ZodObject<{
             }, {
                 type: string;
             }>>;
-            properties: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-            enum: z.ZodOptional<z.ZodArray<z.ZodAny, "many">>;
-            default: z.ZodOptional<z.ZodAny>;
+            properties: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
+            enum: z.ZodOptional<z.ZodArray<z.ZodUnknown, "many">>;
+            default: z.ZodOptional<z.ZodUnknown>;
             description: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             type: "string" | "number" | "boolean" | "object" | "array";
