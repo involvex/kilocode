@@ -2,27 +2,6 @@ import * as path from "path"
 import * as os from "os"
 import fs from "fs/promises"
 import fsSync from "fs" // kilocode_change
-/**
- * Gets the global .roo directory path based on the current platform
- *
- * @returns The absolute path to the global .roo directory
- *
- * @example Platform-specific paths:
- * ```
- * // macOS/Linux: ~/.roo/
- * // Example: /Users/john/.roo
- *
- * // Windows: %USERPROFILE%\.roo\
- * // Example: C:\Users\john\.roo
- * ```
- *
- * @example Usage:
- * ```typescript
- * const globalDir = getGlobalRooDirectory()
- * // Returns: "/Users/john/.roo" (on macOS/Linux)
- * // Returns: "C:\\Users\\john\\.roo" (on Windows)
- * ```
- */
 export function getGlobalRooDirectory() {
 	const homeDir = os.homedir()
 	return path.join(homeDir, ".kilocode") // kilocode_change

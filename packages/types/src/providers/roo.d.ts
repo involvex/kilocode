@@ -8,7 +8,7 @@ export declare const rooDefaultModelId = "xai/grok-code-fast-1"
  * Empty models object maintained for type compatibility.
  * All model data comes dynamically from the API.
  */
-export declare const _rooModels: {}
+export declare const rooModels: {}
 /**
  * Roo Code Cloud API response schemas
  */
