@@ -1,0 +1,1 @@
+{"version":3,"file":"webviewMessageHandler.d.ts","sourceRoot":"","sources":["webviewMessageHandler.ts"],"names":[],"mappings":"AAUA,OAAO,EACN,wBAAwB,EAMxB,MAAM,6BAA6B,CAAA;AAyBpC,OAAO,EAAE,aAAa,EAAE,MAAM,iBAAiB,CAAA;AA4C/C,OAAO,EAAE,kBAAkB,EAAuB,MAAM,4BAA4B,CAAA;AAUpF,eAAO,MAAM,qBAAqB,GACjC,UAAU,aAAa,EACvB,SAAS,wBAAwB,EAAE,4EAA4E;AAC/G,qBAAqB,kBAAkB,kBAwuHvC,CAAA"}

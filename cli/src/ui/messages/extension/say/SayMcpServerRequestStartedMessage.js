@@ -1,0 +1,14 @@
+import React from "react"
+import { Box, Text } from "ink"
+import { useTheme } from "../../../../state/hooks/useTheme.js"
+/**
+ * Display MCP server request started
+ */
+export const SayMcpServerRequestStartedMessage = () => {
+	const theme = useTheme()
+	return (
+		<Box marginY={1}>
+			<Text color={theme.semantic.info}>⚙ MCP Server Request in progress...</Text>
+		</Box>
+	)
+}

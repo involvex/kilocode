@@ -1,0 +1,1 @@
+{"version":3,"file":"openedFilesLruCache.js","sourceRoot":"","sources":["openedFilesLruCache.ts"],"names":[],"mappings":"AAAA,OAAO,QAAQ,MAAM,WAAW,CAAA;AAEhC,kDAAkD;AAClD,MAAM,0BAA0B,GAAG,EAAE,CAAA;AAErC,qEAAqE;AACrE,MAAM,CAAC,MAAM,mBAAmB,GAAG,IAAI,QAAQ,CAAiB;IAC/D,OAAO,EAAE,0BAA0B;CACnC,CAAC,CAAA"}

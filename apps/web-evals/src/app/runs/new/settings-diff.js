@@ -1,0 +1,48 @@
+import { Fragment } from "react"
+import { GLOBAL_SETTINGS_KEYS, PROVIDER_SETTINGS_KEYS } from "@roo-code/types"
+import { cn } from "@/lib/utils"
+export const ROO_CODE_SETTINGS_KEYS = [...GLOBAL_SETTINGS_KEYS, ...PROVIDER_SETTINGS_KEYS]
+export function SettingsDiff({
+	customSettings: { experiments: customExperiments, ...customSettings },
+	defaultSettings: { experiments: defaultExperiments, ...defaultSettings },
+	className,
+	...props
+}) {
+	const defaults = { ...defaultSettings, ...defaultExperiments }
+	const custom = { ...customSettings, ...customExperiments }
+	return (
+		<div className={cn("grid grid-cols-3 gap-2 text-sm p-2", className)} {...props}>
+			<div className="font-medium text-muted-foreground">Setting</div>
+			<div className="font-medium text-muted-foreground">Default</div>
+			<div className="font-medium text-muted-foreground">Custom</div>
+			{ROO_CODE_SETTINGS_KEYS.map((key) => {
+				const defaultValue = defaults[key]
+				const customValue = custom[key]
+				const isDefault = JSON.stringify(defaultValue) === JSON.stringify(customValue)
+				return isDefault ? null : (
+					<SettingDiff
+						key={key}
+						name={key}
+						defaultValue={JSON.stringify(defaultValue, null, 2)}
+						customValue={JSON.stringify(customValue, null, 2)}
+					/>
+				)
+			})}
+		</div>
+	)
+}
+export function SettingDiff({ name, defaultValue, customValue, ...props }) {
+	return (
+		<Fragment {...props}>
+			<div className="font-mono" title={name}>
+				{name}
+			</div>
+			<pre className="inline text-rose-500 line-through" title={defaultValue}>
+				{defaultValue}
+			</pre>
+			<pre className="inline text-teal-500" title={customValue}>
+				{customValue}
+			</pre>
+		</Fragment>
+	)
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"task-status.d.ts","sourceRoot":"","sources":["task-status.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,IAAI,EAAE,MAAM,iBAAiB,CAAA;AAE3C,KAAK,eAAe,GAAG;IACtB,IAAI,EAAE,IAAI,CAAA;IACV,OAAO,EAAE,OAAO,CAAA;CAChB,CAAA;AAED,eAAO,MAAM,UAAU,GAAI,mBAAmB,eAAe,gCAU5D,CAAA"}

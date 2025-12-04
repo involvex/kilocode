@@ -1,4 +1,4 @@
-import { getApiUrl } from "@roo-code/types"
+import { getApiUrl } from "@roo-code/types/cli"
 import type { AuthResult, DeviceAuthInitiateResponse, DeviceAuthPollResponse } from "../../types.js"
 import { poll, formatTimeRemaining } from "../../utils/polling.js"
 import { openBrowser } from "../../utils/browser.js"

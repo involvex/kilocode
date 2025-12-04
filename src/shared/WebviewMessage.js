@@ -1,0 +1,28 @@
+import { z } from "zod"
+import {
+	marketplaceItemSchema,
+	// kilocode_change end
+} from "@roo-code/types"
+// kilocode_change end
+export const checkoutDiffPayloadSchema = z.object({
+	ts: z.number().optional(),
+	previousCommitHash: z.string().optional(),
+	commitHash: z.string(),
+	mode: z.enum(["full", "checkpoint", "from-init", "to-current"]),
+})
+export const checkoutRestorePayloadSchema = z.object({
+	ts: z.number(),
+	commitHash: z.string(),
+	mode: z.enum(["preview", "restore"]),
+})
+export const requestCheckpointRestoreApprovalPayloadSchema = z.object({
+	commitHash: z.string(),
+	checkpointTs: z.number(),
+	messagesToRemove: z.number(),
+	confirmationText: z.string(),
+})
+export const installMarketplaceItemWithParametersPayloadSchema = z.object({
+	item: marketplaceItemSchema,
+	parameters: z.record(z.string(), z.any()),
+})
+//# sourceMappingURL=WebviewMessage.js.map

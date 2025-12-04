@@ -1,0 +1,31 @@
+/**
+ * Escape sequences and special characters for terminal input
+ */
+export declare const ESC = "\u001B"
+export declare const CSI = "\u001B["
+export declare const SS3 = "\u001BO"
+export declare const PASTE_MODE_PREFIX = "\u001B[200~"
+export declare const PASTE_MODE_SUFFIX = "\u001B[201~"
+export declare const FOCUS_IN = "\u001B[I"
+export declare const FOCUS_OUT = "\u001B[O"
+export declare const SINGLE_QUOTE = "'"
+export declare const DOUBLE_QUOTE = '"'
+export declare const BACKSLASH = "\\"
+export declare const CTRL_C = "\u0003"
+export declare const CTRL_D = "\u0004"
+export declare const CTRL_Z = "\u001A"
+export declare const CURSOR_UP = "\u001B[A"
+export declare const CURSOR_DOWN = "\u001B[B"
+export declare const CURSOR_RIGHT = "\u001B[C"
+export declare const CURSOR_LEFT = "\u001B[D"
+export declare const CURSOR_HOME = "\u001B[H"
+export declare const CURSOR_END = "\u001B[F"
+export declare const DELETE_CHAR = "\u001B[3~"
+export declare const DELETE_LINE = "\u001B[2K"
+export declare const PAGE_UP = "\u001B[5~"
+export declare const PAGE_DOWN = "\u001B[6~"
+export declare const F1 = "\u001BOP"
+export declare const F2 = "\u001BOQ"
+export declare const F3 = "\u001BOR"
+export declare const F4 = "\u001BOS"
+//# sourceMappingURL=sequences.d.ts.map

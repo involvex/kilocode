@@ -4,7 +4,7 @@
  */
 
 import type { ModeConfig } from "../../types/messages.js"
-import { DEFAULT_MODES } from "../../constants/modes/defaults.js"
+import { DEFAULT_MODES } from "@roo-code/types/cli"
 
 /**
  * Default fallback mode when current mode is not available

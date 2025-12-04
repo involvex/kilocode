@@ -1,0 +1,2 @@
+export declare function escapeHtml(text: string): string
+//# sourceMappingURL=escapeHtml.d.ts.map

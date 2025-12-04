@@ -1,0 +1,1 @@
+{"version":3,"file":"MessageDisplay.d.ts","sourceRoot":"","sources":["MessageDisplay.tsx"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAqCG;AAEH,OAAO,KAAK,MAAM,OAAO,CAAA;AAMzB,UAAU,mBAAmB;IAC5B,0DAA0D;IAC1D,UAAU,CAAC,EAAE,KAAK,GAAG,KAAK,CAAA;IAC1B,2DAA2D;IAC3D,WAAW,CAAC,EAAE,MAAM,CAAA;CACpB;AA+BD,eAAO,MAAM,cAAc,EAAE,KAAK,CAAC,EAAE,CAAC,mBAAmB,CA8BxD,CAAA"}

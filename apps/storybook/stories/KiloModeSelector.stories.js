@@ -1,0 +1,56 @@
+import React, { useState } from "react"
+import KiloModeSelector from "../../../webview-ui/src/components/kilocode/KiloModeSelector"
+import { DEFAULT_MODES } from "@roo-code/types"
+import { withI18n } from "../src/decorators/withI18n"
+import { withTheme } from "../src/decorators/withTheme"
+import { withTooltipProvider } from "../src/decorators/withTooltipProvider"
+const KiloModeSelectorWrapper = (props) => {
+	const [selectedMode, setSelectedMode] = useState(props.value || "code")
+	return (
+		<div style={{ padding: "20px", minHeight: "400px", maxWidth: "300px" }}>
+			<KiloModeSelector
+				{...props}
+				value={selectedMode}
+				onChange={setSelectedMode}
+				modeShortcutText={props.modeShortcutText || "⌘ + . for next mode"}
+			/>
+		</div>
+	)
+}
+const meta = {
+	title: "Chat/KiloModeSelector",
+	component: KiloModeSelectorWrapper,
+	decorators: [withI18n, withTheme, withTooltipProvider],
+}
+export default meta
+const defaultArgs = {
+	customModes: DEFAULT_MODES,
+	modeShortcutText: "⌘ + . for next mode, ⌘ + Shift + . for previous mode",
+	title: "Select Mode",
+}
+export const Default = {
+	args: {
+		...defaultArgs,
+		value: "code",
+	},
+}
+export const Architect = {
+	args: {
+		...defaultArgs,
+		value: "architect",
+	},
+}
+export const Disabled = {
+	args: {
+		...defaultArgs,
+		value: "debug",
+		disabled: true,
+	},
+}
+export const Open = {
+	args: {
+		...defaultArgs,
+		value: "ask",
+		initiallyOpen: true,
+	},
+}

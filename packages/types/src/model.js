@@ -1,0 +1,105 @@
+import { z } from "zod"
+/**
+ * ReasoningEffort
+ */
+export const reasoningEfforts = ["low", "medium", "high"]
+export const reasoningEffortsSchema = z.enum(reasoningEfforts)
+/**
+ * ReasoningEffortWithMinimal
+ */
+export const reasoningEffortWithMinimalSchema = z.union([reasoningEffortsSchema, z.literal("minimal")])
+/**
+ * Extended Reasoning Effort (includes "none" and "minimal")
+ * Note: "disable" is a UI/control value, not a value sent as effort
+ */
+export const reasoningEffortsExtended = ["none", "minimal", "low", "medium", "high"]
+export const reasoningEffortExtendedSchema = z.enum(reasoningEffortsExtended)
+/**
+ * Reasoning Effort user setting (includes "disable")
+ */
+export const reasoningEffortSettingValues = ["disable", "none", "minimal", "low", "medium", "high"]
+export const reasoningEffortSettingSchema = z.enum(reasoningEffortSettingValues)
+/**
+ * Verbosity
+ */
+export const verbosityLevels = ["low", "medium", "high"]
+export const verbosityLevelsSchema = z.enum(verbosityLevels)
+/**
+ * Service tiers (OpenAI Responses API)
+ */
+export const serviceTiers = ["default", "flex", "priority"]
+export const serviceTierSchema = z.enum(serviceTiers)
+/**
+ * ModelParameter
+ */
+export const modelParameters = ["max_tokens", "temperature", "reasoning", "include_reasoning"]
+export const modelParametersSchema = z.enum(modelParameters)
+export const isModelParameter = (value) => modelParameters.includes(value)
+/**
+ * ModelInfo
+ */
+export const modelInfoSchema = z.object({
+	maxTokens: z.number().nullish(),
+	maxThinkingTokens: z.number().nullish(),
+	contextWindow: z.number(),
+	supportsImages: z.boolean().optional(),
+	supportsComputerUse: z.boolean().optional(), // kilocode_change
+	supportsPromptCache: z.boolean(),
+	// Optional default prompt cache retention policy for providers that support it.
+	// When set to "24h", extended prompt caching will be requested; when omitted
+	// or set to "in_memory", the default in‑memory cache is used.
+	promptCacheRetention: z.enum(["in_memory", "24h"]).optional(),
+	// Capability flag to indicate whether the model supports an output verbosity parameter
+	supportsVerbosity: z.boolean().optional(),
+	supportsReasoningBudget: z.boolean().optional(),
+	// Capability flag to indicate whether the model supports simple on/off binary reasoning
+	supportsReasoningBinary: z.boolean().optional(),
+	// Capability flag to indicate whether the model supports temperature parameter
+	supportsTemperature: z.boolean().optional(),
+	defaultTemperature: z.number().optional(),
+	requiredReasoningBudget: z.boolean().optional(),
+	supportsReasoningEffort: z
+		.union([z.boolean(), z.array(z.enum(["disable", "none", "minimal", "low", "medium", "high"]))])
+		.optional(),
+	requiredReasoningEffort: z.boolean().optional(),
+	preserveReasoning: z.boolean().optional(),
+	supportedParameters: z.array(modelParametersSchema).optional(),
+	inputPrice: z.number().optional(),
+	outputPrice: z.number().optional(),
+	cacheWritesPrice: z.number().optional(),
+	cacheReadsPrice: z.number().optional(),
+	description: z.string().optional(),
+	// Default effort value for models that support reasoning effort
+	reasoningEffort: reasoningEffortExtendedSchema.optional(),
+	minTokensPerCachePoint: z.number().optional(),
+	maxCachePoints: z.number().optional(),
+	cachableFields: z.array(z.string()).optional(),
+	// kilocode_change start
+	displayName: z.string().nullish(),
+	preferredIndex: z.number().nullish(),
+	// kilocode_change end
+	// Flag to indicate if the model is deprecated and should not be used
+	deprecated: z.boolean().optional(),
+	// Flag to indicate if the model is free (no cost)
+	isFree: z.boolean().optional(),
+	// Flag to indicate if the model supports native tool calling (OpenAI-style function calling)
+	supportsNativeTools: z.boolean().optional(),
+	/**
+	 * Service tiers with pricing information.
+	 * Each tier can have a name (for OpenAI service tiers) and pricing overrides.
+	 * The top-level input/output/cache* fields represent the default/standard tier.
+	 */
+	tiers: z
+		.array(
+			z.object({
+				name: serviceTierSchema.optional(), // Service tier name (flex, priority, etc.)
+				contextWindow: z.number(),
+				inputPrice: z.number().optional(),
+				outputPrice: z.number().optional(),
+				cacheWritesPrice: z.number().optional(),
+				cacheReadsPrice: z.number().optional(),
+			}),
+		)
+		.optional(),
+})
+//# sourceMappingURL=model.js.map

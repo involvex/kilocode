@@ -1,5 +1,5 @@
-import { getApiUrl } from "@roo-code/types"
-import { openRouterDefaultModelId } from "@roo-code/types"
+import { getApiUrl } from "@roo-code/types/cli"
+import { openRouterDefaultModelId } from "@roo-code/types/cli"
 import { z } from "zod"
 import inquirer from "inquirer"
 import { logs } from "../../../services/logs.js"

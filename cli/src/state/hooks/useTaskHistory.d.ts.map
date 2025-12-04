@@ -1,0 +1,1 @@
+{"version":3,"file":"useTaskHistory.d.ts","sourceRoot":"","sources":["useTaskHistory.ts"],"names":[],"mappings":"AAAA;;GAEG;AAIH,OAAO,EAUN,KAAK,kBAAkB,EACvB,KAAK,eAAe,EACpB,MAAM,yBAAyB,CAAA;AAKhC,wBAAgB,cAAc;;;;;;;gCA6CT,OAAO,CAAC,kBAAkB,CAAC,KAAG,OAAO,CAAC,eAAe,CAAC;+BAqDpD,MAAM,KAAG,OAAO,CAAC,eAAe,CAAC;oBAiDhB,OAAO,CAAC,eAAe,CAAC;wBAWpB,OAAO,CAAC,eAAe,CAAC;EAoBnE"}

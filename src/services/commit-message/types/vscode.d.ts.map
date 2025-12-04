@@ -1,0 +1,1 @@
+{"version":3,"file":"vscode.d.ts","sourceRoot":"","sources":["vscode.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,MAAM,MAAM,QAAQ,CAAA;AAEhC,MAAM,WAAW,oBAAoB;IACpC,QAAQ,EAAE;QAAE,KAAK,EAAE,MAAM,CAAA;KAAE,CAAA;IAC3B,OAAO,CAAC,EAAE,MAAM,CAAC,GAAG,CAAA;CACpB;AAED,eAAO,MAAM,oBAAoB;;;;CAIvB,CAAA"}

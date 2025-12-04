@@ -48,7 +48,7 @@ import {
 	minimaxModels,
 	minimaxDefaultModelId,
 	ovhCloudAiEndpointsDefaultModelId,
-} from "@roo-code/types"
+} from "@roo-code/types/cli"
 
 /**
  * RouterName type - mirrors the one from src/shared/api.ts

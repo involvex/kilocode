@@ -1,0 +1,1 @@
+{"version":3,"file":"KeyboardProvider.d.ts","sourceRoot":"","sources":["KeyboardProvider.tsx"],"names":[],"mappings":"AAAA;;;;GAIG;AAEH,OAAO,KAAyC,MAAM,OAAO,CAAA;AAK7D,OAAO,KAAK,EAAE,sBAAsB,EAAe,MAAM,yBAAyB,CAAA;AAoClF,UAAU,qBAAqB;IAC9B,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAA;IACzB,MAAM,CAAC,EAAE,sBAAsB,CAAA;CAC/B;AAED,wBAAgB,gBAAgB,CAAC,EAAE,QAAQ,EAAE,MAAW,EAAE,EAAE,qBAAqB,qBAqYhF"}

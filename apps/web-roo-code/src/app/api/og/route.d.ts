@@ -1,0 +1,4 @@
+import { NextRequest } from "next/server"
+export declare const runtime = "edge"
+export declare function GET(request: NextRequest): Promise<any>
+//# sourceMappingURL=route.d.ts.map

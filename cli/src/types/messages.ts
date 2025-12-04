@@ -9,7 +9,7 @@ import type {
 	ModeConfig,
 	TodoItem,
 	ClineMessage,
-} from "@roo-code/types"
+} from "@roo-code/types/cli"
 
 // ============================================
 // SHARED TYPES - Import from src/shared

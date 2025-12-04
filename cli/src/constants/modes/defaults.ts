@@ -1,11 +1,8 @@
-import type { ModeConfig } from "../../types/messages.js"
-import { DEFAULT_MODES as DEFAULT_MODES_KILO } from "@roo-code/types"
+import { DEFAULT_MODES } from "@roo-code/types/cli"
 
-/**
- * Default mode
- */
-export const DEFAULT_MODES = DEFAULT_MODES_KILO
 export const DEFAULT_MODE_SLUG = "code"
+
+import type { ModeConfig } from "@roo-code/types/cli"
 
 /**
  * Get mode configuration by slug
@@ -13,7 +10,7 @@ export const DEFAULT_MODE_SLUG = "code"
  * @param customModes - Array of custom modes
  * @returns Mode configuration or undefined
  */
-export const getModeBySlug = (slug: string, customModes: ModeConfig[] = []): ModeConfig | undefined => {
+export const getModeBySlug = (slug: string, customModes: ModeConfig[] = []) => {
 	const allModes = [...DEFAULT_MODES, ...customModes]
 	return allModes.find((mode) => mode.slug === slug)
 }
@@ -23,7 +20,7 @@ export const getModeBySlug = (slug: string, customModes: ModeConfig[] = []): Mod
  * @param customModes - Array of custom modes
  * @returns Array of all mode configurations
  */
-export const getAllModes = (customModes: ModeConfig[] = []): ModeConfig[] => {
+export const getAllModes = (customModes: ModeConfig[] = []) => {
 	return [...DEFAULT_MODES, ...customModes]
 }
 

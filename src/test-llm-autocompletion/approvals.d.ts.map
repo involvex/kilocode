@@ -1,0 +1,1 @@
+{"version":3,"file":"approvals.d.ts","sourceRoot":"","sources":["approvals.ts"],"names":[],"mappings":"AAMA,MAAM,WAAW,cAAc;IAC9B,UAAU,EAAE,OAAO,CAAA;IACnB,SAAS,EAAE,OAAO,CAAA;CAClB;AA2ED,wBAAsB,aAAa,CAClC,QAAQ,EAAE,MAAM,EAChB,QAAQ,EAAE,MAAM,EAChB,KAAK,EAAE,MAAM,EACb,MAAM,EAAE,MAAM,EACd,YAAY,GAAE,OAAe,GAC3B,OAAO,CAAC,cAAc,CAAC,CA+BzB"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"nano-gpt.js","sourceRoot":"","sources":["nano-gpt.ts"],"names":[],"mappings":"AAGA,MAAM,CAAC,MAAM,qBAAqB,GAAG,mBAAmB,CAAA;AAExD,MAAM,CAAC,MAAM,uBAAuB,GAAc;IACjD,WAAW,EAAE,6EAA6E;IAC1F,aAAa,EAAE,OAAO;IACtB,mBAAmB,EAAE,KAAK;IAC1B,UAAU,EAAE,IAAI;IAChB,WAAW,EAAE,GAAG;IAChB,SAAS,EAAE,MAAM;CACjB,CAAA"}

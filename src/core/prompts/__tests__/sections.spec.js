@@ -1,0 +1,58 @@
+// Mock ManagedIndexer before importing anything that uses it
+vi.mock("../../../services/code-index/managed/ManagedIndexer", () => ({
+	ManagedIndexer: {
+		getInstance: vi.fn().mockReturnValue({
+			isEnabled: vi.fn().mockReturnValue(false),
+			organization: null,
+		}),
+	},
+}))
+import { addCustomInstructions } from "../sections/custom-instructions"
+import { getCapabilitiesSection } from "../sections/capabilities"
+describe("addCustomInstructions", () => {
+	it("adds vscode language to custom instructions", async () => {
+		const result = await addCustomInstructions(
+			"mode instructions",
+			"global instructions",
+			"/test/path",
+			"test-mode",
+			{ language: "fr" },
+		)
+		expect(result).toContain("Language Preference:")
+		expect(result).toContain('You should always speak and think in the "Français" (fr) language')
+	})
+	it("works without vscode language", async () => {
+		const result = await addCustomInstructions(
+			"mode instructions",
+			"global instructions",
+			"/test/path",
+			"test-mode",
+		)
+		expect(result).not.toContain("Language Preference:")
+		expect(result).not.toContain("You should always speak and think in")
+	})
+})
+describe("getCapabilitiesSection", () => {
+	const cwd = "/test/path"
+	const mcpHub = undefined
+	const mockDiffStrategy = {
+		getName: () => "MockStrategy",
+		getToolDescription: () => "apply_diff tool description",
+		async applyDiff(_originalContent, _diffContents) {
+			return { success: true, content: "mock result" }
+		},
+	}
+	it("includes apply_diff in capabilities when diffStrategy is provided", () => {
+		const result = getCapabilitiesSection(cwd, false, "code", undefined, undefined, mcpHub, mockDiffStrategy)
+		expect(result).toContain("apply_diff")
+		expect(result).toContain("write_to_file")
+		expect(result).toContain("insert_content")
+	})
+	it("excludes apply_diff from capabilities when diffStrategy is undefined", () => {
+		const result = getCapabilitiesSection(cwd, false, "code", undefined, undefined, mcpHub, undefined)
+		expect(result).not.toContain("apply_diff")
+		expect(result).toContain("write_to_file")
+		expect(result).toContain("insert_content")
+	})
+})
+//# sourceMappingURL=sections.spec.js.map

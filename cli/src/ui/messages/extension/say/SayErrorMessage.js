@@ -1,0 +1,31 @@
+import React from "react"
+import { Box, Text } from "ink"
+import { MarkdownText } from "../../../components/MarkdownText.js"
+import { useTheme } from "../../../../state/hooks/useTheme.js"
+import { getBoxWidth } from "../../../utils/width.js"
+/**
+ * Display error messages with red bordered box
+ */
+export const SayErrorMessage = ({ message }) => {
+	const theme = useTheme()
+	return (
+		<Box
+			width={getBoxWidth(1)}
+			flexDirection="column"
+			borderStyle="round"
+			borderColor={theme.semantic.error}
+			paddingX={1}
+			marginY={1}>
+			<Box>
+				<Text color={theme.semantic.error} bold>
+					✖ Error
+				</Text>
+			</Box>
+			{message.text && (
+				<Box marginTop={1}>
+					<MarkdownText>{message.text}</MarkdownText>
+				</Box>
+			)}
+		</Box>
+	)
+}

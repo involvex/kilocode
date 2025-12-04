@@ -63,6 +63,10 @@ const config = {
 	target: "node20",
 	format: "esm",
 	outfile: "dist/index.js",
+	loader: {
+		".js": "jsx",
+		".jsx": "jsx",
+	},
 	banner: {
 		js: `import { createRequire as __createRequire__ } from 'module';
 import { fileURLToPath as __fileURLToPath__ } from 'url';
@@ -75,6 +79,7 @@ const __dirname = __dirname__(__filename);
 	external: [
 		// Keep these as external dependencies (will be installed via npm)
 		"@roo-code/types",
+		"@roo-code/types/cli",
 		"@anthropic-ai/bedrock-sdk",
 		"@anthropic-ai/sdk",
 		"@anthropic-ai/vertex-sdk",

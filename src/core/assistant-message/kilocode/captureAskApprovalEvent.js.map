@@ -1,0 +1,1 @@
+{"version":3,"file":"captureAskApprovalEvent.js","sourceRoot":"","sources":["captureAskApprovalEvent.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAY,MAAM,iBAAiB,CAAA;AAC9D,OAAO,EAAE,gBAAgB,EAAE,MAAM,qBAAqB,CAAA;AAEtD,MAAM,UAAU,kBAAkB,CAAC,IAAc,EAAE,UAAmB;IACrE,gBAAgB,CAAC,QAAQ,CAAC,YAAY,CAAC,kBAAkB,CAAC,YAAY,EAAE,EAAE,IAAI,EAAE,UAAU,EAAE,CAAC,CAAA;AAC9F,CAAC"}

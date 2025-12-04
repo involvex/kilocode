@@ -1,0 +1,1 @@
+{"version":3,"file":"animated-text.d.ts","sourceRoot":"","sources":["animated-text.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAA;AAG9B,UAAU,iBAAiB;IAC1B,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAA;IACzB,SAAS,CAAC,EAAE,MAAM,CAAA;CAClB;AAED,wBAAgB,YAAY,CAAC,EAAE,QAAQ,EAAE,SAAS,EAAE,EAAE,iBAAiB,qBAatE"}

@@ -1,0 +1,137 @@
+/**
+ * Tests for /new command
+ */
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest"
+import { newCommand } from "../new.js"
+import { createMockContext } from "./helpers/mockContext.js"
+import { SessionManager } from "../../../../src/shared/kilocode/cli-sessions/core/SessionManager.js"
+describe("/new command", () => {
+	let mockContext
+	let mockSessionManager
+	beforeEach(() => {
+		// Mock process.stdout.write to capture terminal clearing
+		vi.spyOn(process.stdout, "write").mockImplementation(() => true)
+		mockContext = createMockContext({
+			input: "/new",
+		})
+		// Mock SessionManager
+		mockSessionManager = {
+			destroy: vi.fn().mockResolvedValue(undefined),
+			sessionId: "test-session-id",
+		}
+		// Mock SessionManager.init to return our mock
+		vi.spyOn(SessionManager, "init").mockReturnValue(mockSessionManager)
+	})
+	afterEach(() => {
+		vi.restoreAllMocks()
+	})
+	describe("Command metadata", () => {
+		it("should have correct name", () => {
+			expect(newCommand.name).toBe("new")
+		})
+		it("should have correct aliases", () => {
+			expect(newCommand.aliases).toEqual(["n", "start"])
+		})
+		it("should have correct description", () => {
+			expect(newCommand.description).toBe("Start a new task with a clean slate")
+		})
+		it("should have correct category", () => {
+			expect(newCommand.category).toBe("system")
+		})
+		it("should have correct priority", () => {
+			expect(newCommand.priority).toBe(9)
+		})
+		it("should have correct usage", () => {
+			expect(newCommand.usage).toBe("/new")
+		})
+		it("should have examples", () => {
+			expect(newCommand.examples).toEqual(["/new", "/n", "/start"])
+		})
+	})
+	describe("Command execution", () => {
+		it("should clear the extension task state", async () => {
+			await newCommand.handler(mockContext)
+			expect(mockContext.clearTask).toHaveBeenCalledTimes(1)
+		})
+		it("should clear the session", async () => {
+			await newCommand.handler(mockContext)
+			expect(SessionManager.init).toHaveBeenCalled()
+			expect(mockSessionManager.destroy).toHaveBeenCalledTimes(1)
+		})
+		it("should continue execution even if session clearing fails", async () => {
+			const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {})
+			mockSessionManager.destroy.mockRejectedValue(new Error("Session error"))
+			await newCommand.handler(mockContext)
+			// Should still clear task and replace messages despite session error
+			expect(mockContext.clearTask).toHaveBeenCalled()
+			expect(mockContext.replaceMessages).toHaveBeenCalled()
+			expect(consoleErrorSpy).toHaveBeenCalledWith("Failed to clear session:", expect.any(Error))
+			consoleErrorSpy.mockRestore()
+		})
+		it("should replace CLI messages with welcome message", async () => {
+			await newCommand.handler(mockContext)
+			expect(mockContext.replaceMessages).toHaveBeenCalledTimes(1)
+			const replacedMessages = mockContext.replaceMessages.mock.calls[0][0]
+			expect(replacedMessages).toHaveLength(1)
+			expect(replacedMessages[0]).toMatchObject({
+				type: "welcome",
+				content: "",
+			})
+			expect(replacedMessages[0].metadata?.welcomeOptions).toMatchObject({
+				showInstructions: true,
+				instructions: [
+					"🎉 Fresh start! Ready for a new task.",
+					"All previous messages and task state have been cleared.",
+					"Type your message to begin, or use /help to explore available commands.",
+				],
+			})
+		})
+		it("should execute operations in correct order", async () => {
+			const callOrder = []
+			mockContext.clearTask = vi.fn().mockImplementation(async () => {
+				callOrder.push("clearTask")
+			})
+			mockSessionManager.destroy = vi.fn().mockImplementation(async () => {
+				callOrder.push("sessionDestroy")
+			})
+			mockContext.replaceMessages = vi.fn().mockImplementation(() => {
+				callOrder.push("replaceMessages")
+			})
+			await newCommand.handler(mockContext)
+			// Operations should execute in this order
+			expect(callOrder).toEqual(["clearTask", "sessionDestroy", "replaceMessages"])
+		})
+		it("should handle clearTask errors gracefully", async () => {
+			const error = new Error("Failed to clear task")
+			mockContext.clearTask = vi.fn().mockRejectedValue(error)
+			await expect(newCommand.handler(mockContext)).rejects.toThrow("Failed to clear task")
+		})
+	})
+	describe("Integration scenarios", () => {
+		it("should work with all aliases", async () => {
+			for (const alias of newCommand.aliases) {
+				const context = {
+					...mockContext,
+					input: `/${alias}`,
+					clearTask: vi.fn().mockResolvedValue(undefined),
+					replaceMessages: vi.fn(),
+				}
+				await newCommand.handler(context)
+				expect(context.clearTask).toHaveBeenCalled()
+				expect(context.replaceMessages).toHaveBeenCalled()
+			}
+		})
+		it("should create a complete fresh start experience", async () => {
+			await newCommand.handler(mockContext)
+			// Verify all cleanup operations were performed
+			expect(mockContext.clearTask).toHaveBeenCalled()
+			expect(mockSessionManager.destroy).toHaveBeenCalled()
+			expect(mockContext.replaceMessages).toHaveBeenCalled()
+			// Verify welcome message was replaced
+			const replacedMessages = mockContext.replaceMessages.mock.calls[0][0]
+			expect(replacedMessages).toHaveLength(1)
+			expect(replacedMessages[0].type).toBe("welcome")
+			expect(replacedMessages[0].metadata?.welcomeOptions?.showInstructions).toBe(true)
+		})
+	})
+})

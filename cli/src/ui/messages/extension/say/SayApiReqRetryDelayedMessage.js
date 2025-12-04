@@ -1,0 +1,20 @@
+import React from "react"
+import { Box, Text } from "ink"
+import { useTheme } from "../../../../state/hooks/useTheme.js"
+/**
+ * Display API request retry delayed
+ */
+export const SayApiReqRetryDelayedMessage = ({ message }) => {
+	const theme = useTheme()
+	return (
+		<Box marginY={1}>
+			<Text color={theme.actions.pending}>⏳ API Request retry delayed...</Text>
+			{message.text && (
+				<Text color={theme.ui.text.dimmed} dimColor>
+					{" "}
+					{message.text}
+				</Text>
+			)}
+		</Box>
+	)
+}

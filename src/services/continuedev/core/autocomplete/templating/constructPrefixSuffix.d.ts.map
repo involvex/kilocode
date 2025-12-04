@@ -1,0 +1,1 @@
+{"version":3,"file":"constructPrefixSuffix.d.ts","sourceRoot":"","sources":["constructPrefixSuffix.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,GAAG,EAAE,MAAM,OAAO,CAAA;AAG3B,OAAO,EAAE,iBAAiB,EAAE,MAAM,eAAe,CAAA;AAEjD;;;GAGG;AACH,wBAAsB,4BAA4B,CACjD,KAAK,EAAE,iBAAiB,EACxB,GAAG,EAAE,GAAG,GACN,OAAO,CAAC;IACV,MAAM,EAAE,MAAM,CAAA;IACd,MAAM,EAAE,MAAM,CAAA;CACd,CAAC,CAwBD"}

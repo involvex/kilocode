@@ -1,0 +1,1 @@
+{"version":3,"file":"GenericCliMessage.d.ts","sourceRoot":"","sources":["GenericCliMessage.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAA;AAEzB,OAAO,KAAK,EAAE,UAAU,EAAE,MAAM,uBAAuB,CAAA;AAIvD,UAAU,sBAAsB;IAC/B,OAAO,EAAE,UAAU,CAAA;CACnB;AAED,eAAO,MAAM,iBAAiB,EAAE,KAAK,CAAC,EAAE,CAAC,sBAAsB,CAuD9D,CAAA"}

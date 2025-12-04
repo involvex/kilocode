@@ -1,0 +1,1 @@
+{"version":3,"file":"ICommitMessageAdapter.d.ts","sourceRoot":"","sources":["ICommitMessageAdapter.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,oBAAoB,EAAE,mBAAmB,EAAE,MAAM,eAAe,CAAA;AAEzE;;GAEG;AACH,MAAM,WAAW,qBAAqB;IACrC;;OAEG;IACH,qBAAqB,CAAC,OAAO,EAAE,oBAAoB,GAAG,OAAO,CAAC,mBAAmB,CAAC,CAAA;CAClF"}
