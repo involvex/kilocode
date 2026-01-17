@@ -24,5 +24,8 @@
 	"markdown.copyFiles.destination": {
 		"**/*": "/static/img/${documentBaseName}/${documentBaseName}.${fileName/(.*)\\.(.*)/$2/}"
 	},
-	"java.configuration.updateBuildConfiguration": "interactive"
+	"java.configuration.updateBuildConfiguration": "interactive",
+	"npmPackageManager.defaultPackageManager": "pnpm",
+	"npmPackageManager.debug": true,
+	"containers.commands.runInteractive": "${containerCommand} run --rm -it ${exposedPorts} ${tag}"
 }

@@ -32,7 +32,8 @@
 		}
 	},
 
-	"forwardPorts": [3000, 5173, 8080],
+	"forwardPorts": [3000, 5173, 8000],
+	"appPort": 3030,
 	"portsAttributes": {
 		"3000": {
 			"label": "Dev Server",
@@ -42,7 +43,7 @@
 			"label": "Vite Dev Server",
 			"onAutoForward": "notify"
 		},
-		"8080": {
+		"8000": {
 			"label": "Other Services",
 			"onAutoForward": "silent"
 		}
@@ -54,5 +55,5 @@
 	"remoteUser": "root",
 	"containerUser": "root",
 
-	"mounts": ["source=${localWorkspaceFolder}/.git,target=/workspace/.git,type=bind,consistency=cached"]
+	"mounts": ["source=${localWorkspaceFolder}/.git,target=/workspace/.git,type=bind,consistency=persistent"]
 }

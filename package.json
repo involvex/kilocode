@@ -1,6 +1,6 @@
 {
 	"name": "kilo-code",
-	"packageManager": "pnpm@10.8.1",
+	"packageManager": "pnpm@10.28.0+sha512.05df71d1421f21399e053fde567cea34d446fa02c76571441bfc1c7956e98e363088982d940465fd34480d4d90a0668bc12362f8aa88000a64e83d0b0e47be48",
 	"engines": {
 		"node": "20.19.2"
 	},
@@ -77,6 +77,38 @@
 			"form-data": ">=4.0.4",
 			"bluebird": ">=3.7.2",
 			"glob": ">=11.1.0"
-		}
+		},
+		"onlyBuiltDependencies": [
+			"@parcel/watcher",
+			"@playwright/browser-chromium",
+			"@swc/core",
+			"@tailwindcss/oxide",
+			"@vscode/deviceid",
+			"@vscode/policy-watcher",
+			"@vscode/ripgrep",
+			"@vscode/spdlog",
+			"@vscode/sqlite3",
+			"@vscode/vsce-sign",
+			"@vscode/windows-mutex",
+			"@vscode/windows-process-tree",
+			"@vscode/windows-registry",
+			"better-sqlite3",
+			"core-js",
+			"core-js-pure",
+			"electron",
+			"es5-ext",
+			"esbuild",
+			"husky",
+			"kerberos",
+			"keytar",
+			"native-is-elevated",
+			"native-keymap",
+			"native-watchdog",
+			"node-pty",
+			"puppeteer-chromium-resolver",
+			"sharp",
+			"sqlite3",
+			"windows-foreground-love"
+		]
 	}
 }

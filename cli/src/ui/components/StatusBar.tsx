@@ -28,6 +28,7 @@ import {
 import type { ProviderSettings } from "../../types/messages.js"
 import type { ProviderConfig } from "../../config/types.js"
 import path from "path"
+import { cpuUsage, memoryUsage } from "node:process"
 import { isGitWorktree } from "../../utils/git.js"
 
 const MAX_MODEL_NAME_LENGTH = 40
@@ -151,6 +152,17 @@ export const StatusBar: React.FC = () => {
 	const projectName = `${getProjectName(displayCwd)}${isWorktree ? " (git worktree)" : ""}`
 	const modelName = useMemo(() => getModelDisplayName(apiConfig, routerModels), [apiConfig, routerModels])
 
+	const startUsage = cpuUsage()
+	// { user: 38579, system: 6986 }
+
+	// spin the CPU for 500 milliseconds
+	const now = Date.now()
+	while (Date.now() - now < 500);
+	const cpuUsageGauge = "CPU:" + cpuUsage(startUsage).system * 0 + cpuUsage().system * 0.2 + "%"
+	const memoryUsageGauge = "RAM:" + ((memoryUsage().heapTotal / 1024 / 100) * memoryUsage().heapUsed) / 1024 + "%"
+	// console.log(cpuUsageGauge)
+	// console.log(memoryUsageGauge)
+
 	// Get context color based on percentage using theme colors
 	const contextColor = useMemo(() => {
 		if (contextUsage.percentage >= 86) {
@@ -175,6 +187,13 @@ export const StatusBar: React.FC = () => {
 				<Text color={theme.semantic.info} bold>
 					{projectName}
 				</Text>
+
+				{/* CPU and Memory Usage */}
+				<Text color={theme.ui.text.dimmed} dimColor>
+					{" | "}
+				</Text>
+				<Text color={theme.ui.text.dimmed}>{cpuUsageGauge} </Text>
+				<Text color={theme.ui.text.dimmed}>{memoryUsageGauge}</Text>
 
 				{/* Git Branch */}
 				{gitInfo.isRepo && gitInfo.branch ? (
