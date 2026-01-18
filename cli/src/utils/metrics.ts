@@ -51,7 +51,7 @@ export function calculateSystemCpuUsage(lastCpus: os.CpuInfo[]): { cpu: number; 
 		const idle = end.times.idle - start.times.idle
 		let total = 0
 		for (const type in end.times) {
-			total += (end.times as unknown)[type] - (start.times as unknown)[type]
+			total += end.times[type as keyof typeof end.times] - start.times[type as keyof typeof end.times]
 		}
 
 		totalIdle += idle

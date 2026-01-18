@@ -1,10 +1,17 @@
 import { describe, it, expect, vi } from "vitest"
-import { calculateProcessCpuUsage, calculateMemoryUsage } from "./metrics.js"
+import { calculateProcessCpuUsage, calculateMemoryUsage, calculateSystemCpuUsage } from "./metrics.js"
 import { cpuUsage, memoryUsage } from "node:process"
+import os from "node:os"
 
 vi.mock("node:process", () => ({
 	cpuUsage: vi.fn(),
 	memoryUsage: vi.fn(),
+}))
+
+vi.mock("node:os", () => ({
+	default: {
+		cpus: vi.fn(),
+	},
 }))
 
 describe("metrics utils", () => {
@@ -52,6 +59,43 @@ describe("metrics utils", () => {
 			})
 
 			expect(calculateMemoryUsage()).toBe(0)
+		})
+	})
+
+	describe("calculateSystemCpuUsage", () => {
+		it("should calculate correct system CPU percentage", () => {
+			const lastCpus = [
+				{
+					times: { user: 100, nice: 10, sys: 50, idle: 200, irq: 5 },
+				},
+			] as os.CpuInfo[]
+
+			// Current: idle decreased by 50, total increased by 100, so CPU = (100-50)/100 = 50%
+			vi.mocked(os.cpus).mockReturnValue([
+				{
+					times: { user: 120, nice: 15, sys: 65, idle: 150, irq: 10 },
+				},
+			] as os.CpuInfo[])
+
+			const result = calculateSystemCpuUsage(lastCpus)
+			expect(result.cpu).toBe(50)
+		})
+
+		it("should handle zero total tick", () => {
+			const lastCpus = [
+				{
+					times: { user: 100, nice: 10, sys: 50, idle: 200, irq: 5 },
+				},
+			] as os.CpuInfo[]
+
+			vi.mocked(os.cpus).mockReturnValue([
+				{
+					times: { user: 100, nice: 10, sys: 50, idle: 200, irq: 5 },
+				},
+			] as os.CpuInfo[])
+
+			const result = calculateSystemCpuUsage(lastCpus)
+			expect(result.cpu).toBe(0)
 		})
 	})
 })
