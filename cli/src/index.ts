@@ -50,8 +50,8 @@ program
 		"--eb, --existing-branch <branch>",
 		"(Parallel mode only) Instructs the agent to work on an existing branch",
 	)
-	.option("-pv, --provider <id>", "Select provider by ID (e.g., 'kilocode-1')")
-	.option("-mo, --model <model>", "Override model for the selected provider")
+	.option("--pv, --provider <id>", "Select provider by ID (e.g., 'kilocode-1')")
+	.option("--mo, --model <model>", "Override model for the selected provider")
 	.option("-s, --session <sessionId>", "Restore a session by ID")
 	.option("-f, --fork <shareId>", "Fork a session by ID")
 	.option("--nosplash", "Disable the welcome message and update notifications", false)

@@ -28,8 +28,19 @@ import {
 import type { ProviderSettings } from "../../types/messages.js"
 import type { ProviderConfig } from "../../config/types.js"
 import path from "path"
-import { cpuUsage, memoryUsage } from "node:process"
 import { isGitWorktree } from "../../utils/git.js"
+import { calculateSystemCpuUsage, calculateMemoryUsage } from "../../utils/metrics.js"
+import os from "node:os"
+
+// kilocode_change start
+/**
+ * System metrics state
+ */
+interface SystemMetrics {
+	cpu: number
+	memory: number
+}
+// kilocode_change end
 
 const MAX_MODEL_NAME_LENGTH = 40
 
@@ -118,6 +129,39 @@ export const StatusBar: React.FC = () => {
 
 	const [isWorktree, setIsWorktree] = useState(false)
 
+	// kilocode_change start
+	// Metrics state
+	const [metrics, setMetrics] = useState<SystemMetrics>({ cpu: 0, memory: 0 })
+
+	useEffect(() => {
+		let lastCpus = os.cpus()
+
+		const updateMetrics = () => {
+			// Calculate system-wide CPU usage for actual system load as requested
+			const { cpu: cpuPercent, nextCpus } = calculateSystemCpuUsage(lastCpus)
+
+			// Calculate Memory (Heap) percentage using utility function
+			const memoryPercent = calculateMemoryUsage()
+
+			setMetrics({
+				cpu: cpuPercent,
+				memory: memoryPercent,
+			})
+
+			lastCpus = nextCpus
+		}
+
+		// Initial update
+		updateMetrics()
+
+		const interval = setInterval(updateMetrics, 2000)
+		return () => clearInterval(interval)
+	}, [])
+
+	const cpuUsageGauge = `CPU: ${metrics.cpu}%`
+	const memoryUsageGauge = `RAM: ${metrics.memory}%`
+	// kilocode_change end
+
 	useEffect(() => {
 		let latest = true
 
@@ -151,17 +195,6 @@ export const StatusBar: React.FC = () => {
 	const displayCwd = isParallelMode ? process.cwd() : cwd
 	const projectName = `${getProjectName(displayCwd)}${isWorktree ? " (git worktree)" : ""}`
 	const modelName = useMemo(() => getModelDisplayName(apiConfig, routerModels), [apiConfig, routerModels])
-
-	const startUsage = cpuUsage()
-	// { user: 38579, system: 6986 }
-
-	// spin the CPU for 500 milliseconds
-	const now = Date.now()
-	while (Date.now() - now < 500);
-	const cpuUsageGauge = "CPU:" + cpuUsage(startUsage).system * 0 + cpuUsage().system * 0.2 + "%"
-	const memoryUsageGauge = "RAM:" + ((memoryUsage().heapTotal / 1024 / 100) * memoryUsage().heapUsed) / 1024 + "%"
-	// console.log(cpuUsageGauge)
-	// console.log(memoryUsageGauge)
 
 	// Get context color based on percentage using theme colors
 	const contextColor = useMemo(() => {
