@@ -45,7 +45,7 @@ const McpToolRow = ({ tool, serverName, serverSource, alwaysAllowMcp, isInChatCo
 			<div
 				data-testid="tool-row-container"
 				className="flex items-center gap-4"
-				onClick={(e) => e.stopPropagation()}>
+				onClick={(e: any) => e.stopPropagation()}>
 				{/* Tool name section */}
 				<div className="flex items-center min-w-0 flex-1">
 					<span

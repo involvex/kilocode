@@ -19,7 +19,8 @@
 				"yoavbls.pretty-ts-errors",
 				"ms-vscode.vscode-typescript-next",
 				"involvex.vscode-npm-package-manager",
-				"involvex.statusbar-quick-actions"
+				"involvex.statusbar-quick-actions",
+				"kilocode.kilo-code"
 			],
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "bash",

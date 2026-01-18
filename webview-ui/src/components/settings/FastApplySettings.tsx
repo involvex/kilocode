@@ -47,7 +47,7 @@ export const FastApplySettings = ({
 				</label>
 				<VSCodeDropdown
 					value={fastApplyModel || "auto"}
-					onChange={(e) => setCachedStateField("fastApplyModel", (e.target as any)?.value || "auto")}
+					onChange={(e: any) => setCachedStateField("fastApplyModel", (e.target as any)?.value || "auto")}
 					className="w-full">
 					<VSCodeOption value="auto">{t("settings:experimental.MORPH_FAST_APPLY.models.auto")}</VSCodeOption>
 					<VSCodeOption value="morph/morph-v3-fast">
@@ -70,7 +70,7 @@ export const FastApplySettings = ({
 					type="password"
 					value={morphApiKey || ""}
 					placeholder={t("settings:experimental.MORPH_FAST_APPLY.placeholder")}
-					onChange={(e) => setCachedStateField("morphApiKey", (e.target as any)?.value || "")}
+					onChange={(e: any) => setCachedStateField("morphApiKey", (e.target as any)?.value || "")}
 					className="w-full">
 					{t("settings:experimental.MORPH_FAST_APPLY.apiKey")}
 				</VSCodeTextField>

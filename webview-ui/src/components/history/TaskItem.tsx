@@ -56,7 +56,7 @@ const TaskItem = ({
 				{!isCompact && isSelectionMode && (
 					<div
 						className="task-checkbox mt-1"
-						onClick={(e) => {
+						onClick={(e: any) => {
 							e.stopPropagation()
 						}}>
 						<Checkbox

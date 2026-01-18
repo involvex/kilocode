@@ -112,7 +112,10 @@ export function NavBar({ stars, downloads }: NavBarProps) {
 							href={EXTERNAL_LINKS.GITHUB}
 							target="_blank"
 							className="hidden items-center gap-1.5 text-sm hover:text-foreground md:flex whitespace-nowrap">
-							<RxGithubLogo className="h-4 w-4" />
+							{(() => {
+								const RxGithubLogoAny = RxGithubLogo as any
+								return <RxGithubLogoAny className="h-4 w-4" />
+							})()}
 							{stars !== null && <span>{stars}</span>}
 						</Link>
 					</div>
@@ -134,7 +137,10 @@ export function NavBar({ stars, downloads }: NavBarProps) {
 						href={EXTERNAL_LINKS.MARKETPLACE}
 						target="_blank"
 						className="hidden items-center gap-1.5 rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground transition-all duration-200 hover:shadow-lg hover:scale-105 md:flex whitespace-nowrap">
-						<VscVscode className="-mr-[2px] mt-[1px] h-4 w-4" />
+						{(() => {
+							const VscVscodeAny = VscVscode as any
+							return <VscVscodeAny className="-mr-[2px] mt-[1px] h-4 w-4" />
+						})()}
 						<span>
 							Install <span className="font-black max-lg:text-xs">&middot;</span>
 						</span>
@@ -148,8 +154,16 @@ export function NavBar({ stars, downloads }: NavBarProps) {
 					onClick={() => setIsMenuOpen(!isMenuOpen)}
 					className="relative z-10 flex items-center justify-center rounded-full p-2 transition-colors hover:bg-accent md:hidden"
 					aria-label="Toggle mobile menu">
-					<HiMenu className={`h-6 w-6 ${isMenuOpen ? "hidden" : "block"}`} />
-					<X className={`h-6 w-6 ${isMenuOpen ? "block" : "hidden"}`} />
+					{(() => {
+						const HiMenuAny = HiMenu as any
+						const XAny = X as any
+						return (
+							<>
+								<HiMenuAny className={`h-6 w-6 ${isMenuOpen ? "hidden" : "block"}`} />
+								<XAny className={`h-6 w-6 ${isMenuOpen ? "block" : "hidden"}`} />
+							</>
+						)
+					})()}
 				</button>
 			</div>
 
@@ -242,7 +256,10 @@ export function NavBar({ stars, downloads }: NavBarProps) {
 								target="_blank"
 								className="inline-flex items-center gap-2 rounded-md p-3 text-sm transition-colors hover:bg-accent hover:text-foreground"
 								onClick={() => setIsMenuOpen(false)}>
-								<RxGithubLogo className="h-6 w-6" />
+								{(() => {
+									const RxGithubLogoAny = RxGithubLogo as any
+									return <RxGithubLogoAny className="h-6 w-6" />
+								})()}
 								{stars !== null && <span>{stars}</span>}
 							</Link>
 							<div className="flex items-center rounded-md p-3 transition-colors hover:bg-accent">
@@ -253,7 +270,10 @@ export function NavBar({ stars, downloads }: NavBarProps) {
 								target="_blank"
 								className="inline-flex items-center gap-2 rounded-md p-3 text-sm transition-colors hover:bg-accent hover:text-foreground"
 								onClick={() => setIsMenuOpen(false)}>
-								<VscVscode className="h-6 w-6" />
+								{(() => {
+									const VscVscodeAny = VscVscode as any
+									return <VscVscodeAny className="h-6 w-6" />
+								})()}
 								{downloads !== null && <span>{downloads}</span>}
 							</Link>
 						</div>

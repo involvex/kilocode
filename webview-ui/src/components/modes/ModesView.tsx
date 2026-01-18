@@ -610,7 +610,7 @@ const ModesView = () => {
 
 			<Section>
 				<div>
-					<div onClick={(e) => e.stopPropagation()} className="flex justify-between items-center mb-3">
+					<div onClick={(e: any) => e.stopPropagation()} className="flex justify-between items-center mb-3">
 						<h3 className="text-vscode-foreground m-0">{t("prompts:modes.title")}</h3>
 						<div className="flex gap-2">
 							<div className="relative inline-block">
@@ -633,24 +633,24 @@ const ModesView = () => {
 								</StandardTooltip>
 								{showConfigMenu && (
 									<div
-										onClick={(e) => e.stopPropagation()}
-										onMouseDown={(e) => e.stopPropagation()}
+										onClick={(e: any) => e.stopPropagation()}
+										onMouseDown={(e: any) => e.stopPropagation()}
 										className="absolute top-full right-0 w-[200px] mt-1 bg-vscode-editor-background border border-vscode-input-border rounded shadow-md z-[1000]">
 										<div
 											className="p-2 cursor-pointer text-vscode-foreground text-sm"
-											onMouseDown={(e) => {
+											onMouseDown={(e: any) => {
 												e.preventDefault() // Prevent blur
 												vscode.postMessage({
 													type: "openCustomModesSettings",
 												})
 												setShowConfigMenu(false)
 											}}
-											onClick={(e) => e.preventDefault()}>
+											onClick={(e: any) => e.preventDefault()}>
 											{t("prompts:modes.editGlobalModes")}
 										</div>
 										<div
 											className="p-2 cursor-pointer text-vscode-foreground text-sm border-t border-vscode-input-border"
-											onMouseDown={(e) => {
+											onMouseDown={(e: any) => {
 												e.preventDefault() // Prevent blur
 												vscode.postMessage({
 													type: "openFile",
@@ -662,7 +662,7 @@ const ModesView = () => {
 												})
 												setShowConfigMenu(false)
 											}}
-											onClick={(e) => e.preventDefault()}>
+											onClick={(e: any) => e.preventDefault()}>
 											{t("prompts:modes.editProjectModes")}
 										</div>
 									</div>
@@ -985,7 +985,7 @@ const ModesView = () => {
 							const prompt = customModePrompts?.[visualMode] as PromptComponent
 							return customMode?.roleDefinition ?? prompt?.roleDefinition ?? getRoleDefinition(visualMode)
 						})()}
-						onChange={(e) => {
+						onChange={(e: any) => {
 							const value =
 								(e as unknown as CustomEvent)?.detail?.target?.value ??
 								((e as any).target as HTMLTextAreaElement).value
@@ -1040,7 +1040,7 @@ const ModesView = () => {
 							const prompt = customModePrompts?.[visualMode] as PromptComponent
 							return customMode?.description ?? prompt?.description ?? getDescription(visualMode)
 						})()}
-						onChange={(e) => {
+						onChange={(e: any) => {
 							const value =
 								(e as unknown as CustomEvent)?.detail?.target?.value ??
 								((e as any).target as HTMLTextAreaElement).value
@@ -1095,7 +1095,7 @@ const ModesView = () => {
 							const prompt = customModePrompts?.[visualMode] as PromptComponent
 							return customMode?.whenToUse ?? prompt?.whenToUse ?? getWhenToUse(visualMode)
 						})()}
-						onChange={(e) => {
+						onChange={(e: any) => {
 							const value =
 								(e as unknown as CustomEvent)?.detail?.target?.value ??
 								((e as any).target as HTMLTextAreaElement).value
@@ -1246,7 +1246,7 @@ const ModesView = () => {
 								getCustomInstructions(visualMode, customModes)
 							)
 						})()}
-						onChange={(e) => {
+						onChange={(e: any) => {
 							const value =
 								(e as unknown as CustomEvent)?.detail?.target?.value ??
 								((e as any).target as HTMLTextAreaElement).value
@@ -1428,7 +1428,7 @@ const ModesView = () => {
 					<VSCodeTextArea
 						resize="vertical"
 						value={customInstructions || ""}
-						onChange={(e) => {
+						onChange={(e: any) => {
 							const value =
 								(e as unknown as CustomEvent)?.detail?.target?.value ??
 								((e as any).target as HTMLTextAreaElement).value
@@ -1494,7 +1494,7 @@ const ModesView = () => {
 								<Input
 									type="text"
 									value={newModeName}
-									onChange={(e) => {
+									onChange={(e: any) => {
 										handleNameChange(e.target.value)
 									}}
 									className="w-full"
@@ -1508,7 +1508,7 @@ const ModesView = () => {
 								<Input
 									type="text"
 									value={newModeSlug}
-									onChange={(e) => {
+									onChange={(e: any) => {
 										setNewModeSlug(e.target.value)
 									}}
 									className="w-full"
@@ -1562,7 +1562,7 @@ const ModesView = () => {
 								<VSCodeTextArea
 									resize="vertical"
 									value={newModeRoleDefinition}
-									onChange={(e) => {
+									onChange={(e: any) => {
 										setNewModeRoleDefinition((e.target as HTMLTextAreaElement).value)
 									}}
 									rows={4}
@@ -1582,7 +1582,7 @@ const ModesView = () => {
 								</div>
 								<VSCodeTextField
 									value={newModeDescription}
-									onChange={(e) => {
+									onChange={(e: any) => {
 										setNewModeDescription((e.target as HTMLInputElement).value)
 									}}
 									className="w-full"
@@ -1600,7 +1600,7 @@ const ModesView = () => {
 								<VSCodeTextArea
 									resize="vertical"
 									value={newModeWhenToUse}
-									onChange={(e) => {
+									onChange={(e: any) => {
 										setNewModeWhenToUse((e.target as HTMLTextAreaElement).value)
 									}}
 									rows={3}
@@ -1647,7 +1647,7 @@ const ModesView = () => {
 								<VSCodeTextArea
 									resize="vertical"
 									value={newModeCustomInstructions}
-									onChange={(e) => {
+									onChange={(e: any) => {
 										setNewModeCustomInstructions((e.target as HTMLTextAreaElement).value)
 									}}
 									rows={4}

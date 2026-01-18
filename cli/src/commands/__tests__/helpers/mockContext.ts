@@ -40,6 +40,7 @@ export function createMockContext(overrides: Partial<CommandContext> = {}): Comm
 		clearTask: vi.fn().mockResolvedValue(undefined),
 		setMode: vi.fn(),
 		setTheme: vi.fn().mockResolvedValue(undefined),
+		openConfigMenu: vi.fn(),
 		exit: vi.fn(),
 		setCommittingParallelMode: vi.fn(),
 		isParallelMode: false,

@@ -102,7 +102,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					<meta itemProp="name" content={SEO.name} />
 				</div>
 				<Providers>
-					<Shell>{children}</Shell>
+					{(() => {
+						const ShellAny = Shell as any
+						return <ShellAny>{children}</ShellAny>
+					})()}
 					<CookieConsentWrapper />
 				</Providers>
 			</body>

@@ -113,7 +113,7 @@ export const CloudTaskButton = ({ item, disabled = false }: CloudTaskButtonProps
 							<Button
 								variant="outline"
 								size="icon"
-								onClick={(e) => copyWithFeedback(cloudTaskUrl, e)}
+								onClick={(e: any) => copyWithFeedback(cloudTaskUrl, e)}
 								className="h-9 w-9">
 								{showCopyFeedback ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
 							</Button>

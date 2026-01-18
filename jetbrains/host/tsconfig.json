@@ -15,6 +15,11 @@
 		"skipLibCheck": true, // Skip library file checking to avoid type conflicts
 		"declaration": true,
 		"declarationMap": true,
+		"baseUrl": ".",
+		"paths": {
+			"vs/*": ["deps/vscode/vs/*"]
+		},
+		"rootDirs": ["src", "deps/vscode/vs"],
 		"types": [
 			"@types/mocha",
 			"@types/semver",
@@ -29,6 +34,7 @@
 		"src/**/*.js",
 		"electron.d.ts",
 		"deps/vscode/typings",
+		"deps/vscode/vs/**/*.ts",
 		"deps/vscode/vs/workbench/api/node",
 		"deps/vscode/vs/workbench/contrib/debug/common/debugProtocol.d.ts",
 		"deps/vscode/vscode-dts/vscode.d.ts",

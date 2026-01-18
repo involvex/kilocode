@@ -64,7 +64,10 @@ export function InstallSection({ downloads }: InstallSectionProps) {
 									className="group relative inline-flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 px-6 py-4 text-lg font-medium text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-cyan-700 hover:shadow-xl hover:shadow-blue-500/25 dark:from-blue-500 dark:to-cyan-500 dark:hover:from-blue-600 dark:hover:to-cyan-600 sm:w-auto sm:px-8 sm:text-xl">
 									<div className="absolute -inset-px rounded-xl bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 opacity-0 blur transition-opacity duration-500 group-hover:opacity-70" />
 									<div className="relative flex flex-col md:flex-row items-center md:gap-3">
-										<VscVscode className="h-6 w-6 shrink-0" />
+										{(() => {
+											const VscVscodeAny = VscVscode as any
+											return <VscVscodeAny className="h-6 w-6 shrink-0" />
+										})()}
 										<span className="flex flex-col md:flex-row items-center md:gap-2">
 											<span>From VS Code Marketplace</span>
 											{downloads !== null && (

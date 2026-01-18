@@ -2465,5 +2465,15 @@
 				}
 			]
 		}
+	},
+	"UI": {
+		"statusLine": {
+			"enabled": {
+				"type": "boolean"
+			},
+			"text": {
+				"type": "string"
+			}
+		}
 	}
 }

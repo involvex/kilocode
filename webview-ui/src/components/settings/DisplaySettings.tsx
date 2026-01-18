@@ -74,7 +74,7 @@ export const DisplaySettings = ({
 				<div>
 					<VSCodeCheckbox
 						checked={showTaskTimeline}
-						onChange={(e) => {
+						onChange={(e: any) => {
 							setCachedStateField("showTaskTimeline", (e as any).target?.checked || false)
 						}}>
 						<span className="font-medium">{t("settings:display.taskTimeline.label")}</span>
@@ -108,7 +108,7 @@ export const DisplaySettings = ({
 				<div className="flex flex-col gap-1">
 					<VSCodeCheckbox
 						checked={sendMessageOnEnter}
-						onChange={(e) => {
+						onChange={(e: any) => {
 							setCachedStateField("sendMessageOnEnter", (e as any).target?.checked || false)
 						}}>
 						<span className="font-medium">{t("settings:display.sendMessageOnEnter.label")}</span>

@@ -84,7 +84,7 @@ export function MarketplaceListView({
 									: t("marketplace:filters.search.placeholder")
 						}
 						value={state.filters.search}
-						onChange={(e) =>
+						onChange={(e: any) =>
 							manager.transition({
 								type: "UPDATE_FILTERS",
 								payload: { filters: { search: e.target.value } },
@@ -133,7 +133,7 @@ export function MarketplaceListView({
 								</PopoverTrigger>
 								<PopoverContent
 									className="w-[var(--radix-popover-trigger-width)] p-0"
-									onClick={(e) => e.stopPropagation()}>
+									onClick={(e: any) => e.stopPropagation()}>
 									<Command>
 										<div className="relative">
 											<CommandInput
@@ -178,7 +178,7 @@ export function MarketplaceListView({
 														}}
 														data-selected={state.filters.tags.includes(tag)}
 														className="grid grid-cols-[1rem_1fr] gap-2 cursor-pointer text-sm capitalize"
-														onMouseDown={(e) => {
+														onMouseDown={(e: any) => {
 															e.stopPropagation()
 															e.preventDefault()
 														}}>
@@ -208,7 +208,7 @@ export function MarketplaceListView({
 							className="shadow-none font-normal flex items-center gap-1 h-auto py-0.5 px-1.5 text-xs"
 							size="sm"
 							variant="secondary"
-							onClick={(e) => {
+							onClick={(e: any) => {
 								e.stopPropagation()
 								manager.transition({
 									type: "UPDATE_FILTERS",

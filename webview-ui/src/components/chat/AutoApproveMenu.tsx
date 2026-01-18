@@ -190,7 +190,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 					cursor: "pointer",
 				}}
 				onClick={toggleExpanded}>
-				<div onClick={(e) => e.stopPropagation()}>
+				<div onClick={(e: any) => e.stopPropagation()}>
 					<StandardTooltip
 						content={!hasEnabledOptions ? t("chat:autoApprove.selectOptionsFirst") : undefined}>
 						<VSCodeCheckbox

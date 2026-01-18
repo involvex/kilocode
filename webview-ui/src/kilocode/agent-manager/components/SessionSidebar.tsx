@@ -50,7 +50,7 @@ export function SessionSidebar() {
 				onClick={handleNewSession}
 				role="button"
 				tabIndex={0}
-				onKeyDown={(e) => e.key === "Enter" && handleNewSession()}>
+				onKeyDown={(e: any) => e.key === "Enter" && handleNewSession()}>
 				<Plus size={16} />
 				<span>{t("sidebar.newAgent")}</span>
 			</div>
@@ -214,7 +214,7 @@ function SessionItem({
 			{showShareConfirm && (
 				<div
 					className="absolute top-full left-2 right-2 mt-1 p-3 bg-vscode-dropdown-background border border-vscode-dropdown-border rounded z-[100] shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
-					onClick={(e) => e.stopPropagation()}>
+					onClick={(e: any) => e.stopPropagation()}>
 					<div className="text-sm mb-2">{t("sidebar.shareConfirmMessage")}</div>
 					<div className="flex gap-2">
 						<button

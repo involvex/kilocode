@@ -229,7 +229,7 @@ export const McpExecution = ({
 					<Button
 						variant="ghost"
 						size="icon"
-						onClick={(e) => {
+						onClick={(e: any) => {
 							e.stopPropagation()
 							onToggleResponseExpand()
 						}}>
@@ -242,7 +242,7 @@ export const McpExecution = ({
 			<div className={cn("w-full bg-vscode-editor-background rounded-xs p-2", !isResponseExpanded && "hidden")}>
 				{/* Tool information section */}
 				{useMcpServer?.type === "use_mcp_tool" && (
-					<div onClick={(e) => e.stopPropagation()}>
+					<div onClick={(e: any) => e.stopPropagation()}>
 						<McpToolRow
 							tool={{
 								name: useMcpServer.toolName || "",
@@ -261,7 +261,7 @@ export const McpExecution = ({
 					</div>
 				)}
 				{!useMcpServer && toolName && serverName && (
-					<div onClick={(e) => e.stopPropagation()}>
+					<div onClick={(e: any) => e.stopPropagation()}>
 						<McpToolRow
 							tool={{
 								name: toolName || "",

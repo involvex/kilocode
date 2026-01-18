@@ -12,7 +12,7 @@ export const CheckpointWarning = ({ warning }: CheckpointWarningProps) => {
 	const settingsLink = (
 		<VSCodeLink
 			href="#"
-			onClick={(e) => {
+			onClick={(e: any) => {
 				e.preventDefault()
 				window.postMessage(
 					{

@@ -212,7 +212,7 @@ const ApiConfigManager = ({
 								setError(null)
 							}}
 							placeholder={t("settings:providers.enterNewName")}
-							onKeyDown={({ key }) => {
+							onKeyDown={({ key }: any) => {
 								if (key === "Enter" && inputValue.trim()) {
 									handleSave()
 								} else if (key === "Escape") {

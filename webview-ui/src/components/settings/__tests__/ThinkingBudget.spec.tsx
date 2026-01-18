@@ -15,7 +15,7 @@ vi.mock("@/components/ui", () => ({
 			max={max}
 			step={step}
 			value={value[0]}
-			onChange={(e) => onValueChange([parseInt(e.target.value)])}
+			onChange={(e: any) => onValueChange([parseInt(e.target.value)])}
 		/>
 	),
 	Select: ({ children, value, onValueChange: _onValueChange }: any) => (

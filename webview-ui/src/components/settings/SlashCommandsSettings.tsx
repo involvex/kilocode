@@ -150,10 +150,10 @@ export const SlashCommandsSettings: React.FC = () => {
 							<input
 								type="text"
 								value={globalNewName}
-								onChange={(e) => setGlobalNewName(e.target.value)}
+								onChange={(e: any) => setGlobalNewName(e.target.value)}
 								placeholder={t("chat:slashCommands.newGlobalCommandPlaceholder")}
 								className="flex-1 bg-vscode-input-background text-vscode-input-foreground placeholder-vscode-input-placeholderForeground border border-vscode-input-border rounded px-2 py-1 text-sm focus:outline-none focus:border-vscode-focusBorder"
-								onKeyDown={(e) => {
+								onKeyDown={(e: any) => {
 									if (e.key === "Enter") {
 										handleCreateCommand("global", globalNewName)
 									}
@@ -192,10 +192,10 @@ export const SlashCommandsSettings: React.FC = () => {
 								<input
 									type="text"
 									value={workspaceNewName}
-									onChange={(e) => setWorkspaceNewName(e.target.value)}
+									onChange={(e: any) => setWorkspaceNewName(e.target.value)}
 									placeholder={t("chat:slashCommands.newWorkspaceCommandPlaceholder")}
 									className="flex-1 bg-vscode-input-background text-vscode-input-foreground placeholder-vscode-input-placeholderForeground border border-vscode-input-border rounded px-2 py-1 text-sm focus:outline-none focus:border-vscode-focusBorder"
-									onKeyDown={(e) => {
+									onKeyDown={(e: any) => {
 										if (e.key === "Enter") {
 											handleCreateCommand("project", workspaceNewName)
 										}

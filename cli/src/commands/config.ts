@@ -14,7 +14,13 @@ export const configCommand: Command = {
 	category: "settings",
 	priority: 8,
 	handler: async (context) => {
-		const { addMessage } = context
+		const { addMessage, args, openConfigMenu } = context
+
+		// If no arguments provided, open the interactive configuration menu
+		if (args.length === 0) {
+			openConfigMenu()
+			return
+		}
 
 		addMessage({
 			id: Date.now().toString(),

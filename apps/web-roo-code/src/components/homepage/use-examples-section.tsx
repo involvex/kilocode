@@ -362,7 +362,7 @@ function DesktopUseCaseCard({ item }: { item: PositionedUseCase }) {
 			}}
 			viewport={{ once: true }}
 			// Use standard CSS transform for the positioning to avoid conflicts with Framer Motion's scale
-			transformTemplate={({ scale }) => `translate(-50%, -50%) scale(${scale})`}>
+			transformTemplate={({ scale }: any) => `translate(-50%, -50%) scale(${scale})`}>
 			<UseCaseCardContent
 				item={item}
 				opacity={opacity}

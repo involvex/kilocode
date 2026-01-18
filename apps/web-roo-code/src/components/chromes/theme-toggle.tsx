@@ -16,9 +16,10 @@ export default function ThemeToggle() {
 	}, [])
 
 	if (!mounted) {
+		const RxSunAny = RxSun as any
 		return (
 			<Button variant="ghost" size="icon" disabled className="h-9 w-9">
-				<RxSun className="h-4 w-4" />
+				<RxSunAny className="h-4 w-4" />
 			</Button>
 		)
 	}
@@ -30,11 +31,15 @@ export default function ThemeToggle() {
 			onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
 			className="h-9 w-9"
 			aria-label="Toggle theme">
-			{theme === "dark" ? (
-				<RxSun className="h-4 w-4 transition-all" />
-			) : (
-				<RxMoon className="h-4 w-4 transition-all" />
-			)}
+			{(() => {
+				const RxSunAny = RxSun as any
+				const RxMoonAny = RxMoon as any
+				return theme === "dark" ? (
+					<RxSunAny className="h-4 w-4 transition-all" />
+				) : (
+					<RxMoonAny className="h-4 w-4 transition-all" />
+				)
+			})()}
 		</Button>
 	)
 }

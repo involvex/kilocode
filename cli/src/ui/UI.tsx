@@ -12,11 +12,12 @@ import { setCIModeAtom } from "../state/atoms/ci.js"
 import { configValidationAtom } from "../state/atoms/config.js"
 import { taskResumedViaContinueOrSessionAtom } from "../state/atoms/extension.js"
 import { useTaskState } from "../state/hooks/useTaskState.js"
-import { isParallelModeAtom } from "../state/atoms/index.js"
+import { isParallelModeAtom, inputModeAtom } from "../state/atoms/index.js"
 import { addToHistoryAtom, resetHistoryNavigationAtom, exitHistoryModeAtom } from "../state/atoms/history.js"
 import { MessageDisplay } from "./messages/MessageDisplay.js"
 import { JsonRenderer } from "./JsonRenderer.js"
 import { CommandInput } from "./components/CommandInput.js"
+import { ConfigMenu } from "./components/ConfigMenu.js"
 import { StatusBar } from "./components/StatusBar.js"
 import { StatusIndicator } from "./components/StatusIndicator.js"
 import { initializeCommands } from "../commands/index.js"
@@ -53,6 +54,7 @@ export const UI: React.FC<UIAppProps> = ({ options, onExit }) => {
 	const error = useAtomValue(errorAtom)
 	const theme = useTheme()
 	const configValidation = useAtomValue(configValidationAtom)
+	const inputMode = useAtomValue(inputModeAtom)
 	const resetCounter = useAtomValue(messageResetCounterAtom)
 	const notifications = useAtomValue(notificationsAtom)
 	const [versionStatus, setVersionStatus] = useState<Awaited<ReturnType<typeof getAutoUpdateStatus>>>()
@@ -358,7 +360,11 @@ export const UI: React.FC<UIAppProps> = ({ options, onExit }) => {
 			{!options.ci && configValidation.valid && (
 				<>
 					<StatusIndicator disabled={false} />
-					<CommandInput onSubmit={handleSubmit} disabled={isAnyOperationInProgress} />
+					{inputMode === "config-menu" ? (
+						<ConfigMenu />
+					) : (
+						<CommandInput onSubmit={handleSubmit} disabled={isAnyOperationInProgress} />
+					)}
 					<StatusBar />
 				</>
 			)}

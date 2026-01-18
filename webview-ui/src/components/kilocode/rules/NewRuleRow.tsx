@@ -93,7 +93,7 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType }) => {
 									: t("kilocode:rules.placeholders.ruleName")
 							}
 							value={filename}
-							onChange={(e) => setFilename(e.target.value)}
+							onChange={(e: any) => setFilename(e.target.value)}
 							onKeyDown={handleKeyDown}
 							className="flex-1 bg-[var(--vscode-input-background)] text-[var(--vscode-input-foreground)] border-0 outline-0 rounded focus:outline-none focus:ring-0 focus:border-transparent"
 							style={{
@@ -124,7 +124,7 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal, ruleType }) => {
 								appearance="icon"
 								aria-label="New rule file"
 								title="New rule file"
-								onClick={(e) => {
+								onClick={(e: any) => {
 									e.stopPropagation()
 									setIsExpanded(true)
 								}}

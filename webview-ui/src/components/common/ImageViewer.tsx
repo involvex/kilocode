@@ -262,11 +262,11 @@ export function ImageViewer({
 							transition: isDragging ? "none" : "transform 0.1s ease",
 							cursor: isDragging ? "grabbing" : "grab",
 						}}
-						onMouseDown={(e) => {
+						onMouseDown={(e: any) => {
 							setIsDragging(true)
 							e.preventDefault()
 						}}
-						onMouseMove={(e) => {
+						onMouseMove={(e: any) => {
 							if (isDragging) {
 								setDragPosition((prev) => ({
 									x: prev.x + e.movementX / zoomLevel,

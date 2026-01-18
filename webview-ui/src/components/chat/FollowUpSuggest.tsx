@@ -143,7 +143,7 @@ export const FollowUpSuggest = ({
 						<StandardTooltip content={t("chat:followUpSuggest.copyToInput")}>
 							<div
 								className="absolute cursor-pointer top-1.5 right-3 opacity-0 group-hover:opacity-100 transition-opacity"
-								onClick={(e) => {
+								onClick={(e: any) => {
 									e.stopPropagation()
 									// Cancel the auto-approve timer when edit button is clicked
 									setSuggestionSelected(true)

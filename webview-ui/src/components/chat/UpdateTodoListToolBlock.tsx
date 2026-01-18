@@ -270,7 +270,7 @@ const UpdateTodoListToolBlock: React.FC<UpdateTodoListToolBlockProps> = ({
 												type="text"
 												value={todo.content}
 												placeholder="Enter todo item"
-												onChange={(e) => handleContentChange(todo.id!, e.target.value)}
+												onChange={(e: any) => handleContentChange(todo.id!, e.target.value)}
 												style={{
 													flex: 1,
 													minWidth: 0,
@@ -284,7 +284,7 @@ const UpdateTodoListToolBlock: React.FC<UpdateTodoListToolBlockProps> = ({
 													padding: "1px 3px",
 													borderBottom: "1px solid var(--vscode-input-border)",
 												}}
-												onBlur={(e) => {
+												onBlur={(e: any) => {
 													if (!e.target.value.trim()) {
 														handleDelete(todo.id!)
 													}
@@ -313,7 +313,7 @@ const UpdateTodoListToolBlock: React.FC<UpdateTodoListToolBlockProps> = ({
 										{isEditing && (
 											<select
 												value={todo.status || ""}
-												onChange={(e) => handleStatusChange(todo.id!, e.target.value)}
+												onChange={(e: any) => handleStatusChange(todo.id!, e.target.value)}
 												style={{
 													marginRight: 6,
 													borderRadius: 4,
@@ -358,7 +358,7 @@ const UpdateTodoListToolBlock: React.FC<UpdateTodoListToolBlockProps> = ({
 										type="text"
 										value={newContent}
 										placeholder="Enter todo item, press Enter to add"
-										onChange={(e) => setNewContent(e.target.value)}
+										onChange={(e: any) => setNewContent(e.target.value)}
 										onKeyDown={handleNewInputKeyDown}
 										style={{
 											flex: 1,
@@ -455,7 +455,7 @@ const UpdateTodoListToolBlock: React.FC<UpdateTodoListToolBlockProps> = ({
 								minWidth: 200,
 								zIndex: 10000,
 							}}
-							onClick={(e) => e.stopPropagation()}>
+							onClick={(e: any) => e.stopPropagation()}>
 							<div style={{ marginBottom: 12, fontSize: 14, color: "#333" }}>
 								Are you sure you want to delete this todo item?
 							</div>

@@ -39,7 +39,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 				<input
 					type="text"
 					value={value}
-					onChange={(e) => onInput && onInput(e)}
+					onChange={(e: any) => onInput && onInput(e)}
 					placeholder={placeholder}
 					data-testid={dataTestId}
 					{...rest}

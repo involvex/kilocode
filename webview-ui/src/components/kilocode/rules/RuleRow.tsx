@@ -43,7 +43,7 @@ const RuleRow: React.FC<{
 								: "bg-[var(--vscode-titleBar-inactiveForeground)] opacity-50"
 						}`}
 						onClick={() => toggleRule(rulePath, !enabled)}
-						onKeyDown={(e) => {
+						onKeyDown={(e: any) => {
 							if (e.key === "Enter" || e.key === " ") {
 								e.preventDefault()
 								toggleRule(rulePath, !enabled)

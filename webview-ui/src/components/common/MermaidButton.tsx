@@ -178,11 +178,11 @@ export function MermaidButton({ containerRef, code, isLoading, svgToPng, childre
 									transition: isDragging ? "none" : "transform 0.1s ease",
 									cursor: isDragging ? "grabbing" : "grab",
 								}}
-								onMouseDown={(e) => {
+								onMouseDown={(e: any) => {
 									setIsDragging(true)
 									e.preventDefault()
 								}}
-								onMouseMove={(e) => {
+								onMouseMove={(e: any) => {
 									if (isDragging) {
 										setDragPosition((prev) => ({
 											x: prev.x + e.movementX / zoomLevel,
@@ -232,7 +232,7 @@ export function MermaidButton({ containerRef, code, isLoading, svgToPng, childre
 						<StandardTooltip content={t("common:mermaid.buttons.copy")}>
 							<IconButton
 								icon={copyFeedback ? "check" : "copy"}
-								onClick={(e) => {
+								onClick={(e: any) => {
 									e.stopPropagation()
 									copyWithFeedback(code, e)
 								}}

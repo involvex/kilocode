@@ -182,7 +182,7 @@ const PromptsSettings = ({
 					<VSCodeTextArea
 						resize="vertical"
 						value={getSupportPromptValue(activeSupportOption)}
-						onInput={(e) => {
+						onInput={(e: any) => {
 							const value =
 								(e as unknown as CustomEvent)?.detail?.target?.value ??
 								((e as any).target as HTMLTextAreaElement).value
@@ -291,7 +291,9 @@ const PromptsSettings = ({
 										<VSCodeTextArea
 											resize="vertical"
 											value={testPrompt}
-											onChange={(e) => setTestPrompt((e.target as HTMLTextAreaElement).value)}
+											onChange={(e: any) =>
+												setTestPrompt((e.target as HTMLTextAreaElement).value)
+											}
 											placeholder={t("prompts:supportPrompts.enhance.testPromptPlaceholder")}
 											rows={3}
 											className="w-full"

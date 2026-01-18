@@ -27,7 +27,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 			<input
 				type="checkbox"
 				checked={checked}
-				onChange={(e) => onChange({ target: { checked: e.target.checked } })}
+				onChange={(e: any) => onChange({ target: { checked: e.target.checked } })}
 				data-testid="vscode-checkbox"
 			/>
 			{children}

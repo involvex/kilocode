@@ -9,7 +9,7 @@ vitest.mock("@vscode/webview-ui-toolkit/react", () => ({
 	VSCodeTextField: ({ value, onInput, placeholder, onKeyDown, "data-testid": dataTestId }: any) => (
 		<input
 			value={value}
-			onChange={(e) => onInput(e)}
+			onChange={(e: any) => onInput(e)}
 			placeholder={placeholder}
 			onKeyDown={onKeyDown}
 			data-testid={dataTestId}
@@ -35,7 +35,7 @@ vitest.mock("@/components/ui", () => ({
 	Input: ({ value, onInput, placeholder, onKeyDown, "data-testid": dataTestId }: any) => (
 		<input
 			value={value}
-			onChange={(e) => onInput(e)}
+			onChange={(e: any) => onInput(e)}
 			placeholder={placeholder}
 			onKeyDown={onKeyDown}
 			data-testid={dataTestId}
@@ -55,7 +55,7 @@ vitest.mock("@/components/ui", () => ({
 	CommandInput: ({ value, onValueChange, placeholder, className, "data-testid": dataTestId }: any) => (
 		<input
 			value={value}
-			onChange={(e) => onValueChange(e.target.value)}
+			onChange={(e: any) => onValueChange(e.target.value)}
 			placeholder={placeholder}
 			className={className}
 			data-testid={dataTestId}
@@ -73,7 +73,7 @@ vitest.mock("@/components/ui", () => ({
 	Select: ({ value, onValueChange, children }: any) => (
 		<select
 			value={value}
-			onChange={(e) => {
+			onChange={(e: any) => {
 				if (onValueChange) onValueChange(e.target.value)
 			}}
 			data-testid="profile-type-select">
@@ -92,7 +92,7 @@ vitest.mock("@/components/ui", () => ({
 	SearchableSelect: ({ value, onValueChange, options, placeholder, "data-testid": dataTestId }: any) => (
 		<select
 			value={value}
-			onChange={(e) => {
+			onChange={(e: any) => {
 				if (onValueChange) onValueChange(e.target.value)
 			}}
 			data-testid={dataTestId || "select-component"}>

@@ -25,8 +25,8 @@ vi.mock("@/components/ui", () => ({
 			value={value?.[0] ?? 0}
 			min={min}
 			max={max}
-			onChange={(e) => onValueChange([parseFloat(e.target.value)])}
-			onKeyDown={(e) => {
+			onChange={(e: any) => onValueChange([parseFloat(e.target.value)])}
+			onKeyDown={(e: any) => {
 				const currentValue = value?.[0] ?? 0
 				if (e.key === "ArrowRight") {
 					onValueChange([currentValue + 1])

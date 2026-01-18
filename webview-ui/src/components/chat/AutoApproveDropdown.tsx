@@ -192,7 +192,7 @@ export const AutoApproveDropdown = ({ disabled = false, triggerClassName = "" }:
 				sideOffset={4}
 				container={portalContainer}
 				className="p-0 overflow-hidden w-[min(440px,calc(100vw-2rem))]"
-				onOpenAutoFocus={(e) => e.preventDefault()}>
+				onOpenAutoFocus={(e: any) => e.preventDefault()}>
 				<div className="flex flex-col w-full">
 					{/* Header with description */}
 					<div className="p-3 border-b border-vscode-dropdown-border">
@@ -267,7 +267,7 @@ export const AutoApproveDropdown = ({ disabled = false, triggerClassName = "" }:
 
 						<label
 							className="flex items-center gap-2 pr-2 cursor-pointer"
-							onClick={(e) => {
+							onClick={(e: any) => {
 								// Prevent label click when clicking on the toggle switch itself
 								if ((e.target as HTMLElement).closest('[role="switch"]')) {
 									e.preventDefault()

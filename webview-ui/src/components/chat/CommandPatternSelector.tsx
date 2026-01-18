@@ -98,9 +98,9 @@ export const CommandPatternSelector: React.FC<CommandPatternSelectorProps> = ({
 										<input
 											type="text"
 											value={editState.value}
-											onChange={(e) => setEditState(item.pattern, true, e.target.value)}
+											onChange={(e: any) => setEditState(item.pattern, true, e.target.value)}
 											onBlur={() => setEditState(item.pattern, false)}
-											onKeyDown={(e) => {
+											onKeyDown={(e: any) => {
 												if (e.key === "Enter") {
 													setEditState(item.pattern, false)
 												}

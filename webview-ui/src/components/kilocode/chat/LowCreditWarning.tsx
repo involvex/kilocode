@@ -69,7 +69,7 @@ export const LowCreditWarning = ({ message, isOrganization }: LowCreditWarningPr
 				</div>
 				<VSCodeButton
 					className="p-1 w-full rounded"
-					onClick={(e) => {
+					onClick={(e: any) => {
 						e.preventDefault()
 
 						vscode.postMessage({

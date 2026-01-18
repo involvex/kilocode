@@ -101,7 +101,7 @@ export function initializeSourceMaps(): void {
 							}
 						}
 					})
-					.catch((e) => console.debug("Error checking for inline sourceMappingURL:", e))
+					.catch((e: any) => console.debug("Error checking for inline sourceMappingURL:", e))
 			}
 		}
 	} catch (e) {

@@ -10,9 +10,17 @@ import type { ProviderConfig as CoreProviderConfig, CLIConfig as CoreCLIConfig }
 // ProviderConfig with index signature for dynamic property access (backward compatibility)
 export type ProviderConfig = CoreProviderConfig & { [key: string]: unknown }
 
+export interface UIConfig {
+	statusLine?: {
+		enabled?: boolean
+		text?: string
+	}
+}
+
 // CLIConfig with our enhanced ProviderConfig type
 export interface CLIConfig extends Omit<CoreCLIConfig, "providers"> {
 	providers: ProviderConfig[]
+	UI?: UIConfig
 }
 
 // Re-export all config types from core-schemas

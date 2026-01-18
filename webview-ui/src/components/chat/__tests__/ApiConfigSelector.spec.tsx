@@ -267,7 +267,7 @@ describe("ApiConfigSelector", () => {
 		// Use getAllByText since there might be multiple elements with "Config 1"
 		const config1Elements = screen.getAllByText("Config 1")
 		// Find the one that's in the dropdown content (not the trigger)
-		const configInDropdown = config1Elements.find((el) => el.closest('[data-testid="popover-content"]'))
+		const configInDropdown = config1Elements.find((el: any) => el.closest('[data-testid="popover-content"]'))
 		// Navigate up to find the parent row that contains both the text and the check icon
 		const selectedConfigRow = configInDropdown?.closest(".group")
 		const checkIcon = selectedConfigRow?.querySelector(".codicon-check")
@@ -479,7 +479,7 @@ describe("ApiConfigSelector", () => {
 		if (pinnedStickyHeader) {
 			const elements = pinnedStickyHeader.querySelectorAll(".flex-shrink-0")
 			const pinnedConfigTexts = Array.from(elements)
-				.map((el) => (el as Element).textContent)
+				.map((el: any) => (el as Element).textContent)
 				.filter((text) => text?.startsWith("Config"))
 
 			expect(pinnedConfigTexts).toContain("Config 1")

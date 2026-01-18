@@ -209,7 +209,7 @@ If any step fails, ask the user for help.`
 					<DynamicTextArea
 						ref={textareaRef}
 						value={messageText}
-						onChange={(e) => setMessageText(e.target.value)}
+						onChange={(e: any) => setMessageText(e.target.value)}
 						onKeyDown={handleKeyDown}
 						onFocus={() => setIsFocused(true)}
 						onBlur={() => setIsFocused(false)}

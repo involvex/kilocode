@@ -260,7 +260,7 @@ const CodeBlock = memo(
 				}
 			}
 
-			highlight().catch((e) => {
+			highlight().catch((e: any) => {
 				console.error("[CodeBlock] Syntax highlighting error:", e, "\nStack trace:", e.stack)
 				if (isMountedRef.current) {
 					setHighlightedCode(fallback)

@@ -8,7 +8,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 		<input
 			type="text"
 			value={value}
-			onChange={(e) => onInput({ target: { value: e.target.value } })}
+			onChange={(e: any) => onInput({ target: { value: e.target.value } })}
 			onBlur={onBlur}
 			placeholder={placeholder}
 			data-testid={dataTestId}

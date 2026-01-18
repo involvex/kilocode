@@ -62,7 +62,7 @@ const HorizontalScroller = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 				ref={ref}
 				className={`overflow-x-auto overflow-y-hidden touch-none cursor-grab ${className || ""}`}
 				style={style}
-				onWheel={(e) => {
+				onWheel={(e: any) => {
 					e.preventDefault()
 					// Handle both vertical and horizontal wheel events
 					;(ref as React.MutableRefObject<HTMLDivElement>).current!.scrollLeft += e.deltaY

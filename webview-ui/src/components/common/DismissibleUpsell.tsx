@@ -159,7 +159,7 @@ const DismissibleUpsell = memo(
 				<div>{children}</div>
 				<button
 					className={buttonClasses}
-					onClick={(e) => {
+					onClick={(e: any) => {
 						e.stopPropagation() // Prevent triggering the container's onClick
 						handleDismiss()
 					}}

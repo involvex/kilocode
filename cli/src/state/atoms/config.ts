@@ -43,6 +43,12 @@ export const themeAtom = atom((get) => {
 	return config.theme || "dark"
 })
 
+// Derived atom for status line configuration
+export const statusLineAtom = atom((get) => {
+	const config = get(configAtom)
+	return config.UI?.statusLine
+})
+
 // Action atom to load config from disk
 // Accepts optional mode parameter to override the loaded config's mode
 export const loadConfigAtom = atom(null, async (get, set, mode?: string) => {

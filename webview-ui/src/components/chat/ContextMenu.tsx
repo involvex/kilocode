@@ -346,15 +346,15 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 						<button
 							className="mt-1 cursor-pointer"
 							onClick={handleSettingsClick}
-							onMouseDown={(e) => {
+							onMouseDown={(e: any) => {
 								e.stopPropagation()
 								e.preventDefault()
 							}}
-							onMouseEnter={(e) => {
+							onMouseEnter={(e: any) => {
 								e.currentTarget.style.opacity = "1"
 								e.currentTarget.style.backgroundColor = "var(--vscode-list-hoverBackground)"
 							}}
-							onMouseLeave={(e) => {
+							onMouseLeave={(e: any) => {
 								e.currentTarget.style.opacity = "0.7"
 								e.currentTarget.style.backgroundColor = "transparent"
 							}}

@@ -233,13 +233,13 @@ export const ContextManagementSettings = ({
 								className="w-24 bg-vscode-input-background text-vscode-input-foreground border border-vscode-input-border px-2 py-1 rounded text-right [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none disabled:opacity-50"
 								value={maxReadFileLine ?? 500 /*kilocode_change*/}
 								min={-1}
-								onChange={(e) => {
+								onChange={(e: any) => {
 									const newValue = parseInt(e.target.value, 10)
 									if (!isNaN(newValue) && newValue >= -1) {
 										setCachedStateField("maxReadFileLine", newValue)
 									}
 								}}
-								onClick={(e) => e.currentTarget.select()}
+								onClick={(e: any) => e.currentTarget.select()}
 								data-testid="max-read-file-line-input"
 								disabled={maxReadFileLine === -1}
 							/>
@@ -284,13 +284,13 @@ export const ContextManagementSettings = ({
 								value={maxImageFileSize ?? 5}
 								min={1}
 								max={100}
-								onChange={(e) => {
+								onChange={(e: any) => {
 									const newValue = parseInt(e.target.value, 10)
 									if (!isNaN(newValue) && newValue >= 1 && newValue <= 100) {
 										setCachedStateField("maxImageFileSize", newValue)
 									}
 								}}
-								onClick={(e) => e.currentTarget.select()}
+								onClick={(e: any) => e.currentTarget.select()}
 								data-testid="max-image-file-size-input"
 							/>
 							<span>{t("settings:contextManagement.maxImageFileSize.mb")}</span>
@@ -312,13 +312,13 @@ export const ContextManagementSettings = ({
 								value={maxTotalImageSize ?? 20}
 								min={1}
 								max={500}
-								onChange={(e) => {
+								onChange={(e: any) => {
 									const newValue = parseInt(e.target.value, 10)
 									if (!isNaN(newValue) && newValue >= 1 && newValue <= 500) {
 										setCachedStateField("maxTotalImageSize", newValue)
 									}
 								}}
-								onClick={(e) => e.currentTarget.select()}
+								onClick={(e: any) => e.currentTarget.select()}
 								data-testid="max-total-image-size-input"
 							/>
 							<span>{t("settings:contextManagement.maxTotalImageSize.mb")}</span>

@@ -82,6 +82,7 @@ export {
 	providerAtom,
 	providersAtom,
 	modeAtom,
+	statusLineAtom,
 	mappedExtensionStateAtom,
 
 	// Config action atoms
@@ -204,6 +205,7 @@ export {
 	yoloModeAtom,
 	isCommittingParallelModeAtom,
 	commitCountdownSecondsAtom,
+	inputModeAtom,
 
 	// Autocomplete state atoms
 	showAutocompleteAtom,
@@ -245,6 +247,17 @@ export {
 	hideAutocompleteAtom,
 	showAutocompleteMenuAtom,
 } from "./ui.js"
+
+// ============================================================================
+// Config Menu Atoms - Interactive configuration menu state
+// ============================================================================
+export {
+	configMenuLevelAtom,
+	configMenuCategoryAtom,
+	configMenuItemsAtom,
+	handleConfigMenuSelectAtom,
+	openConfigMenuAtom,
+} from "./configMenu.js"
 
 // ============================================================================
 // Type Re-exports

@@ -1487,7 +1487,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 								<Button
 									variant="ghost"
 									size="icon"
-									onClick={(e) => {
+									onClick={(e: any) => {
 										e.stopPropagation()
 										togglePinnedApiConfig(value)
 										vscode.postMessage({
@@ -1549,7 +1549,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 					}}
 				/>
 				<DynamicTextArea
-					ref={(el) => {
+					ref={(el: any) => {
 						if (typeof ref === "function") {
 							ref(el)
 						} else if (ref) {
@@ -1558,7 +1558,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 						textAreaRef.current = el
 					}}
 					value={displayValue}
-					onChange={(e) => {
+					onChange={(e: any) => {
 						// During recording, ignore changes to prevent cursor jumping
 						if (!isRecording) {
 							handleInputChange(e)
@@ -1566,7 +1566,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 						}
 					}}
 					onFocus={() => setIsFocused(true)}
-					onKeyDown={(e) => {
+					onKeyDown={(e: any) => {
 						// Handle ESC to cancel in edit mode
 						if (isEditMode && e.key === "Escape" && !e.nativeEvent?.isComposing) {
 							e.preventDefault()
@@ -1580,7 +1580,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 					onPaste={handlePaste}
 					onSelect={updateCursorPosition}
 					onMouseUp={updateCursorPosition}
-					onHeightChange={(height) => {
+					onHeightChange={(height: any) => {
 						if (textAreaBaseHeight === undefined || height < textAreaBaseHeight) {
 							setTextAreaBaseHeight(height)
 						}
@@ -1830,7 +1830,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 					<div
 						className={cn("chat-text-area", "relative", "flex", "flex-col", "outline-none")}
 						onDrop={handleDrop}
-						onDragOver={(e) => {
+						onDragOver={(e: any) => {
 							// Only allowed to drop images/files on shift key pressed.
 							if (!e.shiftKey) {
 								setIsDraggingOver(false)
@@ -1841,7 +1841,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 							setIsDraggingOver(true)
 							e.dataTransfer.dropEffect = "copy"
 						}}
-						onDragLeave={(e) => {
+						onDragLeave={(e: any) => {
 							e.preventDefault()
 							const rect = e.currentTarget.getBoundingClientRect()
 

@@ -188,7 +188,7 @@ vi.mock("../ChatTextArea", () => {
 				<input
 					ref={mockInputRef}
 					type="text"
-					onChange={(e) => {
+					onChange={(e: any) => {
 						// With message queueing, onSend is always called (it handles queueing internally)
 						props.onSend(e.target.value)
 					}}
@@ -234,7 +234,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 			<input
 				type="text"
 				value={value}
-				onChange={(e) => onInput?.({ target: { value: e.target.value } })}
+				onChange={(e: any) => onInput?.({ target: { value: e.target.value } })}
 				placeholder={placeholder}
 			/>
 		)

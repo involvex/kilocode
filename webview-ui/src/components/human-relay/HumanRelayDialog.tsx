@@ -93,7 +93,7 @@ export const HumanRelayDialog: React.FC<HumanRelayDialogProps> = ({
 						<Textarea
 							placeholder={t("humanRelay:aiResponse.placeholder")}
 							value={response}
-							onChange={(e) => setResponse(e.target.value)}
+							onChange={(e: any) => setResponse(e.target.value)}
 							className="min-h-[150px]"
 						/>
 					</div>

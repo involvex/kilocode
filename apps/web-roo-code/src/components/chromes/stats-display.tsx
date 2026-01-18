@@ -13,14 +13,20 @@ export default async function StatsDisplay() {
 				href="https://github.com/RooCodeInc/Roo-Code"
 				target="_blank"
 				className="hidden md:flex items-center gap-1.5 text-sm font-medium text-gray-400 hover:text-gray-200">
-				<RxGithubLogo className="h-4 w-4" />
+				{(() => {
+					const RxGithubLogoAny = RxGithubLogo as any
+					return <RxGithubLogoAny className="h-4 w-4" />
+				})()}
 				{stars !== null && <span>{stars}</span>}
 			</Link>
 			<Link
 				href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"
 				target="_blank"
 				className="hidden md:flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
-				<VscVscode className="h-4 w-4" />
+				{(() => {
+					const VscVscodeAny = VscVscode as any
+					return <VscVscodeAny className="h-4 w-4" />
+				})()}
 				<span>
 					Install <span className="font-black">&middot;</span>
 				</span>

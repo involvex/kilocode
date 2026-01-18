@@ -40,7 +40,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 				<input
 					type="text"
 					value={value}
-					onChange={(e) => onInput && onInput(e)}
+					onChange={(e: any) => onInput && onInput(e)}
 					placeholder={placeholder}
 					data-testid={dataTestId}
 					{...rest}
@@ -62,7 +62,7 @@ vi.mock("@src/i18n/TranslationContext", () => ({
 // Mock the UI components
 vi.mock("@src/components/ui", () => ({
 	Select: ({ children, value, onValueChange }: any) => (
-		<select value={value} onChange={(e) => onValueChange && onValueChange(e.target.value)}>
+		<select value={value} onChange={(e: any) => onValueChange && onValueChange(e.target.value)}>
 			{children}
 		</select>
 	),

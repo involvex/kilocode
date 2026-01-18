@@ -122,7 +122,7 @@ export const ApiConfigSelector = ({
 								variant="ghost"
 								size="icon"
 								tabIndex={-1}
-								onClick={(e) => {
+								onClick={(e: any) => {
 									e.stopPropagation()
 									togglePinnedApiConfig(config.id)
 									vscode.postMessage({ type: "toggleApiConfigPin", text: config.id })
@@ -171,7 +171,7 @@ export const ApiConfigSelector = ({
 							<input
 								aria-label={t("common:ui.search_placeholder")}
 								value={searchValue}
-								onChange={(e) => setSearchValue(e.target.value)}
+								onChange={(e: any) => setSearchValue(e.target.value)}
 								placeholder={t("common:ui.search_placeholder")}
 								className="w-full h-8 px-2 py-1 text-xs bg-vscode-input-background text-vscode-input-foreground border border-vscode-input-border rounded focus:outline-0"
 								autoFocus

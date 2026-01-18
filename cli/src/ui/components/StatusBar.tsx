@@ -13,6 +13,7 @@ import {
 	chatMessagesAtom,
 	routerModelsAtom,
 	yoloModeAtom,
+	statusLineAtom,
 } from "../../state/atoms/index.js"
 import { useGitInfo } from "../../state/hooks/useGitInfo.js"
 import { useContextUsage } from "../../state/hooks/useContextUsage.js"
@@ -117,6 +118,7 @@ export const StatusBar: React.FC = () => {
 	const messages = useAtomValue(chatMessagesAtom)
 	const routerModels = useAtomValue(routerModelsAtom)
 	const yoloMode = useAtomValue(yoloModeAtom)
+	const statusLine = useAtomValue(statusLineAtom)
 
 	// Get git info
 	const gitInfo = useGitInfo(cwd)
@@ -193,7 +195,8 @@ export const StatusBar: React.FC = () => {
 	// Prepare display values
 	// In parallel mode, show the original directory (process.cwd()) instead of the worktree path
 	const displayCwd = isParallelMode ? process.cwd() : cwd
-	const projectName = `${getProjectName(displayCwd)}${isWorktree ? " (git worktree)" : ""}`
+	const defaultProjectName = `${getProjectName(displayCwd)}${isWorktree ? " (git worktree)" : ""}`
+	const projectName = statusLine?.enabled && statusLine.text ? statusLine.text : defaultProjectName
 	const modelName = useMemo(() => getModelDisplayName(apiConfig, routerModels), [apiConfig, routerModels])
 
 	// Get context color based on percentage using theme colors

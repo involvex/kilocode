@@ -373,7 +373,7 @@ function NewAgentForm() {
 					<DynamicTextArea
 						autoFocus
 						value={promptText}
-						onChange={(e) => setPromptText(e.target.value)}
+						onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setPromptText(e.target.value)}
 						onKeyDown={handleKeyDown}
 						onFocus={() => setIsFocused(true)}
 						onBlur={() => setIsFocused(false)}

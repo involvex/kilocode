@@ -63,7 +63,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 			<input
 				type="checkbox"
 				checked={checked}
-				onChange={(e) => onChange({ target: { checked: e.target.checked } })}
+				onChange={(e: any) => onChange({ target: { checked: e.target.checked } })}
 			/>
 			{children}
 		</label>
@@ -74,7 +74,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 		</button>
 	),
 	VSCodeDropdown: ({ children, value, onChange }: any) => (
-		<select value={value} onChange={(e) => onChange({ target: { value: e.target.value } })}>
+		<select value={value} onChange={(e: any) => onChange({ target: { value: e.target.value } })}>
 			{children}
 		</select>
 	),
@@ -87,7 +87,7 @@ vi.mock("@src/components/ui", () => ({
 		<input
 			type="range"
 			value={value?.[0] || 0}
-			onChange={(e) => onValueChange?.([parseInt(e.target.value)])}
+			onChange={(e: any) => onValueChange?.([parseInt(e.target.value)])}
 			disabled={disabled}
 		/>
 	),

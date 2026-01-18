@@ -78,7 +78,7 @@ export const STTSetupPopoverContent: React.FC<STTSetupPopoverContentProps> = ({
 								moreInfoLink: (
 									<VSCodeLink
 										href={docsUrl}
-										onClick={(e) => {
+										onClick={(e: any) => {
 											e.preventDefault()
 											handleOpenAiHelpClick()
 										}}
@@ -101,7 +101,7 @@ export const STTSetupPopoverContent: React.FC<STTSetupPopoverContentProps> = ({
 										ffmpegLink: (
 											<VSCodeLink
 												href="#"
-												onClick={(e) => {
+												onClick={(e: any) => {
 													e.preventDefault()
 													handleFfmpegHelpClick()
 													onOpenChange?.(false)

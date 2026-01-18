@@ -36,7 +36,7 @@ export const TaskActions = ({ item, buttonsDisabled }: TaskActionsProps) => {
 				<LucideIconButton
 					icon={CopyIcon}
 					title={t("history:copyPrompt")}
-					onClick={(e) => copyWithFeedback(item.task, e)}
+					onClick={(e: any) => copyWithFeedback(item.task, e)}
 				/>
 			)}
 			{!!item?.size && item.size > 0 && (
@@ -45,7 +45,7 @@ export const TaskActions = ({ item, buttonsDisabled }: TaskActionsProps) => {
 						icon={Trash2Icon}
 						title={t("chat:task.delete")}
 						disabled={buttonsDisabled}
-						onClick={(e) => {
+						onClick={(e: any) => {
 							e.stopPropagation()
 							if (e.shiftKey) {
 								vscode.postMessage({ type: "deleteTaskWithId", text: item.id })

@@ -84,28 +84,33 @@ export function CookieConsentWrapper() {
 
 	return (
 		<div role="banner" aria-label="Cookie consent banner" aria-live="polite">
-			<ReactCookieConsent
-				location="bottom"
-				buttonText="Accept"
-				declineButtonText="Decline"
-				cookieName={CONSENT_COOKIE_NAME}
-				expires={365}
-				enableDeclineButton={true}
-				onAccept={handleAccept}
-				onDecline={handleDecline}
-				containerClasses={containerClasses}
-				buttonClasses={acceptButtonClasses}
-				buttonWrapperClasses={buttonWrapperClasses}
-				declineButtonClasses={declineButtonClasses}
-				extraCookieOptions={extraCookieOptions}
-				disableStyles={true}
-				ariaAcceptLabel={`Accept`}
-				ariaDeclineLabel={`Decline`}>
-				<div className="flex items-center gap-2">
-					<Cookie className="size-5 hidden md:block" />
-					<span>Like most of the internet, we use cookies. Are you OK with that?</span>
-				</div>
-			</ReactCookieConsent>
+			{(() => {
+				const ReactCookieConsentAny = ReactCookieConsent as any
+				return (
+					<ReactCookieConsentAny
+						location="bottom"
+						buttonText="Accept"
+						declineButtonText="Decline"
+						cookieName={CONSENT_COOKIE_NAME}
+						expires={365}
+						enableDeclineButton={true}
+						onAccept={handleAccept}
+						onDecline={handleDecline}
+						containerClasses={containerClasses}
+						buttonClasses={acceptButtonClasses}
+						buttonWrapperClasses={buttonWrapperClasses}
+						declineButtonClasses={declineButtonClasses}
+						extraCookieOptions={extraCookieOptions}
+						disableStyles={true}
+						ariaAcceptLabel={`Accept`}
+						ariaDeclineLabel={`Decline`}>
+						<div className="flex items-center gap-2">
+							<Cookie className="size-5 hidden md:block" />
+							<span>Like most of the internet, we use cookies. Are you OK with that?</span>
+						</div>
+					</ReactCookieConsentAny>
+				)
+			})()}
 		</div>
 	)
 }

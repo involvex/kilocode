@@ -140,7 +140,7 @@ export const KiloProfileSelector = ({
 									<Button
 										variant="ghost"
 										size="icon"
-										onClick={(e) => {
+										onClick={(e: any) => {
 											e.stopPropagation()
 											togglePinnedApiConfig(value)
 											vscode.postMessage({

@@ -638,7 +638,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					<Button
 						variant="ghost"
 						size="icon"
-						onClick={(e) => {
+						onClick={(e: any) => {
 							e.stopPropagation()
 							vscode.postMessage({ type: "killBrowserSession" })
 						}}
@@ -678,7 +678,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					{/* Go to beginning */}
 					<StandardTooltip content="Go to beginning">
 						<button
-							onClick={(e) => {
+							onClick={(e: any) => {
 								e.stopPropagation()
 								hasUserNavigatedRef.current = true
 								setCurrentPageIndex(0)
@@ -703,7 +703,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					{/* Back */}
 					<StandardTooltip content="Back">
 						<button
-							onClick={(e) => {
+							onClick={(e: any) => {
 								e.stopPropagation()
 								hasUserNavigatedRef.current = true
 								setCurrentPageIndex((i) => Math.max(0, i - 1))
@@ -728,7 +728,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					{/* Forward */}
 					<StandardTooltip content="Forward">
 						<button
-							onClick={(e) => {
+							onClick={(e: any) => {
 								e.stopPropagation()
 								const nextIndex = Math.min(pages.length - 1, currentPageIndex + 1)
 								// Reset user navigation flag if going to the last page
@@ -755,7 +755,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					{/* Go to end */}
 					<StandardTooltip content="Go to end">
 						<button
-							onClick={(e) => {
+							onClick={(e: any) => {
 								e.stopPropagation()
 								// Reset user navigation flag since we're going to the most recent page
 								hasUserNavigatedRef.current = false
@@ -813,7 +813,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					{/* Kill (Disconnect) replaces Reload */}
 					<StandardTooltip content="Disconnect session">
 						<button
-							onClick={(e) => {
+							onClick={(e: any) => {
 								e.stopPropagation()
 								vscode.postMessage({ type: "killBrowserSession" })
 							}}
@@ -836,7 +836,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					{/* Open External */}
 					<StandardTooltip content="Open in external browser">
 						<button
-							onClick={(e) => {
+							onClick={(e: any) => {
 								e.stopPropagation()
 								if (displayState.url) {
 									vscode.postMessage({ type: "openExternal", url: displayState.url })
@@ -862,7 +862,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					{/* Copy URL */}
 					<StandardTooltip content="Copy URL">
 						<button
-							onClick={async (e) => {
+							onClick={async (e: any) => {
 								e.stopPropagation()
 								try {
 									await navigator.clipboard.writeText(displayState.url || "")
@@ -1012,7 +1012,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 						marginTop: fullScreen ? "auto" : undefined,
 					}}>
 					<div
-						onClick={(e) => {
+						onClick={(e: any) => {
 							e.stopPropagation()
 							setConsoleLogsExpanded((v) => !v)
 						}}
@@ -1031,7 +1031,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 
 						{/* Log type indicators */}
 						<div
-							onClick={(e) => e.stopPropagation()}
+							onClick={(e: any) => e.stopPropagation()}
 							style={{ display: "flex", alignItems: "center", gap: 6, marginLeft: "auto" }}>
 							{logTypeMeta.map(({ key, label }) => {
 								const isAll = key === "all"

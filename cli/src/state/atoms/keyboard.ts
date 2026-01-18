@@ -1207,9 +1207,16 @@ export const keyboardHandlerAtom = atom(null, async (get, set, key: Key) => {
 	// Check if we have file mention suggestions (this means we're in file mention mode)
 	const hasFileMentions = fileMentionSuggestions.length > 0
 
-	// Mode priority: shell > approval > followup > history > autocomplete (including file mentions) > normal
+	// Mode priority: config-menu > shell > approval > followup > history > autocomplete (including file mentions) > normal
 	// History has higher priority than autocomplete because when navigating history,
 	// the text buffer may contain commands that start with "/" which would trigger autocomplete
+	const currentInputMode = get(inputModeAtom)
+	if (currentInputMode === "config-menu") {
+		// ConfigMenu handles its own input via useInput(ink)
+		// We just need to make sure we don't reset the mode to "normal" here
+		return
+	}
+
 	let mode: InputMode = "normal"
 	if (isShellModeActive) mode = "shell"
 	else if (isApprovalPending) mode = "approval"

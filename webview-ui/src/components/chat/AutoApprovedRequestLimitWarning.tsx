@@ -52,7 +52,7 @@ export const AutoApprovedRequestLimitWarning = memo(({ message }: AutoApprovedRe
 				</div>
 				<Button
 					style={{ width: "100%", padding: "6px", borderRadius: "4px" }}
-					onClick={(e) => {
+					onClick={(e: any) => {
 						e.preventDefault()
 						setButtonClicked(true)
 						vscode.postMessage({ type: "askResponse", askResponse: "yesButtonClicked" })

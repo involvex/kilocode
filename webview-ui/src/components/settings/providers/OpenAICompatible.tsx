@@ -309,7 +309,7 @@ export const OpenAICompatible = ({
 								return value > 0 ? "var(--vscode-charts-green)" : "var(--vscode-errorForeground)"
 							})(),
 						}}
-						onInput={handleInputChange("openAiCustomModelInfo", (e) => {
+						onInput={handleInputChange("openAiCustomModelInfo", (e: any) => {
 							const value = parseInt((e.target as HTMLInputElement).value)
 
 							return {
@@ -347,7 +347,7 @@ export const OpenAICompatible = ({
 								return value > 0 ? "var(--vscode-charts-green)" : "var(--vscode-errorForeground)"
 							})(),
 						}}
-						onInput={handleInputChange("openAiCustomModelInfo", (e) => {
+						onInput={handleInputChange("openAiCustomModelInfo", (e: any) => {
 							const value = (e.target as HTMLInputElement).value
 							const parsed = parseInt(value)
 
@@ -439,7 +439,7 @@ export const OpenAICompatible = ({
 								return value >= 0 ? "var(--vscode-charts-green)" : "var(--vscode-errorForeground)"
 							})(),
 						}}
-						onChange={handleInputChange("openAiCustomModelInfo", (e) => {
+						onChange={handleInputChange("openAiCustomModelInfo", (e: any) => {
 							const value = (e.target as HTMLInputElement).value
 							const parsed = parseFloat(value)
 
@@ -483,7 +483,7 @@ export const OpenAICompatible = ({
 								return value >= 0 ? "var(--vscode-charts-green)" : "var(--vscode-errorForeground)"
 							})(),
 						}}
-						onChange={handleInputChange("openAiCustomModelInfo", (e) => {
+						onChange={handleInputChange("openAiCustomModelInfo", (e: any) => {
 							const value = (e.target as HTMLInputElement).value
 							const parsed = parseFloat(value)
 
@@ -527,7 +527,7 @@ export const OpenAICompatible = ({
 											: "var(--vscode-errorForeground)"
 									})(),
 								}}
-								onChange={handleInputChange("openAiCustomModelInfo", (e) => {
+								onChange={handleInputChange("openAiCustomModelInfo", (e: any) => {
 									const value = (e.target as HTMLInputElement).value
 									const parsed = parseFloat(value)
 
@@ -569,7 +569,7 @@ export const OpenAICompatible = ({
 											: "var(--vscode-errorForeground)"
 									})(),
 								}}
-								onChange={handleInputChange("openAiCustomModelInfo", (e) => {
+								onChange={handleInputChange("openAiCustomModelInfo", (e: any) => {
 									const value = (e.target as HTMLInputElement).value
 									const parsed = parseFloat(value)
 

@@ -47,6 +47,7 @@ import {
 	changeModelListPageAtom,
 	resetModelListStateAtom,
 } from "../atoms/modelList.js"
+import { openConfigMenuAtom } from "../atoms/configMenu.js"
 import { useWebviewMessage } from "./useWebviewMessage.js"
 import { useTaskHistory } from "./useTaskHistory.js"
 import { getModelIdKey } from "../../constants/providers/models.js"
@@ -102,6 +103,7 @@ export function useCommandContext(): UseCommandContextReturn {
 	const setMessageCutoffTimestamp = useSetAtom(setMessageCutoffTimestampAtom)
 	const setCommittingParallelMode = useSetAtom(isCommittingParallelModeAtom)
 	const refreshTerminal = useSetAtom(refreshTerminalAtom)
+	const openConfigMenu = useSetAtom(openConfigMenuAtom)
 	const { sendMessage, clearTask } = useWebviewMessage()
 
 	// Get read-only state
@@ -185,6 +187,9 @@ export function useCommandContext(): UseCommandContextReturn {
 				},
 				setTheme: async (theme: string) => {
 					await setTheme(theme)
+				},
+				openConfigMenu: () => {
+					openConfigMenu()
 				},
 				exit: () => {
 					onExit()

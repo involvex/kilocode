@@ -149,7 +149,7 @@ export function WhatsNewButton() {
 				/>
 				<Link
 					href="#"
-					onClick={(e) => {
+					onClick={(e: any) => {
 						e.preventDefault()
 						setIsOpen(true)
 					}}
@@ -183,7 +183,7 @@ export function WhatsNewButton() {
 										mass: 0.6,
 										duration: 0.25,
 									}}
-									onClick={(e) => {
+									onClick={(e: any) => {
 										// prevent clicks inside the panel from closing it
 										e.stopPropagation()
 									}}>

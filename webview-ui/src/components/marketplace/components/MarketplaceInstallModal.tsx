@@ -339,7 +339,7 @@ export const MarketplaceInstallModal: React.FC<MarketplaceInstallModalProps> = (
 											type="text"
 											placeholder={param.placeholder}
 											value={parameterValues[param.key] || ""}
-											onChange={(e) =>
+											onChange={(e: any) =>
 												setParameterValues((prev) => ({
 													...prev,
 													[param.key]: e.target.value,

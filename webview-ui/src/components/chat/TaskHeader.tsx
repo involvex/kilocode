@@ -139,7 +139,7 @@ const TaskHeader = ({
 					"shadow-lg shadow-vscode-sideBar-background/50 rounded-xl",
 					hasTodos && "border-b-0",
 				)}
-				onClick={(e) => {
+				onClick={(e: any) => {
 					// Don't expand if clicking on todos section
 					if (e.target instanceof Element && e.target.closest("[data-todo-list]")) {
 						return
@@ -179,7 +179,7 @@ const TaskHeader = ({
 								</div>
 							)}
 						</div>
-						<div className="flex items-center shrink-0 ml-2" onClick={(e) => e.stopPropagation()}>
+						<div className="flex items-center shrink-0 ml-2" onClick={(e: any) => e.stopPropagation()}>
 							<StandardTooltip content={isTaskExpanded ? t("chat:task.collapse") : t("chat:task.expand")}>
 								<button
 									onClick={() => setIsTaskExpanded(!isTaskExpanded)}
@@ -197,7 +197,7 @@ const TaskHeader = ({
 				{!isTaskExpanded && contextWindow > 0 && (
 					<div
 						className="flex items-center justify-between text-sm text-muted-foreground/70"
-						onClick={(e) => e.stopPropagation()}>
+						onClick={(e: any) => e.stopPropagation()}>
 						<div className="flex items-center gap-2">
 							<Coins className="size-3 shrink-0" />
 							<StandardTooltip
@@ -251,7 +251,7 @@ const TaskHeader = ({
 							{!!totalCost && <span>${totalCost.toFixed(2)}</span>}
 						</div>
 						{showBrowserGlobe && (
-							<div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+							<div className="flex items-center gap-1" onClick={(e: any) => e.stopPropagation()}>
 								<StandardTooltip content={t("chat:browser.session")}>
 									<Button
 										variant="ghost"
@@ -304,7 +304,7 @@ const TaskHeader = ({
 						</div>
 						{task.images && task.images.length > 0 && <Thumbnails images={task.images} />}
 
-						<div onClick={(e) => e.stopPropagation()}>
+						<div onClick={(e: any) => e.stopPropagation()}>
 							<TaskActions item={currentTaskItem} buttonsDisabled={buttonsDisabled} />
 						</div>
 

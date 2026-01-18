@@ -27,7 +27,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 			<input
 				type="checkbox"
 				checked={checked}
-				onChange={(e) => onChange && onChange({ target: { checked: e.target.checked } })}
+				onChange={(e: any) => onChange && onChange({ target: { checked: e.target.checked } })}
 			/>
 			{children}
 		</label>
@@ -49,7 +49,7 @@ vi.mock("vscrui", () => ({
 			<input
 				type="checkbox"
 				checked={checked}
-				onChange={(e) => onChange(e.target.checked)}
+				onChange={(e: any) => onChange(e.target.checked)}
 				data-testid={`checkbox-input-${children?.toString().replace(/\s+/g, "-").toLowerCase()}`}
 			/>
 			{children}
@@ -61,7 +61,7 @@ vi.mock("vscrui", () => ({
 vi.mock("@/components/ui", () => ({
 	Select: ({ children, value, onValueChange }: any) => (
 		<div className="select-mock">
-			<select value={value} onChange={(e) => onValueChange && onValueChange(e.target.value)}>
+			<select value={value} onChange={(e: any) => onValueChange && onValueChange(e.target.value)}>
 				{children}
 			</select>
 		</div>
@@ -88,7 +88,7 @@ vi.mock("@/components/ui", () => ({
 	CommandInput: ({ value, onValueChange, placeholder, className, _ref }: any) => (
 		<input
 			value={value}
-			onChange={(e) => onValueChange && onValueChange(e.target.value)}
+			onChange={(e: any) => onValueChange && onValueChange(e.target.value)}
 			placeholder={placeholder}
 			className={className}
 		/>
@@ -104,12 +104,12 @@ vi.mock("@/components/ui", () => ({
 	PopoverTrigger: ({ children, _asChild }: any) => <div className="popover-trigger-mock">{children}</div>,
 	Slider: ({ value, onChange }: any) => (
 		<div data-testid="slider">
-			<input type="range" value={value || 0} onChange={(e) => onChange(parseFloat(e.target.value))} />
+			<input type="range" value={value || 0} onChange={(e: any) => onChange(parseFloat(e.target.value))} />
 		</div>
 	),
 	SearchableSelect: ({ value, onValueChange, options, placeholder, "data-testid": dataTestId }: any) => (
 		<div className="searchable-select-mock" data-testid={dataTestId || "provider-popover-trigger"}>
-			<select value={value} onChange={(e) => onValueChange && onValueChange(e.target.value)}>
+			<select value={value} onChange={(e: any) => onValueChange && onValueChange(e.target.value)}>
 				<option value="">{placeholder || "Select..."}</option>
 				{options?.map((option: any) => (
 					<option key={option.value} value={option.value}>
@@ -141,7 +141,7 @@ vi.mock("../TemperatureControl", () => ({
 			<input
 				type="range"
 				value={value || 0}
-				onChange={(e) => onChange(parseFloat(e.target.value))}
+				onChange={(e: any) => onChange(parseFloat(e.target.value))}
 				min={0}
 				max={2}
 				step={0.1}
@@ -156,7 +156,7 @@ vi.mock("../RateLimitSecondsControl", () => ({
 			<input
 				type="range"
 				value={value || 0}
-				onChange={(e) => onChange(parseFloat(e.target.value))}
+				onChange={(e: any) => onChange(parseFloat(e.target.value))}
 				min={0}
 				max={60}
 				step={1}
@@ -174,7 +174,7 @@ vi.mock("../DiffSettingsControl", () => ({
 				<input
 					type="checkbox"
 					checked={diffEnabled}
-					onChange={(e) => onChange("diffEnabled", e.target.checked)}
+					onChange={(e: any) => onChange("diffEnabled", e.target.checked)}
 				/>
 			</label>
 			<div>
@@ -182,7 +182,7 @@ vi.mock("../DiffSettingsControl", () => ({
 				<input
 					type="range"
 					value={fuzzyMatchThreshold || 1.0}
-					onChange={(e) => onChange("fuzzyMatchThreshold", parseFloat(e.target.value))}
+					onChange={(e: any) => onChange("fuzzyMatchThreshold", parseFloat(e.target.value))}
 					min={0.8}
 					max={1}
 					step={0.005}
@@ -201,7 +201,7 @@ vi.mock("../TodoListSettingsControl", () => ({
 				<input
 					type="checkbox"
 					checked={todoListEnabled}
-					onChange={(e) => onChange("todoListEnabled", e.target.checked)}
+					onChange={(e: any) => onChange("todoListEnabled", e.target.checked)}
 				/>
 			</label>
 		</div>
@@ -232,14 +232,14 @@ vi.mock("../providers/LiteLLM", () => ({
 				data-testid="litellm-base-url"
 				type="text"
 				value={apiConfiguration.litellmBaseUrl || ""}
-				onChange={(e) => setApiConfigurationField("litellmBaseUrl", e.target.value)}
+				onChange={(e: any) => setApiConfigurationField("litellmBaseUrl", e.target.value)}
 				placeholder="Base URL"
 			/>
 			<input
 				data-testid="litellm-api-key"
 				type="password"
 				value={apiConfiguration.litellmApiKey || ""}
-				onChange={(e) => setApiConfigurationField("litellmApiKey", e.target.value)}
+				onChange={(e: any) => setApiConfigurationField("litellmApiKey", e.target.value)}
 				placeholder="API Key"
 			/>
 			<button data-testid="litellm-refresh-models">Refresh Models</button>
@@ -511,7 +511,7 @@ describe("ApiOptions", () => {
 			// Find the reasoning effort select among all comboboxes by its current value
 			// const allSelects = screen.getAllByRole("combobox") as HTMLSelectElement[]
 			// const reasoningSelect = allSelects.find(
-			// 	(el) => el.value === initialConfig.openAiCustomModelInfo.reasoningEffort,
+			// 	(el: any) => el.value === initialConfig.openAiCustomModelInfo.reasoningEffort,
 			// )
 			// expect(reasoningSelect).toBeDefined()
 			const selectContainer = screen.getByTestId("reasoning-effort")

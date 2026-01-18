@@ -10,7 +10,7 @@ vi.mock("@/components/ui", () => ({
 		<input
 			type="range"
 			value={value[0]}
-			onChange={(e) => onValueChange([parseFloat(e.target.value)])}
+			onChange={(e: any) => onValueChange([parseFloat(e.target.value)])}
 			data-testid={dataTestId}
 			role="slider"
 		/>

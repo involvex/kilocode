@@ -38,7 +38,7 @@ export function FollowUpSuggestions({ suggestions, onSuggestionClick, onCopyToIn
 							<button
 								type="button"
 								className="am-followup-copy-btn"
-								onClick={(e) => {
+								onClick={(e: any) => {
 									e.stopPropagation()
 									onCopyToInput(suggestion)
 								}}

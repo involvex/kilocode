@@ -319,7 +319,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 				</span>
 				<div
 					style={{ display: "flex", alignItems: "center", marginRight: "8px" }}
-					onClick={(e) => e.stopPropagation()}>
+					onClick={(e: any) => e.stopPropagation()}>
 					<Button
 						variant="ghost"
 						size="icon"

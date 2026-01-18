@@ -97,7 +97,7 @@ export const AutosizeTextarea = React.forwardRef<AutosizeTextAreaRef, AutosizeTe
 					"text-vscode-input-foreground",
 					className,
 				)}
-				onChange={(e) => {
+				onChange={(e: any) => {
 					setTriggerAutoSize(e.target.value)
 					onChange?.(e)
 				}}

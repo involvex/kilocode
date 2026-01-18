@@ -235,7 +235,7 @@ export default function MermaidBlock({ code: originalCode }: MermaidBlockProps) 
 							{/* kilocode_change start */}
 							{!!error && (
 								<MermaidFixButton
-									onClick={(e) => {
+									onClick={(e: any) => {
 										e.stopPropagation()
 										handleSyntaxFix()
 									}}
@@ -246,7 +246,7 @@ export default function MermaidBlock({ code: originalCode }: MermaidBlockProps) 
 							)}
 							{/* kilocode_change end */}
 							<CopyButton
-								onClick={(e) => {
+								onClick={(e: any) => {
 									e.stopPropagation()
 									const combinedContent = `Error: ${error}\n\n\`\`\`mermaid\n${code}\n\`\`\``
 									copyWithFeedback(combinedContent, e)

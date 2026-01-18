@@ -303,7 +303,7 @@ const CodeBlock = memo(
 				}
 			}
 
-			highlight().catch((e) => {
+			highlight().catch((e: any) => {
 				console.error("[CodeBlock] Syntax highlighting error:", e, "\nStack trace:", e.stack)
 				if (isMountedRef.current) {
 					setHighlightedCode(fallback)
@@ -621,10 +621,10 @@ const CodeBlock = memo(
 							style={{
 								width: `calc(${currentLanguage?.length || 0}ch + 9px)`,
 							}}
-							onClick={(e) => {
+							onClick={(e: any) => {
 								e.currentTarget.focus()
 							}}
-							onChange={(e) => {
+							onChange={(e: any) => {
 								const newLang = normalizeLanguage(e.target.value)
 								userChangedLanguageRef.current = true
 								setCurrentLanguage(newLang)

@@ -64,9 +64,9 @@ export const QueuedMessages = ({ queue, onRemove, onUpdate }: QueuedMessagesProp
 												}
 											}}
 											value={editState.value}
-											onChange={(e) => setEditState(message.id, true, e.target.value)}
+											onChange={(e: any) => setEditState(message.id, true, e.target.value)}
 											onBlur={() => handleSaveEdit(index, message.id, editState.value)}
-											onKeyDown={(e) => {
+											onKeyDown={(e: any) => {
 												if (e.key === "Enter" && !e.shiftKey) {
 													e.preventDefault()
 													handleSaveEdit(index, message.id, editState.value)
@@ -94,7 +94,7 @@ export const QueuedMessages = ({ queue, onRemove, onUpdate }: QueuedMessagesProp
 										variant="ghost"
 										size="icon"
 										className="shrink-0"
-										onClick={(e) => {
+										onClick={(e: any) => {
 											e.stopPropagation()
 											onRemove(index)
 										}}>

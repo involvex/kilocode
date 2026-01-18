@@ -25,10 +25,14 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 	const { t } = useAppTranslation()
 	const [open, setOpen] = useState(true)
 
+	const XIcon = SiX as any
+	const DiscordIcon = SiDiscord as any
+	const RedditIcon = SiReddit as any
+
 	return (
 		<Dialog
 			open={open}
-			onOpenChange={(open) => {
+			onOpenChange={(open: boolean) => {
 				setOpen(open)
 
 				if (!open) {
@@ -68,17 +72,17 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 					<div className="mt-4 text-sm text-center text-vscode-descriptionForeground">
 						<div className="flex items-center justify-center gap-4">
 							<SocialLink
-								icon={<SiX className="w-4 h-4" aria-hidden />}
+								icon={<XIcon className="w-4 h-4" aria-hidden />}
 								label="X"
 								href="https://x.com/roocode"
 							/>
 							<SocialLink
-								icon={<SiDiscord className="w-4 h-4" aria-hidden />}
+								icon={<DiscordIcon className="w-4 h-4" aria-hidden />}
 								label="Discord"
 								href="https://discord.gg/rCQcvT7Fnt"
 							/>
 							<SocialLink
-								icon={<SiReddit className="w-4 h-4" aria-hidden />}
+								icon={<RedditIcon className="w-4 h-4" aria-hidden />}
 								label="Reddit"
 								href="https://www.reddit.com/r/RooCode/"
 							/>
@@ -108,7 +112,7 @@ const SocialLink = ({ icon, label, href }: { icon: ReactNode; label: string; hre
 	<VSCodeLink
 		href={href}
 		className="inline-flex items-center gap-1"
-		onClick={(e) => {
+		onClick={(e: any) => {
 			e.preventDefault()
 			vscode.postMessage({ type: "openExternal", url: href })
 		}}>
@@ -120,7 +124,7 @@ const SocialLink = ({ icon, label, href }: { icon: ReactNode; label: string; hre
 const GitHubLink = ({ children }: { children?: ReactNode }) => (
 	<VSCodeLink
 		href="https://github.com/RooCodeInc/Roo-Code"
-		onClick={(e) => {
+		onClick={(e: any) => {
 			e.preventDefault()
 			vscode.postMessage({ type: "openExternal", url: "https://github.com/RooCodeInc/Roo-Code" })
 		}}>
@@ -131,7 +135,7 @@ const GitHubLink = ({ children }: { children?: ReactNode }) => (
 const CareersLink = ({ children }: { children?: ReactNode }) => (
 	<VSCodeLink
 		href="https://careers.roocode.com"
-		onClick={(e) => {
+		onClick={(e: any) => {
 			e.preventDefault()
 			vscode.postMessage({ type: "openExternal", url: "https://careers.roocode.com" })
 		}}>
@@ -142,7 +146,7 @@ const CareersLink = ({ children }: { children?: ReactNode }) => (
 const BlogLink = ({ href, children }: { href: string; children?: ReactNode }) => (
 	<VSCodeLink
 		href={href}
-		onClick={(e) => {
+		onClick={(e: any) => {
 			e.preventDefault()
 			vscode.postMessage({ type: "openExternal", url: href })
 		}}>

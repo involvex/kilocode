@@ -211,13 +211,13 @@ vi.mock("../ChatTextArea", () => {
 					ref={mockInputRef}
 					type="text"
 					value={props.inputValue || ""}
-					onChange={(e) => {
+					onChange={(e: any) => {
 						// Use parent's setInputValue if available
 						if (props.setInputValue) {
 							props.setInputValue(e.target.value)
 						}
 					}}
-					onKeyDown={(e) => {
+					onKeyDown={(e: any) => {
 						// Only call onSend when Enter is pressed (simulating real behavior)
 						if (e.key === "Enter" && !e.shiftKey) {
 							e.preventDefault()
@@ -266,7 +266,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 			<input
 				type="text"
 				value={value}
-				onChange={(e) => onInput?.({ target: { value: e.target.value } })}
+				onChange={(e: any) => onInput?.({ target: { value: e.target.value } })}
 				placeholder={placeholder}
 			/>
 		)

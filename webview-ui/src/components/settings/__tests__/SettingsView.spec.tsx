@@ -50,7 +50,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 			<input
 				type="checkbox"
 				checked={checked}
-				onChange={(e) => onChange({ target: { checked: e.target.checked } })}
+				onChange={(e: any) => onChange({ target: { checked: e.target.checked } })}
 				aria-label={typeof children === "string" ? children : undefined}
 				data-testid={dataTestId}
 			/>
@@ -61,7 +61,7 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 		<input
 			type="text"
 			value={value}
-			onChange={(e) => onInput({ target: { value: e.target.value } })}
+			onChange={(e: any) => onInput({ target: { value: e.target.value } })}
 			placeholder={placeholder}
 			data-testid={dataTestId}
 		/>
@@ -117,7 +117,7 @@ vi.mock("../../../components/common/Tab", () => ({
 			const onValueChange = (window as any).__onValueChange
 			if (onValueChange) onValueChange(value)
 			// Make all tab contents invisible
-			document.querySelectorAll("[data-tab-content]").forEach((el) => {
+			document.querySelectorAll("[data-tab-content]").forEach((el: any) => {
 				;(el as HTMLElement).style.display = "none"
 			})
 			// Make this tab's content visible
@@ -142,7 +142,7 @@ vi.mock("@/components/ui", () => ({
 	PopoverContent: ({ children }: any) => <div data-testid="popover-content">{children}</div>,
 	Command: ({ children }: any) => <div data-testid="command">{children}</div>,
 	CommandInput: ({ value, onValueChange }: any) => (
-		<input data-testid="command-input" value={value} onChange={(e) => onValueChange(e.target.value)} />
+		<input data-testid="command-input" value={value} onChange={(e: any) => onValueChange(e.target.value)} />
 	),
 	CommandGroup: ({ children }: any) => <div data-testid="command-group">{children}</div>,
 	CommandItem: ({ children, onSelect }: any) => (
@@ -156,7 +156,7 @@ vi.mock("@/components/ui", () => ({
 		<input
 			type="range"
 			value={value[0]}
-			onChange={(e) => onValueChange([parseFloat(e.target.value)])}
+			onChange={(e: any) => onValueChange([parseFloat(e.target.value)])}
 			data-testid={dataTestId}
 		/>
 	),
@@ -196,7 +196,7 @@ vi.mock("@/components/ui", () => ({
 	SelectValue: ({ placeholder }: any) => <div data-testid="select-value">{placeholder}</div>,
 	SelectSeparator: () => <div data-testid="select-separator" />, // kilocode_change
 	SearchableSelect: ({ value, onValueChange, options, placeholder }: any) => (
-		<select value={value} onChange={(e) => onValueChange(e.target.value)} data-testid="searchable-select">
+		<select value={value} onChange={(e: any) => onValueChange(e.target.value)} data-testid="searchable-select">
 			{placeholder && <option value="">{placeholder}</option>}
 			{options?.map((opt: any) => (
 				<option key={opt.value} value={opt.value}>

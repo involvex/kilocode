@@ -157,6 +157,7 @@ export type InputMode =
 	| "followup" // Followup suggestions active
 	| "history" // History navigation mode
 	| "shell" // Shell mode for command execution
+	| "config-menu" // Interactive configuration menu mode
 
 /**
  * Current input mode

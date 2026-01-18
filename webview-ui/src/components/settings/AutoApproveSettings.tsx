@@ -173,7 +173,7 @@ export const AutoApproveSettings = ({
 										<a
 											href="#"
 											className="text-vscode-textLink-foreground hover:underline cursor-pointer"
-											onClick={(e) => {
+											onClick={(e: any) => {
 												e.preventDefault()
 												// Send message to open keyboard shortcuts with search for toggle command
 												vscode.postMessage({

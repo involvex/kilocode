@@ -1376,7 +1376,7 @@ export const ChatRowContent = ({
 									<div className="flex justify-between">
 										<div
 											className="flex-grow px-2 py-1 wrap-anywhere rounded-lg transition-colors"
-											onClick={(e) => {
+											onClick={(e: any) => {
 												e.stopPropagation()
 												if (!isStreaming) {
 													handleEditClick()
@@ -1389,7 +1389,7 @@ export const ChatRowContent = ({
 											<div
 												className="cursor-pointer shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
 												style={{ visibility: isStreaming ? "hidden" : "visible" }}
-												onClick={(e) => {
+												onClick={(e: any) => {
 													e.stopPropagation()
 													handleEditClick()
 												}}>
@@ -1398,7 +1398,7 @@ export const ChatRowContent = ({
 											<div
 												className="cursor-pointer shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
 												style={{ visibility: isStreaming ? "hidden" : "visible" }}
-												onClick={(e) => {
+												onClick={(e: any) => {
 													e.stopPropagation()
 													vscode.postMessage({ type: "deleteMessage", value: message.ts })
 												}}>

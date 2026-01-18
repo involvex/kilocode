@@ -243,7 +243,7 @@ export const ErrorRow = memo(
 									<a
 										href={docsURL}
 										className="text-sm flex items-center gap-1 transition-opacity opacity-0 group-hover:opacity-100"
-										onClick={(e) => {
+										onClick={(e: any) => {
 											e.preventDefault()
 											// Handle internal navigation to settings
 											if (docsURL.startsWith("roocode://settings")) {

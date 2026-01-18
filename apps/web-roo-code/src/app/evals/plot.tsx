@@ -177,62 +177,83 @@ export const Plot = ({ tableData }: PlotProps) => {
 			<div className="pt-4 pb-8 font-mono">Cost x Score</div>
 			<ChartContainer config={chartConfig} className="h-[500px] w-full">
 				<ScatterChart margin={{ top: 20, right: 0, bottom: 0, left: 20 }}>
-					<XAxis
-						type="number"
-						dataKey="cost"
-						name="Cost"
-						domain={[
-							(dataMin: number) => Math.max(0, Math.round((dataMin - 5) / 5) * 5),
-							(dataMax: number) => Math.round((dataMax + 5) / 5) * 5,
-						]}
-						tickFormatter={(value) => formatCurrency(value)}
-					/>
-					<YAxis
-						type="number"
-						dataKey="score"
-						name="Score"
-						domain={[
-							(dataMin: number) => Math.max(0, Math.round((dataMin - 5) / 5) * 5),
-							(dataMax: number) => Math.min(100, Math.round((dataMax + 5) / 5) * 5),
-						]}
-						tickFormatter={(value) => `${value}%`}
-					/>
-					<ChartTooltip
-						content={({ active, payload }) => {
-							if (!active || !payload || !payload.length || !payload[0]) {
-								return null
-							}
-
-							const { label, cost, score } = payload[0].payload
-
-							return (
-								<div className="bg-background border rounded-sm p-2 shadow-sm text-left">
-									<div className="border-b pb-1">{label}</div>
-									<div className="pt-1">
-										<div>
-											Score: <span className="font-mono">{Math.round(score)}%</span>
-										</div>
-										<div>
-											Cost: <span className="font-mono">{formatCurrency(cost)}</span>
-										</div>
-									</div>
-								</div>
-							)
-						}}
-					/>
-					<Customized component={renderQuadrant} />
-					{chartData.map((d, index) => (
-						<Scatter
-							key={d.label}
-							name={d.label}
-							data={[d]}
-							fill={generateSpectrumColor(index, chartData.length)}>
-							<LabelList
-								dataKey="label"
-								content={(props) => renderCustomLabel(props, labelPositions[d.label] || "top")}
+					{(() => {
+						const XAxisAny = XAxis as any
+						return (
+							<XAxisAny
+								type="number"
+								dataKey="cost"
+								name="Cost"
+								domain={[
+									(dataMin: number) => Math.max(0, Math.round((dataMin - 5) / 5) * 5),
+									(dataMax: number) => Math.round((dataMax + 5) / 5) * 5,
+								]}
+								tickFormatter={(value: number) => formatCurrency(value)}
 							/>
-						</Scatter>
-					))}
+						)
+					})()}
+					{(() => {
+						const YAxisAny = YAxis as any
+						return (
+							<YAxisAny
+								type="number"
+								dataKey="score"
+								name="Score"
+								domain={[
+									(dataMin: number) => Math.max(0, Math.round((dataMin - 5) / 5) * 5),
+									(dataMax: number) => Math.min(100, Math.round((dataMax + 5) / 5) * 5),
+								]}
+								tickFormatter={(value: number) => `${value}%`}
+							/>
+						)
+					})()}
+					{(() => {
+						const ChartTooltipAny = ChartTooltip as any
+						return (
+							<ChartTooltipAny
+								content={({ active, payload }: { active?: boolean; payload?: any[] }) => {
+									if (!active || !payload || !payload.length || !payload[0]) {
+										return null
+									}
+
+									const { label, cost, score } = payload[0].payload
+
+									return (
+										<div className="bg-background border rounded-sm p-2 shadow-sm text-left">
+											<div className="border-b pb-1">{label}</div>
+											<div className="pt-1">
+												<div>
+													Score: <span className="font-mono">{Math.round(score)}%</span>
+												</div>
+												<div>
+													Cost: <span className="font-mono">{formatCurrency(cost)}</span>
+												</div>
+											</div>
+										</div>
+									)
+								}}
+							/>
+						)
+					})()}
+					{(() => {
+						const CustomizedAny = Customized as any
+						return <CustomizedAny component={renderQuadrant} />
+					})()}
+					{chartData.map((d, index) => {
+						const ScatterAny = Scatter as any
+						return (
+							<ScatterAny
+								key={d.label}
+								name={d.label}
+								data={[d]}
+								fill={generateSpectrumColor(index, chartData.length)}>
+								<LabelList
+									dataKey="label"
+									content={(props: any) => renderCustomLabel(props, labelPositions[d.label] || "top")}
+								/>
+							</ScatterAny>
+						)
+					})}
 				</ScatterChart>
 			</ChartContainer>
 			<div className="py-4 text-xs opacity-50">

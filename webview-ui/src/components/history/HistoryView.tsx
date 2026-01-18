@@ -121,7 +121,7 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 						placeholder={t("history:searchPlaceholder")}
 						value={searchQuery}
 						data-testid="history-search-input"
-						onInput={(e) => {
+						onInput={(e: any) => {
 							const newValue = (e.target as HTMLInputElement)?.value
 							setSearchQuery(newValue)
 							if (newValue && !searchQuery && sortOption !== "mostRelevant") {
@@ -254,7 +254,7 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 					data-testid="virtuoso-container"
 					initialTopMostItemIndex={0}
 					components={{
-						List: React.forwardRef((props, ref) => (
+						List: React.forwardRef((props, ref: any) => (
 							<div {...props} ref={ref} data-testid="virtuoso-item-list" />
 						)),
 					}}
