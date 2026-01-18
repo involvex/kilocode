@@ -227,7 +227,12 @@
 			for (const cssModule of configuration.cssModules) {
 				const cssUrl = new URL(cssModule, baseUrl).href
 				const jsSrc = `globalThis._VSCODE_CSS_LOAD('${cssUrl}');\n`
-				const blob = new Blob([jsSrc], { type: "application/javascript" })
+
+				// Fix for BlobPart type issue - convert string to proper BlobPart type
+				// The Blob constructor expects BlobPart which includes string, but there seems to be
+				// a type compatibility issue with Uint8Array in this environment
+				const blobData = typeof jsSrc === "string" ? jsSrc : new TextDecoder().decode(jsSrc)
+				const blob = new Blob([blobData], { type: "application/javascript" })
 				importMap.imports[cssUrl] = URL.createObjectURL(blob)
 			}
 

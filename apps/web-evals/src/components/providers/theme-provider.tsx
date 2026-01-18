@@ -8,6 +8,6 @@ const NextThemesProvider = dynamic(() => import("next-themes").then((e) => e.The
 	ssr: false,
 })
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+export function ThemeProvider({ children, ...props }: ThemeProviderProps & { children?: React.ReactNode }) {
 	return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }

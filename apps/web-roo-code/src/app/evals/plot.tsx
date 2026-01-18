@@ -2,6 +2,7 @@
 
 import { useMemo } from "react"
 import { ScatterChart, Scatter, XAxis, YAxis, Customized, Cross, LabelList } from "recharts"
+// import type { XAxisProps, YAxisProps, ScatterProps } from "recharts"
 
 import { formatCurrency } from "@/lib"
 import { ChartContainer, ChartTooltip, ChartConfig } from "@/components/ui"
