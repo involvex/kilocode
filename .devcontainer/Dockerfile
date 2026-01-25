@@ -25,7 +25,7 @@ RUN apt update && apt install -y temurin-21-jdk
 # Enable corepack for pnpm (matching package.json version)
 RUN corepack enable && corepack prepare pnpm@10.8.1 --activate
 
-RUN pnpm add -g turbo typescript
+# RUN pnpm add -g turbo typescript
 
 # Set working directory
 WORKDIR /workspace
