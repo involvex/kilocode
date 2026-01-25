@@ -50,6 +50,7 @@ import {
 import { openConfigMenuAtom } from "../atoms/configMenu.js"
 import { useWebviewMessage } from "./useWebviewMessage.js"
 import { useTaskHistory } from "./useTaskHistory.js"
+import { useCondense } from "./useCondense.js"
 import { getModelIdKey } from "../../constants/providers/models.js"
 
 const TERMINAL_CLEAR_DELAY_MS = 500
@@ -142,6 +143,9 @@ export function useCommandContext(): UseCommandContextReturn {
 	const updateModelListFilters = useSetAtom(updateModelListFiltersAtom)
 	const changeModelListPage = useSetAtom(changeModelListPageAtom)
 	const resetModelListState = useSetAtom(resetModelListStateAtom)
+
+	// Get condense function
+	const { condenseAndWait } = useCondense()
 
 	// Create the factory function
 	const createContext = useCallback<CommandContextFactory>(
@@ -250,6 +254,8 @@ export function useCommandContext(): UseCommandContextReturn {
 				updateModelListFilters,
 				changeModelListPage,
 				resetModelListState,
+				// Condense context
+				condenseAndWait,
 			}
 		},
 		[
@@ -292,6 +298,7 @@ export function useCommandContext(): UseCommandContextReturn {
 			updateModelListFilters,
 			changeModelListPage,
 			resetModelListState,
+			condenseAndWait,
 		],
 	)
 

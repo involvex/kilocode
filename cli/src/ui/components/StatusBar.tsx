@@ -195,8 +195,12 @@ export const StatusBar: React.FC = () => {
 	// Prepare display values
 	// In parallel mode, show the original directory (process.cwd()) instead of the worktree path
 	const displayCwd = isParallelMode ? process.cwd() : cwd
+<<<<<<< HEAD
 	const defaultProjectName = `${getProjectName(displayCwd)}${isWorktree ? " (git worktree)" : ""}`
 	const projectName = statusLine?.enabled && statusLine.text ? statusLine.text : defaultProjectName
+=======
+	const projectName = `${getProjectName(displayCwd)}${isWorktree ? " ⎇" : ""}`
+>>>>>>> upstream/main
 	const modelName = useMemo(() => getModelDisplayName(apiConfig, routerModels), [apiConfig, routerModels])
 
 	// Get context color based on percentage using theme colors
